@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="spelunky_clone"
+config/name="balloon_movement_demo"
+run/main_scene="uid://cxo2r1hb7u2ss"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
