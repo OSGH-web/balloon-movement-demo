@@ -18,9 +18,6 @@ func _physics_process(delta):
 		velocity.y += GRAVITY * delta
 	else:
 		velocity.x += FRICTION * delta * velocity.x
-#
-	#if input_dir != Vector2.ZERO:
-		#$FireRoot.shoot()
 
 	move_and_slide()
 	_update_animation(input_dir.normalized())

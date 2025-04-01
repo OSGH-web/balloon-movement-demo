@@ -11,17 +11,16 @@ func _ready():
 	generate_sample_terrain()
 
 func generate_border():
-	# Fill all four borders of the 16x16 map
 	for x in range(grid_dimensions.x):
-		# Bottom border (y = 15)
+		# Bottom border
 		set_cell(Vector2i(x, grid_dimensions.y - 1), 0, Vector2i(3, 4), 0)
-		# Top border (y = 0)
+		# Top border
 		set_cell(Vector2i(x, 0), 0, Vector2i(3, 4), 0)
 
-	for y in range(1, grid_dimensions.y):  # Skip corners already covered by x loop
-		# Left border (x = 0)
+	for y in range(1, grid_dimensions.y):
+		# Left border
 		set_cell(Vector2i(0, y), 0, Vector2i(3, 4), 0)
-		# Right border (x = 15)
+		# Right border
 		set_cell(Vector2i(grid_dimensions.x - 1, y), 0, Vector2i(3, 4), 0)
 
 func generate_sample_terrain():
