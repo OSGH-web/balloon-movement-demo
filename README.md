@@ -25,3 +25,6 @@ const PLAYER_X_FORCE = 180
 
 ### Added window scrolling
 ![](./docs/scroll.gif)
+
+### Added fuel + power up (fuel replenishment)
+![](./docs/fuel.gif)
