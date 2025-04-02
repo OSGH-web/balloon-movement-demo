@@ -8,6 +8,8 @@ const FRICTION = -3
 const PLAYER_Y_FORCE = 300
 const PLAYER_X_FORCE = 180
 
+@export var FUEL = 2000;
+
 func _ready():
 	var level = get_parent() as Node2D
 	var map_height_px = level.height_in_tiles * tilemaplayer.tile_size.y
@@ -18,7 +20,10 @@ func _physics_process(delta):
 	var velocity_update = input_dir
 	velocity_update.x *= PLAYER_X_FORCE * delta
 	velocity_update.y *= PLAYER_Y_FORCE * delta
-	velocity -= velocity_update
+
+	if FUEL > 0:
+		velocity -= velocity_update
+		FUEL -= abs(velocity_update.x) + abs(velocity_update.y)
 
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
