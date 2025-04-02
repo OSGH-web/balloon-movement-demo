@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxdl0fqxwxba1"]
+
+[ext_resource type="Script" uid="uid://q67tvntu6pa4" path="res://scripts/gas_can.gd" id="1_lkxy0"]
+[ext_resource type="AudioStream" uid="uid://d2m4wnbjjnnvf" path="res://assets/sound_fx/powerUp.wav" id="2_jrew3"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_lkxy0"]
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jrew3"]
+size = Vector2(8, 8)
+
+[node name="GasCan" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_lkxy0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_lkxy0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jrew3")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_jrew3")
