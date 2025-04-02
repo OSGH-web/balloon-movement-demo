@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bprt5jmuwcihx"]
 
-[ext_resource type="Script" uid="uid://dmoxrpi5e2hec" path="res://scripts/level_select.gd" id="1_3shnc"]
+[ext_resource type="Script" uid="uid://dmoxrpi5e2hec" path="res://scenes/level_select/level_select.gd" id="1_t5gxd"]
 
 [sub_resource type="Gradient" id="Gradient_3shnc"]
 offsets = PackedFloat32Array(0.0157658, 0.986486)
@@ -17,7 +17,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 24.0
 offset_bottom = 24.0
-script = ExtResource("1_3shnc")
+script = ExtResource("1_t5gxd")
 
 [node name="PlayerMarker" type="Sprite2D" parent="."]
 z_index = 1

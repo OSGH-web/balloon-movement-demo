@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cxdl0fqxwxba1"]
 
-[ext_resource type="Script" uid="uid://q67tvntu6pa4" path="res://scripts/gas_can.gd" id="1_lkxy0"]
+[ext_resource type="Script" uid="uid://q67tvntu6pa4" path="res://scenes/gas_can/gas_can.gd" id="1_lkxy0"]
 [ext_resource type="AudioStream" uid="uid://d2m4wnbjjnnvf" path="res://assets/sound_fx/powerUp.wav" id="2_jrew3"]
 [ext_resource type="Texture2D" uid="uid://diopb6pfkyuxr" path="res://assets/sprites/powerup.png" id="2_mecvi"]
 

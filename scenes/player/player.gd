@@ -10,11 +10,14 @@ const PLAYER_X_FORCE = 180
 
 @export var FUEL = 2000;
 
+@export var play_background_music = false;
+
 func _ready():
 	add_to_group("player")
 	var level = get_parent() as Node2D
 	var map_height_px = level.height_in_tiles * tilemaplayer.tile_size.y
 	$Camera2D.limit_bottom = map_height_px
+	$AudioStreamPlayer2D.playing = play_background_music
 
 func _input(event):
 	if int(FUEL) <= 0:

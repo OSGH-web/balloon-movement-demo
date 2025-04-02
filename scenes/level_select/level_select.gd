@@ -21,7 +21,7 @@ func _ready():
 	update_marker_position()
 
 func load_levels():
-	var dir = DirAccess.open("res://scenes/levels/")
+	var dir = DirAccess.open("res://levels/")
 	if dir:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
@@ -39,7 +39,7 @@ func create_level_grid():
 	for child in button_container.get_children():
 		child.queue_free()
 	
-	var button_scene = preload("res://scenes/level_button.tscn")
+	var button_scene = preload("res://scenes/level_button/level_button.tscn")
 	
 	for i in level_numbers.size():
 		var button = button_scene.instantiate() as LevelButton
@@ -81,4 +81,4 @@ func try_move(x: int, y: int):
 
 func _on_level_selected(level_number: int):
 	print("on_level_select")
-	get_tree().change_scene_to_file("res://scenes/levels/level%d.tscn" % level_number)
+	get_tree().change_scene_to_file("res://levels/level%d.tscn" % level_number)
