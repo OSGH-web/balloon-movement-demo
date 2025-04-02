@@ -22,6 +22,8 @@ func _ready():
 func _input(event):
 	if int(FUEL) <= 0:
 		if event.is_action_pressed("ui_a"):
+			get_tree().reload_current_scene()
+		if event.is_action_pressed("ui_q"):
 			return_to_world_select()
 
 func _physics_process(delta):

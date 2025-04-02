@@ -9,6 +9,6 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if int(player.FUEL) <= 0:
-		text = "Press A to reselect level"
+		text = "Press A to retry level" + "\n" + "Press Q to return to level select"
 	else:
 		text = "Fuel: " + str(int(player.FUEL))
