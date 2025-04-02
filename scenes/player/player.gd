@@ -71,6 +71,10 @@ func _update_animation(dir: Vector2):
 		$AnimatedSprite2D.frame = 0
 		return
 
+	if int(FUEL) <= 0:
+		$AnimatedSprite2D.frame = 0
+		return
+
 	var x = dir.x
 	var y = dir.y
 	var is_diagonal = x != 0 and y != 0
