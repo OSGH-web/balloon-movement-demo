@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://b7jfvkf4edbjp"]
+[gd_scene load_steps=18 format=3 uid="uid://b7jfvkf4edbjp"]
 
 [ext_resource type="Script" uid="uid://d3nwiwsfywf3b" path="res://scripts/player.gd" id="1_onrkg"]
 [ext_resource type="Script" uid="uid://dkbvg85t2nhy5" path="res://scripts/label.gd" id="3_dqkch"]
 [ext_resource type="Texture2D" uid="uid://cbgt5n5gfv3om" path="res://assets/sprites/spelunky_testing_sprite_fire.png" id="3_qhqgy"]
+[ext_resource type="FontFile" uid="uid://b5r4on7cls54q" path="res://assets/fonts/DepartureMono-Regular.otf" id="3_qlg0r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
 atlas = ExtResource("3_qhqgy")
@@ -78,12 +79,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(8, 8)
 
-[sub_resource type="SystemFont" id="SystemFont_g2els"]
-subpixel_positioning = 0
-
 [sub_resource type="Theme" id="Theme_qhqgy"]
-default_font = SubResource("SystemFont_g2els")
-default_font_size = 16
+default_font = ExtResource("3_qlg0r")
+default_font_size = 11
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dqkch"]
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 3
@@ -113,8 +113,9 @@ layer = 0
 offset_left = 12.0
 offset_top = 4.0
 offset_right = 42.0
-offset_bottom = 27.0
+offset_bottom = 18.0
 theme = SubResource("Theme_qhqgy")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_dqkch")
 text = "test"
 script = ExtResource("3_dqkch")
