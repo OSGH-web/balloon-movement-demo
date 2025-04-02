@@ -3,17 +3,16 @@
 [ext_resource type="Script" uid="uid://cu5r1rrge6x4k" path="res://scenes/end_zone/end_zone.gd" id="1_xhrpo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xhrpo"]
-size = Vector2(56, 16)
+size = Vector2(48, 16)
 
 [node name="EndZone" type="Area2D"]
 collision_layer = 2
 script = ExtResource("1_xhrpo")
-size = Vector2(16, 16)
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -8.0
+offset_left = -24.0
 offset_top = -8.0
-offset_right = 8.0
+offset_right = 24.0
 offset_bottom = 8.0
 color = Color(1, 0, 0, 0.5)
 

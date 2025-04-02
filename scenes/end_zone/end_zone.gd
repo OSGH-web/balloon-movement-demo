@@ -1,9 +1,9 @@
 @tool
 extends Area2D
 
-@export var size: Vector2 = Vector2(100, 100) : 
+@export var size: Vector2 = Vector2(48, 16) :
 	set = set_size  # Calls `set_size` when changed in the Inspector
-@export var color: Color = Color(1, 0, 0, 0.5) : 
+@export var color: Color = Color(1, 0, 0, 0.5) :
 	set = set_color  # Calls `set_color` when changed in the Inspector
 
 @onready var collision_shape = $CollisionShape2D
@@ -23,7 +23,7 @@ func return_to_world_select():
 func _process(_delta):
 	if Engine.is_editor_hint():  # Only update in the editor
 		update_shape()
-	
+
 func update_shape():
 	if not is_inside_tree():  # Prevent errors before node is fully initialized
 		return
