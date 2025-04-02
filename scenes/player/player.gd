@@ -12,6 +12,10 @@ const PLAYER_X_FORCE = 180
 
 @export var play_background_music = false;
 
+@onready var timer: Timer = $Timer
+
+var readyForRestart: bool = false
+
 func _ready():
 	add_to_group("player")
 	var level = get_parent() as Node2D
@@ -24,10 +28,18 @@ func _ready():
 
 func _input(event):
 	if int(FUEL) <= 0:
+		if timer.is_stopped() and readyForRestart == false:
+			timer.start()
+	if readyForRestart:
 		if event.is_action_pressed("ui_a"):
 			get_tree().reload_current_scene()
 		if event.is_action_pressed("ui_q"):
 			return_to_world_select()
+
+
+func _on_timer_timeout():
+	readyForRestart = true
+	print("HERE")
 
 func _physics_process(delta):
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -42,10 +54,13 @@ func _physics_process(delta):
 			$AudioStreamPlayer2D.pitch_scale = 1
 	else:
 		$AudioStreamPlayer2D.pitch_scale = 0.7
-
+		
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
+	elif abs(velocity.x) < 0.001:
+		velocity.x = 0
 	else:
+		# Makes you slow down when you land on the floor. Smaller than vel.x so slows you down. 
 		velocity.x += FRICTION * delta * velocity.x
 
 	move_and_slide()
