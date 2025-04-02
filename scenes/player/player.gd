@@ -30,6 +30,7 @@ func add_fuel(amt):
 	FUEL += amt
 	if FUEL > 0:
 		$Timer.stop()
+		$AudioStreamPlayer2D.pitch_scale = 1.03
 	if readyForRestart:
 		readyForRestart = false
 
@@ -57,11 +58,9 @@ func _physics_process(delta):
 	if FUEL > 0:
 		velocity -= velocity_update
 		FUEL -= abs(velocity_update.x) + abs(velocity_update.y)
-		if $AudioStreamPlayer2D.pitch_scale == 0.7:
-			$AudioStreamPlayer2D.pitch_scale = 1
 	else:
 		$AudioStreamPlayer2D.pitch_scale = 0.7
-		
+
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
 	elif abs(velocity.x) < 0.001:
