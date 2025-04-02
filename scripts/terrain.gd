@@ -4,7 +4,7 @@ var tile_size = tile_set.tile_size
 var window_width = ProjectSettings.get_setting("display/window/size/viewport_width")
 var window_height = ProjectSettings.get_setting("display/window/size/viewport_height")
 var configured_size = Vector2(window_width, window_height)
-var grid_dimensions = configured_size / Vector2(tile_size)
+var grid_dimensions = Vector2(32, 64)
 
 func _ready():
 	generate_border()

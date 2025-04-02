@@ -2,10 +2,17 @@
 extends CharacterBody2D
 
 @export var tilemaplayer: TileMapLayer
+
 const GRAVITY = 120
 const FRICTION = -3
 const PLAYER_Y_FORCE = 300
 const PLAYER_X_FORCE = 180
+
+func _ready():
+	var tile_size = tilemaplayer.tile_size
+	var grid_dimensions = tilemaplayer.grid_dimensions
+	var map_height_px = grid_dimensions.y * tile_size.y
+	$Camera2D.limit_bottom = map_height_px
 
 func _physics_process(delta):
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -21,7 +28,6 @@ func _physics_process(delta):
 
 	move_and_slide()
 	_update_animation(input_dir.normalized())
-
 
 func _update_animation(dir: Vector2):
 	if dir == Vector2.ZERO:
