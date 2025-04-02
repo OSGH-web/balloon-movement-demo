@@ -28,5 +28,17 @@ const PLAYER_X_FORCE = 180
 ### Added window scrolling
 <img src="./docs/scroll.gif" width="384">
 
-### Added fuel + power up (fuel replenishment)
+### Added fuel + power up (fuel replenishment**
 <img src="./docs/fuel.gif" width="384">
+
+### Added level select screen
+<img src="./docs/level-select.jpg" width="384">
+
+- auto-populates based on the contents of `./levels`
+
+### Added gameplay loop/post-death options
+<img src="./docs/end-of-level-options.jpg" width="384">
+
+- if a player navigates to the "end zone" (red square in the bottom right), they beat the level and return to the level select screen
+- if a player runs out of fuel, they can press A to replay the level, or Q to return to the level select screej
+
