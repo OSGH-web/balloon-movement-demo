@@ -16,6 +16,11 @@ func _ready():
 	var map_height_px = level.height_in_tiles * tilemaplayer.tile_size.y
 	$Camera2D.limit_bottom = map_height_px
 
+func _input(event):
+	if int(FUEL) <= 0:
+		if event.is_action_pressed("ui_a"):
+			return_to_world_select()
+
 func _physics_process(delta):
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var velocity_update = input_dir
@@ -57,3 +62,5 @@ func _update_animation(dir: Vector2):
 			$AnimatedSprite2D.frame = 1  # up
 		else:
 			$AnimatedSprite2D.frame = 3  # down
+func return_to_world_select():
+	get_tree().change_scene_to_file("res://scenes/level_select.tscn")

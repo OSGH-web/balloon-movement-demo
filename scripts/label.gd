@@ -8,4 +8,7 @@ func _ready() -> void:
 	player = cl.get_parent() as CharacterBody2D
 
 func _process(_delta: float) -> void:
-	text = "Fuel: " + str(int(player.FUEL))
+	if int(player.FUEL) <= 0:
+		text = "Press A to reselect level"
+	else:
+		text = "Fuel: " + str(int(player.FUEL))

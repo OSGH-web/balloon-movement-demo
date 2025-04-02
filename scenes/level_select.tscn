@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bprt5jmuwcihx"]
+
+[ext_resource type="Script" uid="uid://dmoxrpi5e2hec" path="res://scripts/level_select.gd" id="1_3shnc"]
+
+[sub_resource type="Gradient" id="Gradient_3shnc"]
+offsets = PackedFloat32Array(0.0157658, 0.986486)
+colors = PackedColorArray(0, 0, 0, 0.752941, 0, 0, 0, 0.752941)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_p0wlc"]
+gradient = SubResource("Gradient_3shnc")
+width = 24
+height = 24
+
+[node name="LevelSelect" type="Control"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 24.0
+offset_bottom = 24.0
+script = ExtResource("1_3shnc")
+
+[node name="PlayerMarker" type="Sprite2D" parent="."]
+z_index = 1
+texture = SubResource("GradientTexture2D_p0wlc")
+centered = false
+
+[node name="ButtonGrid" type="Node2D" parent="."]
