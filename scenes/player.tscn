@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dkbvg85t2nhy5" path="res://scripts/label.gd" id="3_dqkch"]
 [ext_resource type="Texture2D" uid="uid://cbgt5n5gfv3om" path="res://assets/sprites/spelunky_testing_sprite_fire.png" id="3_qhqgy"]
 [ext_resource type="Theme" uid="uid://bcn6jcu02pjx0" path="res://assets/themes/standard_font_theme.theme" id="3_qlg0r"]
+[ext_resource type="AudioStream" uid="uid://cquaalpknb8c6" path="res://assets/sound_fx/background_music.ogg" id="5_qlg0r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
 atlas = ExtResource("3_qhqgy")
