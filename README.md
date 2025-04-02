@@ -20,3 +20,8 @@ const PLAYER_X_FORCE = 180
 ## Player Sprite Sheet
 ![](./assets/sprites/spelunky_testing_sprite_fire.png)
 - located in `./assets/sprites/spelunky_testing_sprite_fire.png`
+
+## Updates
+
+### Added window scrolling
+![](./docs/scroll.gif)
