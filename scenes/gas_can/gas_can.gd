@@ -12,7 +12,7 @@ func _ready():
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):
-		body.FUEL += 1000
+		body.add_fuel(1000)
 		# Disable collision and hide sprite immediately
 		collision.set_deferred("disabled", true)
 		sprite.visible = false

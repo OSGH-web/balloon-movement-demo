@@ -26,6 +26,13 @@ func _ready():
 	if fuel_label:
 		fuel_label.player = self
 
+func add_fuel(amt):
+	FUEL += amt
+	if FUEL > 0:
+		$Timer.stop()
+	if readyForRestart:
+		readyForRestart = false
+
 func _input(event):
 	if int(FUEL) <= 0:
 		if timer.is_stopped() and readyForRestart == false:
