@@ -4,7 +4,8 @@
 - use arrow keys to move
 
 ## Gameplay Demo
-![](./docs/output.gif)
+  <img src="./docs/output.gif" width="384">
+
 - physics are controlled by the following variables (`./scripts/player.gd`)
 ```gdscript
 # ./scripts/player.gd
@@ -18,13 +19,14 @@ const PLAYER_X_FORCE = 180
 - friction slows the player down while sliding on the ground
 
 ## Player Sprite Sheet
-![](./assets/sprites/spelunky_testing_sprite_fire.png)
+<img src="./assets/sprites/spelunky_testing_sprite_fire.png" width="384">
+
 - located in `./assets/sprites/spelunky_testing_sprite_fire.png`
 
 ## Updates
 
 ### Added window scrolling
-![](./docs/scroll.gif)
+<img src="./docs/scroll.gif" width="384">
 
 ### Added fuel + power up (fuel replenishment)
-![](./docs/fuel.gif)
+<img src="./docs/fuel.gif" width="384">
