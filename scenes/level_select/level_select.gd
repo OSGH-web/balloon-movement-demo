@@ -80,5 +80,4 @@ func try_move(x: int, y: int):
 		update_marker_position()
 
 func _on_level_selected(level_number: int):
-	print("on_level_select")
 	get_tree().change_scene_to_file("res://levels/level%d.tscn" % level_number)
