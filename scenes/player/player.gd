@@ -18,6 +18,9 @@ func _ready():
 	var map_height_px = level.height_in_tiles * tilemaplayer.tile_size.y
 	$Camera2D.limit_bottom = map_height_px
 	$AudioStreamPlayer2D.playing = play_background_music
+	var fuel_label = get_tree().get_first_node_in_group("fuel_label")
+	if fuel_label:
+		fuel_label.player = self
 
 func _input(event):
 	if int(FUEL) <= 0:
