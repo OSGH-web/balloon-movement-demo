@@ -1,15 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://cxo2r1hb7u2ss"]
+[gd_scene load_steps=5 format=4 uid="uid://cxo2r1hb7u2ss"]
 
+[ext_resource type="Script" uid="uid://lkphrvhitvd" path="res://scripts/level_base.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://b7jfvkf4edbjp" path="res://scenes/player.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://bnpihmeh3p65s" path="res://scenes/terrain.tscn" id="3_h2yge"]
 [ext_resource type="Script" uid="uid://df1fbghclur2h" path="res://scripts/terrain.gd" id="4_1bvp3"]
 
-[sub_resource type="GDScript" id="GDScript_h2yge"]
-script/source = "extends Node2D
-"
-
-[node name="Node2D" type="Node2D"]
-script = SubResource("GDScript_h2yge")
+[node name="LevelBase" type="Node2D"]
+script = ExtResource("1_1bvp3")
 
 [node name="Player" parent="." node_paths=PackedStringArray("tilemaplayer") instance=ExtResource("2_0xm2m")]
 slide_on_ceiling = false
@@ -18,4 +15,5 @@ safe_margin = 0.001
 tilemaplayer = NodePath("../Terrain")
 
 [node name="Terrain" parent="." instance=ExtResource("3_h2yge")]
+tile_map_data = PackedByteArray("AAAJAA4AAAADAAQAAAAKAA4AAAADAAQAAAALAA4AAAADAAQAAAAMAA4AAAADAAQAAAANAA4AAAADAAQAAAAOAA4AAAADAAQAAAAPAA4AAAADAAQAAAAQAA4AAAADAAQAAAARAA4AAAADAAQAAAASAA4AAAADAAQAAAAZAAkAAAADAAQAAAAYAAkAAAADAAQAAAAXAAkAAAADAAQAAAAWAAkAAAADAAQAAAAVAAkAAAADAAQAAAAUAAkAAAADAAQAAAATAAkAAAADAAQAAAASAAkAAAADAAQAAAA=")
 script = ExtResource("4_1bvp3")

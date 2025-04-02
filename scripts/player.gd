@@ -9,9 +9,8 @@ const PLAYER_Y_FORCE = 300
 const PLAYER_X_FORCE = 180
 
 func _ready():
-	var tile_size = tilemaplayer.tile_size
-	var grid_dimensions = tilemaplayer.grid_dimensions
-	var map_height_px = grid_dimensions.y * tile_size.y
+	var level = get_parent() as Node2D
+	var map_height_px = level.height_in_tiles * tilemaplayer.tile_size.y
 	$Camera2D.limit_bottom = map_height_px
 
 func _physics_process(delta):
