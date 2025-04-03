@@ -11,6 +11,8 @@ const PLAYER_X_FORCE = 180
 @export var FUEL = 2000;
 
 @export var play_background_music = false;
+@export var background_music_pitch_scale = 1.03;
+@export var background_music_pitch_scale_slow = 0.7;
 
 @onready var timer: Timer = $Timer
 
@@ -30,7 +32,7 @@ func add_fuel(amt):
 	FUEL += amt
 	if FUEL > 0:
 		$Timer.stop()
-		$AudioStreamPlayer2D.pitch_scale = 1.03
+		$AudioStreamPlayer2D.pitch_scale = background_music_pitch_scale
 	if readyForRestart:
 		readyForRestart = false
 
@@ -59,7 +61,7 @@ func _physics_process(delta):
 		velocity -= velocity_update
 		FUEL -= abs(velocity_update.x) + abs(velocity_update.y)
 	else:
-		$AudioStreamPlayer2D.pitch_scale = 0.7
+		$AudioStreamPlayer2D.pitch_scale = background_music_pitch_scale_slow
 
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
