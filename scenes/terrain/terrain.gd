@@ -7,14 +7,15 @@ func _ready():
 	var level = get_parent() as Node2D
 	grid_dimensions = Vector2i(level.width_in_tiles, level.height_in_tiles)
 
-  var level_size = grid_dimensions * tile_size
-  var camera = get_viewport().get_camera_2d()
+	var level_size = grid_dimensions * tile_size
+	var camera = get_viewport().get_camera_2d()
 
-  if camera:
-	  if level_size == Vector2(256, 256):
-		  camera.zoom = Vector2(2.0, 2.0)
-	  else:
-		  camera.offset.x = 128
+	if camera:
+		if level_size == Vector2i(256, 256):
+			camera.zoom = Vector2(2.0, 2.0)
+		else:
+			print("setting offset")
+			camera.offset.x = 128
 
 	generate_border()
 
