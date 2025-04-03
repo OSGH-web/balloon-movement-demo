@@ -14,14 +14,16 @@ func _ready():
 	generate_border()
 
 func generate_border():
+	var wall_tile_atlas = Vector2i(3, 4)
+
 	for x in range(grid_dimensions.x):
 		# Bottom border
-		set_cell(Vector2i(x, grid_dimensions.y - 1), 0, Vector2i(3, 4), 0)
+		set_cell(Vector2i(x, grid_dimensions.y - 1), 0, wall_tile_atlas, 0)
 		# Top border
-		set_cell(Vector2i(x, 0), 0, Vector2i(3, 4), 0)
+		set_cell(Vector2i(x, 0), 0, wall_tile_atlas, 0)
 
 	for y in range(1, grid_dimensions.y):
 		# Left border
-		set_cell(Vector2i(0, y), 0, Vector2i(3, 4), 0)
+		set_cell(Vector2i(0, y), 0, wall_tile_atlas, 0)
 		# Right border
-		set_cell(Vector2i(grid_dimensions.x - 1, y), 0, Vector2i(3, 4), 0)
+		set_cell(Vector2i(grid_dimensions.x - 1, y), 0, wall_tile_atlas, 0)
