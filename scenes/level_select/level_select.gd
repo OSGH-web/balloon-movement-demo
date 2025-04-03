@@ -13,8 +13,6 @@ var level_files := []
 
 @onready var standard_font_theme := load("res://assets/themes/standard_font_theme.theme")
 
-var current_previews = []
-
 func _ready():
 	button_container.position = button_spacing;
 	player_marker.offset = button_spacing
@@ -89,7 +87,12 @@ func _on_level_selected(level_index: int):
 
 
 func create_level_preview(level_path: String):
-	clear_existing_previews()
+	var preview_tilemaplayer = get_node("PreviewContainer/PreviewTileMap")
+	if not preview_tilemaplayer:
+		print(get_tree().current_scene)
+		return
+
+	preview_tilemaplayer.clear()
 
 	var level_scene = load(level_path)
 	if not level_scene:
@@ -98,43 +101,60 @@ func create_level_preview(level_path: String):
 	# Instantiate it (but don't add to tree)
 	var level_instance = level_scene.instantiate()
 
+	# get the tilemap from the level we're hovering over
 	var tilemaplayer = level_instance.find_child("Terrain") as TileMapLayer
 	if not tilemaplayer:
 		level_instance.free()
 		return
 
-	var grid_dimensions = Vector2i(level_instance.width_in_tiles, level_instance.height_in_tiles)
+	var level_dimensions = Vector2i(level_instance.width_in_tiles, level_instance.height_in_tiles)
 
-	var preview_tilemaplayer = TileMapLayer.new()
-	preview_tilemaplayer.tile_set = tilemaplayer.tile_set
+	var wall_tile_atlas = Vector2i(6, 0)
+	var player_tile_atlas = Vector2i(2, 0)
 
-	var used_cells = tilemaplayer.get_used_cells()
-	for cell in used_cells:
-		var source_id = tilemaplayer.get_cell_source_id(cell)
-		var atlas_coords = tilemaplayer.get_cell_atlas_coords(cell)
+	for cell in tilemaplayer.get_used_cells():
 		var alternative_tile = tilemaplayer.get_cell_alternative_tile(cell)
-		preview_tilemaplayer.set_cell(cell, source_id, atlas_coords, alternative_tile)
+		preview_tilemaplayer.set_cell(cell, 0, wall_tile_atlas, alternative_tile)
 
-	# Top and bottom borders
-	var border_tile_source_id = 0
-	var border_tile_atlas = Vector2i(3, 4)
-	for x in range(0, grid_dimensions.x):
-		preview_tilemaplayer.set_cell(Vector2i(x, 0), border_tile_source_id, border_tile_atlas, 0)
-		preview_tilemaplayer.set_cell(Vector2i(x, grid_dimensions.y - 1), border_tile_source_id, border_tile_atlas, 0)
+	# Draw player position
+	var player_node = level_instance.find_child("Player", true, false)
+	if player_node and player_node is CharacterBody2D:
+		var player_tile_offset = Vector2i(2, 4)
+		var player_tile_pos = tilemaplayer.local_to_map(player_node.global_position) + player_tile_offset
+		preview_tilemaplayer.set_cell(player_tile_pos, 0, Vector2i(2, 0), 0)
 
-	# Left and right borders
-	for y in range(0, grid_dimensions.y):
-		preview_tilemaplayer.set_cell(Vector2i(0, y), border_tile_source_id, border_tile_atlas, 0)
-		preview_tilemaplayer.set_cell(Vector2i(grid_dimensions.x-1, y), border_tile_source_id, border_tile_atlas, 0)
+	# Draw EndZone area
+	var end_zone = level_instance.find_child("EndZone", true, false)
+	if end_zone:
+		# Get collision shape and calculate coverage
+		var end_zone_center = end_zone.global_position
+		var half_size = end_zone.size / 2
+		var start_pos = end_zone_center - half_size
+		var end_pos = end_zone_center + half_size
 
-	$PreviewContainer.add_child(preview_tilemaplayer)
-	$PreviewContainer.scale = Vector2(0.25, 0.25)
-	current_previews.append(preview_tilemaplayer)
+		var start_tile = tilemaplayer.local_to_map(start_pos)
+		var end_tile = tilemaplayer.local_to_map(end_pos)
+
+		# Draw all tiles in the EndZone area
+		for x in range(start_tile.x, end_tile.x):
+			for y in range(start_tile.y, end_tile.y):
+				preview_tilemaplayer.set_cell(Vector2i(x, y), 0, Vector2i(3, 0), 0)
+
+	# Draw Powerup (GasCan) areas
+	var powerups = level_instance.find_children("*", "GasCan", true, false)
+	print(powerups)
+	for powerup in powerups:
+		var pos = powerup.global_position
+		var tile_position = tilemaplayer.local_to_map(pos)
+		preview_tilemaplayer.set_cell(tile_position, 0, Vector2i(4, 0), 0)
+
 	level_instance.free()
+	# Draw Top and bottom borders
+	for x in range(0, level_dimensions.x):
+		preview_tilemaplayer.set_cell(Vector2i(x, 0), 0, wall_tile_atlas, 0)
+		preview_tilemaplayer.set_cell(Vector2i(x, level_dimensions.y - 1), 0, wall_tile_atlas, 0)
 
-func clear_existing_previews():
-	for preview in current_previews:
-		if is_instance_valid(preview) and preview.is_inside_tree():
-			preview.get_parent().remove_child(preview)
-			preview.queue_free()
-	current_previews.clear()
+	# Draw Left and right borders
+	for y in range(0, level_dimensions.y):
+		preview_tilemaplayer.set_cell(Vector2i(0, y), 0, wall_tile_atlas, 0)
+		preview_tilemaplayer.set_cell(Vector2i(level_dimensions.x-1, y), 0, wall_tile_atlas, 0)
