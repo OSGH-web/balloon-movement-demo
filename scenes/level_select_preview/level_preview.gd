@@ -25,9 +25,6 @@ func generate_preview(level_path: String):
 
 	var level_dimensions = Vector2i(level_instance.width_in_tiles, level_instance.height_in_tiles)
 
-	var wall_tile_atlas = Vector2i(6, 0)
-	var player_tile_atlas = Vector2i(2, 0)
-
 	for cell in tilemaplayer.get_used_cells():
 		var alternative_tile = tilemaplayer.get_cell_alternative_tile(cell)
 		preview_tilemaplayer.set_cell(cell, 0, wall_tile_atlas, alternative_tile)
