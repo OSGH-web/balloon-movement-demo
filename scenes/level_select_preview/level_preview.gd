@@ -58,7 +58,6 @@ func generate_preview(level_path: String):
 
 	# Draw Powerup (GasCan) areas
 	var powerups = level_instance.find_children("*", "GasCan", true, false)
-	print(powerups)
 	for powerup in powerups:
 		var pos = powerup.global_position
 		var tile_position = tilemaplayer.local_to_map(pos)
