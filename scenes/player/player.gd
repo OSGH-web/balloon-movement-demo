@@ -6,7 +6,7 @@ extends CharacterBody2D
 const GRAVITY = 120
 const FRICTION = -3
 const PLAYER_Y_FORCE = 300
-const PLAYER_X_FORCE = 180
+const PLAYER_X_FORCE = 165
 
 @export var FUEL = 2000;
 
@@ -20,7 +20,9 @@ func _ready():
 	add_to_group("player")
 	var level = get_parent() as Node2D
 	var map_height_px = level.height_in_tiles * tilemaplayer.tile_size.y
+	var map_width_px = level.width_in_tiles * tilemaplayer.tile_size.x
 	$Camera2D.limit_bottom = map_height_px
+	$Camera2D.limit_right = map_width_px
 	$AudioStreamPlayer2D.playing = play_background_music
 	var fuel_label = get_tree().get_first_node_in_group("fuel_label")
 	if fuel_label:
@@ -39,7 +41,6 @@ func _input(event):
 
 func _on_timer_timeout():
 	readyForRestart = true
-	print("HERE")
 
 func _physics_process(delta):
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
