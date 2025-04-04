@@ -1,9 +1,9 @@
 extends Control
 class_name LevelSelect
 
-@export var grid_columns := 4
-@export var button_size := Vector2(24, 24)
-@export var button_spacing := Vector2(24, 24)
+@export var grid_columns := 5
+@export var button_size := Vector2(32, 32)
+@export var button_spacing := Vector2(32, 32)
 
 var current_index := 0
 var level_files := []
@@ -44,8 +44,7 @@ func create_level_grid():
 		var button = button_scene.instantiate() as LevelButton
 		button.name = "Level%d" % (i + 1)
 		button.level_number = i + 1
-		button.custom_minimum_size = button_size
-
+		button.get_node("Label").size = button_size
 		# Position calculation
 		var col = i % grid_columns
 		var row = i / grid_columns
@@ -59,6 +58,10 @@ func create_level_grid():
 func update_marker_position():
 	var current_button = button_container.get_child(current_index)
 	player_marker.position = current_button.position
+
+
+	var file_path = "res://levels/%s" % level_files[current_index]
+	$LevelPreview.generate_preview(file_path)
 
 func _input(event):
 	if event.is_action_pressed("ui_left"):
