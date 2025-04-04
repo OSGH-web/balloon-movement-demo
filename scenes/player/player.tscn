@@ -93,7 +93,7 @@ centered = false
 position = Vector2(20, 20)
 shape = SubResource("RectangleShape2D_onrkg")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera" type="Camera2D" parent="."]
 limit_left = -100000
 limit_top = -100000
 limit_right = 100000

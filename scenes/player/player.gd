@@ -2,8 +2,10 @@
 extends CharacterBody2D
 
 @export var tilemaplayer: TileMapLayer
-@export var FUEL = 2000;
-@export var play_background_music = false;
+@export var FUEL = 2000
+@export var play_background_music = false
+@export var camera_scale: Vector2 = Vector2(1.0, 1.0)
+@export var staticCam: bool = false
 @onready var timer: Timer = $Timer
 
 const GRAVITY = 120
@@ -13,15 +15,31 @@ const PLAYER_X_FORCE = 165
 var readyForRestart: bool = false
 
 func _ready():
+	var camera = $Camera
+	camera.zoom = camera_scale
+	$AudioStreamPlayer2D.playing = play_background_music
 	add_to_group("player")
 	var level = get_parent() as Node2D
 	var map_height_px = level.height_in_tiles * tilemaplayer.tile_size.y
 	var map_width_px = level.width_in_tiles * tilemaplayer.tile_size.x
-	$AudioStreamPlayer2D.playing = play_background_music
+
 	var fuel_label = get_tree().get_first_node_in_group("fuel_label")
 	if fuel_label:
 		fuel_label.player = self
-
+	if staticCam:
+		# Remove the player and reparent to level.
+		camera.get_parent().remove_child(camera)
+		call_deferred("add_camera_to_level", level, camera)
+		# Set position in the center of the level.
+		camera.global_position = Vector2(map_width_px, map_height_px) / 2
+		camera.enabled = true
+		camera.make_current()
+		
+# Seperate function bc if we don't wait a frame the call will fail. 
+func add_camera_to_level(level: Node2D, camera: Camera2D):
+	level.add_child(camera)
+	
+	
 func _input(event):
 	if int(FUEL) <= 0:
 		if timer.is_stopped() and readyForRestart == false:
