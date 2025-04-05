@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var camera_scale: Vector2 = Vector2(1.0, 1.0)
 @export var staticCam: bool = false
 @onready var timer: Timer = $Timer
+@onready var camera = $Camera
 
 const GRAVITY = 120
 const FRICTION = -3
@@ -21,7 +22,6 @@ func _on_player_died():
 
 func _ready():
 	add_to_group("player")
-	var camera = $Camera
 	camera.zoom = camera_scale
 	$AudioStreamPlayer2D.playing = play_background_music
 	player_died.connect(_on_player_died)
@@ -107,7 +107,6 @@ func _setup_camera_limits(map_width_px, map_height_px):
 	# by default, restrict the camera to the bounding box of the level
 	$Camera.limit_left = 0
 	$Camera.limit_right = map_width_px
-
 	$Camera.limit_top = 0;
 	$Camera.limit_bottom = map_height_px
 
@@ -120,7 +119,17 @@ func _setup_camera_limits(map_width_px, map_height_px):
 
 	# if the level is shorter than the screen, center the level vertically in the camera's view
 	var viewport_height = ProjectSettings.get_setting("display/window/size/viewport_height")
-	if map_height_px < 360:
-		$Camera.limit_top = map_height_px / 2  - (viewport_height / 2)
-		$Camera.limit_bottom = map_height_px / 2  + (viewport_height / 2)
+	if map_height_px < viewport_height:
+		$Camera.limit_top = (map_height_px / 2) - (viewport_height / 2)
+		$Camera.limit_bottom = (map_height_px / 2)  + (viewport_height / 2)
 		$Camera.drag_vertical_enabled = false
+		
+	if staticCam:
+		var level = get_parent() as Node2D
+		camera.get_parent().remove_child(camera)
+		call_deferred("add_camera_to_level", level, camera)
+		camera.global_position = Vector2(map_width_px, map_height_px)
+		
+func add_camera_to_level(level: Node2D, cam: Camera2D):
+	level.add_child(cam)
+	
