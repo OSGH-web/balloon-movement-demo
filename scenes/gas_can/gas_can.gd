@@ -1,3 +1,4 @@
+class_name GasCan
 extends Area2D
 
 @export var collect_sound: AudioStream
