@@ -104,17 +104,21 @@ func return_to_world_select():
 	get_tree().change_scene_to_file("res://scenes/level_select/level_select.tscn")
 
 func _setup_camera_limits(map_width_px, map_height_px):
-	var viewport_width = ProjectSettings.get_setting("display/window/size/viewport_width")
-	var viewport_height = ProjectSettings.get_setting("display/window/size/viewport_height")
-
+	# by default, restrict the camera to the bounding box of the level
 	$Camera.limit_left = 0
 	$Camera.limit_right = map_width_px
+
+	$Camera.limit_top = 0;
+	$Camera.limit_bottom = map_height_px
+
+	# if the level is less wide than the screen, center the level horizontally in the camera's view
+	var viewport_width = ProjectSettings.get_setting("display/window/size/viewport_width")
 	if map_width_px < viewport_width:
 		$Camera.limit_left = map_width_px / 2  - (viewport_width / 2)
 		$Camera.limit_right = map_width_px / 2  + (viewport_width / 2)
 
-	$Camera.limit_top = 0;
-	$Camera.limit_bottom = map_height_px
+	# if the level is shorter than the screen, center the level vertically in the camera's view
+	var viewport_height = ProjectSettings.get_setting("display/window/size/viewport_height")
 	if map_height_px < 360:
 		$Camera.limit_top = map_height_px / 2  - (viewport_height / 2)
 		$Camera.limit_bottom = map_height_px / 2  + (viewport_height / 2)
