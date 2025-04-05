@@ -82,6 +82,7 @@ size = Vector2(8, 8)
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 3
 script = ExtResource("1_onrkg")
+play_background_music = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ivps1")
@@ -92,10 +93,11 @@ centered = false
 position = Vector2(20, 20)
 shape = SubResource("RectangleShape2D_onrkg")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-limit_left = 0
-limit_top = 0
-limit_right = 10000
+[node name="Camera" type="Camera2D" parent="."]
+limit_left = -100000
+limit_top = -100000
+limit_right = 100000
+limit_bottom = 100000
 limit_smoothed = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true

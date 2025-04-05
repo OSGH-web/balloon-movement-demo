@@ -13,6 +13,8 @@ extends Node2D
 
 func _ready():
 	_update_level_bounds()
+	if $Player:
+		$Player._setup_camera_limits(width_in_tiles * 8, height_in_tiles * 8)
 
 func _update_level_bounds():
 	if !Engine.is_editor_hint():

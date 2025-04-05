@@ -5,12 +5,11 @@ var window_width = ProjectSettings.get_setting("display/window/size/viewport_wid
 var window_height = ProjectSettings.get_setting("display/window/size/viewport_height")
 var configured_size = Vector2(window_width, window_height)
 
-var grid_dimensions;
+var grid_dimensions 
 
 func _ready():
 	var level = get_parent() as Node2D
 	grid_dimensions = Vector2i(level.width_in_tiles, level.height_in_tiles)
-
 	generate_border()
 
 func generate_border():

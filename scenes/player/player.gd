@@ -2,20 +2,17 @@
 extends CharacterBody2D
 
 @export var tilemaplayer: TileMapLayer
+@export var FUEL = 2000
+@export var play_background_music = false
+@export var camera_scale: Vector2 = Vector2(1.0, 1.0)
+@export var staticCam: bool = false
+@onready var timer: Timer = $Timer
+@onready var camera = $Camera
 
 const GRAVITY = 120
 const FRICTION = -3
 const PLAYER_Y_FORCE = 300
 const PLAYER_X_FORCE = 165
-
-@export var FUEL = 2000;
-
-@export var play_background_music = false;
-@export var background_music_pitch_scale = 1.03;
-@export var background_music_pitch_scale_slow = 0.7;
-
-@onready var timer: Timer = $Timer
-
 var readyForRestart: bool = false
 
 signal player_died
@@ -24,27 +21,22 @@ func _on_player_died():
 	readyForRestart = true
 
 func _ready():
-	player_died.connect(_on_player_died)
 	add_to_group("player")
-	var level = get_parent() as Node2D
-	var map_height_px = level.height_in_tiles * tilemaplayer.tile_size.y
-	var map_width_px = level.width_in_tiles * tilemaplayer.tile_size.x
-	$Camera2D.limit_bottom = map_height_px
-	$Camera2D.limit_right = map_width_px
+	camera.zoom = camera_scale
 	$AudioStreamPlayer2D.playing = play_background_music
+	player_died.connect(_on_player_died)
+
 	var fuel_label = get_tree().get_first_node_in_group("fuel_label")
 	if fuel_label:
 		fuel_label.player = self
 
 func add_fuel(amt):
 	FUEL += amt
+	$AudioStreamPlayer2D.pitch_scale = 1.03 # Changesmusic to normal if you ran out of fuel then got it back. 
 
 func _input(event):
 	if event.is_action_pressed("reset"):
 		get_tree().reload_current_scene()
-	if int(FUEL) <= 0:
-		if readyForRestart == false:
-			timer.start()
 	if readyForRestart:
 		if event.is_action_pressed("ui_a"):
 			get_tree().reload_current_scene()
@@ -52,7 +44,7 @@ func _input(event):
 			return_to_world_select()
 
 func _on_timer_timeout():
-	if FUEL <= 0:
+	if int(FUEL) <= 0:
 		emit_signal("player_died")
 		
 func _physics_process(delta):
@@ -64,6 +56,10 @@ func _physics_process(delta):
 	if FUEL > 0:
 		velocity -= velocity_update
 		FUEL -= abs(velocity_update.x) + abs(velocity_update.y)
+	elif readyForRestart == false and timer.is_stopped():
+		$AudioStreamPlayer2D.pitch_scale = 0.7
+		timer.start()
+			
 
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
@@ -103,5 +99,37 @@ func _update_animation(dir: Vector2):
 			$AnimatedSprite2D.frame = 1  # up
 		else:
 			$AnimatedSprite2D.frame = 3  # down
+
 func return_to_world_select():
 	get_tree().change_scene_to_file("res://scenes/level_select/level_select.tscn")
+
+func _setup_camera_limits(map_width_px, map_height_px):
+	# by default, restrict the camera to the bounding box of the level
+	$Camera.limit_left = 0
+	$Camera.limit_right = map_width_px
+	$Camera.limit_top = 0;
+	$Camera.limit_bottom = map_height_px
+
+	# if the level is less wide than the screen, center the level horizontally in the camera's view
+	var viewport_width = ProjectSettings.get_setting("display/window/size/viewport_width")
+	if map_width_px < viewport_width:
+		$Camera.limit_left = map_width_px / 2  - (viewport_width / 2)
+		$Camera.limit_right = map_width_px / 2  + (viewport_width / 2)
+		$Camera.drag_horizontal_enabled = false
+
+	# if the level is shorter than the screen, center the level vertically in the camera's view
+	var viewport_height = ProjectSettings.get_setting("display/window/size/viewport_height")
+	if map_height_px < viewport_height:
+		$Camera.limit_top = (map_height_px / 2) - (viewport_height / 2)
+		$Camera.limit_bottom = (map_height_px / 2)  + (viewport_height / 2)
+		$Camera.drag_vertical_enabled = false
+		
+	if staticCam:
+		var level = get_parent() as Node2D
+		camera.get_parent().remove_child(camera)
+		call_deferred("add_camera_to_level", level, camera)
+		camera.global_position = Vector2(map_width_px, map_height_px)
+		
+func add_camera_to_level(level: Node2D, cam: Camera2D):
+	level.add_child(cam)
+	
