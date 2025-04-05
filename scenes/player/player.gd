@@ -116,9 +116,11 @@ func _setup_camera_limits(map_width_px, map_height_px):
 	if map_width_px < viewport_width:
 		$Camera.limit_left = map_width_px / 2  - (viewport_width / 2)
 		$Camera.limit_right = map_width_px / 2  + (viewport_width / 2)
+		$Camera.drag_horizontal_enabled = false
 
 	# if the level is shorter than the screen, center the level vertically in the camera's view
 	var viewport_height = ProjectSettings.get_setting("display/window/size/viewport_height")
 	if map_height_px < 360:
 		$Camera.limit_top = map_height_px / 2  - (viewport_height / 2)
 		$Camera.limit_bottom = map_height_px / 2  + (viewport_height / 2)
+		$Camera.drag_vertical_enabled = false
