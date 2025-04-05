@@ -25,7 +25,6 @@ func _ready():
 	camera.zoom = camera_scale
 	$AudioStreamPlayer2D.playing = play_background_music
 	player_died.connect(_on_player_died)
-
 	var fuel_label = get_tree().get_first_node_in_group("fuel_label")
 	if fuel_label:
 		fuel_label.player = self
@@ -60,7 +59,6 @@ func _physics_process(delta):
 		$AudioStreamPlayer2D.pitch_scale = 0.7
 		timer.start()
 			
-
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
 	elif abs(velocity.x) < 0.001:
@@ -70,6 +68,14 @@ func _physics_process(delta):
 		velocity.x += FRICTION * delta * velocity.x
 
 	move_and_slide()
+	
+	# This section nullifies unwanted velocity when flying into a wall/corner
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		# Normal is perpendicular to the you surface hit. 
+		var normal: Vector2 = collision.get_normal()
+		velocity = velocity.slide(normal)
+		
 	_update_animation(input_dir.normalized())
 
 func _update_animation(dir: Vector2):
