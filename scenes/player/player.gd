@@ -14,10 +14,17 @@ const PLAYER_Y_FORCE = 300
 const PLAYER_X_FORCE = 165
 var readyForRestart: bool = false
 
+signal player_died
+
+func _on_player_died():
+	readyForRestart = true
+
 func _ready():
+
 	var camera = $Camera
 	camera.zoom = camera_scale
 	$AudioStreamPlayer2D.playing = play_background_music
+	player_died.connect(_on_player_died)
 	add_to_group("player")
 	var level = get_parent() as Node2D
 	var map_height_px = level.height_in_tiles * tilemaplayer.tile_size.y
@@ -26,6 +33,7 @@ func _ready():
 	var fuel_label = get_tree().get_first_node_in_group("fuel_label")
 	if fuel_label:
 		fuel_label.player = self
+
 	if staticCam:
 		# Remove the player and reparent to level.
 		camera.get_parent().remove_child(camera)
@@ -39,10 +47,14 @@ func _ready():
 func add_camera_to_level(level: Node2D, camera: Camera2D):
 	level.add_child(camera)
 	
-	
+func add_fuel(amt):
+	FUEL += amt
+
 func _input(event):
+	if event.is_action_pressed("reset"):
+		get_tree().reload_current_scene()
 	if int(FUEL) <= 0:
-		if timer.is_stopped() and readyForRestart == false:
+		if readyForRestart == false:
 			timer.start()
 	if readyForRestart:
 		if event.is_action_pressed("ui_a"):
@@ -51,8 +63,9 @@ func _input(event):
 			return_to_world_select()
 
 func _on_timer_timeout():
-	readyForRestart = true
-
+	if FUEL <= 0:
+		emit_signal("player_died")
+		
 func _physics_process(delta):
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var velocity_update = input_dir
@@ -62,11 +75,7 @@ func _physics_process(delta):
 	if FUEL > 0:
 		velocity -= velocity_update
 		FUEL -= abs(velocity_update.x) + abs(velocity_update.y)
-		if $AudioStreamPlayer2D.pitch_scale == 0.7:
-			$AudioStreamPlayer2D.pitch_scale = 1
-	else:
-		$AudioStreamPlayer2D.pitch_scale = 0.7
-		
+
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
 	elif abs(velocity.x) < 0.001:
@@ -80,6 +89,10 @@ func _physics_process(delta):
 
 func _update_animation(dir: Vector2):
 	if dir == Vector2.ZERO:
+		$AnimatedSprite2D.frame = 0
+		return
+
+	if int(FUEL) <= 0:
 		$AnimatedSprite2D.frame = 0
 		return
 
