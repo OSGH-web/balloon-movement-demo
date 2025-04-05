@@ -2,20 +2,16 @@
 extends CharacterBody2D
 
 @export var tilemaplayer: TileMapLayer
+@export var FUEL = 2000
+@export var play_background_music = false
+@export var camera_scale: Vector2 = Vector2(1.0, 1.0)
+@export var staticCam: bool = false
+@onready var timer: Timer = $Timer
 
 const GRAVITY = 120
 const FRICTION = -3
 const PLAYER_Y_FORCE = 300
 const PLAYER_X_FORCE = 165
-
-@export var FUEL = 2000;
-
-@export var play_background_music = false;
-@export var background_music_pitch_scale = 1.03;
-@export var background_music_pitch_scale_slow = 0.7;
-
-@onready var timer: Timer = $Timer
-
 var readyForRestart: bool = false
 
 signal player_died
@@ -24,27 +20,39 @@ func _on_player_died():
 	readyForRestart = true
 
 func _ready():
+	var camera = $Camera
+	camera.zoom = camera_scale
+	$AudioStreamPlayer2D.playing = play_background_music
 	player_died.connect(_on_player_died)
 	add_to_group("player")
 	var level = get_parent() as Node2D
 	var map_height_px = level.height_in_tiles * tilemaplayer.tile_size.y
 	var map_width_px = level.width_in_tiles * tilemaplayer.tile_size.x
-	$Camera2D.limit_bottom = map_height_px
-	$Camera2D.limit_right = map_width_px
-	$AudioStreamPlayer2D.playing = play_background_music
+
 	var fuel_label = get_tree().get_first_node_in_group("fuel_label")
 	if fuel_label:
 		fuel_label.player = self
 
+	if staticCam:
+		# Remove the player and reparent to level.
+		camera.get_parent().remove_child(camera)
+		call_deferred("add_camera_to_level", level, camera)
+		# Set position in the center of the level.
+		camera.global_position = Vector2(map_width_px, map_height_px) / 2
+		camera.enabled = true
+		camera.make_current()
+		
+# Seperate function bc if we don't wait a frame the call will fail. 
+func add_camera_to_level(level: Node2D, camera: Camera2D):
+	level.add_child(camera)
+	
 func add_fuel(amt):
 	FUEL += amt
+	$AudioStreamPlayer2D.pitch_scale = 1.03 # Changesmusic to normal if you ran out of fuel then got it back. 
 
 func _input(event):
 	if event.is_action_pressed("reset"):
 		get_tree().reload_current_scene()
-	if int(FUEL) <= 0:
-		if readyForRestart == false:
-			timer.start()
 	if readyForRestart:
 		if event.is_action_pressed("ui_a"):
 			get_tree().reload_current_scene()
@@ -52,7 +60,7 @@ func _input(event):
 			return_to_world_select()
 
 func _on_timer_timeout():
-	if FUEL <= 0:
+	if int(FUEL) <= 0:
 		emit_signal("player_died")
 		
 func _physics_process(delta):
@@ -64,6 +72,10 @@ func _physics_process(delta):
 	if FUEL > 0:
 		velocity -= velocity_update
 		FUEL -= abs(velocity_update.x) + abs(velocity_update.y)
+	elif readyForRestart == false and timer.is_stopped():
+		$AudioStreamPlayer2D.pitch_scale = 0.7
+		timer.start()
+			
 
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
@@ -103,5 +115,21 @@ func _update_animation(dir: Vector2):
 			$AnimatedSprite2D.frame = 1  # up
 		else:
 			$AnimatedSprite2D.frame = 3  # down
+
 func return_to_world_select():
 	get_tree().change_scene_to_file("res://scenes/level_select/level_select.tscn")
+	
+# Revisit this if we need to set camera limits. Causes more problems than it's worth at the moment. 
+#func _setup_camera_limits():
+	#var level = get_parent() as Node2D
+	#var tilemap = level.get_node("Terrain")
+	#var tile_size = tilemap.tile_set.tile_size
+#
+	#var map_width_px = level.width_in_tiles * tile_size.x
+	#var map_height_px = level.height_in_tiles * tile_size.y
+	#var level_offset = level.global_position
+#
+	#$Camera2D.limit_left = int(level_offset.x)
+	#$Camera2D.limit_top = int(level_offset.y)
+	#$Camera2D.limit_right = int(level_offset.x + map_width_px)
+	#$Camera2D.limit_bottom = int(level_offset.y + map_height_px)
