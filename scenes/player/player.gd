@@ -20,7 +20,6 @@ func _on_player_died():
 	readyForRestart = true
 
 func _ready():
-
 	var camera = $Camera
 	camera.zoom = camera_scale
 	$AudioStreamPlayer2D.playing = play_background_music
@@ -49,13 +48,11 @@ func add_camera_to_level(level: Node2D, camera: Camera2D):
 	
 func add_fuel(amt):
 	FUEL += amt
+	$AudioStreamPlayer2D.pitch_scale = 1.03 # Changesmusic to normal if you ran out of fuel then got it back. 
 
 func _input(event):
 	if event.is_action_pressed("reset"):
 		get_tree().reload_current_scene()
-	if int(FUEL) <= 0:
-		if readyForRestart == false:
-			timer.start()
 	if readyForRestart:
 		if event.is_action_pressed("ui_a"):
 			get_tree().reload_current_scene()
@@ -63,7 +60,7 @@ func _input(event):
 			return_to_world_select()
 
 func _on_timer_timeout():
-	if FUEL <= 0:
+	if int(FUEL) <= 0:
 		emit_signal("player_died")
 		
 func _physics_process(delta):
@@ -75,6 +72,10 @@ func _physics_process(delta):
 	if FUEL > 0:
 		velocity -= velocity_update
 		FUEL -= abs(velocity_update.x) + abs(velocity_update.y)
+	elif readyForRestart == false and timer.is_stopped():
+		$AudioStreamPlayer2D.pitch_scale = 0.7
+		timer.start()
+			
 
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
