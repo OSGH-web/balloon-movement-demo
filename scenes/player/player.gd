@@ -18,7 +18,13 @@ const PLAYER_X_FORCE = 180
 
 var readyForRestart: bool = false
 
+signal player_died
+
+func _on_player_died():
+	readyForRestart = true
+
 func _ready():
+	player_died.connect(_on_player_died)
 	add_to_group("player")
 	var level = get_parent() as Node2D
 	var map_height_px = level.height_in_tiles * tilemaplayer.tile_size.y
@@ -30,15 +36,12 @@ func _ready():
 
 func add_fuel(amt):
 	FUEL += amt
-	if FUEL > 0:
-		$Timer.stop()
-		$AudioStreamPlayer2D.pitch_scale = background_music_pitch_scale
-	if readyForRestart:
-		readyForRestart = false
 
 func _input(event):
+	if event.is_action_pressed("reset"):
+		get_tree().reload_current_scene()
 	if int(FUEL) <= 0:
-		if timer.is_stopped() and readyForRestart == false:
+		if readyForRestart == false:
 			timer.start()
 	if readyForRestart:
 		if event.is_action_pressed("ui_a"):
@@ -46,11 +49,10 @@ func _input(event):
 		if event.is_action_pressed("ui_q"):
 			return_to_world_select()
 
-
 func _on_timer_timeout():
-	readyForRestart = true
-	print("HERE")
-
+	if FUEL <= 0:
+		emit_signal("player_died")
+		
 func _physics_process(delta):
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var velocity_update = input_dir
@@ -60,8 +62,6 @@ func _physics_process(delta):
 	if FUEL > 0:
 		velocity -= velocity_update
 		FUEL -= abs(velocity_update.x) + abs(velocity_update.y)
-	else:
-		$AudioStreamPlayer2D.pitch_scale = background_music_pitch_scale_slow
 
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta

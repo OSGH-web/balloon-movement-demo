@@ -11,7 +11,7 @@ func _process(_delta: float) -> void:
 
 	var fuel_amount = max(0, int(player.FUEL))
 
-	if fuel_amount == 0 and player.readyForRestart:
+	if player.readyForRestart:
 		$Label.text = "Press A to retry level\nPress Q to return to level select"
 	else:
 		$Label.text = "Fuel: %d" % fuel_amount
