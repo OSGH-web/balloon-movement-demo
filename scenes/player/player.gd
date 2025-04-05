@@ -104,10 +104,11 @@ func return_to_world_select():
 	get_tree().change_scene_to_file("res://scenes/level_select/level_select.tscn")
 
 func _setup_camera_limits(map_width_px, map_height_px):
-	$Camera.limit_left = 0
-	$Camera.limit_right = map_width_px
 	var viewport_width = ProjectSettings.get_setting("display/window/size/viewport_width")
 	var viewport_height = ProjectSettings.get_setting("display/window/size/viewport_height")
+
+	$Camera.limit_left = 0
+	$Camera.limit_right = map_width_px
 	if map_width_px < viewport_width:
 		$Camera.limit_left = map_width_px / 2  - (viewport_width / 2)
 		$Camera.limit_right = map_width_px / 2  + (viewport_width / 2)
