@@ -38,19 +38,18 @@ func _ready():
 
 func add_fuel(amt):
 	FUEL += amt
-
+	# Changes music back if fuel goes to zero and then back up. 
+	$AudioStreamPlayer2D.pitch_scale = background_music_pitch_scale
+	
 func _input(event):
 	if event.is_action_pressed("reset"):
 		get_tree().reload_current_scene()
-	if int(FUEL) <= 0:
-		if readyForRestart == false:
-			timer.start()
 	if readyForRestart:
 		if event.is_action_pressed("ui_a"):
 			get_tree().reload_current_scene()
 		if event.is_action_pressed("ui_q"):
 			return_to_world_select()
-
+			
 func _on_timer_timeout():
 	if FUEL <= 0:
 		emit_signal("player_died")
@@ -60,10 +59,13 @@ func _physics_process(delta):
 	var velocity_update = input_dir
 	velocity_update.x *= PLAYER_X_FORCE * delta
 	velocity_update.y *= PLAYER_Y_FORCE * delta
-
 	if FUEL > 0:
 		velocity -= velocity_update
 		FUEL -= abs(velocity_update.x) + abs(velocity_update.y)
+	else:
+		if readyForRestart == false:
+			$AudioStreamPlayer2D.pitch_scale = background_music_pitch_scale_slow
+			timer.start()
 
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
