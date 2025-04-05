@@ -20,16 +20,32 @@ func _on_player_died():
 	readyForRestart = true
 
 func _ready():
-	add_to_group("player")
 	var camera = $Camera
 	camera.zoom = camera_scale
 	$AudioStreamPlayer2D.playing = play_background_music
 	player_died.connect(_on_player_died)
+	add_to_group("player")
+	var level = get_parent() as Node2D
+	var map_height_px = level.height_in_tiles * tilemaplayer.tile_size.y
+	var map_width_px = level.width_in_tiles * tilemaplayer.tile_size.x
 
 	var fuel_label = get_tree().get_first_node_in_group("fuel_label")
 	if fuel_label:
 		fuel_label.player = self
 
+	if staticCam:
+		# Remove the player and reparent to level.
+		camera.get_parent().remove_child(camera)
+		call_deferred("add_camera_to_level", level, camera)
+		# Set position in the center of the level.
+		camera.global_position = Vector2(map_width_px, map_height_px) / 2
+		camera.enabled = true
+		camera.make_current()
+		
+# Seperate function bc if we don't wait a frame the call will fail. 
+func add_camera_to_level(level: Node2D, camera: Camera2D):
+	level.add_child(camera)
+	
 func add_fuel(amt):
 	FUEL += amt
 	$AudioStreamPlayer2D.pitch_scale = 1.03 # Changesmusic to normal if you ran out of fuel then got it back. 
@@ -102,25 +118,18 @@ func _update_animation(dir: Vector2):
 
 func return_to_world_select():
 	get_tree().change_scene_to_file("res://scenes/level_select/level_select.tscn")
-
-func _setup_camera_limits(map_width_px, map_height_px):
-	# by default, restrict the camera to the bounding box of the level
-	$Camera.limit_left = 0
-	$Camera.limit_right = map_width_px
-
-	$Camera.limit_top = 0;
-	$Camera.limit_bottom = map_height_px
-
-	# if the level is less wide than the screen, center the level horizontally in the camera's view
-	var viewport_width = ProjectSettings.get_setting("display/window/size/viewport_width")
-	if map_width_px < viewport_width:
-		$Camera.limit_left = map_width_px / 2  - (viewport_width / 2)
-		$Camera.limit_right = map_width_px / 2  + (viewport_width / 2)
-		$Camera.drag_horizontal_enabled = false
-
-	# if the level is shorter than the screen, center the level vertically in the camera's view
-	var viewport_height = ProjectSettings.get_setting("display/window/size/viewport_height")
-	if map_height_px < 360:
-		$Camera.limit_top = map_height_px / 2  - (viewport_height / 2)
-		$Camera.limit_bottom = map_height_px / 2  + (viewport_height / 2)
-		$Camera.drag_vertical_enabled = false
+	
+# Revisit this if we need to set camera limits. Causes more problems than it's worth at the moment. 
+#func _setup_camera_limits():
+	#var level = get_parent() as Node2D
+	#var tilemap = level.get_node("Terrain")
+	#var tile_size = tilemap.tile_set.tile_size
+#
+	#var map_width_px = level.width_in_tiles * tile_size.x
+	#var map_height_px = level.height_in_tiles * tile_size.y
+	#var level_offset = level.global_position
+#
+	#$Camera2D.limit_left = int(level_offset.x)
+	#$Camera2D.limit_top = int(level_offset.y)
+	#$Camera2D.limit_right = int(level_offset.x + map_width_px)
+	#$Camera2D.limit_bottom = int(level_offset.y + map_height_px)

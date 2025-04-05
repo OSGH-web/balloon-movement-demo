@@ -13,8 +13,21 @@ extends Node2D
 
 func _ready():
 	_update_level_bounds()
-	if $Player:
-		$Player._setup_camera_limits(width_in_tiles * 8, height_in_tiles * 8)
+
+	# Center the level within the viewport
+	if !Engine.is_editor_hint():
+		var tilemap = $Terrain
+		var tile_size = tilemap.tile_set.tile_size
+
+		var map_width_px = width_in_tiles * tile_size.x
+		var map_height_px = height_in_tiles * tile_size.y
+		var viewport_size = get_viewport().get_visible_rect().size
+
+		# Shift this LevelBase node so that the level is centered
+		position = Vector2(
+			(viewport_size.x - map_width_px) / 2,
+			(viewport_size.y - map_height_px) / 2
+		)
 
 func _update_level_bounds():
 	if !Engine.is_editor_hint():
