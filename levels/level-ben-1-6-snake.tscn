@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=4 uid="uid://ba2qxpqt4sain"]
 
-[ext_resource type="Script" uid="uid://lkphrvhitvd" path="res://scenes/level_base/level_base.gd" id="1_lokct"]
-[ext_resource type="PackedScene" uid="uid://b7jfvkf4edbjp" path="res://scenes/player/player.tscn" id="2_flsiu"]
-[ext_resource type="PackedScene" uid="uid://bnpihmeh3p65s" path="res://scenes/terrain/terrain.tscn" id="3_tpi3h"]
-[ext_resource type="Script" uid="uid://df1fbghclur2h" path="res://scenes/terrain/terrain.gd" id="4_0siru"]
-[ext_resource type="PackedScene" uid="uid://bvn2y2nnqcrts" path="res://scenes/end_zone/end_zone.tscn" id="5_21e4t"]
-[ext_resource type="PackedScene" uid="uid://cxdl0fqxwxba1" path="res://scenes/gas_can/gas_can.tscn" id="6_7gbfm"]
+[ext_resource type="Script" uid="uid://lkphrvhitvd" path="res://scripts/level_base.gd" id="1_lokct"]
+[ext_resource type="PackedScene" uid="uid://b7jfvkf4edbjp" path="res://scenes/player.tscn" id="2_flsiu"]
+[ext_resource type="PackedScene" uid="uid://bnpihmeh3p65s" path="res://scenes/terrain.tscn" id="3_tpi3h"]
+[ext_resource type="Script" uid="uid://df1fbghclur2h" path="res://scripts/terrain.gd" id="4_0siru"]
+[ext_resource type="PackedScene" uid="uid://bvn2y2nnqcrts" path="res://scenes/end_zone.tscn" id="5_21e4t"]
+[ext_resource type="PackedScene" uid="uid://cxdl0fqxwxba1" path="res://scenes/gas_can.tscn" id="6_7gbfm"]
 
 [node name="LevelBase" type="Node2D"]
 script = ExtResource("1_lokct")
@@ -17,7 +17,6 @@ slide_on_ceiling = false
 floor_constant_speed = true
 safe_margin = 0.001
 tilemaplayer = NodePath("../Terrain")
-camera_scale = Vector2(1.33, 1.33)
 staticCam = true
 
 [node name="Terrain" parent="." instance=ExtResource("3_tpi3h")]
