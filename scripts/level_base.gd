@@ -13,6 +13,11 @@ extends Node2D
 
 func _ready():
 	_update_level_bounds()
+	_update_player_camera()
+
+func _update_player_camera():
+	if Engine.is_editor_hint():
+		return; # only run in the game
 	if $Player:
 		$Player._setup_camera_limits(width_in_tiles * 8, height_in_tiles * 8)
 
@@ -26,9 +31,9 @@ func _update_level_bounds():
 			child.queue_free()
 
 	# Create new bounds overlay
-	var tilemap = $Terrain
-	if !tilemap or !tilemap.tile_set:
-		return  # Safety check
+	var tilemap = get_node_or_null("Terrain")
+	if !tilemap:
+		return
 
 	var rect = ColorRect.new()
 	rect.color = Color(1, 0, 0, 0.1)
