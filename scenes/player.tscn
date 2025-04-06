@@ -106,10 +106,11 @@ editor_draw_drag_margin = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_qlg0r")
-volume_db = -2.876
 pitch_scale = 1.03
 autoplay = true
+stream_paused = true
 max_distance = 600.0
+bus = &"Music"
 
 [node name="FuelLabel" parent="." instance=ExtResource("4_lvxji")]
 

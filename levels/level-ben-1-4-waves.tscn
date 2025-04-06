@@ -16,6 +16,7 @@ slide_on_ceiling = false
 floor_constant_speed = true
 safe_margin = 0.001
 tilemaplayer = NodePath("../Terrain")
+FUEL = 2500
 staticCam = true
 
 [node name="Terrain" parent="." instance=ExtResource("3_e4xh1")]
