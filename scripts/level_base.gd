@@ -31,9 +31,9 @@ func _update_level_bounds():
 			child.queue_free()
 
 	# Create new bounds overlay
-	var tilemap = $Terrain
-	if !tilemap or !tilemap.tile_set:
-		return  # Safety check
+	var tilemap = get_node_or_null("Terrain")
+	if !tilemap:
+		return
 
 	var rect = ColorRect.new()
 	rect.color = Color(1, 0, 0, 0.1)
