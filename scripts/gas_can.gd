@@ -11,7 +11,7 @@ func _ready():
 	body_entered.connect(_on_body_entered)
 	if collect_sound:
 		audio_player.stream = collect_sound
-		
+
 func _on_body_entered(body):
 	if body.is_in_group("player"):
 		body.add_fuel(1000)
