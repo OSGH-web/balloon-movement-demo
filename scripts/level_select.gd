@@ -38,7 +38,7 @@ func create_level_grid():
 	for child in button_container.get_children():
 		child.queue_free()
 
-	var button_scene = preload("res://scenes/level_button/level_button.tscn")
+	var button_scene = preload("res://scenes/level_button.tscn")
 
 	for i in level_files.size():
 		var button = button_scene.instantiate() as LevelButton

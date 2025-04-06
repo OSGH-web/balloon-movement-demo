@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=4 uid="uid://dtnepwc7kcwx1"]
 
-[ext_resource type="Script" uid="uid://b6ueckjkr5s2y" path="res://scenes/level_select_preview/level_preview.gd" id="1_jyk5e"]
-[ext_resource type="TileSet" uid="uid://bvftbx2hpd6io" path="res://scenes/level_select/level_select_minimap_tileset.tres" id="2_dge8y"]
+[ext_resource type="Script" uid="uid://b6ueckjkr5s2y" path="res://scripts/level_preview.gd" id="1_jyk5e"]
+[ext_resource type="TileSet" uid="uid://bvftbx2hpd6io" path="res://assets/tilesets/level_select_minimap_tileset.tres" id="2_dge8y"]
 
 [node name="LevelPreview" type="Control"]
 layout_mode = 3
