@@ -13,6 +13,11 @@ extends Node2D
 
 func _ready():
 	_update_level_bounds()
+	_update_player_camera()
+
+func _update_player_camera():
+	if Engine.is_editor_hint():
+		return; # only run in the game
 	if $Player:
 		$Player._setup_camera_limits(width_in_tiles * 8, height_in_tiles * 8)
 
