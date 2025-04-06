@@ -18,7 +18,7 @@ func _on_body_entered(body):
 		return_to_world_select()
 
 func return_to_world_select():
-	get_tree().change_scene_to_file("res://scenes/level_select/level_select.tscn")
+	get_tree().change_scene_to_file("res://scenes/level_select.tscn")
 
 func _process(_delta):
 	if Engine.is_editor_hint():  # Only update in the editor
