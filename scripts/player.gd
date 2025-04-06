@@ -107,7 +107,7 @@ func _update_animation(dir: Vector2):
 			$AnimatedSprite2D.frame = 3  # down
 
 func return_to_world_select():
-	get_tree().change_scene_to_file("res://scenes/level_select/level_select.tscn")
+	get_tree().change_scene_to_file("res://scenes/level_select.tscn")
 
 func _setup_camera_limits(map_width_px, map_height_px):
 	# by default, restrict the camera to the bounding box of the level
