@@ -39,8 +39,6 @@ func _ready():
 	if fuel_label:
 		fuel_label.player = self
 
-	var tilemap = get_parent().get_node("Terrain") as TileMapLayer
-
 func add_fuel(amt):
 	FUEL += amt
 	$AudioStreamPlayer2D.pitch_scale = 1.03 # Changesmusic to normal if you ran out of fuel then got it back. 
