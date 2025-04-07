@@ -1,4 +1,5 @@
 @tool
+class_name LevelBase
 extends Node2D
 
 @export var width_in_tiles := 32:
@@ -11,15 +12,14 @@ extends Node2D
 		height_in_tiles = value
 		_update_level_bounds()  # Refresh when changed
 
+func getMapSizePx() -> Vector2:
+	var tilemap: TileMapLayer = $Terrain
+	var tile_size_px = tilemap.tile_set.tile_size
+	var map_size_tiles = Vector2i(width_in_tiles, height_in_tiles)
+	return map_size_tiles * tile_size_px
+
 func _ready():
 	_update_level_bounds()
-	_update_player_camera()
-
-func _update_player_camera():
-	if Engine.is_editor_hint():
-		return; # only run in the game
-	if $Player:
-		$Player._setup_camera_limits(width_in_tiles * 8, height_in_tiles * 8)
 
 func _update_level_bounds():
 	if !Engine.is_editor_hint():

@@ -22,7 +22,7 @@ func _on_player_died():
 
 func _ready():
 	add_to_group("player")
-	camera.zoom = camera_scale
+	_init_camera()
 	$AudioStreamPlayer2D.playing = play_background_music
 	player_died.connect(_on_player_died)
 	var fuel_label = get_tree().get_first_node_in_group("fuel_label")
@@ -109,8 +109,13 @@ func _update_animation(dir: Vector2):
 func return_to_world_select():
 	get_tree().change_scene_to_file("res://scenes/level_select.tscn")
 
-func _setup_camera_limits(map_width_px, map_height_px):
+func _init_camera():
 	# by default, restrict the camera to the bounding box of the level
+	var level_base: LevelBase = get_parent()
+	var map_size_px = level_base.getMapSizePx()
+	var map_width_px = map_size_px.x
+	var map_height_px = map_size_px.y
+
 	$Camera.limit_left = 0
 	$Camera.limit_right = map_width_px
 	$Camera.limit_top = 0;
@@ -129,13 +134,14 @@ func _setup_camera_limits(map_width_px, map_height_px):
 		$Camera.limit_top = (map_height_px / 2) - (viewport_height / 2)
 		$Camera.limit_bottom = (map_height_px / 2)  + (viewport_height / 2)
 		$Camera.drag_vertical_enabled = false
-		
+
 	if staticCam:
 		var level = get_parent() as Node2D
 		camera.get_parent().remove_child(camera)
 		call_deferred("add_camera_to_level", level, camera)
 		camera.global_position = Vector2(map_width_px, map_height_px)
-		
+
+	camera.zoom = camera_scale
+
 func add_camera_to_level(level: Node2D, cam: Camera2D):
 	level.add_child(cam)
-	
