@@ -9,15 +9,19 @@ extends CharacterBody2D
 @onready var timer: Timer = $Timer
 @onready var camera = $Camera
 
-# All physics constants are in units of Tiles/Second
+# All forces are in units of Tiles per Second squared
+# friction is a ratio and doesn't need to be scaled
+const FRICTION = -3
+
+var GRAVITY = 120
+var PLAYER_Y_FORCE = 300
+var PLAYER_X_FORCE = 165
+var VELOCITY_CUTOFF = 0.001
+
 # physics are designed for an 8px x 8px tileset -- 8px == 1m
 const PHYSICS_BASE_SCALE = 8
 const TILE_SIZE_PX = 24
 const PHYSICS_SCALE_FACTOR = TILE_SIZE_PX / PHYSICS_BASE_SCALE
-var GRAVITY
-var FRICTION
-var PLAYER_Y_FORCE
-var PLAYER_X_FORCE
 
 var readyForRestart: bool = false
 
@@ -37,11 +41,11 @@ func _ready():
 
 	var tilemap = get_parent().get_node("Terrain") as TileMapLayer
 
-	# init scaled physics constants
-	GRAVITY = 120 * PHYSICS_SCALE_FACTOR
-	FRICTION = -3 * PHYSICS_SCALE_FACTOR
-	PLAYER_Y_FORCE = 300 * PHYSICS_SCALE_FACTOR
-	PLAYER_X_FORCE = 165 * PHYSICS_SCALE_FACTOR
+	# initialize scaled physics forces
+	GRAVITY *= PHYSICS_SCALE_FACTOR
+	PLAYER_Y_FORCE *= PHYSICS_SCALE_FACTOR
+	PLAYER_X_FORCE *= PHYSICS_SCALE_FACTOR
+	VELOCITY_CUTOFF *= PHYSICS_SCALE_FACTOR
 
 func add_fuel(amt):
 	FUEL += amt
@@ -74,12 +78,13 @@ func _physics_process(delta):
 		$AudioStreamPlayer2D.pitch_scale = 0.7
 		timer.start()
 
+
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
-	elif abs(velocity.x) < 0.001:
+	elif abs(velocity.x) < VELOCITY_CUTOFF:
 		velocity.x = 0
 	else:
-		# Makes you slow down when you land on the floor. Smaller than vel.x so slows you down.
+		# Makes you slow down when you land on the floor. Smaller than vel.x so slows you down. 
 		velocity.x += FRICTION * delta * velocity.x
 
 	move_and_slide()
