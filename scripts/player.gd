@@ -13,15 +13,14 @@ extends CharacterBody2D
 # friction is a ratio and doesn't need to be scaled
 const FRICTION = -3
 
-var gravity = 120
-var player_y_force = 300
-var player_x_force = 165
-var velocity_cutoff = 0.001
+var gravity = 120 * physics_scale_factor
+var player_y_force = 300 * physics_scale_factor
+var player_x_force = 165 * physics_scale_factor
+var velocity_cutoff = 0.001 * physics_scale_factor
 
 # physics are designed for an 8px x 8px tileset -- 8px == 1m
 const BASE_TILE_SIZE_PX = 8
-# @export var tile_size_px = 24
-@export var tile_size_px = 8
+@export var tile_size_px = 24
 var physics_scale_factor = tile_size_px / BASE_TILE_SIZE_PX
 
 var readyForRestart: bool = false
@@ -41,12 +40,6 @@ func _ready():
 		fuel_label.player = self
 
 	var tilemap = get_parent().get_node("Terrain") as TileMapLayer
-
-	# initialize scaled physics forces
-	gravity *= physics_scale_factor
-	player_y_force *= physics_scale_factor
-	player_x_force *= physics_scale_factor
-	velocity_cutoff *= physics_scale_factor
 
 func add_fuel(amt):
 	FUEL += amt
