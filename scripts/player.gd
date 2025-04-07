@@ -13,15 +13,16 @@ extends CharacterBody2D
 # friction is a ratio and doesn't need to be scaled
 const FRICTION = -3
 
-var GRAVITY = 120
-var PLAYER_Y_FORCE = 300
-var PLAYER_X_FORCE = 165
-var VELOCITY_CUTOFF = 0.001
+var gravity = 120
+var player_y_force = 300
+var player_x_force = 165
+var velocity_cutoff = 0.001
 
 # physics are designed for an 8px x 8px tileset -- 8px == 1m
-const PHYSICS_BASE_SCALE = 8
-const TILE_SIZE_PX = 24
-const PHYSICS_SCALE_FACTOR = TILE_SIZE_PX / PHYSICS_BASE_SCALE
+const BASE_TILE_SIZE_PX = 8
+# @export var tile_size_px = 24
+@export var tile_size_px = 8
+var physics_scale_factor = tile_size_px / BASE_TILE_SIZE_PX
 
 var readyForRestart: bool = false
 
@@ -42,10 +43,10 @@ func _ready():
 	var tilemap = get_parent().get_node("Terrain") as TileMapLayer
 
 	# initialize scaled physics forces
-	GRAVITY *= PHYSICS_SCALE_FACTOR
-	PLAYER_Y_FORCE *= PHYSICS_SCALE_FACTOR
-	PLAYER_X_FORCE *= PHYSICS_SCALE_FACTOR
-	VELOCITY_CUTOFF *= PHYSICS_SCALE_FACTOR
+	gravity *= physics_scale_factor
+	player_y_force *= physics_scale_factor
+	player_x_force *= physics_scale_factor
+	velocity_cutoff *= physics_scale_factor
 
 func add_fuel(amt):
 	FUEL += amt
@@ -67,20 +68,20 @@ func _on_timer_timeout():
 func _physics_process(delta):
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var velocity_update = input_dir
-	velocity_update.x *= PLAYER_X_FORCE * delta
-	velocity_update.y *= PLAYER_Y_FORCE * delta
+	velocity_update.x *= player_x_force * delta
+	velocity_update.y *= player_y_force * delta
 
 	if FUEL > 0:
 		velocity -= velocity_update
 		# fuel is independent of scale
-		FUEL -= velocity_update.length() / PHYSICS_SCALE_FACTOR
+		FUEL -= velocity_update.length() / physics_scale_factor
 	elif readyForRestart == false and timer.is_stopped():
 		$AudioStreamPlayer2D.pitch_scale = 0.7
 		timer.start()
 
 	if not is_on_floor():
-		velocity.y += GRAVITY * delta
-	elif abs(velocity.x) < VELOCITY_CUTOFF:
+		velocity.y += gravity * delta
+	elif abs(velocity.x) < velocity_cutoff:
 		velocity.x = 0
 	else:
 		# Makes you slow down when you land on the floor. Smaller than vel.x so slows you down. 
