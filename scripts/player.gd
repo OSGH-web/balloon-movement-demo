@@ -78,7 +78,6 @@ func _physics_process(delta):
 		$AudioStreamPlayer2D.pitch_scale = 0.7
 		timer.start()
 
-
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
 	elif abs(velocity.x) < VELOCITY_CUTOFF:
