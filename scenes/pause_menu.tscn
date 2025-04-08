@@ -18,12 +18,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -100.0
-offset_right = 150.0
-offset_bottom = 100.0
+offset_left = -80.0
+offset_top = -60.0
+offset_right = 80.0
+offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(3, 3)
+pivot_offset = Vector2(80, 60)
 theme_override_styles/panel = ExtResource("2_5d2l8")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
