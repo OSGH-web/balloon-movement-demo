@@ -12,7 +12,7 @@ extends CharacterBody2D
 # physics are designed for an 8px x 8px tileset -- 8px == 1m
 const BASE_TILE_SIZE_PX = 8
 @export var tile_size_px = 24
-var physics_scale_factor = tile_size_px / BASE_TILE_SIZE_PX
+@export var physics_scale_factor = tile_size_px / BASE_TILE_SIZE_PX
 
 # All forces are in units of Tiles per Second squared
 # friction is a ratio and doesn't need to be scaled
