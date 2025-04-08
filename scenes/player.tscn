@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://b7jfvkf4edbjp"]
 
 [ext_resource type="Script" uid="uid://d3nwiwsfywf3b" path="res://scripts/player.gd" id="1_onrkg"]
-[ext_resource type="Texture2D" uid="uid://cbgt5n5gfv3om" path="res://assets/sprites/spelunky_testing_sprite_fire.png" id="3_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://cbgt5n5gfv3om" path="res://assets/tilesets/spelunky_testing_sprite_fire.png" id="3_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://dnrjc1o517gjp" path="res://scenes/fuel_label.tscn" id="4_lvxji"]
 [ext_resource type="AudioStream" uid="uid://cquaalpknb8c6" path="res://assets/sound_fx/background_music.ogg" id="5_qlg0r"]
 
@@ -80,6 +80,7 @@ animations = [{
 size = Vector2(8, 8)
 
 [node name="Player" type="CharacterBody2D"]
+scale = Vector2(3, 3)
 collision_mask = 3
 script = ExtResource("1_onrkg")
 play_background_music = true
@@ -108,7 +109,6 @@ editor_draw_drag_margin = true
 stream = ExtResource("5_qlg0r")
 pitch_scale = 1.03
 autoplay = true
-stream_paused = true
 max_distance = 600.0
 bus = &"Music"
 

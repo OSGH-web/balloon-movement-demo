@@ -19,7 +19,7 @@ func _update_player_camera():
 	if Engine.is_editor_hint():
 		return; # only run in the game
 	if $Player:
-		$Player._setup_camera_limits(width_in_tiles * 8, height_in_tiles * 8)
+		$Player._setup_camera_limits(width_in_tiles * 8 * $Player.physics_scale_factor, height_in_tiles * 8 * $Player.physics_scale_factor)
 
 func _update_level_bounds():
 	if !Engine.is_editor_hint():
