@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cxdl0fqxwxba1" path="res://scenes/gas_can.tscn" id="2_sjxtm"]
 [ext_resource type="PackedScene" uid="uid://bvn2y2nnqcrts" path="res://scenes/end_zone.tscn" id="3_y2kjf"]
 
-[node name="LevelBase2" instance=ExtResource("1_dk84w")]
+[node name="LevelBase" instance=ExtResource("1_dk84w")]
 width_in_tiles = 80
 height_in_tiles = 45
 

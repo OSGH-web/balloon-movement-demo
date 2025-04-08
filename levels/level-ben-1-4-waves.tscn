@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cxo2r1hb7u2ss" path="res://scenes/level_base.tscn" id="1_dk84w"]
 [ext_resource type="PackedScene" uid="uid://bvn2y2nnqcrts" path="res://scenes/end_zone.tscn" id="5_6aak5"]
 
-[node name="LevelBase2" instance=ExtResource("1_dk84w")]
+[node name="LevelBase" instance=ExtResource("1_dk84w")]
 height_in_tiles = 32
 
 [node name="Player" parent="." index="0"]

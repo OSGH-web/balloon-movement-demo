@@ -7,7 +7,6 @@
 height_in_tiles = 32
 
 [node name="Player" parent="." index="0"]
-
 position = Vector2(575, 271)
 
 [node name="Terrain" parent="." index="1"]
