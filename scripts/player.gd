@@ -9,10 +9,20 @@ extends CharacterBody2D
 @onready var timer: Timer = $Timer
 @onready var camera = $Camera
 
-const GRAVITY = 120
+# physics are designed for an 8px x 8px tileset -- 8px == 1m
+const BASE_TILE_SIZE_PX = 8
+@export var tile_size_px = 8
+var physics_scale_factor = tile_size_px / BASE_TILE_SIZE_PX
+
+# All forces are in units of Tiles per Second squared
+# friction is a ratio and doesn't need to be scaled
 const FRICTION = -3
-const PLAYER_Y_FORCE = 300
-const PLAYER_X_FORCE = 165
+
+var gravity = 120 * physics_scale_factor
+var player_y_force = 300 * physics_scale_factor
+var player_x_force = 165 * physics_scale_factor
+var velocity_cutoff = 0.001 * physics_scale_factor
+
 var readyForRestart: bool = false
 
 signal player_died
@@ -49,19 +59,20 @@ func _on_timer_timeout():
 func _physics_process(delta):
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var velocity_update = input_dir
-	velocity_update.x *= PLAYER_X_FORCE * delta
-	velocity_update.y *= PLAYER_Y_FORCE * delta
+	velocity_update.x *= player_x_force * delta
+	velocity_update.y *= player_y_force * delta
 
 	if FUEL > 0:
 		velocity -= velocity_update
-		FUEL -= abs(velocity_update.x) + abs(velocity_update.y)
+		# fuel is independent of scale
+		FUEL -= velocity_update.length() / physics_scale_factor
 	elif readyForRestart == false and timer.is_stopped():
 		$AudioStreamPlayer2D.pitch_scale = 0.7
 		timer.start()
-			
+
 	if not is_on_floor():
-		velocity.y += GRAVITY * delta
-	elif abs(velocity.x) < 0.001:
+		velocity.y += gravity * delta
+	elif abs(velocity.x) < velocity_cutoff:
 		velocity.x = 0
 	else:
 		# Makes you slow down when you land on the floor. Smaller than vel.x so slows you down. 
