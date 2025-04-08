@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3h1d6irllu2r"]
+
+[ext_resource type="Script" uid="uid://d3l05ng1mhcdy" path="res://scripts/pause_menu.gd" id="1_n87rw"]
+[ext_resource type="Theme" uid="uid://bcn6jcu02pjx0" path="res://assets/themes/standard_font_theme.theme" id="2_myx47"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n87rw"]
+
+[node name="Pause Menu" type="CanvasLayer"]
+process_mode = 3
+layer = 5
+visible = false
+script = ExtResource("1_n87rw")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+process_mode = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.0
+offset_top = -24.5
+offset_right = 101.0
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_n87rw")
+
+[node name="PausedLabel" type="Label" parent="PanelContainer"]
+layout_mode = 2
+theme = ExtResource("2_myx47")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Paused
+Press P or Esc to un-pause
+Press A to return to levels
+Press Q to close the game window"
+horizontal_alignment = 1
