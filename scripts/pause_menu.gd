@@ -10,8 +10,6 @@ func _input(_event: InputEvent) -> void:
 		toggle_pause()
 	if Input.is_key_pressed(KEY_A):
 		_on_level_select_button_pressed()
-	if Input.is_key_pressed(KEY_Q):
-		_on_quit_button_pressed()
 	if Input.is_key_pressed(KEY_M):
 		_on_mute_audio_button_pressed()
 
