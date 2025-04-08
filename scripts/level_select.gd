@@ -74,8 +74,6 @@ func _input(event):
 		try_move(0, 1)
 	elif event.is_action_pressed("ui_a"):
 		_on_level_selected(current_index)
-	if Input.is_key_pressed(KEY_Q):
-		get_tree().quit()
 
 func try_move(x: int, y: int):
 	var new_index = current_index + x + (y * grid_columns)
