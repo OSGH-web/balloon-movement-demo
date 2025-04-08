@@ -8,7 +8,7 @@ func _ready() -> void:
 func _input(_event: InputEvent) -> void:
 	if Input.is_key_pressed(KEY_P) or Input.is_key_pressed(KEY_ESCAPE):
 		toggle_pause()
-	if Input.is_key_pressed(KEY_A):
+	if Input.is_key_pressed(KEY_L):
 		_on_level_select_button_pressed()
 	if Input.is_key_pressed(KEY_M):
 		_on_mute_audio_button_pressed()
@@ -17,6 +17,9 @@ func toggle_pause():
 	var paused := not get_tree().paused
 	get_tree().paused = paused
 	visible = paused
+
+	if paused:
+		%ResumeButton.grab_focus()
 
 func _on_resume_button_pressed():
 	toggle_pause()
