@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbgt5n5gfv3om"
-path="res://.godot/imported/spelunky_testing_sprite_fire.png-c61daa570bea01da577b04c1c8be8583.ctex"
+uid="uid://bgi7houqr0su6"
+path="res://.godot/imported/bluecave_tileset.png-a5ec9e27b5158ee5b2155c7bc9fe8cd0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/spelunky_testing_sprite_fire.png"
-dest_files=["res://.godot/imported/spelunky_testing_sprite_fire.png-c61daa570bea01da577b04c1c8be8583.ctex"]
+source_file="res://assets/tilesets/bluecave_tileset.png"
+dest_files=["res://.godot/imported/bluecave_tileset.png-a5ec9e27b5158ee5b2155c7bc9fe8cd0.ctex"]
 
 [params]
 
