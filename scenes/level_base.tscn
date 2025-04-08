@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bnpihmeh3p65s" path="res://scenes/terrain.tscn" id="3_h2yge"]
 [ext_resource type="Script" uid="uid://df1fbghclur2h" path="res://scripts/terrain.gd" id="4_1bvp3"]
 [ext_resource type="TileSet" uid="uid://clmawpyff0gle" path="res://assets/tilesets/Caves_Forest.tres" id="4_krm4r"]
-[ext_resource type="PackedScene" uid="uid://b3h1d6irllu2r" path="res://scenes/pause_menu.tscn" id="5_8rhjg"]
+[ext_resource type="PackedScene" uid="uid://b3h1d6irllu2r" path="res://scenes/UI/pause_menu.tscn" id="5_8rhjg"]
 
 [node name="LevelBase" type="Node2D"]
 process_mode = 1
