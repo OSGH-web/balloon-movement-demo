@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3h1d6irllu2r"]
+[gd_scene load_steps=6 format=3 uid="uid://b3h1d6irllu2r"]
 
-[ext_resource type="Script" uid="uid://d3l05ng1mhcdy" path="res://scripts/pause_menu.gd" id="1_n87rw"]
+[ext_resource type="Script" uid="uid://d3l05ng1mhcdy" path="res://scripts/UI/pause_menu.gd" id="1_n87rw"]
 [ext_resource type="StyleBox" uid="uid://002qwq5rvs87" path="res://assets/themes/ui-background-style.tres" id="2_5d2l8"]
 [ext_resource type="Theme" uid="uid://bcn6jcu02pjx0" path="res://assets/themes/standard_font_theme.theme" id="2_myx47"]
 [ext_resource type="StyleBox" uid="uid://cn1chxlsybisf" path="res://assets/styles/button_focus.tres" id="5_7l7mv"]
+
+[sub_resource type="Theme" id="Theme_feath"]
 
 [node name="Pause Menu" type="CanvasLayer"]
 process_mode = 3
@@ -11,29 +13,28 @@ layer = 5
 visible = false
 script = ExtResource("1_n87rw")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="."]
 process_mode = 2
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -80.0
-offset_top = -60.0
-offset_right = 80.0
-offset_bottom = 28.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1280.0
+offset_bottom = -720.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3, 3)
-pivot_offset = Vector2(80, 45)
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+layout_mode = 2
 theme_override_styles/panel = ExtResource("2_5d2l8")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer"]
 layout_mode = 2
+theme = SubResource("Theme_feath")
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="ResumeButton" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="ResumeButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -45,7 +46,7 @@ theme_override_styles/focus = ExtResource("5_7l7mv")
 text = "Resume [Esc]"
 flat = true
 
-[node name="MuteAudioButton" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="MuteAudioButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("2_myx47")
@@ -54,7 +55,7 @@ theme_override_styles/focus = ExtResource("5_7l7mv")
 text = "Mute Audio"
 flat = true
 
-[node name="LevelSelectButton" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="LevelSelectButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_myx47")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -62,7 +63,7 @@ theme_override_styles/focus = ExtResource("5_7l7mv")
 text = "Quit to Level Select"
 flat = true
 
-[node name="QuitButton" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../ResumeButton")
 focus_next = NodePath("../ResumeButton")
@@ -72,7 +73,7 @@ theme_override_styles/focus = ExtResource("5_7l7mv")
 text = "Quit to Desktop"
 flat = true
 
-[connection signal="pressed" from="PanelContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/MuteAudioButton" to="." method="_on_mute_audio_button_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/MuteAudioButton" to="." method="_on_mute_audio_button_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
