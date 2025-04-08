@@ -6,12 +6,8 @@ func _ready() -> void:
 	init_mute_audio_button()
 
 func _input(_event: InputEvent) -> void:
-	if Input.is_key_pressed(KEY_P) or Input.is_key_pressed(KEY_ESCAPE):
+	if Input.is_key_pressed(KEY_ESCAPE):
 		toggle_pause()
-	if Input.is_key_pressed(KEY_L):
-		_on_level_select_button_pressed()
-	if Input.is_key_pressed(KEY_M):
-		_on_mute_audio_button_pressed()
 
 func toggle_pause():
 	var paused := not get_tree().paused
@@ -37,13 +33,13 @@ func _on_quit_button_pressed():
 func init_mute_audio_button() -> void:
 	var master_bus_idx := AudioServer.get_bus_index("Master")
 	var muted := AudioServer.is_bus_mute(master_bus_idx)
-	%MuteAudioButton.text = "Unmute Audio [M]" if muted else "Mute Audio [M]"
+	%MuteAudioButton.text = "Unmute Audio" if muted else "Mute Audio"
 
 func toggle_master_audio_mute() -> void:
 	var master_bus_idx := AudioServer.get_bus_index("Master")
 	var muted := not AudioServer.is_bus_mute(master_bus_idx)
 	AudioServer.set_bus_mute(master_bus_idx, muted)
-	%MuteAudioButton.text = "Unmute Audio [M]" if muted else "Mute Audio [M]"
+	%MuteAudioButton.text = "Unmute Audio" if muted else "Mute Audio"
 
 func _on_mute_audio_button_pressed() -> void:
 	toggle_master_audio_mute()
