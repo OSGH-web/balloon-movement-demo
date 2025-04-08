@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1cc67awt3xk6"
-path="res://.godot/imported/Microbe.png-4d6c6d9ce674b3cb009d3a4c1bd76651.ctex"
+uid="uid://lpj1f4d8ri2l"
+path="res://.godot/imported/violetcave_tileset.png-66b5bbf4a2523dd62181bd52defb9315.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Microbe.png"
-dest_files=["res://.godot/imported/Microbe.png-4d6c6d9ce674b3cb009d3a4c1bd76651.ctex"]
+source_file="res://assets/tilesets/violetcave_tileset.png"
+dest_files=["res://.godot/imported/violetcave_tileset.png-66b5bbf4a2523dd62181bd52defb9315.ctex"]
 
 [params]
 
