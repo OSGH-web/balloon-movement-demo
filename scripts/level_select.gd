@@ -41,10 +41,9 @@ func create_level_grid():
 	var button_scene = preload("res://scenes/UI/level_button.tscn")
 
 	for i in level_files.size():
-		var button = button_scene.instantiate() as LevelButton
-		button.name = "Level%d" % (i + 1)
-		button.level_number = i + 1
-		button.get_node("Label").size = button_size
+		var button = button_scene.instantiate() as Button
+		button.text = str(i + 1)
+		button.size = button_size
 		# Position calculation
 		var col = i % grid_columns
 		var row = i / grid_columns
@@ -58,7 +57,6 @@ func create_level_grid():
 func update_marker_position():
 	var current_button = button_container.get_child(current_index)
 	player_marker.position = current_button.position
-
 
 	var file_path = "res://levels/%s" % level_files[current_index]
 	$LevelPreview.generate_preview(file_path)
