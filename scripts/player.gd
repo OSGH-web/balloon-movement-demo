@@ -34,9 +34,6 @@ func _ready():
 	add_to_group("player")
 	camera.zoom = camera_scale
 	player_died.connect(_on_player_died)
-	var fuel_label = get_tree().get_first_node_in_group("fuel_label")
-	if fuel_label:
-		fuel_label.player = self
 
 func add_fuel(amt):
 	FUEL += amt

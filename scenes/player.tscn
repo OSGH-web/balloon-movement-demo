@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d3nwiwsfywf3b" path="res://scripts/player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://cbgt5n5gfv3om" path="res://assets/sprites/spelunky_testing_sprite_fire.png" id="3_qhqgy"]
-[ext_resource type="PackedScene" uid="uid://dnrjc1o517gjp" path="res://scenes/fuel_label.tscn" id="4_lvxji"]
+[ext_resource type="PackedScene" uid="uid://dnrjc1o517gjp" path="res://scenes/UI/fuel_label.tscn" id="4_lvxji"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
 atlas = ExtResource("3_qhqgy")
