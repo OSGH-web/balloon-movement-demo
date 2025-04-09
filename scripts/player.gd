@@ -3,11 +3,11 @@ extends CharacterBody2D
 
 @export var tilemaplayer: TileMapLayer
 @export var FUEL = 2000
-@export var play_background_music = false
 @export var camera_scale: Vector2 = Vector2(1.0, 1.0)
 @export var staticCam: bool = false
 @onready var timer: Timer = $Timer
 @onready var camera = $Camera
+@onready var background_music: AudioStreamPlayer = get_parent().get_node("Background_Music")
 
 # physics are designed for an 8px x 8px tileset -- 8px == 1m
 const BASE_TILE_SIZE_PX = 8
@@ -33,12 +33,11 @@ func _on_player_died():
 func _ready():
 	add_to_group("player")
 	camera.zoom = camera_scale
-	$AudioStreamPlayer2D.playing = play_background_music
 	player_died.connect(_on_player_died)
 
 func add_fuel(amt):
 	FUEL += amt
-	$AudioStreamPlayer2D.pitch_scale = 1.03 # Changesmusic to normal if you ran out of fuel then got it back. 
+	background_music.pitch_scale = 1.03 # Changesmusic to normal if you ran out of fuel then got it back. 
 
 func _input(event):
 	if event.is_action_pressed("reset"):
@@ -64,7 +63,7 @@ func _physics_process(delta):
 		# fuel is independent of scale
 		FUEL -= velocity_update.length() / physics_scale_factor
 	elif readyForRestart == false and timer.is_stopped():
-		$AudioStreamPlayer2D.pitch_scale = 0.7
+		background_music.pitch_scale = 0.7
 		timer.start()
 
 	if not is_on_floor():
