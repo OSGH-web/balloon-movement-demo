@@ -107,7 +107,7 @@ _data = {
 
 [node name="GasCan" type="Area2D"]
 scale = Vector2(3, 3)
-collision_layer = 2
+collision_layer = 0
 script = ExtResource("1_lkxy0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

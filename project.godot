@@ -53,6 +53,12 @@ reset={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Environment"
+2d_physics/layer_3="Killzone"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
