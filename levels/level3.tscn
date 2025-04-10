@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bvn2y2nnqcrts" path="res://scenes/end_zone.tscn" id="6_udvx3"]
 
 [node name="LevelBase" instance=ExtResource("1_dk84w")]
+level_name = "Level 3"
 height_in_tiles = 128
 
 [node name="Terrain" parent="." index="1"]

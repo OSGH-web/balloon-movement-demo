@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bvn2y2nnqcrts" path="res://scenes/end_zone.tscn" id="3_y2kjf"]
 
 [node name="LevelBase" instance=ExtResource("1_dk84w")]
+level_name = "Gauntlet (Jake 1)"
 width_in_tiles = 80
 height_in_tiles = 45
 

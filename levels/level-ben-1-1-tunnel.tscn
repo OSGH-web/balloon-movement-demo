@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cxdl0fqxwxba1" path="res://scenes/gas_can.tscn" id="6_bsgwn"]
 
 [node name="LevelBase" instance=ExtResource("1_dk84w")]
+level_name = "Tunnel"
 height_in_tiles = 96
 
 [node name="Player" parent="." index="0"]

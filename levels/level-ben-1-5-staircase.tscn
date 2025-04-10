@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cxdl0fqxwxba1" path="res://scenes/gas_can.tscn" id="6_2dakm"]
 
 [node name="LevelBase" instance=ExtResource("1_dk84w")]
+level_name = "Staircase"
 
 [node name="Player" parent="." index="0"]
 position = Vector2(2, 34)

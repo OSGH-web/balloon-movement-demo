@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bvn2y2nnqcrts" path="res://scenes/end_zone.tscn" id="5_lsd7l"]
 
 [node name="LevelBase" instance=ExtResource("1_dk84w")]
+level_name = "Bottle"
 
 [node name="Player" parent="." index="0"]
 position = Vector2(514, 1439)

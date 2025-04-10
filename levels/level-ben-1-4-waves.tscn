@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bvn2y2nnqcrts" path="res://scenes/end_zone.tscn" id="5_6aak5"]
 
 [node name="LevelBase" instance=ExtResource("1_dk84w")]
+level_name = "Waves"
 height_in_tiles = 32
 
 [node name="Player" parent="." index="0"]
