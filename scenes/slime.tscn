@@ -1,10 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://ckwukbtl6m70h"]
+[gd_scene load_steps=8 format=3 uid="uid://ckwukbtl6m70h"]
 
+[ext_resource type="Script" uid="uid://bx4et042vxkd6" path="res://scripts/slime.gd" id="1_n6pvg"]
 [ext_resource type="SpriteFrames" uid="uid://djytv14bqjyp4" path="res://assets/sprites/Slime.res" id="1_p2gj0"]
 [ext_resource type="PackedScene" uid="uid://8enpp0nyrm0" path="res://scenes/killzone.tscn" id="2_n6pvg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pjw23"]
 size = Vector2(27.5, 18)
+
+[sub_resource type="Animation" id="Animation_n6pvg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(45, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_p2gj0"]
 resource_name = "hitbox_adjust"
@@ -24,21 +40,6 @@ tracks/0/keys = {
 "values": [Vector2(45, 0), Vector2(45, -6), Vector2(45, -12), Vector2(45, -18), Vector2(45, -12), Vector2(45, -6), Vector2(45, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_n6pvg"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(45, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pjw23"]
 _data = {
 &"RESET": SubResource("Animation_n6pvg"),
@@ -46,7 +47,7 @@ _data = {
 }
 
 [node name="Slime" type="Node2D"]
-position = Vector2(-1, 0)
+script = ExtResource("1_n6pvg")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
