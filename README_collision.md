@@ -5,5 +5,5 @@
 - GasCan: Layer = None, Mask = 1 (Only needs to collide w/ Player on L1)
 
 # Note to Ben:
-- Debug Menu --> Visible Collision Shapes is great for debugging. 
+- Debug Menu --> Visible Collision Shapes and Visible Navigation is great for debugging. 
 - I added layer names to layer 1,2 and 3. Mouse over it in the physics layers or click the 3 dots to see them. 

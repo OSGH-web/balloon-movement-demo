@@ -7,7 +7,13 @@ var turnAround = false
 @onready var ray_dr: RayCast2D = $RayCastDownRight
 @onready var ray_l: RayCast2D = $RayCastLeft
 @onready var ray_dl: RayCast2D = $RayCastDownLeft
+@export var flip_h = false
 
+func _ready():
+	# Allows for changing direction upon level start
+	if flip_h:
+		$AnimatedSprite2D.flip_h = true
+		direction = - 1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -20,7 +26,6 @@ func _process(delta: float) -> void:
 			or (direction == 1 and ray_r.is_colliding())
 			or (direction == -1 and ray_l.is_colliding())):
 				turnAround = true
-				
 	elif turnAround:
 		direction = -direction
 		$AnimatedSprite2D.flip_h = direction < 0
