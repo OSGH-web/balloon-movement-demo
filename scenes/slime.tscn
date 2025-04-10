@@ -69,3 +69,23 @@ libraries = {
 &"": SubResource("AnimationLibrary_pjw23")
 }
 autoplay = "hitbox_adjust"
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(1, -13)
+target_position = Vector2(75, 0)
+collision_mask = 2
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(1, -13)
+target_position = Vector2(-75, 0)
+collision_mask = 2
+
+[node name="RayCastDownRight" type="RayCast2D" parent="."]
+position = Vector2(1, -14)
+target_position = Vector2(75, 25)
+collision_mask = 2
+
+[node name="RayCastDownLeft" type="RayCast2D" parent="."]
+position = Vector2(2, -14)
+target_position = Vector2(-75, 25)
+collision_mask = 2

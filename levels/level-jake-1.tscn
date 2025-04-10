@@ -41,4 +41,7 @@ position = Vector2(384, 736)
 size = Vector2(240, 600)
 
 [node name="Slime" parent="." index="14" instance=ExtResource("4_xy3xo")]
-position = Vector2(1143, 256)
+position = Vector2(1622, 264)
+
+[node name="Slime2" parent="." index="15" instance=ExtResource("4_xy3xo")]
+position = Vector2(607, 264)
