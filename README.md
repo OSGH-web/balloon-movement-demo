@@ -40,5 +40,4 @@ const PLAYER_X_FORCE = 180
 <img src="./docs/end-of-level-options.jpg" width="384">
 
 - if a player navigates to the "end zone" (red square in the bottom right), they beat the level and return to the level select screen
-- if a player runs out of fuel, they can press A to replay the level, or Q to return to the level select screej
-
+- if a player runs out of fuel, they can press A to replay the level, or Q to return to the level select screen
