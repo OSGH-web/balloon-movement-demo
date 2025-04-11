@@ -1,6 +1,8 @@
 @tool
 extends Node2D
 
+@export var level_name := ""
+
 @export var width_in_tiles := 32:
 	set(value):
 		width_in_tiles = value

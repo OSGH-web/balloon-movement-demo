@@ -1,11 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://b3h1d6irllu2r"]
 
 [ext_resource type="Script" uid="uid://d3l05ng1mhcdy" path="res://scripts/UI/pause_menu.gd" id="1_n87rw"]
-[ext_resource type="StyleBox" uid="uid://002qwq5rvs87" path="res://assets/themes/ui-background-style.tres" id="2_5d2l8"]
+[ext_resource type="StyleBox" uid="uid://002qwq5rvs87" path="res://assets/styles/sbf_light.tres" id="2_5d2l8"]
 [ext_resource type="Theme" uid="uid://bcn6jcu02pjx0" path="res://assets/themes/standard_font_theme.theme" id="2_myx47"]
-[ext_resource type="StyleBox" uid="uid://cn1chxlsybisf" path="res://assets/styles/button_focus.tres" id="5_7l7mv"]
-
-[sub_resource type="Theme" id="Theme_feath"]
+[ext_resource type="StyleBox" uid="uid://byruekc6swxep" path="res://assets/styles/sbf_mid.tres" id="2_w67w4"]
+[ext_resource type="StyleBox" uid="uid://cn1chxlsybisf" path="res://assets/styles/sbf_focus.tres" id="5_7l7mv"]
 
 [node name="Pause Menu" type="CanvasLayer"]
 process_mode = 3
@@ -13,65 +12,79 @@ layer = 5
 visible = false
 script = ExtResource("1_n87rw")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="Control" parent="."]
 process_mode = 2
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -1280.0
-offset_bottom = -720.0
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -12.0
+offset_top = 360.0
+offset_right = -12.0
+offset_bottom = 360.0
 grow_horizontal = 2
-grow_vertical = 2
 scale = Vector2(3, 3)
 
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(272, 92)
 layout_mode = 2
-theme_override_styles/panel = ExtResource("2_5d2l8")
+offset_left = -132.0
+offset_right = 140.0
+offset_bottom = 92.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("2_w67w4")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer"]
 layout_mode = 2
-theme = SubResource("Theme_feath")
-theme_override_constants/separation = 0
+theme_override_constants/separation = 4
 alignment = 1
 
 [node name="ResumeButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
-size_flags_horizontal = 3
 focus_neighbor_top = NodePath("../QuitButton")
 focus_previous = NodePath("../QuitButton")
 theme = ExtResource("2_myx47")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/focus = ExtResource("5_7l7mv")
+theme_override_styles/hover = ExtResource("2_5d2l8")
+theme_override_styles/normal = ExtResource("2_5d2l8")
 text = "Resume [Esc]"
-flat = true
 
 [node name="MuteAudioButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme = ExtResource("2_myx47")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/focus = ExtResource("5_7l7mv")
+theme_override_styles/hover = ExtResource("2_5d2l8")
+theme_override_styles/normal = ExtResource("2_5d2l8")
 text = "Mute Audio"
-flat = true
 
 [node name="LevelSelectButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme = ExtResource("2_myx47")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/focus = ExtResource("5_7l7mv")
+theme_override_styles/hover = ExtResource("2_5d2l8")
+theme_override_styles/normal = ExtResource("2_5d2l8")
 text = "Quit to Level Select"
-flat = true
 
 [node name="QuitButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../ResumeButton")
 focus_next = NodePath("../ResumeButton")
 theme = ExtResource("2_myx47")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/focus = ExtResource("5_7l7mv")
+theme_override_styles/hover = ExtResource("2_5d2l8")
+theme_override_styles/normal = ExtResource("2_5d2l8")
 text = "Quit to Desktop"
-flat = true
 
 [connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/MuteAudioButton" to="." method="_on_mute_audio_button_pressed"]

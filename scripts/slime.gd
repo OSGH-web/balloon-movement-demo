@@ -32,4 +32,3 @@ func _process(delta: float) -> void:
 		direction = -direction
 		$AnimatedSprite2D.flip_h = direction == Dir.LEFT
 		turnAround = false
-
