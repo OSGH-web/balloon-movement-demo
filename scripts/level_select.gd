@@ -19,7 +19,7 @@ func load_levels():
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
-			if file_name.begins_with("level") && file_name.ends_with(".tscn"):
+			if file_name.ends_with(".tscn"):
 				level_files.append(file_name)
 			file_name = dir.get_next()
 		level_files.sort()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=4 uid="uid://15xbb6n6fjp3"]
+[gd_scene load_steps=5 format=4 uid="uid://bumimigga3cge"]
 
 [ext_resource type="PackedScene" uid="uid://cxo2r1hb7u2ss" path="res://scenes/level_base.tscn" id="1_pwtvv"]
 [ext_resource type="PackedScene" uid="uid://ckwukbtl6m70h" path="res://scenes/slime.tscn" id="2_8ru16"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bvn2y2nnqcrts" path="res://scenes/end_zone.tscn" id="4_ex3tr"]
 
 [node name="LevelBase" instance=ExtResource("1_pwtvv")]
-level_name = "Jake 2"
+level_name = "Caves"
 width_in_tiles = 80
 height_in_tiles = 45
 
@@ -52,7 +52,7 @@ position = Vector2(660, 695)
 [node name="Slime9" parent="Slimes" index="8" instance=ExtResource("2_8ru16")]
 position = Vector2(1069, 695)
 
-[node name="Fuel" type="Node" parent="." index="8"]
+[node name="Fuel" type="Node" parent="." index="7"]
 
 [node name="GasCan" parent="Fuel" index="0" instance=ExtResource("3_ccs2i")]
 position = Vector2(182, 123)
