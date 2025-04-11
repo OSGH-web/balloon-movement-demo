@@ -48,7 +48,7 @@ func create_level_grid():
 		button_container.add_child(button)
 		button.pressed.connect(_on_level_selected.bind(i))
 		button.focus_entered.connect(_focus.bind(i))
-		button.mouse_entered.connect(_generate_preview.bind(i))
+		button.mouse_entered.connect(_update_level_info_display.bind(i))
 		button.mouse_exited.connect(_mouse_exit)
 
 		# tint the completed levels
@@ -70,19 +70,14 @@ func create_level_grid():
 # steal back cursor focus after hover
 #   - cursor_index is updated on arrow key movement.
 #   - cursor_index is not updated on mouse_entered.
-#   - on mouse_exit, the preview displays the level at the cursor_index
+#   - on mouse_exit, the banner displays the level at the cursor_index
 var cursor_index = -1
 func _focus(level_index):
 	cursor_index = level_index
-	_generate_preview(level_index)
+	_update_level_info_display(level_index)
 
 func _mouse_exit():
-	_generate_preview(cursor_index)
-
-func _generate_preview(level_index):
-	var file_path = "res://levels/%s" % level_files[level_index]
-	$LevelPreview.generate_preview(file_path)
-	_update_level_info_display(level_index)
+	_update_level_info_display(cursor_index)
 
 func _on_level_selected(level_index: int):
 	var file_path = "res://levels/%s" % level_files[level_index]
