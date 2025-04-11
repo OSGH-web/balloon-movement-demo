@@ -41,7 +41,7 @@ func create_level_grid():
 	var n_levels = level_files.size()
 
 	var button_scene = preload("res://scenes/UI/level_button.tscn")
-	var tinted_style = preload("res://assets/styles/button_tinted.tres")
+	var tinted_style = preload("res://assets/styles/sbf_dark.tres")
 
 	for i in n_levels:
 		var button = button_scene.instantiate() as Button
