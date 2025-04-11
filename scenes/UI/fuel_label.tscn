@@ -2,18 +2,35 @@
 
 [ext_resource type="Theme" uid="uid://bcn6jcu02pjx0" path="res://assets/themes/standard_font_theme.theme" id="1_wadh8"]
 [ext_resource type="Script" uid="uid://dkbvg85t2nhy5" path="res://scripts/UI/fuel_label.gd" id="2_f1qve"]
-[ext_resource type="StyleBox" uid="uid://002qwq5rvs87" path="res://assets/themes/ui-background-style.tres" id="3_f202h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hdq28"]
+bg_color = Color(0.75, 0.75, 0.75, 0.501961)
 
 [node name="FuelLabel" type="CanvasLayer"]
 script = ExtResource("2_f1qve")
 
-[node name="Label" type="Label" parent="."]
-offset_left = 48.0
-offset_right = 104.0
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 264.0
+offset_top = 24.0
+offset_right = 264.0
+offset_bottom = 24.0
+size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -210.0
 offset_bottom = 48.0
+grow_horizontal = 0
 theme = ExtResource("1_wadh8")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 33
-theme_override_styles/normal = ExtResource("3_f202h")
-text = "test"
+theme_override_styles/normal = SubResource("StyleBoxFlat_hdq28")
+text = "Fuel: 1000"
+horizontal_alignment = 2
 vertical_alignment = 1
