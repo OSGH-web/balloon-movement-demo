@@ -18,6 +18,9 @@ func _on_body_entered(body):
 		return_to_world_select()
 
 func return_to_world_select():
+	# mark level completed
+	var scene_filename = get_tree().current_scene.scene_file_path.get_file()
+	SaveManager.mark_level_completed(scene_filename)
 	get_tree().change_scene_to_file("res://scenes/level_select.tscn")
 
 func _process(_delta):
