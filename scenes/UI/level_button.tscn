@@ -15,4 +15,3 @@ theme_override_styles/focus = ExtResource("5_7l7mv")
 theme_override_styles/hover = ExtResource("3_7rldp")
 theme_override_styles/normal_mirrored = ExtResource("4_btco6")
 theme_override_styles/normal = ExtResource("3_7rldp")
-text = "asdf"
