@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://cl52vihplvab0"]
+[gd_scene load_steps=6 format=4 uid="uid://bxr1mhsiwp6fd"]
 
 [ext_resource type="PackedScene" uid="uid://cxo2r1hb7u2ss" path="res://scenes/level_base.tscn" id="1_x0t81"]
 [ext_resource type="PackedScene" uid="uid://cxdl0fqxwxba1" path="res://scenes/gas_can.tscn" id="2_84md7"]
 [ext_resource type="PackedScene" uid="uid://bvn2y2nnqcrts" path="res://scenes/end_zone.tscn" id="3_e5klb"]
 [ext_resource type="PackedScene" uid="uid://ckwukbtl6m70h" path="res://scenes/slime.tscn" id="4_0alfw"]
+[ext_resource type="PackedScene" uid="uid://c6i6ci2ym6wn6" path="res://scenes/spike.tscn" id="5_84md7"]
 
 [node name="LevelBase" instance=ExtResource("1_x0t81")]
 level_name = "Gauntlet"
@@ -46,3 +47,10 @@ position = Vector2(1622, 264)
 
 [node name="Slime2" parent="." index="15" instance=ExtResource("4_0alfw")]
 position = Vector2(607, 264)
+
+[node name="Spike" parent="." index="17" instance=ExtResource("5_84md7")]
+position = Vector2(129, 1032)
+
+[node name="Spike2" parent="." index="18" instance=ExtResource("5_84md7")]
+position = Vector2(129, 312)
+rotation = 3.14159
