@@ -38,10 +38,12 @@ func create_level_grid():
 	for child in button_container.get_children():
 		child.queue_free()
 
+	var n_levels = level_files.size()
+
 	var button_scene = preload("res://scenes/UI/level_button.tscn")
 	var tinted_style = preload("res://assets/styles/button_tinted.tres")
 
-	for i in level_files.size():
+	for i in n_levels:
 		var button = button_scene.instantiate() as Button
 		button.text = str(i + 1)
 		button_container.add_child(button)
@@ -54,6 +56,17 @@ func create_level_grid():
 		if SaveManager.is_level_completed(level_files[i]):
 			button.add_theme_stylebox_override("normal", tinted_style)
 			button.add_theme_stylebox_override("hover", tinted_style)
+
+	# update focus neighbors to allow for horizontal wrapping
+	for i in n_levels:
+		var neighbor_left_idx = (i - 1) % n_levels
+		var neighbor_right_idx = (i + 1) % n_levels
+
+		var button = button_container.get_child(i)
+		var neighbor_left = button_container.get_child(neighbor_left_idx)
+		var neighbor_right = button_container.get_child(neighbor_right_idx)
+		button.focus_neighbor_left = neighbor_left.get_path()
+		button.focus_neighbor_right = neighbor_right.get_path()
 
 # steal back cursor focus after hover
 #   - cursor_index is updated on arrow key movement.
