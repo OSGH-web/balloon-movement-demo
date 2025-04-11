@@ -5,7 +5,6 @@ var current_index := 0
 var level_files := []
 
 @onready var button_container: GridContainer = %ButtonGrid
-@onready var standard_font_theme := load("res://assets/themes/standard_font_theme.theme")
 
 func _ready():
 	load_levels()
