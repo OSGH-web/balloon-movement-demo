@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bprt5jmuwcihx"]
+[gd_scene load_steps=7 format=3 uid="uid://bprt5jmuwcihx"]
 
 [ext_resource type="Script" uid="uid://dmoxrpi5e2hec" path="res://scripts/level_select.gd" id="1_t5gxd"]
+[ext_resource type="FontFile" uid="uid://b5r4on7cls54q" path="res://assets/fonts/DepartureMono-Regular.otf" id="2_2epne"]
 [ext_resource type="PackedScene" uid="uid://dtnepwc7kcwx1" path="res://scenes/UI/level_preview.tscn" id="2_4ek2u"]
+[ext_resource type="StyleBox" uid="uid://002qwq5rvs87" path="res://assets/themes/ui-background-style.tres" id="2_chg43"]
+[ext_resource type="LabelSettings" uid="uid://btn55lw1rtpva" path="res://assets/styles/label.tres" id="2_rif6e"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_chg43"]
+font = ExtResource("2_2epne")
+font_size = 11
+font_color = Color(0, 0, 0, 1)
 
 [node name="LevelSelect" type="Control"]
 layout_mode = 3
@@ -9,19 +17,96 @@ anchors_preset = 0
 scale = Vector2(3, 3)
 script = ExtResource("1_t5gxd")
 
-[node name="ButtonGrid" type="GridContainer" parent="."]
-unique_name_in_owner = true
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
-offset_left = 10.0
-offset_top = 29.0
-offset_right = 10.0
-offset_bottom = 29.0
-theme_override_constants/h_separation = 12
-theme_override_constants/v_separation = 12
+offset_left = 96.0
+offset_top = 32.0
+offset_right = 552.0
+offset_bottom = 336.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_chg43")
+text = "CH1: Testing"
+label_settings = ExtResource("2_rif6e")
+horizontal_alignment = 1
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_constants/separation = 0
+split_offset = 314
+dragging_enabled = false
+dragger_visibility = 2
+
+[node name="placeholder" type="Label" parent="VBoxContainer/HSplitContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_chg43")
+label_settings = SubResource("LabelSettings_chg43")
+
+[node name="WorldCompletion" type="Label" parent="VBoxContainer/HSplitContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_chg43")
+text = "Completion: 0%"
+label_settings = SubResource("LabelSettings_chg43")
+vertical_alignment = 1
+
+[node name="ButtonGrid" type="GridContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
 columns = 5
 
+[node name="LevelName" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_chg43")
+text = "1-1 Test"
+label_settings = ExtResource("2_rif6e")
+horizontal_alignment = 1
+
+[node name="HSplitContainer2" type="HSplitContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_constants/separation = 0
+split_offset = 40
+dragging_enabled = false
+dragger_visibility = 2
+
+[node name="placeholder2" type="Label" parent="VBoxContainer/HSplitContainer2"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_chg43")
+label_settings = SubResource("LabelSettings_chg43")
+horizontal_alignment = 1
+
+[node name="LevelStats" type="Label" parent="VBoxContainer/HSplitContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_chg43")
+text = "Best Time: 0:00:00"
+label_settings = SubResource("LabelSettings_chg43")
+vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(450, 304)
+layout_mode = 0
+offset_left = 100.0
+offset_top = 32.0
+offset_right = 550.0
+offset_bottom = 320.0
+
 [node name="LevelPreview" parent="." instance=ExtResource("2_4ek2u")]
+visible = false
 offset_left = 309.0
 offset_top = 29.0
 offset_right = 309.0
 offset_bottom = 29.0
+scale = Vector2(0.5, 0.5)
