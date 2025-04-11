@@ -1,8 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://b7jfvkf4edbjp"]
+[gd_scene load_steps=14 format=3 uid="uid://b7jfvkf4edbjp"]
 
 [ext_resource type="Script" uid="uid://d3nwiwsfywf3b" path="res://scripts/player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://cbgt5n5gfv3om" path="res://assets/sprites/spelunky_testing_sprite_fire.png" id="3_qhqgy"]
-[ext_resource type="PackedScene" uid="uid://dnrjc1o517gjp" path="res://scenes/UI/fuel_label.tscn" id="4_lvxji"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
 atlas = ExtResource("3_qhqgy")
@@ -102,8 +101,6 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
-
-[node name="FuelLabel" parent="." instance=ExtResource("4_lvxji")]
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
