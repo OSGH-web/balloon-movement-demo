@@ -46,13 +46,26 @@ func create_level_grid():
 		button.text = str(i + 1)
 		button_container.add_child(button)
 		button.pressed.connect(_on_level_selected.bind(i))
-		button.focus_entered.connect(_generate_preview.bind(i))
+		button.focus_entered.connect(_focus.bind(i))
 		button.mouse_entered.connect(_generate_preview.bind(i))
+		button.mouse_exited.connect(_mouse_exit.bind(i))
 
 		# tint the completed levels
 		if SaveManager.is_level_completed(level_files[i]):
 			button.add_theme_stylebox_override("normal", tinted_style)
 			button.add_theme_stylebox_override("hover", tinted_style)
+
+# steal back cursor focus after hover
+#   - cursor_index is updated on arrow key movement.
+#   - cursor_index is not updated on mouse_entered.
+#   - on mouse_exit, the preview displays the level at the cursor_index
+var cursor_index = -1
+func _focus(level_index):
+	cursor_index = level_index
+	_generate_preview(level_index)
+
+func _mouse_exit(level_index):
+	_generate_preview(cursor_index)
 
 func _generate_preview(level_index):
 	var file_path = "res://levels/%s" % level_files[level_index]
@@ -79,3 +92,4 @@ func _update_level_info_display(level_index):
 	level_instance.free()
 
 	%LevelStats.text = "Completed" if SaveManager.is_level_completed(level_file) else "Not Completed"
+	%LevelNumber.text = "1-" + str(level_index + 1)

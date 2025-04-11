@@ -70,22 +70,31 @@ text = "1-1 Test"
 label_settings = ExtResource("2_rif6e")
 horizontal_alignment = 1
 
-[node name="HSplitContainer2" type="HSplitContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
+[node name="HSplitContainer4" type="HSplitContainer" parent="VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(272, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 0
+split_offset = 88
+dragging_enabled = false
+dragger_visibility = 2
+
+[node name="HSplitContainer2" type="HSplitContainer" parent="VBoxContainer/HSplitContainer4"]
 layout_mode = 2
 theme_override_constants/separation = 0
 split_offset = 40
 dragging_enabled = false
 dragger_visibility = 2
 
-[node name="placeholder2" type="Label" parent="VBoxContainer/HSplitContainer2"]
+[node name="placeholder2" type="Label" parent="VBoxContainer/HSplitContainer4/HSplitContainer2"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("2_chg43")
 label_settings = SubResource("LabelSettings_chg43")
 horizontal_alignment = 1
 
-[node name="LevelStats" type="Label" parent="VBoxContainer/HSplitContainer2"]
+[node name="LevelNumber" type="Label" parent="VBoxContainer/HSplitContainer4/HSplitContainer2"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
