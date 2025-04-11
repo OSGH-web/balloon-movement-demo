@@ -5,12 +5,10 @@ new functionality:
 
  - save data is updated when a player beats a level
  - level select UI:
-   - levels now respond to clicks and controller input, similar to pause menu
-   - level completion percentage displayed on top right panel
-   - level ID displayed on bottom left panel
-   - individual level completion information displayed on bottom panel
-   - completed levels styled in a darker tone for visual distinction
-     - TODO: update screenshot to show differences in completed and non-completed
+    - level completion percentage displayed on top right panel
+    - level ID displayed on bottom left panel
+    - individual level completion displayed on bottom panel
+    - completed levels styled in a darker tone
 
 UI layout updates:
 
@@ -66,9 +64,6 @@ Unit: 24px tiles:
   - 1080px = (15 * 60px) + (15 * 12px)
   - 1080px = (15 * 72px)
 
-- row height: 2.5 25px tiles
-- row gutter: 0.5 24px tiles (red)
-
 ---
 
 
@@ -77,8 +72,6 @@ Unit: 24px tiles:
 ### UI Grid overlaid on Level Select Screen
 
 <img src="./assets/ui_refactor/level_select.png" alt="level_select" style="max-width: 512px;">
-
-- the 
 
 ### UI Grid overlaid over all UI elements
 
