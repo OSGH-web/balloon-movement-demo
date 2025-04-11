@@ -27,7 +27,18 @@ UI layout updates:
 Resource Management:
 
   - renamed assets to describe their intended use in greater detail
-    - TODO -- breakdown swatches and label settings
+
+| asset                      | RGB           | RGB (normalized) | Opacity | hex code  |
+|----------------------------|---------------|------------------|---------|-----------|
+| `sbf_focus.tres`           | 204, 0, 0     | 0.8, 0.0, 0.0    | 100%    | `#cc0000` |
+| `sbf_light.tres`           | 191, 191, 191 | 0.75, 0.75, 0.75 | 100%    | `#bfbfbf` |
+| `sbf_mid.tres`             | 153, 153, 153 | 0.6, 0.6, 0.6    | 100%    | `#999999` |
+| `sbf_mid_transparent.tres` | 153, 153, 153 | 0.6, 0.6, 0.6    | 50%     | `#999999` |
+| `sbf_dark.tres`            | 115, 115, 115 | 0.45, 0.45, 0.45 | 100%    | `#737373` |
+
+- `sbf_dark.tres` is about the darkest panel color you can comfortably read black text on.
+- `sbf_mid.tres` is the default ui background color
+- `sbf_dark.tres` and `sbf_light.tres` can be used for light and dark visual emphasis while keeping black text readable.
 
 # UI Grid
 
@@ -35,25 +46,16 @@ Resource Management:
 
 all UI elements are designed to fit to a base grid
 
+the base grid aligns nicely with the 24 x 24 tileset used in game
+
 base grid stats:
 
 ---
 
-Unit: pixels:
-
-- column width: 264px
-- column gutter (blue): 12px
-- row height: 60px
-- row gutter (red): 12px
-
----
-
-Unit: 24px tiles:
-
-- column width: 11 tiles
-- column gutter (blue): 0.5 tiles
-- row height: 2.5 tiles
-- row gutter (red): 0.5 tiles
+|                | col width | col gutter (blue) | row height | row gutter (red) |
+|----------------|-----------|-------------------|------------|------------------|
+| **pixels**     | 264       | 12                | 60         | 12               |
+| **24px tiles** | 11        | 0.5               | 2.5        | 0.5              |
 
 ---
 
