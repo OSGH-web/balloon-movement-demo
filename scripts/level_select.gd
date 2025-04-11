@@ -49,7 +49,7 @@ func create_level_grid():
 		button.pressed.connect(_on_level_selected.bind(i))
 		button.focus_entered.connect(_focus.bind(i))
 		button.mouse_entered.connect(_generate_preview.bind(i))
-		button.mouse_exited.connect(_mouse_exit.bind(i))
+		button.mouse_exited.connect(_mouse_exit)
 
 		# tint the completed levels
 		if SaveManager.is_level_completed(level_files[i]):
@@ -76,7 +76,7 @@ func _focus(level_index):
 	cursor_index = level_index
 	_generate_preview(level_index)
 
-func _mouse_exit(level_index):
+func _mouse_exit():
 	_generate_preview(cursor_index)
 
 func _generate_preview(level_index):
