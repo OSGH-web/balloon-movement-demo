@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://b5r4on7cls54q" path="res://assets/fonts/DepartureMono-Regular.otf" id="2_2epne"]
 [ext_resource type="PackedScene" uid="uid://dtnepwc7kcwx1" path="res://scenes/UI/level_preview.tscn" id="2_4ek2u"]
 [ext_resource type="StyleBox" uid="uid://002qwq5rvs87" path="res://assets/themes/ui-background-style.tres" id="2_chg43"]
-[ext_resource type="LabelSettings" uid="uid://btn55lw1rtpva" path="res://assets/styles/label.tres" id="2_rif6e"]
+[ext_resource type="LabelSettings" uid="uid://cbw7oatl30dvl" path="res://assets/styles/label.tres" id="2_rif6e"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_chg43"]
 font = ExtResource("2_2epne")
@@ -19,10 +19,63 @@ script = ExtResource("1_t5gxd")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
-offset_left = 96.0
-offset_top = 32.0
-offset_right = 552.0
-offset_bottom = 336.0
+offset_left = 92.0
+offset_top = 24.0
+offset_right = 548.0
+offset_bottom = 328.0
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer"]
+layout_mode = 2
+split_offset = 276
+dragging_enabled = false
+dragger_visibility = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/HSplitContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_constants/separation = 0
+split_offset = 40
+dragging_enabled = false
+dragger_visibility = 2
+
+[node name="placeholder" type="Label" parent="VBoxContainer/HSplitContainer/HSplitContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_chg43")
+label_settings = SubResource("LabelSettings_chg43")
+
+[node name="WorldCompletion" type="Label" parent="VBoxContainer/HSplitContainer/HSplitContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_chg43")
+text = "Completion: 0%"
+label_settings = SubResource("LabelSettings_chg43")
+vertical_alignment = 1
+
+[node name="HSplitContainer3" type="HSplitContainer" parent="VBoxContainer/HSplitContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_constants/separation = 0
+split_offset = 40
+dragging_enabled = false
+dragger_visibility = 2
+
+[node name="placeholder" type="Label" parent="VBoxContainer/HSplitContainer/HSplitContainer3"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_chg43")
+label_settings = SubResource("LabelSettings_chg43")
+
+[node name="WorldCompletion" type="Label" parent="VBoxContainer/HSplitContainer/HSplitContainer3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_chg43")
+text = "Completion: 0%"
+label_settings = SubResource("LabelSettings_chg43")
+vertical_alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 44)
@@ -31,29 +84,6 @@ theme_override_styles/normal = ExtResource("2_chg43")
 text = "CH1: Testing"
 label_settings = ExtResource("2_rif6e")
 horizontal_alignment = 1
-
-[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-theme_override_constants/separation = 0
-split_offset = 314
-dragging_enabled = false
-dragger_visibility = 2
-
-[node name="placeholder" type="Label" parent="VBoxContainer/HSplitContainer"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-theme_override_styles/normal = ExtResource("2_chg43")
-label_settings = SubResource("LabelSettings_chg43")
-
-[node name="WorldCompletion" type="Label" parent="VBoxContainer/HSplitContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-theme_override_styles/normal = ExtResource("2_chg43")
-text = "Completion: 0%"
-label_settings = SubResource("LabelSettings_chg43")
-vertical_alignment = 1
 
 [node name="ButtonGrid" type="GridContainer" parent="VBoxContainer"]
 unique_name_in_owner = true
@@ -99,18 +129,37 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("2_chg43")
-text = "Best Time: 0:00:00"
+text = "1-1"
 label_settings = SubResource("LabelSettings_chg43")
 vertical_alignment = 1
+clip_text = true
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
-visible = false
-custom_minimum_size = Vector2(450, 304)
-layout_mode = 0
-offset_left = 100.0
-offset_top = 32.0
-offset_right = 550.0
-offset_bottom = 320.0
+[node name="HSplitContainer3" type="HSplitContainer" parent="VBoxContainer/HSplitContainer4"]
+custom_minimum_size = Vector2(184, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+split_offset = 40
+dragging_enabled = false
+dragger_visibility = 2
+
+[node name="placeholder2" type="Label" parent="VBoxContainer/HSplitContainer4/HSplitContainer3"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_chg43")
+label_settings = SubResource("LabelSettings_chg43")
+horizontal_alignment = 1
+
+[node name="LevelStats" type="Label" parent="VBoxContainer/HSplitContainer4/HSplitContainer3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = ExtResource("2_chg43")
+text = "Not Completed"
+label_settings = SubResource("LabelSettings_chg43")
+vertical_alignment = 1
 
 [node name="LevelPreview" parent="." instance=ExtResource("2_4ek2u")]
 visible = false
