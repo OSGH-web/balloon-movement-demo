@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://cjbv0ykkeab7y"]
+[gd_scene load_steps=6 format=4 uid="uid://hiiovqtynjeb"]
 
 [ext_resource type="PackedScene" uid="uid://cxo2r1hb7u2ss" path="res://scenes/level_base.tscn" id="1_dk84w"]
 [ext_resource type="PackedScene" uid="uid://cxdl0fqxwxba1" path="res://scenes/gas_can.tscn" id="2_sjxtm"]
@@ -47,5 +47,17 @@ position = Vector2(1622, 264)
 [node name="Slime2" parent="." index="15" instance=ExtResource("4_xy3xo")]
 position = Vector2(607, 264)
 
-[node name="Spike" parent="." index="17" instance=ExtResource("5_irrft")]
+[node name="Spike" parent="." index="16" instance=ExtResource("5_irrft")]
 position = Vector2(127, 1033)
+
+[node name="Spike2" parent="." index="17" instance=ExtResource("5_irrft")]
+position = Vector2(127, 310)
+rotation = 3.14159
+
+[node name="Spike3" parent="." index="18" instance=ExtResource("5_irrft")]
+position = Vector2(48, 647)
+rotation = 1.5708
+
+[node name="Spike4" parent="." index="19" instance=ExtResource("5_irrft")]
+position = Vector2(216, 647)
+rotation = 4.71239
