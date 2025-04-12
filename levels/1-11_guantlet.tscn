@@ -48,9 +48,9 @@ position = Vector2(1622, 264)
 [node name="Slime2" parent="." index="15" instance=ExtResource("4_0alfw")]
 position = Vector2(607, 264)
 
-[node name="Spike" parent="." index="17" instance=ExtResource("5_84md7")]
+[node name="Spike" parent="." index="16" instance=ExtResource("5_84md7")]
 position = Vector2(129, 1032)
 
-[node name="Spike2" parent="." index="18" instance=ExtResource("5_84md7")]
+[node name="Spike2" parent="." index="17" instance=ExtResource("5_84md7")]
 position = Vector2(129, 312)
 rotation = 3.14159

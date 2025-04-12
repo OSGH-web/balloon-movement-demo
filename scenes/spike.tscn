@@ -5,9 +5,11 @@
 
 [node name="Spike" type="Sprite2D"]
 texture = ExtResource("1_7a7y0")
+centered = false
 
 [node name="Killzone" parent="." instance=ExtResource("2_d2mqm")]
 position = Vector2(0, 1)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Killzone"]
+position = Vector2(24, 24)
 polygon = PackedVector2Array(-23, 21, 0, -23, 23, 21)
