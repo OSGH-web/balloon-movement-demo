@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqmhcdxpt65xa"]
+
+[ext_resource type="Script" uid="uid://dtutrxj5rlin" path="res://scripts/bat.gd" id="1_cnldk"]
+[ext_resource type="SpriteFrames" uid="uid://uo4jrtxm2o6h" path="res://assets/sprites/as2d_bat.res" id="2_lv0ya"]
+[ext_resource type="PackedScene" uid="uid://8enpp0nyrm0" path="res://scenes/killzone.tscn" id="3_48wkk"]
+[ext_resource type="Shape2D" uid="uid://ebvrtnmm7xa3" path="res://assets/hitboxes/bat_hitbox.tres" id="4_lv0ya"]
+
+[node name="Bat" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_cnldk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 3)
+scale = Vector2(-1, -1)
+sprite_frames = ExtResource("2_lv0ya")
+frame = 3
+
+[node name="Killzone" parent="." instance=ExtResource("3_48wkk")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(0, 4)
+shape = ExtResource("4_lv0ya")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = ExtResource("4_lv0ya")
+
+[node name="RayCastDown" type="RayCast2D" parent="."]
+target_position = Vector2(0, 156)
+collision_mask = 3
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-156, 0)
+collision_mask = 3
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+target_position = Vector2(156, 0)
+collision_mask = 3

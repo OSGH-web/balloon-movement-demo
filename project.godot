@@ -62,6 +62,7 @@ reset={
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Environment"
 2d_physics/layer_3="Killzone"
+2d_physics/layer_4="Enemy"
 
 [rendering]
 
