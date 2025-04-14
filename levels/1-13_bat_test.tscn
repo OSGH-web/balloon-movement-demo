@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dqmhcdxpt65xa" path="res://scenes/bat.tscn" id="2_2bk75"]
 
 [node name="LevelBase" instance=ExtResource("1_6wyox")]
+level_name = "Bat Test"
 height_in_tiles = 32
 
 [node name="Player" parent="." index="0"]

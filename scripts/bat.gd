@@ -3,7 +3,7 @@ extends CharacterBody2D
 enum States {IDLE, FOLLOWING}
 var state: States = States.IDLE
 
-var speed = 60;
+var speed = 72;
 
 @onready var ray_d: RayCast2D = $RayCastDown
 @onready var ray_l: RayCast2D = $RayCastLeft
@@ -25,6 +25,6 @@ func _physics_process(_delta: float) -> void:
 	if state == States.FOLLOWING:
 		var direction = $"../Player".position - position
 		direction = direction.normalized()
-		velocity = direction * SPEED
+		velocity = direction * speed
 
 	move_and_slide()
