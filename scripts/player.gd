@@ -72,6 +72,7 @@ func _get_friction():
 			# Check if tile is NOT ice
 			if not (source_id == ICE_SOURCE_ID && atlas_coords in ICE_ATLAS_COORDS):
 				on_ice = false
+				break
 
 	if on_ice:
 		return 0.0
