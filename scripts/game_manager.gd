@@ -50,7 +50,7 @@ func load_next_level():
 	get_tree().change_scene_to_file(level_path)
 	
 	
-func _on_player_died():
+func on_player_died():
 	if endZoneTriggered:
 		background_music.pitch_scale = 1.03
 		return

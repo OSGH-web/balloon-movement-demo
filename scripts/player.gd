@@ -22,19 +22,12 @@ var player_y_force = 300 * physics_scale_factor
 var player_x_force = 165 * physics_scale_factor
 var velocity_cutoff = 0.001 * physics_scale_factor
 
-@export var readyForRestart: bool = false
-
 signal player_died
-
-func _on_player_died():
-	readyForRestart = true
 	
-
 func _ready():
 	add_to_group("player")
 	camera.zoom = camera_scale
-	player_died.connect(_on_player_died)
-	player_died.connect(GameManager._on_player_died)
+	player_died.connect(GameManager.on_player_died)
 
 func add_fuel(amt):
 	FUEL += amt
@@ -54,7 +47,7 @@ func _physics_process(delta):
 		velocity -= velocity_update
 		# fuel is independent of scale
 		FUEL -= velocity_update.length() / physics_scale_factor
-	elif readyForRestart == false and timer.is_stopped():
+	elif timer.is_stopped():
 		GameManager.background_music.pitch_scale = 0.7
 		timer.start()
 
