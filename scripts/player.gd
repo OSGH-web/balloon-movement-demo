@@ -6,7 +6,6 @@ extends CharacterBody2D
 @export var staticCam: bool = false
 @onready var timer: Timer = $Timer
 @onready var camera = $Camera
-@onready var background_music: AudioStreamPlayer = get_parent().get_node("Background_Music")
 
 @onready var ray_dl: RayCast2D = %RayCastDownRight
 @onready var ray_dr: RayCast2D = %RayCastDownLeft
@@ -25,34 +24,20 @@ var player_y_force = 300 * physics_scale_factor
 var player_x_force = 165 * physics_scale_factor
 var velocity_cutoff = 0.001 * physics_scale_factor
 
-var readyForRestart: bool = false
-
 # Tilemap data
 const ICE_SOURCE_ID := 5
 const ICE_ATLAS_COORDS := [Vector2i(0, 0), Vector2i(1, 0)]
 
 signal player_died
-
-func _on_player_died():
-	readyForRestart = true
-
+	
 func _ready():
 	add_to_group("player")
 	camera.zoom = camera_scale
-	player_died.connect(_on_player_died)
+	player_died.connect(GameManager.on_player_died)
 
 func add_fuel(amt):
 	FUEL += amt
-	background_music.pitch_scale = 1.03 # Changesmusic to normal if you ran out of fuel then got it back. 
-
-func _input(event):
-	if event.is_action_pressed("reset"):
-		get_tree().reload_current_scene()
-	if readyForRestart:
-		if event.is_action_pressed("ui_a"):
-			get_tree().reload_current_scene()
-		if event.is_action_pressed("ui_q"):
-			return_to_world_select()
+	GameManager.background_music.pitch_scale = 1.03 # Changes music to normal if you ran out of fuel then got it back. 
 
 func _on_timer_timeout():
 	if int(FUEL) <= 0:
@@ -84,8 +69,8 @@ func _physics_process(delta):
 		velocity -= velocity_update
 		# fuel is independent of scale
 		FUEL -= velocity_update.length() / physics_scale_factor
-	elif readyForRestart == false and timer.is_stopped():
-		background_music.pitch_scale = 0.7
+	elif timer.is_stopped():
+		GameManager.background_music.pitch_scale = 0.7
 		timer.start()
 
 	if not is_on_floor():
@@ -134,8 +119,6 @@ func _update_animation(dir: Vector2):
 		else:
 			$AnimatedSprite2D.frame = 3  # down
 
-func return_to_world_select():
-	get_tree().change_scene_to_file("res://scenes/level_select.tscn")
 
 func _setup_camera_limits(map_width_px, map_height_px):
 	# by default, restrict the camera to the bounding box of the level

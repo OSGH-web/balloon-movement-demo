@@ -5,23 +5,15 @@ extends Area2D
 	set = set_size  # Calls `set_size` when changed in the Inspector
 @export var color: Color = Color(1, 0, 0, 0.5) :
 	set = set_color  # Calls `set_color` when changed in the Inspector
-
 @onready var collision_shape = $CollisionShape2D
 @onready var color_rect = $ColorRect
-
 func _ready():
 	body_entered.connect(_on_body_entered)
 	update_shape()
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):
-		return_to_world_select()
-
-func return_to_world_select():
-	# mark level completed
-	var scene_filename = get_tree().current_scene.scene_file_path.get_file()
-	SaveManager.mark_level_completed(scene_filename)
-	get_tree().change_scene_to_file("res://scenes/level_select.tscn")
+		GameManager.load_next_level()
 
 func _process(_delta):
 	if Engine.is_editor_hint():  # Only update in the editor

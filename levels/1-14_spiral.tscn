@@ -116,16 +116,17 @@ position = Vector2(304, 288)
 scale = Vector2(0.5, 0.5)
 
 [node name="Spike64" parent="Spikes" index="22" instance=ExtResource("2_cnp2b")]
-position = Vector2(360, 504)
+position = Vector2(384, 504)
 rotation = 3.14159
 scale = Vector2(0.5, 0.5)
 
 [node name="Spike62" parent="Spikes" index="23" instance=ExtResource("2_cnp2b")]
-position = Vector2(408, 528)
+position = Vector2(432, 512)
+rotation = -1.57967
 scale = Vector2(0.5, 0.5)
 
 [node name="Spike63" parent="Spikes" index="24" instance=ExtResource("2_cnp2b")]
-position = Vector2(272, 528)
+position = Vector2(296, 528)
 scale = Vector2(0.5, 0.5)
 
 [node name="Spike52" parent="Spikes" index="25" instance=ExtResource("2_cnp2b")]
@@ -244,77 +245,67 @@ position = Vector2(264, 424)
 rotation = -1.5708
 scale = Vector2(0.5, 0.5)
 
-[node name="Spike49" parent="Spikes" index="49" instance=ExtResource("2_cnp2b")]
-position = Vector2(168, 240)
-rotation = -1.5708
-scale = Vector2(0.5, 0.5)
-
-[node name="Spike30" parent="Spikes" index="50" instance=ExtResource("2_cnp2b")]
+[node name="Spike30" parent="Spikes" index="49" instance=ExtResource("2_cnp2b")]
 position = Vector2(48, 320)
 rotation = 1.57079
 scale = Vector2(0.5, 0.5)
 
-[node name="Spike67" parent="Spikes" index="51" instance=ExtResource("2_cnp2b")]
+[node name="Spike67" parent="Spikes" index="50" instance=ExtResource("2_cnp2b")]
 position = Vector2(144, 304)
 rotation = 1.57079
 scale = Vector2(0.5, 0.5)
 
-[node name="Spike68" parent="Spikes" index="52" instance=ExtResource("2_cnp2b")]
+[node name="Spike68" parent="Spikes" index="51" instance=ExtResource("2_cnp2b")]
 position = Vector2(144, 464)
 rotation = 1.57079
 scale = Vector2(0.5, 0.5)
 
-[node name="Spike3" parent="Spikes" index="53" instance=ExtResource("2_cnp2b")]
+[node name="Spike3" parent="Spikes" index="52" instance=ExtResource("2_cnp2b")]
 position = Vector2(600, 560)
 rotation = 1.57079
 scale = Vector2(0.5, 0.5)
 
-[node name="Spike6" parent="Spikes" index="54" instance=ExtResource("2_cnp2b")]
+[node name="Spike6" parent="Spikes" index="53" instance=ExtResource("2_cnp2b")]
 position = Vector2(624, 672)
 rotation = -1.5708
 scale = Vector2(0.5, 0.5)
 
-[node name="Spike16" parent="Spikes" index="55" instance=ExtResource("2_cnp2b")]
+[node name="Spike16" parent="Spikes" index="54" instance=ExtResource("2_cnp2b")]
 position = Vector2(624, 504)
 rotation = -1.5708
 scale = Vector2(0.5, 0.5)
 
-[node name="Spike38" parent="Spikes" index="56" instance=ExtResource("2_cnp2b")]
+[node name="Spike38" parent="Spikes" index="55" instance=ExtResource("2_cnp2b")]
 position = Vector2(600, 231)
 rotation = 1.57079
 scale = Vector2(0.5, 0.5)
 
-[node name="Spike39" parent="Spikes" index="57" instance=ExtResource("2_cnp2b")]
+[node name="Spike39" parent="Spikes" index="56" instance=ExtResource("2_cnp2b")]
 position = Vector2(624, 344)
 rotation = -1.5708
 scale = Vector2(0.5, 0.5)
 
-[node name="Spike40" parent="Spikes" index="58" instance=ExtResource("2_cnp2b")]
+[node name="Spike40" parent="Spikes" index="57" instance=ExtResource("2_cnp2b")]
 position = Vector2(600, 393)
 rotation = 1.57079
 scale = Vector2(0.5, 0.5)
 
-[node name="Spike9" parent="Spikes" index="59" instance=ExtResource("2_cnp2b")]
+[node name="Spike9" parent="Spikes" index="58" instance=ExtResource("2_cnp2b")]
 position = Vector2(504, 480)
 rotation = 1.57079
 scale = Vector2(0.5, 0.5)
 
-[node name="Spike47" parent="Spikes" index="60" instance=ExtResource("2_cnp2b")]
-position = Vector2(504, 312)
-rotation = 1.57079
-scale = Vector2(0.5, 0.5)
-
-[node name="Spike54" parent="Spikes" index="61" instance=ExtResource("2_cnp2b")]
+[node name="Spike54" parent="Spikes" index="59" instance=ExtResource("2_cnp2b")]
 position = Vector2(240, 480)
 rotation = 1.57079
 scale = Vector2(0.5, 0.5)
 
-[node name="Spike55" parent="Spikes" index="62" instance=ExtResource("2_cnp2b")]
+[node name="Spike55" parent="Spikes" index="60" instance=ExtResource("2_cnp2b")]
 position = Vector2(240, 312)
 rotation = 1.57079
 scale = Vector2(0.5, 0.5)
 
-[node name="Spike11" parent="Spikes" index="63" instance=ExtResource("2_cnp2b")]
+[node name="Spike11" parent="Spikes" index="61" instance=ExtResource("2_cnp2b")]
 position = Vector2(144, 624)
 rotation = 1.57079
 scale = Vector2(0.5, 0.5)
@@ -332,5 +323,8 @@ position = Vector2(624, 144)
 [node name="GasCan4" parent="." index="9" instance=ExtResource("4_cnp2b")]
 position = Vector2(192, 632)
 
-[node name="GasCan2" parent="." index="10" instance=ExtResource("4_cnp2b")]
+[node name="GasCan5" parent="." index="10" instance=ExtResource("4_cnp2b")]
+position = Vector2(384, 296)
+
+[node name="GasCan2" parent="." index="11" instance=ExtResource("4_cnp2b")]
 position = Vector2(80, 728)

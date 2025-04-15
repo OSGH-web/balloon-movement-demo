@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnrjc1o517gjp"]
+
+[ext_resource type="Script" uid="uid://dkbvg85t2nhy5" path="res://scripts/UI/hud.gd" id="1_y5tme"]
+[ext_resource type="StyleBox" uid="uid://cyxkpmb0rpdry" path="res://assets/styles/sbf_mid_transparent.tres" id="2_18exe"]
+[ext_resource type="LabelSettings" uid="uid://cbw7oatl30dvl" path="res://assets/styles/label_33px.tres" id="3_0jeyp"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_y5tme")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 264.0
+offset_top = 24.0
+offset_right = 264.0
+offset_bottom = 24.0
+size_flags_horizontal = 0
+
+[node name="Fuel" type="Label" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 1400.0
+offset_right = 1610.0
+offset_bottom = 48.0
+grow_horizontal = 0
+theme_override_styles/normal = ExtResource("2_18exe")
+text = "Fuel: 1000"
+label_settings = ExtResource("3_0jeyp")
+vertical_alignment = 1
+
+[node name="Lives" type="Label" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = -210.0
+offset_right = -40.0
+offset_bottom = 48.0
+theme_override_styles/normal = ExtResource("2_18exe")
+label_settings = ExtResource("3_0jeyp")
+vertical_alignment = 1
+
+[node name="Level_Complete" type="Label" parent="Control"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 310.0
+offset_top = 400.0
+offset_right = 1087.0
+offset_bottom = 442.0
+theme_override_styles/normal = ExtResource("2_18exe")
+text = "Level Complete! Loading Next Level..."
+label_settings = ExtResource("3_0jeyp")
+horizontal_alignment = 1
+vertical_alignment = 1
