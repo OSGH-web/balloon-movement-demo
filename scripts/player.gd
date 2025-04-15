@@ -1,7 +1,6 @@
  # Player.gd (CharacterBody2D)
 extends CharacterBody2D
 
-@export var tilemaplayer: TileMapLayer
 @export var FUEL = 2000
 @export var camera_scale: Vector2 = Vector2(1.0, 1.0)
 @export var staticCam: bool = false
