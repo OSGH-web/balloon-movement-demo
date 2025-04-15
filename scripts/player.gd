@@ -61,7 +61,6 @@ func _on_timer_timeout():
 func _get_friction():
 	var tilemap: TileMapLayer = $"../Terrain"
 
-	var on_ice = true
 	for ray in [ray_dl, ray_dr]:
 		if ray.is_colliding():
 			var foot_position = ray.get_collision_point()
@@ -71,13 +70,9 @@ func _get_friction():
 
 			# Check if tile is NOT ice
 			if not (source_id == ICE_SOURCE_ID && atlas_coords in ICE_ATLAS_COORDS):
-				on_ice = false
-				break
+				return FRICTION
 
-	if on_ice:
-		return 0.0
-
-	return FRICTION;
+	return 0.0;
 
 func _physics_process(delta):
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
