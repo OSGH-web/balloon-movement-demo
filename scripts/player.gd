@@ -1,12 +1,14 @@
  # Player.gd (CharacterBody2D)
 extends CharacterBody2D
 
-@export var tilemaplayer: TileMapLayer
 @export var FUEL = 2000
 @export var camera_scale: Vector2 = Vector2(1.0, 1.0)
 @export var staticCam: bool = false
 @onready var timer: Timer = $Timer
 @onready var camera = $Camera
+
+@onready var ray_dl: RayCast2D = %RayCastDownRight
+@onready var ray_dr: RayCast2D = %RayCastDownLeft
 
 # physics are designed for an 8px x 8px tileset -- 8px == 1m
 const BASE_TILE_SIZE_PX = 8
@@ -22,6 +24,10 @@ var player_y_force = 300 * physics_scale_factor
 var player_x_force = 165 * physics_scale_factor
 var velocity_cutoff = 0.001 * physics_scale_factor
 
+# Tilemap data
+const ICE_SOURCE_ID := 5
+const ICE_ATLAS_COORDS := [Vector2i(0, 0), Vector2i(1, 0)]
+
 signal player_died
 	
 func _ready():
@@ -36,7 +42,23 @@ func add_fuel(amt):
 func _on_timer_timeout():
 	if int(FUEL) <= 0:
 		emit_signal("player_died")
-		
+
+func _get_friction():
+	var tilemap: TileMapLayer = $"../Terrain"
+
+	for ray in [ray_dl, ray_dr]:
+		if ray.is_colliding():
+			var foot_position = ray.get_collision_point()
+			var tile_pos = tilemap.local_to_map(foot_position)
+			var source_id = tilemap.get_cell_source_id(tile_pos)
+			var atlas_coords = tilemap.get_cell_atlas_coords(tile_pos)
+
+			# Check if tile is NOT ice
+			if not (source_id == ICE_SOURCE_ID && atlas_coords in ICE_ATLAS_COORDS):
+				return FRICTION
+
+	return 0.0;
+
 func _physics_process(delta):
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var velocity_update = input_dir
@@ -56,8 +78,7 @@ func _physics_process(delta):
 	elif abs(velocity.x) < velocity_cutoff:
 		velocity.x = 0
 	else:
-		# Makes you slow down when you land on the floor. Smaller than vel.x so slows you down. 
-		velocity.x += FRICTION * delta * velocity.x
+		velocity.x += _get_friction() * delta * velocity.x
 
 	move_and_slide()
 	
