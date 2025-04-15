@@ -73,8 +73,3 @@ func _on_player_died():
 func get_player(): 
 	var level = get_tree().get_current_scene()
 	return level.get_node("Player")
-	
-
-#func _process(delta: float):
-	#if level_complete:
-		#pass
