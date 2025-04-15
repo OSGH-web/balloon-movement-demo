@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ch25rn4vvdwx6"
-path="res://.godot/imported/kirby_ice_tileset.png-0e34faa52fcfc53acfe1f47f486b7b9a.ctex"
+path="res://.godot/imported/ice_tileset.png-a29472e6acf8eb84b67af9c6fe80fc3a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/kirby_ice_tileset.png"
-dest_files=["res://.godot/imported/kirby_ice_tileset.png-0e34faa52fcfc53acfe1f47f486b7b9a.ctex"]
+source_file="res://assets/tilesets/ice_tileset.png"
+dest_files=["res://.godot/imported/ice_tileset.png-a29472e6acf8eb84b67af9c6fe80fc3a.ctex"]
 
 [params]
 
