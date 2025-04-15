@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blas7q5tx6yqg"
-path="res://.godot/imported/kirby_ice_surface.png-c182d27e012d1d496ff031087fe49cc5.ctex"
+uid="uid://ch25rn4vvdwx6"
+path="res://.godot/imported/kirby_ice_tileset.png-0e34faa52fcfc53acfe1f47f486b7b9a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/kirby_ice_surface.png"
-dest_files=["res://.godot/imported/kirby_ice_surface.png-c182d27e012d1d496ff031087fe49cc5.ctex"]
+source_file="res://assets/tilesets/kirby_ice_tileset.png"
+dest_files=["res://.godot/imported/kirby_ice_tileset.png-0e34faa52fcfc53acfe1f47f486b7b9a.ctex"]
 
 [params]
 
