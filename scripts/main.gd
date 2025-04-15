@@ -2,4 +2,5 @@
 extends Node
 
 func _ready():
+	GameManager.reset()
 	GameManager.load_next_level()

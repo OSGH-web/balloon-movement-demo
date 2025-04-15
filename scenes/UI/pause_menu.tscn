@@ -64,16 +64,6 @@ theme_override_styles/hover = ExtResource("2_5d2l8")
 theme_override_styles/normal = ExtResource("2_5d2l8")
 text = "Mute Audio"
 
-[node name="LevelSelectButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-theme = ExtResource("2_myx47")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/focus = ExtResource("5_7l7mv")
-theme_override_styles/hover = ExtResource("2_5d2l8")
-theme_override_styles/normal = ExtResource("2_5d2l8")
-text = "Quit to Level Select"
-
 [node name="QuitButton" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
@@ -88,5 +78,4 @@ text = "Quit to Desktop"
 
 [connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/MuteAudioButton" to="." method="_on_mute_audio_button_pressed"]
-[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/LevelSelectButton" to="." method="_on_level_select_button_pressed"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

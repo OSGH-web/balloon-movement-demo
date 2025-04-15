@@ -5,10 +5,8 @@ extends Area2D
 	set = set_size  # Calls `set_size` when changed in the Inspector
 @export var color: Color = Color(1, 0, 0, 0.5) :
 	set = set_color  # Calls `set_color` when changed in the Inspector
-
 @onready var collision_shape = $CollisionShape2D
 @onready var color_rect = $ColorRect
-
 func _ready():
 	body_entered.connect(_on_body_entered)
 	update_shape()

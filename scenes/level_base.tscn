@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cxo2r1hb7u2ss"]
+[gd_scene load_steps=8 format=3 uid="uid://cxo2r1hb7u2ss"]
 
 [ext_resource type="Script" uid="uid://lkphrvhitvd" path="res://scripts/level_base.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://b7jfvkf4edbjp" path="res://scenes/player.tscn" id="2_0xm2m"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://df1fbghclur2h" path="res://scripts/terrain.gd" id="4_1bvp3"]
 [ext_resource type="TileSet" uid="uid://clmawpyff0gle" path="res://assets/tilesets/Caves_Forest.tres" id="4_krm4r"]
 [ext_resource type="PackedScene" uid="uid://b3h1d6irllu2r" path="res://scenes/UI/pause_menu.tscn" id="5_8rhjg"]
-[ext_resource type="AudioStream" uid="uid://cquaalpknb8c6" path="res://assets/sound_fx/background_music.ogg" id="6_krm4r"]
 [ext_resource type="PackedScene" uid="uid://dnrjc1o517gjp" path="res://scenes/UI/fuel_label.tscn" id="7_8n3nq"]
 
 [node name="LevelBase" type="Node2D"]
@@ -24,12 +23,6 @@ tilemaplayer = NodePath("../Terrain")
 [node name="Terrain" parent="." instance=ExtResource("3_h2yge")]
 tile_set = ExtResource("4_krm4r")
 script = ExtResource("4_1bvp3")
-
-[node name="Background_Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_krm4r")
-pitch_scale = 1.03
-autoplay = true
-bus = &"Music"
 
 [node name="Pause Menu" parent="." instance=ExtResource("5_8rhjg")]
 
