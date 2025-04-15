@@ -64,8 +64,8 @@ func _get_friction():
 	var on_ice = true
 	for ray in [ray_dl, ray_dr]:
 		if ray.is_colliding():
-			var position = ray.get_collision_point()
-			var tile_pos = tilemap.local_to_map(position)
+			var foot_position = ray.get_collision_point()
+			var tile_pos = tilemap.local_to_map(foot_position)
 			var source_id = tilemap.get_cell_source_id(tile_pos)
 			var atlas_coords = tilemap.get_cell_atlas_coords(tile_pos)
 
