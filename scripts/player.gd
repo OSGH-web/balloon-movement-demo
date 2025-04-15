@@ -57,7 +57,27 @@ func _input(event):
 func _on_timer_timeout():
 	if int(FUEL) <= 0:
 		emit_signal("player_died")
-		
+
+func _get_friction():
+	var tilemap: TileMapLayer = $"../Terrain"
+
+	var on_ice = true
+	for ray in [ray_dl, ray_dr]:
+		if ray.is_colliding():
+			var position = ray.get_collision_point()
+			var tile_pos = tilemap.local_to_map(position)
+			var source_id = tilemap.get_cell_source_id(tile_pos)
+			var atlas_coords = tilemap.get_cell_atlas_coords(tile_pos)
+
+			# Check if tile is NOT ice
+			if not (source_id == ICE_SOURCE_ID && atlas_coords in ICE_ATLAS_COORDS):
+				on_ice = false
+
+	if on_ice:
+		return 0.0
+
+	return FRICTION;
+
 func _physics_process(delta):
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var velocity_update = input_dir
@@ -77,24 +97,7 @@ func _physics_process(delta):
 	elif abs(velocity.x) < velocity_cutoff:
 		velocity.x = 0
 	else:
-		var tilemap: TileMapLayer = $"../Terrain"
-
-		var on_ice = true
-		for ray in [ray_dl, ray_dr]:
-			if ray.is_colliding():
-				var position = ray.get_collision_point()
-				var tile_pos = tilemap.local_to_map(position)
-				var source_id = tilemap.get_cell_source_id(tile_pos)
-				var atlas_coords = tilemap.get_cell_atlas_coords(tile_pos)
-
-				# Check if tile is NOT ice
-				if not (source_id == ICE_SOURCE_ID && atlas_coords in ICE_ATLAS_COORDS):
-					on_ice = false
-
-		var friction = FRICTION
-		if on_ice:
-			friction = 0.0
-		velocity.x += friction * delta * velocity.x
+		velocity.x += _get_friction() * delta * velocity.x
 
 	move_and_slide()
 	
