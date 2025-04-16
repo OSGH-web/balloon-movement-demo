@@ -8,8 +8,5 @@ func _process(_delta: float) -> void:
 	
 	var fuel_amount = max(0, int(player.FUEL))
 	%Fuel.text = "Fuel: %d" % fuel_amount
-	%Lives.text = "Lives: %d" % GameManager.lives	
-	if GameManager.levelComplete:
-		%Level_Complete.visible = true
-	else:
-		%Level_Complete.visible = false
+	%Lives.text = "Lives: %d" % GameManager.lives
+	%Score.text = "Score: %d" % GameManager.score
