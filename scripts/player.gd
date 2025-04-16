@@ -88,7 +88,13 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 		# only airbrake if the player is not otherwise moving
 		if airbrake_pressed && velocity_update == Vector2.ZERO:
+			# always apply the airbrake horizontally
 			velocity.x += FRICTION * delta * velocity.x
+
+			# apply the airbrake vertically if the player is moving upwards
+			if velocity.y < 0:
+				velocity.y += FRICTION * delta * velocity.y
+
 	elif abs(velocity.x) < velocity_cutoff:
 		velocity.x = 0
 	else:
