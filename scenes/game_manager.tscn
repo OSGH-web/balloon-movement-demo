@@ -22,7 +22,7 @@ bus = &"Music"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Player_Died" type="Label" parent="CanvasLayer"]
+[node name="GameInfo" type="Label" parent="CanvasLayer"]
 unique_name_in_owner = true
 visible = false
 anchors_preset = 8

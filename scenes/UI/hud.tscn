@@ -22,9 +22,9 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 1400.0
-offset_right = 1610.0
-offset_bottom = 48.0
+offset_left = -210.0
+offset_top = 60.0
+offset_bottom = 108.0
 grow_horizontal = 0
 theme_override_styles/normal = ExtResource("2_18exe")
 text = "Fuel: 1000"
@@ -41,16 +41,11 @@ theme_override_styles/normal = ExtResource("2_18exe")
 label_settings = ExtResource("3_0jeyp")
 vertical_alignment = 1
 
-[node name="Level_Complete" type="Label" parent="Control"]
+[node name="Score" type="Label" parent="Control"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 0
-offset_left = 310.0
-offset_top = 400.0
-offset_right = 1087.0
-offset_bottom = 442.0
+offset_left = 1350.0
+offset_right = 1390.0
+offset_bottom = 42.0
 theme_override_styles/normal = ExtResource("2_18exe")
-text = "Level Complete! Loading Next Level..."
 label_settings = ExtResource("3_0jeyp")
-horizontal_alignment = 1
-vertical_alignment = 1
