@@ -4,10 +4,10 @@
 extends Control
 var curr_level = 0
 var lives = 1
-# TODO: Implement score feature and give extra lives for enough score.
+# 10k score gives an extra life. You automatically get 1k per level, plus however much fuel you have left over. 
 var score = 0
+var extraLivesDivisor = 1
 var level_files = []
-var levelComplete = false
 var endZoneTriggered = false
 # Show a message upon levelCompletion
 @onready var background_music = $Background_Music
@@ -30,43 +30,63 @@ func load_levels():
 func reset():
 	lives = 3
 	score = 0
+	extraLivesDivisor = 1
 	curr_level = 0
 	background_music.pitch_scale = 1.03
 	
 func load_next_level():
-	levelComplete = true
 	if curr_level > 0:
-		var player = get_player()
-		# Prevents bug where level resets if enetering endzone when out of fuel. 
+		background_music.pitch_scale = 1.03
+		# Prevents bug where level resets if entering endzone when out of fuel. 
 		endZoneTriggered = true
 		# Freeze to prevent player death after endzone trigger
-		player.set_physics_process(false)
-		await get_tree().create_timer(2).timeout
-		player.set_physics_process(true)
-		endZoneTriggered = false
+		await calculateScore() 
+		await get_tree().create_timer(1).timeout
 	var level_path = "res://levels/%s" % level_files[curr_level]
 	curr_level += 1
-	levelComplete = false
 	get_tree().change_scene_to_file(level_path)
+	# Must go after changing scene to avoid issues.
+	endZoneTriggered = false
 	
-	
+func calculateScore():
+	%GameInfo.text = "Level Complete! +1000 Score!"
+	%GameInfo.visible = true
+	await get_tree().create_timer(1).timeout
+	score += 1000 # for level clear
+	%GameInfo.visible = false
+	await scoreCountDown()
+	if score > 10000 * extraLivesDivisor:
+		lives += 1
+		extraLivesDivisor += 1
+		
+func scoreCountDown():
+	var player = get_player()
+	while player.FUEL > 0:
+		if player.FUEL <= 5:
+			player.FUEL -= 1
+			score += 1
+		else:
+			player.FUEL -= 5
+			score += 5
+		await get_tree().process_frame
+		
 func on_player_died():
 	if endZoneTriggered:
 		background_music.pitch_scale = 1.03
 		return
 	lives -= 1
 	if lives > 0:
-		%Player_Died.text = "YOU DIED! RESETTING LEVEL..."
-		%Player_Died.visible = true
+		%GameInfo.text = "YOU DIED! RESETTING LEVEL..."
+		%GameInfo.visible = true
 		await get_tree().create_timer(2).timeout
 		background_music.pitch_scale = 1.03
-		%Player_Died.visible = false
+		%GameInfo.visible = false
 		get_tree().reload_current_scene()
 	else:
-		%Player_Died.text = "GAME OVER! BACK TO LEVEL 1 :) "
-		%Player_Died.visible = true
+		%GameInfo.text = "GAME OVER! BACK TO LEVEL 1 :) "
+		%GameInfo.visible = true
 		await get_tree().create_timer(2).timeout
-		%Player_Died.visible = false
+		%GameInfo.visible = false
 		reset()
 		load_next_level()
 

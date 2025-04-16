@@ -42,7 +42,7 @@ func add_fuel(amt):
 	GameManager.background_music.pitch_scale = 1.03 # Changes music to normal if you ran out of fuel then got it back. 
 
 func _on_timer_timeout():
-	if int(FUEL) <= 0:
+	if int(FUEL) <= 0 && not GameManager.endZoneTriggered:
 		emit_signal("player_died")
 
 func _get_friction():
@@ -78,8 +78,9 @@ func _physics_process(delta):
 	if FUEL > 0:
 		velocity -= velocity_update
 		# fuel is independent of scale
-		FUEL -= velocity_update.length() / physics_scale_factor
-	elif timer.is_stopped():
+		if not GameManager.endZoneTriggered:
+			FUEL -= velocity_update.length() / physics_scale_factor
+	elif timer.is_stopped() and not GameManager.endZoneTriggered:
 		GameManager.background_music.pitch_scale = 0.7
 		timer.start()
 

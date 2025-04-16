@@ -42,15 +42,15 @@ position = Vector2(1836, 1040)
 position = Vector2(384, 736)
 size = Vector2(240, 600)
 
-[node name="Slime" parent="." index="14" instance=ExtResource("4_0alfw")]
+[node name="Slime" parent="." index="13" instance=ExtResource("4_0alfw")]
 position = Vector2(1622, 264)
 
-[node name="Slime2" parent="." index="15" instance=ExtResource("4_0alfw")]
+[node name="Slime2" parent="." index="14" instance=ExtResource("4_0alfw")]
 position = Vector2(607, 264)
 
-[node name="Spike" parent="." index="16" instance=ExtResource("5_84md7")]
-position = Vector2(129, 1032)
+[node name="Spike" parent="." index="15" instance=ExtResource("5_84md7")]
+position = Vector2(104, 1008)
 
-[node name="Spike2" parent="." index="17" instance=ExtResource("5_84md7")]
-position = Vector2(129, 312)
+[node name="Spike2" parent="." index="16" instance=ExtResource("5_84md7")]
+position = Vector2(152, 336)
 rotation = 3.14159
