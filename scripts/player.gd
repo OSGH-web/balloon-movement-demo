@@ -29,7 +29,9 @@ const ICE_SOURCE_ID := 5
 const ICE_ATLAS_COORDS := [Vector2i(0, 0), Vector2i(1, 0)]
 
 signal player_died
-	
+
+var airbrake_enabled = false
+
 func _ready():
 	add_to_group("player")
 	camera.zoom = camera_scale
@@ -59,6 +61,16 @@ func _get_friction():
 
 	return 0.0;
 
+
+func _input(event):
+	if event.is_action_pressed("ui_a"):
+		airbrake_enabled = true
+		%BrakeFeedback.visible = true
+	if event.is_action_released("ui_a"):
+		airbrake_enabled = false
+		%BrakeFeedback.visible = false
+
+
 func _physics_process(delta):
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var velocity_update = input_dir
@@ -75,6 +87,8 @@ func _physics_process(delta):
 
 	if not is_on_floor():
 		velocity.y += gravity * delta
+		if airbrake_enabled:
+			velocity.x += FRICTION * delta * velocity.x
 	elif abs(velocity.x) < velocity_cutoff:
 		velocity.x = 0
 	else:
