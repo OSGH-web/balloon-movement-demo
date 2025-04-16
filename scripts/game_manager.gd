@@ -76,17 +76,17 @@ func on_player_died():
 		return
 	lives -= 1
 	if lives > 0:
-		%Game_Info.text = "YOU DIED! RESETTING LEVEL..."
-		%Game_Info.visible = true
+		%GameInfo.text = "YOU DIED! RESETTING LEVEL..."
+		%GameInfo.visible = true
 		await get_tree().create_timer(2).timeout
 		background_music.pitch_scale = 1.03
-		%Game_Died.visible = false
+		%GameInfo.visible = false
 		get_tree().reload_current_scene()
 	else:
-		%Game_Info.text = "GAME OVER! BACK TO LEVEL 1 :) "
-		%Game_Info.visible = true
+		%GameInfo.text = "GAME OVER! BACK TO LEVEL 1 :) "
+		%GameInfo.visible = true
 		await get_tree().create_timer(2).timeout
-		%Game_Info.visible = false
+		%GameInfo.visible = false
 		reset()
 		load_next_level()
 
