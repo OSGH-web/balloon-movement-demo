@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b7jfvkf4edbjp"]
+[gd_scene load_steps=15 format=3 uid="uid://b7jfvkf4edbjp"]
 
 [ext_resource type="Script" uid="uid://d3nwiwsfywf3b" path="res://scripts/player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://cbgt5n5gfv3om" path="res://assets/sprites/spelunky_testing_sprite_fire.png" id="3_qhqgy"]
@@ -39,6 +39,10 @@ region = Rect2(280, 0, 40, 40)
 atlas = ExtResource("3_qhqgy")
 region = Rect2(320, 0, 40, 40)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
+atlas = ExtResource("3_qhqgy")
+region = Rect2(360, 0, 40, 40)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ivps1"]
 animations = [{
 "frames": [{
@@ -68,19 +72,14 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3v2ag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2els")
 }],
 "loop": true,
 "name": &"new_animation",
 "speed": 5.0
 }]
-
-[sub_resource type="Gradient" id="Gradient_g2els"]
-colors = PackedColorArray(0.980392, 0, 0.564706, 1, 0.980392, 0, 0.564706, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_qhqgy"]
-gradient = SubResource("Gradient_g2els")
-width = 8
-height = 8
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(8, 8)
@@ -93,13 +92,6 @@ script = ExtResource("1_onrkg")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ivps1")
 animation = &"new_animation"
-centered = false
-
-[node name="BrakeFeedback" type="Sprite2D" parent="AnimatedSprite2D"]
-unique_name_in_owner = true
-visible = false
-position = Vector2(16, 16)
-texture = SubResource("GradientTexture2D_qhqgy")
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

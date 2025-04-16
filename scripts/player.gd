@@ -30,7 +30,7 @@ const ICE_ATLAS_COORDS := [Vector2i(0, 0), Vector2i(1, 0)]
 
 signal player_died
 
-var airbrake_enabled = false
+var airbrake_pressed = false
 
 func _ready():
 	add_to_group("player")
@@ -64,11 +64,9 @@ func _get_friction():
 
 func _input(event):
 	if event.is_action_pressed("ui_a"):
-		airbrake_enabled = true
-		%BrakeFeedback.visible = true
+		airbrake_pressed = true
 	if event.is_action_released("ui_a"):
-		airbrake_enabled = false
-		%BrakeFeedback.visible = false
+		airbrake_pressed = false
 
 
 func _physics_process(delta):
@@ -87,7 +85,8 @@ func _physics_process(delta):
 
 	if not is_on_floor():
 		velocity.y += gravity * delta
-		if airbrake_enabled:
+		# only airbrake if the player is not otherwise moving
+		if airbrake_pressed && velocity_update == Vector2.ZERO:
 			velocity.x += FRICTION * delta * velocity.x
 	elif abs(velocity.x) < velocity_cutoff:
 		velocity.x = 0
@@ -107,8 +106,12 @@ func _physics_process(delta):
 
 func _update_animation(dir: Vector2):
 	if dir == Vector2.ZERO:
-		$AnimatedSprite2D.frame = 0
-		return
+		if airbrake_pressed:
+			$AnimatedSprite2D.frame = 9
+			return
+		else:
+			$AnimatedSprite2D.frame = 0
+			return
 
 	if int(FUEL) <= 0:
 		$AnimatedSprite2D.frame = 0
