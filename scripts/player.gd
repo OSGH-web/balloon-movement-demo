@@ -114,7 +114,29 @@ func _physics_process(delta):
 func _update_animation(dir: Vector2):
 	if dir == Vector2.ZERO:
 		if airbrake_pressed:
-			$AnimatedSprite2D.frame = 9
+			# Moving down
+			if velocity.y >= 0:
+				# Left
+				if velocity.x < 0:
+					$AnimatedSprite2D.frame = 9
+				# Right
+				elif velocity.x > 0:
+					$AnimatedSprite2D.frame = 10
+				# No Brake
+				else:
+					$AnimatedSprite2D.frame = 0
+
+			# Moving up
+			else:
+				# Up + Left
+				if velocity.x < 0:
+					$AnimatedSprite2D.frame = 12
+				# Up + Right
+				elif velocity.x > 0:
+					$AnimatedSprite2D.frame = 13
+				# Up only
+				else:
+					$AnimatedSprite2D.frame = 11
 			return
 		else:
 			$AnimatedSprite2D.frame = 0
