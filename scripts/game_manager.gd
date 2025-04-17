@@ -56,12 +56,10 @@ func calculateScore():
 	%GameInfo.visible = false
 	await scoreCountDown()
 
-	var extra_life_frame_delay = 45
 	while score > 10000 * extraLivesDivisor:
+		await get_tree().create_timer(.5).timeout
 		lives += 1
 		extraLivesDivisor += 1
-		for i in range(extra_life_frame_delay):
-			await get_tree().process_frame
 		
 func scoreCountDown():
 	var player = get_player()
