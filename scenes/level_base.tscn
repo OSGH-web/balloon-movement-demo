@@ -6,19 +6,18 @@
 [ext_resource type="Script" uid="uid://df1fbghclur2h" path="res://scripts/terrain.gd" id="4_1bvp3"]
 [ext_resource type="TileSet" uid="uid://clmawpyff0gle" path="res://assets/tilesets/Caves_Forest.tres" id="4_krm4r"]
 [ext_resource type="PackedScene" uid="uid://b3h1d6irllu2r" path="res://scenes/UI/pause_menu.tscn" id="5_8rhjg"]
-[ext_resource type="PackedScene" uid="uid://dnrjc1o517gjp" path="res://scenes/UI/fuel_label.tscn" id="7_8n3nq"]
+[ext_resource type="PackedScene" uid="uid://dnrjc1o517gjp" path="res://scenes/UI/hud.tscn" id="7_8n3nq"]
 
 [node name="LevelBase" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_1bvp3")
 
-[node name="Player" parent="." node_paths=PackedStringArray("tilemaplayer") instance=ExtResource("2_0xm2m")]
+[node name="Player" parent="." instance=ExtResource("2_0xm2m")]
 z_index = 1
 z_as_relative = false
 slide_on_ceiling = false
 floor_constant_speed = true
 safe_margin = 0.001
-tilemaplayer = NodePath("../Terrain")
 
 [node name="Terrain" parent="." instance=ExtResource("3_h2yge")]
 tile_set = ExtResource("4_krm4r")
