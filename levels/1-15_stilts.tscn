@@ -1,0 +1,451 @@
+[gd_scene load_steps=6 format=4 uid="uid://d0g443jk6tkyw"]
+
+[ext_resource type="PackedScene" uid="uid://cxo2r1hb7u2ss" path="res://scenes/level_base.tscn" id="1_71vr1"]
+[ext_resource type="PackedScene" uid="uid://bvn2y2nnqcrts" path="res://scenes/end_zone.tscn" id="2_fco1f"]
+[ext_resource type="PackedScene" uid="uid://c6i6ci2ym6wn6" path="res://scenes/spike.tscn" id="3_451h2"]
+[ext_resource type="PackedScene" uid="uid://cxdl0fqxwxba1" path="res://scenes/gas_can.tscn" id="4_i7llm"]
+[ext_resource type="PackedScene" uid="uid://dqmhcdxpt65xa" path="res://scenes/bat.tscn" id="5_58la7"]
+
+[node name="LevelBase" instance=ExtResource("1_71vr1")]
+level_name = "Stilts"
+width_in_tiles = 64
+height_in_tiles = 29
+
+[node name="Terrain" parent="." index="1"]
+tile_map_data = PackedByteArray("AAAAABsAAAABAAEAAFAAABoAAAABAAEAAFAAABkAAAABAAEAAFAAABgAAQAFAAMAAAAAABcAAAABAAEAAFAAABYAAAABAAEAAFAAABUAAAABAAEAAFAAABQAAQAFAAMAAAAAABMAAAABAAEAAFAAABIAAAABAAEAAFAAABEAAAABAAEAAFAAABAAAQAFAAMAAAAAAA8AAAABAAEAAFAAAA4AAQAFAAMAAAAAAA0AAAABAAEAAFAAAAwAAQAFAAMAAAAAAAsAAAABAAEAAFAAAAoAAAABAAEAAFAAAAkAAAABAAEAAFAAAAgAAQAFAAMAAAAAAAcAAAABAAEAAFAAAAYAAAABAAEAAFAAAAUAAAABAAEAAFAAAAQAAQAFAAMAAAAAAAMAAAABAAEAAFAAAAIAAAABAAEAAFAAAAEAAAABAAEAAFAAAAAAAQAFAAMAAAA/AA4AAQAFAAMAAAA/AAAAAQAFAAMAAAA/AAEAAQAFAAMAAAA/AAIAAQAFAAMAAAA/AAMAAQAFAAMAAAA/AAQAAQAFAAMAAAA/AAUAAQAFAAMAAAA/AAYAAQAFAAMAAAA/AAcAAQAFAAMAAAA/AAgAAQAFAAMAAAA/AAkAAQAFAAMAAAA/AAoAAQAFAAMAAAA/AAsAAQAFAAMAAAA/AAwAAQAFAAMAAAA/AA0AAQAFAAMAAAA/AA8AAQAFAAMAAAA/ABAAAQAFAAMAAAA/ABEAAQAFAAMAAAA/ABIAAQAFAAMAAAA/ABMAAQAFAAMAAAA/ABQAAQAFAAMAAAA/ABUAAQAFAAMAAAA/ABYAAQAFAAMAAAA/ABcAAQAFAAMAAAA/ABgAAQAFAAMAAAA/ABkAAQAFAAMAAAA/ABoAAQAFAAMAAAA/ABsAAQAFAAMAAAA/ABwAAQAFAAMAAAA+ABwAAQAFAAMAAAA9ABwAAQAFAAMAAAA8ABwAAQACAAMAAAA7ABwAAQAFAAMAAAA6ABwAAQAFAAMAAAA5ABwAAQAFAAMAAAA4ABwAAQACAAMAAAA3ABwAAQAFAAMAAAA2ABwAAQAFAAMAAAA1ABwAAQAFAAMAAAA0ABwAAQACAAMAAAAzABwAAQAFAAMAAAAyABwAAQAFAAMAAAAxABwAAQAFAAMAAAAwABwAAQACAAMAAAAvABwAAQAFAAMAAAAuABwAAQAFAAMAAAAtABwAAQAFAAMAAAAsABwAAQACAAMAAAArABwAAQAFAAMAAAAqABwAAQAFAAMAAAApABwAAQAFAAMAAAAoABwAAQACAAMAAAAnABwAAQAFAAMAAAAmABwAAQAFAAMAAAAlABwAAQAFAAMAAAAkABwAAQACAAMAAAAjABwAAQAFAAMAAAAiABwAAQAFAAMAAAAhABwAAQAFAAMAAAAgABwAAQACAAMAAAAfABwAAQAFAAMAAAAeABwAAQAFAAMAAAAdABwAAQAFAAMAAAAcABwAAQACAAMAAAAbABwAAQAFAAMAAAAaABwAAQAFAAMAAAAZABwAAQAFAAMAAAAYABwAAQACAAMAAAAXABwAAQAFAAMAAAAWABwAAQAFAAMAAAAVABwAAQAFAAMAAAAUABwAAQACAAMAAAATABwAAQAFAAMAAAASABwAAQAFAAMAAAARABwAAQAFAAMAAAAQABwAAQACAAMAAAAPABwAAQAFAAMAAAAOABwAAQAFAAMAAAANABwAAQAFAAMAAAAMABwAAQACAAMAAAALABwAAQAFAAMAAAAKABwAAQAFAAMAAAAJABwAAQAFAAMAAAAIABwAAQACAAMAAAAHABwAAQAFAAMAAAAGABwAAQAFAAMAAAAFABwAAQAFAAMAAAAEABwAAQACAAMAAAADABwAAQAFAAMAAAACABwAAQAFAAMAAAABABwAAQAFAAMAAAAAABwAAQACAAMAAABAABwAAQACAAMAAAAeABsAAQACAAMAAAAeAA8AAQACAAMAAAAeABEAAQACAAMAAAAeABIAAQACAAMAAAAeABoAAQACAAMAAAAeABkAAQACAAMAAAAeAA0AAQACAAMAAAAeAAwAAQACAAMAAAAeAAsAAQACAAMAAAAeAAoAAQACAAMAAAAeAAAAAQACAAMAAAAeAAEAAQACAAMAAAAeAAIAAQACAAMAAAAeAAMAAQACAAMAAAAeAAQAAQACAAMAAAAeABgAAQACAAMAAAAPABsAAQAFAAMAAAAPABoAAQAFAAMAAAAPABkAAQAFAAMAAAAPABgAAQAFAAMAAAAvABsAAQAFAAMAAAAvABoAAQAFAAMAAAAvABkAAQAFAAMAAAAvABgAAQAFAAMAAAAvAA0AAQAFAAMAAAAvAAwAAQAFAAMAAAAvAAsAAQAFAAMAAAAvAAoAAQAFAAMAAAAPAA0AAQAFAAMAAAAPAAwAAQAFAAMAAAAPAAsAAQAFAAMAAAAPAAoAAQAFAAMAAAABAAYAAQAFAAMAAAACAAYAAQAFAAMAAAADAAYAAQAFAAMAAAAEAAYAAQAFAAMAAAAvAAkAAQAFAAMAAAAvAAgAAQAFAAMAAAAvAAcAAQAFAAMAAAAvABcAAQAFAAMAAAAvABYAAQAFAAMAAAAvABUAAQAFAAMAAAAeAA4AAQACAAMAAAAeABAAAQACAAMAAAAPAA4AAQAFAAMAAAAPAA8AAQAFAAMAAAAPABAAAQAFAAMAAAAPABEAAQAFAAMAAAAvABEAAQAFAAMAAAAvABAAAQAFAAMAAAAvAA8AAQAFAAMAAAAvAA4AAQAFAAMAAAADABkAAQACAAMAAAACABkAAQACAAMAAAABABkAAQACAAMAAAA=")
+
+[node name="EndZone" parent="." index="4" instance=ExtResource("2_fco1f")]
+position = Vector2(60, 576)
+size = Vector2(72, 48)
+
+[node name="spikegroup1" type="Node2D" parent="." index="5"]
+
+[node name="Spike" parent="spikegroup1" index="0" instance=ExtResource("3_451h2")]
+position = Vector2(24, 288)
+
+[node name="Spike2" parent="spikegroup1" index="1" instance=ExtResource("3_451h2")]
+position = Vector2(72, 288)
+
+[node name="Spike3" parent="spikegroup1" index="2" instance=ExtResource("3_451h2")]
+position = Vector2(120, 288)
+
+[node name="Spike4" parent="spikegroup1" index="3" instance=ExtResource("3_451h2")]
+position = Vector2(168, 288)
+
+[node name="Spike5" parent="spikegroup1" index="4" instance=ExtResource("3_451h2")]
+position = Vector2(216, 288)
+
+[node name="Spike6" parent="spikegroup1" index="5" instance=ExtResource("3_451h2")]
+position = Vector2(264, 288)
+
+[node name="Spike7" parent="spikegroup1" index="6" instance=ExtResource("3_451h2")]
+position = Vector2(312, 288)
+
+[node name="spikegroup12" type="Node2D" parent="." index="6"]
+position = Vector2(384, 672)
+rotation = 3.14159
+
+[node name="Spike" parent="spikegroup12" index="0" instance=ExtResource("3_451h2")]
+position = Vector2(24, 288)
+
+[node name="Spike2" parent="spikegroup12" index="1" instance=ExtResource("3_451h2")]
+position = Vector2(72, 288)
+
+[node name="Spike3" parent="spikegroup12" index="2" instance=ExtResource("3_451h2")]
+position = Vector2(120, 288)
+
+[node name="Spike4" parent="spikegroup12" index="3" instance=ExtResource("3_451h2")]
+position = Vector2(168, 288)
+
+[node name="Spike5" parent="spikegroup12" index="4" instance=ExtResource("3_451h2")]
+position = Vector2(216, 288)
+
+[node name="Spike6" parent="spikegroup12" index="5" instance=ExtResource("3_451h2")]
+position = Vector2(264, 288)
+
+[node name="Spike7" parent="spikegroup12" index="6" instance=ExtResource("3_451h2")]
+position = Vector2(312, 288)
+
+[node name="spikegroup13" type="Node2D" parent="." index="7"]
+position = Vector2(744, 672)
+rotation = 3.14159
+
+[node name="Spike" parent="spikegroup13" index="0" instance=ExtResource("3_451h2")]
+position = Vector2(24, 288)
+
+[node name="Spike2" parent="spikegroup13" index="1" instance=ExtResource("3_451h2")]
+position = Vector2(72, 288)
+
+[node name="Spike3" parent="spikegroup13" index="2" instance=ExtResource("3_451h2")]
+position = Vector2(120, 288)
+
+[node name="Spike4" parent="spikegroup13" index="3" instance=ExtResource("3_451h2")]
+position = Vector2(168, 288)
+
+[node name="Spike5" parent="spikegroup13" index="4" instance=ExtResource("3_451h2")]
+position = Vector2(216, 288)
+
+[node name="Spike6" parent="spikegroup13" index="5" instance=ExtResource("3_451h2")]
+position = Vector2(264, 288)
+
+[node name="Spike7" parent="spikegroup13" index="6" instance=ExtResource("3_451h2")]
+position = Vector2(312, 288)
+
+[node name="spikegroup14" type="Node2D" parent="." index="8"]
+position = Vector2(1512, 672)
+rotation = 3.14159
+
+[node name="Spike3" parent="spikegroup14" index="0" instance=ExtResource("3_451h2")]
+position = Vector2(120, 288)
+
+[node name="Spike4" parent="spikegroup14" index="1" instance=ExtResource("3_451h2")]
+position = Vector2(168, 288)
+
+[node name="Spike5" parent="spikegroup14" index="2" instance=ExtResource("3_451h2")]
+position = Vector2(216, 288)
+
+[node name="Spike6" parent="spikegroup14" index="3" instance=ExtResource("3_451h2")]
+position = Vector2(264, 288)
+
+[node name="Spike7" parent="spikegroup14" index="4" instance=ExtResource("3_451h2")]
+position = Vector2(312, 288)
+
+[node name="spikegroup2" type="Node2D" parent="." index="9"]
+position = Vector2(360, 0)
+
+[node name="Spike" parent="spikegroup2" index="0" instance=ExtResource("3_451h2")]
+position = Vector2(24, 288)
+
+[node name="Spike2" parent="spikegroup2" index="1" instance=ExtResource("3_451h2")]
+position = Vector2(72, 288)
+
+[node name="Spike3" parent="spikegroup2" index="2" instance=ExtResource("3_451h2")]
+position = Vector2(120, 288)
+
+[node name="Spike4" parent="spikegroup2" index="3" instance=ExtResource("3_451h2")]
+position = Vector2(168, 288)
+
+[node name="Spike5" parent="spikegroup2" index="4" instance=ExtResource("3_451h2")]
+position = Vector2(216, 288)
+
+[node name="Spike6" parent="spikegroup2" index="5" instance=ExtResource("3_451h2")]
+position = Vector2(264, 288)
+
+[node name="Spike7" parent="spikegroup2" index="6" instance=ExtResource("3_451h2")]
+position = Vector2(312, 288)
+
+[node name="Spike8" parent="spikegroup2" index="7" instance=ExtResource("3_451h2")]
+position = Vector2(312, 288)
+rotation = 4.71239
+
+[node name="Spike9" parent="spikegroup2" index="8" instance=ExtResource("3_451h2")]
+position = Vector2(432, 240)
+rotation = 1.5708
+
+[node name="Spike10" parent="spikegroup2" index="9" instance=ExtResource("3_451h2")]
+position = Vector2(72, 240)
+rotation = 1.5708
+
+[node name="Spike16" parent="spikegroup2" index="10" instance=ExtResource("3_451h2")]
+position = Vector2(72, 576)
+rotation = 1.5708
+
+[node name="Spike17" parent="spikegroup2" index="11" instance=ExtResource("3_451h2")]
+position = Vector2(432, 576)
+rotation = 1.5708
+
+[node name="Spike18" parent="spikegroup2" index="12" instance=ExtResource("3_451h2")]
+position = Vector2(840, 504)
+rotation = 1.5708
+
+[node name="Spike19" parent="spikegroup2" index="13" instance=ExtResource("3_451h2")]
+position = Vector2(840, 168)
+rotation = 1.5708
+
+[node name="Spike11" parent="spikegroup2" index="14" instance=ExtResource("3_451h2")]
+position = Vector2(-48, 288)
+rotation = 4.71239
+
+[node name="Spike12" parent="spikegroup2" index="15" instance=ExtResource("3_451h2")]
+position = Vector2(720, 216)
+rotation = 4.71239
+
+[node name="Spike13" parent="spikegroup2" index="16" instance=ExtResource("3_451h2")]
+position = Vector2(720, 552)
+rotation = 4.71239
+
+[node name="Spike14" parent="spikegroup2" index="17" instance=ExtResource("3_451h2")]
+position = Vector2(312, 624)
+rotation = 4.71239
+
+[node name="Spike15" parent="spikegroup2" index="18" instance=ExtResource("3_451h2")]
+position = Vector2(-48, 624)
+rotation = 4.71239
+
+[node name="spikegroup3" type="Node2D" parent="." index="10"]
+position = Vector2(720, 0)
+
+[node name="Spike" parent="spikegroup3" index="0" instance=ExtResource("3_451h2")]
+position = Vector2(24, 288)
+
+[node name="Spike2" parent="spikegroup3" index="1" instance=ExtResource("3_451h2")]
+position = Vector2(72, 288)
+
+[node name="Spike3" parent="spikegroup3" index="2" instance=ExtResource("3_451h2")]
+position = Vector2(120, 288)
+
+[node name="Spike4" parent="spikegroup3" index="3" instance=ExtResource("3_451h2")]
+position = Vector2(168, 288)
+
+[node name="Spike5" parent="spikegroup3" index="4" instance=ExtResource("3_451h2")]
+position = Vector2(216, 288)
+
+[node name="Spike6" parent="spikegroup3" index="5" instance=ExtResource("3_451h2")]
+position = Vector2(264, 288)
+
+[node name="Spike7" parent="spikegroup3" index="6" instance=ExtResource("3_451h2")]
+position = Vector2(312, 288)
+
+[node name="Spike8" parent="spikegroup3" index="7" instance=ExtResource("3_451h2")]
+position = Vector2(360, 288)
+
+[node name="Spike17" parent="spikegroup3" index="8" instance=ExtResource("3_451h2")]
+position = Vector2(72, 384)
+rotation = 3.14159
+
+[node name="Spike18" parent="spikegroup3" index="9" instance=ExtResource("3_451h2")]
+position = Vector2(120, 384)
+rotation = 3.14159
+
+[node name="Spike19" parent="spikegroup3" index="10" instance=ExtResource("3_451h2")]
+position = Vector2(168, 384)
+rotation = 3.14159
+
+[node name="Spike20" parent="spikegroup3" index="11" instance=ExtResource("3_451h2")]
+position = Vector2(216, 384)
+rotation = 3.14159
+
+[node name="Spike21" parent="spikegroup3" index="12" instance=ExtResource("3_451h2")]
+position = Vector2(264, 384)
+rotation = 3.14159
+
+[node name="Spike22" parent="spikegroup3" index="13" instance=ExtResource("3_451h2")]
+position = Vector2(312, 384)
+rotation = 3.14159
+
+[node name="Spike23" parent="spikegroup3" index="14" instance=ExtResource("3_451h2")]
+position = Vector2(360, 384)
+rotation = 3.14159
+
+[node name="Spike24" parent="spikegroup3" index="15" instance=ExtResource("3_451h2")]
+position = Vector2(408, 384)
+rotation = 3.14159
+
+[node name="Spike9" parent="spikegroup3" index="16" instance=ExtResource("3_451h2")]
+position = Vector2(-216, 168)
+rotation = -1.5708
+
+[node name="Spike10" parent="spikegroup3" index="17" instance=ExtResource("3_451h2")]
+position = Vector2(-120, 120)
+rotation = 1.5708
+
+[node name="Spike11" parent="spikegroup3" index="18" instance=ExtResource("3_451h2")]
+position = Vector2(192, 168)
+rotation = -1.5708
+
+[node name="Spike12" parent="spikegroup3" index="19" instance=ExtResource("3_451h2")]
+position = Vector2(288, 120)
+rotation = 1.5708
+
+[node name="Spike13" parent="spikegroup3" index="20" instance=ExtResource("3_451h2")]
+position = Vector2(192, 528)
+rotation = -1.5708
+
+[node name="Spike14" parent="spikegroup3" index="21" instance=ExtResource("3_451h2")]
+position = Vector2(288, 480)
+rotation = 1.5708
+
+[node name="Spike15" parent="spikegroup3" index="22" instance=ExtResource("3_451h2")]
+position = Vector2(-216, 528)
+rotation = -1.5708
+
+[node name="Spike16" parent="spikegroup3" index="23" instance=ExtResource("3_451h2")]
+position = Vector2(-120, 480)
+rotation = 1.5708
+
+[node name="spikegroup4" type="Node2D" parent="." index="11"]
+position = Vector2(1128, 0)
+
+[node name="Spike" parent="spikegroup4" index="0" instance=ExtResource("3_451h2")]
+position = Vector2(24, 288)
+
+[node name="Spike2" parent="spikegroup4" index="1" instance=ExtResource("3_451h2")]
+position = Vector2(72, 288)
+
+[node name="Spike3" parent="spikegroup4" index="2" instance=ExtResource("3_451h2")]
+position = Vector2(120, 288)
+
+[node name="Spike4" parent="spikegroup4" index="3" instance=ExtResource("3_451h2")]
+position = Vector2(168, 288)
+
+[node name="Spike5" parent="spikegroup4" index="4" instance=ExtResource("3_451h2")]
+position = Vector2(216, 288)
+
+[node name="spikegroup9" type="Node2D" parent="." index="12"]
+position = Vector2(48, 96)
+rotation = 3.14159
+
+[node name="spikegroup10" type="Node2D" parent="." index="13"]
+position = Vector2(408, 96)
+rotation = 3.14159
+
+[node name="spikegroup11" type="Node2D" parent="." index="14"]
+position = Vector2(1176, 96)
+rotation = 3.14159
+
+[node name="spikegroup6" type="Node2D" parent="." index="15"]
+position = Vector2(720, 336)
+
+[node name="Spike" parent="spikegroup6" index="0" instance=ExtResource("3_451h2")]
+position = Vector2(24, 288)
+
+[node name="Spike2" parent="spikegroup6" index="1" instance=ExtResource("3_451h2")]
+position = Vector2(72, 288)
+
+[node name="Spike3" parent="spikegroup6" index="2" instance=ExtResource("3_451h2")]
+position = Vector2(120, 288)
+
+[node name="Spike4" parent="spikegroup6" index="3" instance=ExtResource("3_451h2")]
+position = Vector2(168, 288)
+
+[node name="Spike5" parent="spikegroup6" index="4" instance=ExtResource("3_451h2")]
+position = Vector2(216, 288)
+
+[node name="Spike6" parent="spikegroup6" index="5" instance=ExtResource("3_451h2")]
+position = Vector2(264, 288)
+
+[node name="Spike7" parent="spikegroup6" index="6" instance=ExtResource("3_451h2")]
+position = Vector2(312, 288)
+
+[node name="Spike8" parent="spikegroup6" index="7" instance=ExtResource("3_451h2")]
+position = Vector2(360, 288)
+
+[node name="spikegroup7" type="Node2D" parent="." index="16"]
+position = Vector2(360, 336)
+
+[node name="Spike" parent="spikegroup7" index="0" instance=ExtResource("3_451h2")]
+position = Vector2(24, 288)
+
+[node name="Spike2" parent="spikegroup7" index="1" instance=ExtResource("3_451h2")]
+position = Vector2(72, 288)
+
+[node name="Spike3" parent="spikegroup7" index="2" instance=ExtResource("3_451h2")]
+position = Vector2(120, 288)
+
+[node name="Spike4" parent="spikegroup7" index="3" instance=ExtResource("3_451h2")]
+position = Vector2(168, 288)
+
+[node name="Spike5" parent="spikegroup7" index="4" instance=ExtResource("3_451h2")]
+position = Vector2(216, 288)
+
+[node name="Spike6" parent="spikegroup7" index="5" instance=ExtResource("3_451h2")]
+position = Vector2(264, 288)
+
+[node name="Spike7" parent="spikegroup7" index="6" instance=ExtResource("3_451h2")]
+position = Vector2(312, 288)
+
+[node name="spikegroup8" type="Node2D" parent="." index="17"]
+position = Vector2(0, 336)
+
+[node name="Spike" parent="spikegroup8" index="0" instance=ExtResource("3_451h2")]
+position = Vector2(24, 288)
+
+[node name="Spike8" parent="spikegroup8" index="1" instance=ExtResource("3_451h2")]
+position = Vector2(72, 168)
+rotation = 1.5708
+
+[node name="Spike9" parent="spikegroup8" index="2" instance=ExtResource("3_451h2")]
+position = Vector2(72, 120)
+rotation = 1.5708
+
+[node name="Spike11" parent="spikegroup8" index="3" instance=ExtResource("3_451h2")]
+position = Vector2(216, 216)
+rotation = 3.14159
+
+[node name="Spike13" parent="spikegroup8" index="4" instance=ExtResource("3_451h2")]
+position = Vector2(120, 264)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike12" parent="spikegroup8" index="5" instance=ExtResource("3_451h2")]
+position = Vector2(168, 120)
+
+[node name="Spike10" parent="spikegroup8" index="6" instance=ExtResource("3_451h2")]
+position = Vector2(72, 72)
+rotation = 1.5708
+
+[node name="Spike2" parent="spikegroup8" index="7" instance=ExtResource("3_451h2")]
+position = Vector2(72, 288)
+
+[node name="Spike3" parent="spikegroup8" index="8" instance=ExtResource("3_451h2")]
+position = Vector2(120, 288)
+
+[node name="Spike4" parent="spikegroup8" index="9" instance=ExtResource("3_451h2")]
+position = Vector2(168, 288)
+
+[node name="Spike5" parent="spikegroup8" index="10" instance=ExtResource("3_451h2")]
+position = Vector2(216, 288)
+
+[node name="Spike6" parent="spikegroup8" index="11" instance=ExtResource("3_451h2")]
+position = Vector2(264, 288)
+
+[node name="Spike7" parent="spikegroup8" index="12" instance=ExtResource("3_451h2")]
+position = Vector2(312, 288)
+
+[node name="spikegroup5" type="Node2D" parent="." index="18"]
+position = Vector2(1128, 336)
+
+[node name="Spike" parent="spikegroup5" index="0" instance=ExtResource("3_451h2")]
+position = Vector2(24, 288)
+
+[node name="Spike2" parent="spikegroup5" index="1" instance=ExtResource("3_451h2")]
+position = Vector2(72, 288)
+
+[node name="Spike3" parent="spikegroup5" index="2" instance=ExtResource("3_451h2")]
+position = Vector2(120, 288)
+
+[node name="Spike4" parent="spikegroup5" index="3" instance=ExtResource("3_451h2")]
+position = Vector2(168, 288)
+
+[node name="Spike5" parent="spikegroup5" index="4" instance=ExtResource("3_451h2")]
+position = Vector2(216, 288)
+
+[node name="Spike6" parent="spikegroup5" index="5" instance=ExtResource("3_451h2")]
+position = Vector2(264, 288)
+
+[node name="Spike7" parent="spikegroup5" index="6" instance=ExtResource("3_451h2")]
+position = Vector2(312, 288)
+
+[node name="GasCan" parent="." index="19" instance=ExtResource("4_i7llm")]
+position = Vector2(1500, 660)
+
+[node name="Bat" parent="." index="20" instance=ExtResource("5_58la7")]
+position = Vector2(668, 24)
+
+[node name="Bat2" parent="." index="21" instance=ExtResource("5_58la7")]
+position = Vector2(796, 24)
+
+[node name="Bat3" parent="." index="22" instance=ExtResource("5_58la7")]
+position = Vector2(668, 376)
+
+[node name="Bat6" parent="." index="23" instance=ExtResource("5_58la7")]
+position = Vector2(428, 376)
+
+[node name="Bat7" parent="." index="24" instance=ExtResource("5_58la7")]
+position = Vector2(268, 376)
+
+[node name="Bat4" parent="." index="25" instance=ExtResource("5_58la7")]
+position = Vector2(796, 376)
+
+[node name="Bat5" parent="." index="26" instance=ExtResource("5_58la7")]
+position = Vector2(1052, 376)
