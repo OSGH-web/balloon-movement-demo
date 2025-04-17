@@ -65,6 +65,9 @@ func scoreCountDown():
 		if player.FUEL <= 5:
 			player.FUEL -= 1
 			score += 1
+		elif player.FUEL >= 2000:
+			player.FUEL -= 100
+			score += 100
 		else:
 			player.FUEL -= 5
 			score += 5
