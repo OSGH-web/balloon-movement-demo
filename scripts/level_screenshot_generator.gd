@@ -20,6 +20,7 @@ func process_all_levels():
 	var subviewport = $SubViewportContainer/SubViewport
 
 	for level_file in level_files:
+		GameManager.curr_level += 1
 		var level_path = "res://levels/%s" % level_file
 		var scene = load(level_path)
 
