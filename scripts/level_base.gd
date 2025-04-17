@@ -16,6 +16,16 @@ extends Node2D
 func _ready():
 	_update_level_bounds()
 	_update_player_camera()
+	_update_background_color()
+
+
+func _update_background_color():
+	var hue = (float(GameManager.curr_level)/float(len(GameManager.level_files)))
+	var bg_color = Color.from_hsv(hue, 0.5, 0.79, 1)
+
+	print("setting background to: " + str(bg_color))
+	RenderingServer.set_default_clear_color(bg_color)
+
 
 func _update_player_camera():
 	if Engine.is_editor_hint():
