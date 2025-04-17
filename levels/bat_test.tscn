@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=4 uid="uid://4unitcw5dlx2"]
 
-[ext_resource type="PackedScene" uid="uid://cxo2r1hb7u2ss" path="res://scenes/level_base.tscn" id="1_6wyox"]
-[ext_resource type="PackedScene" uid="uid://dqmhcdxpt65xa" path="res://scenes/bat.tscn" id="2_2bk75"]
+[ext_resource type="PackedScene" uid="uid://cxo2r1hb7u2ss" path="res://scenes/level_base.tscn" id="1_h0pql"]
+[ext_resource type="PackedScene" uid="uid://dqmhcdxpt65xa" path="res://scenes/bat.tscn" id="2_2xp18"]
 
-[node name="LevelBase" instance=ExtResource("1_6wyox")]
+[node name="LevelBase" instance=ExtResource("1_h0pql")]
 level_name = "Bat Test"
 height_in_tiles = 32
 
@@ -13,5 +13,5 @@ position = Vector2(108, 328)
 [node name="Terrain" parent="." index="1"]
 tile_map_data = PackedByteArray("AAAPABIABQAAAAAAAAAPABMAAAAAAAcAAAAPABQAAAAAAAcAAAAPABUAAAAAAAcAAAAPABYAAAAAAAcAAAAPABcAAAAAAAcAAAAPABgAAAAAAAcAAAAPABkAAAAAAAcAAAAPABoAAAAAAAcAAAAPABsAAAAAAAcAAAAPABwAAAAAAAcAAAAGABIABQABAAAAAAAHABIABQAAAAAAAAAIABIABQABAAAAAAAJABIABQAAAAAAAAAKABIABQABAAAAAAALABIABQAAAAAAAAAMABIABQABAAAAAAANABIABQABAAAAAAAOABIABQABAAAAAAAQABIABQAAAAAAAAARABIABQAAAAAAAAASABIABQAAAAAAAAATABIABQABAAAAAAAUABIABQABAAAAAAAVABIABQABAAAAAAAWABIABQAAAAAAAAAXABIABQABAAAAAAAYABIABQAAAAAAAAAZABIABQABAAAAAAAaABIABQAAAAAAAAAbABIABQAAAAAAAAAFABIABAABAAIAAAAEABIABAABAAIAAAAOAAoABQABAAAAAAAPAAoABQABAAAAAAAQAAoABQABAAAAAAARAAoABQABAAAAAAASAAoABQABAAAAAAATAAoABQABAAAAAAAUAAoABQABAAAAAAAVAAoABQABAAAAAAAWAAoABQABAAAAAAAXAAoABQABAAAAAAAYAAoABQABAAAAAAANAAoAAgAFAAMAAAAMAAoAAgAFAAMAAAALAAoAAgAFAAMAAAAKAAoAAgAFAAMAAAAJAAoAAgAFAAMAAAA=")
 
-[node name="Bat" parent="." index="5" instance=ExtResource("2_2bk75")]
+[node name="Bat" parent="." index="4" instance=ExtResource("2_2xp18")]
 position = Vector2(432, 464)

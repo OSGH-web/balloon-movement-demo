@@ -14,5 +14,5 @@ tile_map_data = PackedByteArray("AAABABEAAAADAAQAAAABABIAAAADAAQAAAABABMAAAADAAQ
 position = Vector2(258, 926)
 
 [node name="EndZone" parent="." index="3" instance=ExtResource("3_a6mbw")]
-position = Vector2(275, 1486)
-size = Vector2(500, 40)
+position = Vector2(672, 1380)
+size = Vector2(144, 24)
