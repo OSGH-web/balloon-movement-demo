@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cxo2r1hb7u2ss"]
+[gd_scene load_steps=13 format=3 uid="uid://cxo2r1hb7u2ss"]
 
 [ext_resource type="Script" uid="uid://lkphrvhitvd" path="res://scripts/level_base.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://b7jfvkf4edbjp" path="res://scenes/player.tscn" id="2_0xm2m"]
@@ -6,25 +6,65 @@
 [ext_resource type="Script" uid="uid://df1fbghclur2h" path="res://scripts/terrain.gd" id="4_1bvp3"]
 [ext_resource type="TileSet" uid="uid://clmawpyff0gle" path="res://assets/tilesets/Caves_Forest.tres" id="4_krm4r"]
 [ext_resource type="PackedScene" uid="uid://b3h1d6irllu2r" path="res://scenes/UI/pause_menu.tscn" id="5_8rhjg"]
-[ext_resource type="PackedScene" uid="uid://dnrjc1o517gjp" path="res://scenes/UI/fuel_label.tscn" id="7_8n3nq"]
+[ext_resource type="PackedScene" uid="uid://dnrjc1o517gjp" path="res://scenes/UI/hud.tscn" id="7_8n3nq"]
+[ext_resource type="Texture2D" uid="uid://1gh0pa10k34t" path="res://assets/white_pixel.png" id="7_evabm"]
+[ext_resource type="Shader" uid="uid://dhmt3vulwt0nd" path="res://assets/spriteshader.gdshader" id="8_evabm"]
+[ext_resource type="Texture2D" uid="uid://c75kyu2k32alx" path="res://assets/strawberry_pattern.png" id="10_evabm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6k8qy"]
+shader = ExtResource("8_evabm")
+shader_parameter/light_color = Color(0.545098, 0.607843, 0.705882, 1)
+shader_parameter/dark_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+shader_parameter/x_scale = 24.0
+shader_parameter/y_scale = 24.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qurbw"]
+shader = ExtResource("8_evabm")
+shader_parameter/light_color = Color(0.545098, 0.607843, 0.705882, 1)
+shader_parameter/dark_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+shader_parameter/x_scale = 24.0
+shader_parameter/y_scale = 24.0
 
 [node name="LevelBase" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_1bvp3")
+x_scale = 4
+y_scale = 4
 
-[node name="Player" parent="." node_paths=PackedStringArray("tilemaplayer") instance=ExtResource("2_0xm2m")]
+[node name="Player" parent="." instance=ExtResource("2_0xm2m")]
 z_index = 1
 z_as_relative = false
 slide_on_ceiling = false
 floor_constant_speed = true
 safe_margin = 0.001
-tilemaplayer = NodePath("../Terrain")
 
 [node name="Terrain" parent="." instance=ExtResource("3_h2yge")]
 tile_set = ExtResource("4_krm4r")
 script = ExtResource("4_1bvp3")
 
+[node name="Background" type="TextureRect" parent="Terrain"]
+unique_name_in_owner = true
+z_index = -1
+material = SubResource("ShaderMaterial_6k8qy")
+offset_right = 768.0
+offset_bottom = 1536.0
+texture = ExtResource("7_evabm")
+stretch_mode = 1
+
 [node name="Pause Menu" parent="." instance=ExtResource("5_8rhjg")]
 
 [node name="FuelLabel" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_8n3nq")]
 player = NodePath("../Player")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -3
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+unique_name_in_owner = true
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_qurbw")
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("10_evabm")
+stretch_mode = 1

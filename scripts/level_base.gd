@@ -12,6 +12,39 @@ extends Node2D
 	set(value):
 		height_in_tiles = value
 		_update_level_bounds()  # Refresh when changed
+		
+@export var background_color_light := Color(1, 1, 1):
+	set(value):
+		background_color_light = value
+		_update_background_color()
+@export var background_color_dark := Color(0, 0, 0):
+	set(value):
+		background_color_dark = value
+		_update_background_color()
+		
+@export var x_scale := 48:
+	set(value):
+		x_scale = value
+		_update_background_color()
+		
+@export var y_scale := 48:
+	set(value):
+		y_scale = value
+		_update_background_color()
+		
+@export var invert_foreground_colors := false:
+	set(value):
+		invert_foreground_colors = value
+		_update_background_color()
+@export var invert_background_colors := false:
+	set(value):
+		invert_background_colors = value
+		_update_background_color()
+				
+
+
+func _enter_tree():
+	_update_background_color()
 
 func _ready():
 	_update_level_bounds()
@@ -20,13 +53,32 @@ func _ready():
 
 
 func _update_background_color():
-	var hue = (float(GameManager.curr_level)/float(len(GameManager.level_files)))
-	var bg_color = Color.from_hsv(hue, 0.5, 0.35 + (.35 * ((GameManager.curr_level + 1) % 2)), 1)
-	bg_color = getClosestEDG32Color(bg_color)
+	if not %TextureRect:
+		return
+		
+	if invert_background_colors:
+		%TextureRect.material.set("shader_parameter/light_color", background_color_dark)
+		%TextureRect.material.set("shader_parameter/dark_color", background_color_light)
+	else:
+		%TextureRect.material.set("shader_parameter/light_color", background_color_light)
+		%TextureRect.material.set("shader_parameter/dark_color", background_color_dark)
+	%TextureRect.material.set("shader_parameter/x_scale", x_scale)
+	%TextureRect.material.set("shader_parameter/y_scale", y_scale)
 
-	print("setting background to: " + str(bg_color))
-	RenderingServer.set_default_clear_color(bg_color)
 
+	if invert_foreground_colors:
+		%Background.material.set("shader_parameter/light_color", background_color_dark)
+		%Background.material.set("shader_parameter/dark_color", background_color_light)
+	else:
+		%Background.material.set("shader_parameter/light_color", background_color_light)
+		%Background.material.set("shader_parameter/dark_color", background_color_dark)
+	%Background.material.set("shader_parameter/x_scale", x_scale)
+	%Background.material.set("shader_parameter/y_scale", y_scale)
+	%Background.size = Vector2(
+		width_in_tiles * $Terrain.tile_set.tile_size.x,
+		height_in_tiles * $Terrain.tile_set.tile_size.y
+	)
+	%Background.position = $Terrain.position
 # Define the EDG32 palette (32 colors)
 var EDG32_PALETTE = [
 	Color8(0, 0, 0), Color8(34, 32, 52), Color8(69, 40, 60), Color8(102, 57, 49),
