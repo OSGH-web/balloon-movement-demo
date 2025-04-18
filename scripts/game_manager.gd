@@ -49,6 +49,13 @@ func load_next_level():
 	# Must go after changing scene to avoid issues.
 	endZoneTriggered = false
 	
+func _input(event):
+	if event.is_action_pressed("ui_n"):
+		print("action_pressed")
+		var level_path = "res://levels/%s" % level_files[curr_level]
+		curr_level += 1
+		get_tree().change_scene_to_file(level_path)
+
 func calculateScore():
 	%GameInfo.text = "Level Complete! +1000 Score!"
 	%GameInfo.visible = true
