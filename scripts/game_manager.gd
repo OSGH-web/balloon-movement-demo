@@ -7,6 +7,7 @@ var lives = 1
 # 10k score gives an extra life. You automatically get 1k per level, plus however much fuel you have left over. 
 var score = 0
 var extraLivesDivisor = 1
+var extraLifeFrameDelay = .5 # value in seconds. time between life increases when receiving multiple lives
 var level_files = []
 var endZoneTriggered = false
 # Show a message upon levelCompletion
@@ -55,7 +56,9 @@ func calculateScore():
 	score += 1000 # for level clear
 	%GameInfo.visible = false
 	await scoreCountDown()
-	if score > 10000 * extraLivesDivisor:
+
+	while score > 10000 * extraLivesDivisor:
+		await get_tree().create_timer(extraLifeFrameDelay).timeout
 		lives += 1
 		extraLivesDivisor += 1
 		
@@ -65,6 +68,9 @@ func scoreCountDown():
 		if player.FUEL <= 5:
 			player.FUEL -= 1
 			score += 1
+		elif player.FUEL >= 2000:
+			player.FUEL -= 100
+			score += 100
 		else:
 			player.FUEL -= 5
 			score += 5
