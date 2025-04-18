@@ -13,19 +13,19 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6k8qy"]
 shader = ExtResource("8_evabm")
-shader_parameter/light_color = Color(0.909804, 0.717647, 0.588235, 1)
-shader_parameter/dark_color = Color(0.0980392, 0.235294, 0.243137, 1)
+shader_parameter/light_color = Color(1, 1, 1, 1)
+shader_parameter/dark_color = Color(0, 0, 0, 1)
 shader_parameter/x_scale = 24.0
 shader_parameter/y_scale = 24.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qurbw"]
 shader = ExtResource("8_evabm")
-shader_parameter/light_color = Color(0.909804, 0.717647, 0.588235, 1)
-shader_parameter/dark_color = Color(0.0980392, 0.235294, 0.243137, 1)
+shader_parameter/light_color = Color(1, 1, 1, 1)
+shader_parameter/dark_color = Color(0, 0, 0, 1)
 shader_parameter/x_scale = 24.0
 shader_parameter/y_scale = 24.0
 
-[node name="LevelBase" type="Node2D"]
+[node name="LevelBase2" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_1bvp3")
 x_scale = 4
@@ -65,6 +65,6 @@ texture_filter = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_qurbw")
 offset_right = 1920.0
-offset_bottom = 1080.0
+offset_bottom = 3240.0
 texture = ExtResource("10_evabm")
 stretch_mode = 1
