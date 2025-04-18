@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b7jfvkf4edbjp"]
 
 [ext_resource type="Script" uid="uid://d3nwiwsfywf3b" path="res://scripts/player.gd" id="1_onrkg"]
-[ext_resource type="SpriteFrames" uid="uid://druj2owx133ux" path="res://assets/sprites/player_new.res" id="2_g2els"]
+[ext_resource type="SpriteFrames" uid="uid://u8d3ak1o6r5r" path="res://assets/sprites/player_2px.res" id="2_g2els"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
 radius = 11.7094
@@ -17,7 +17,7 @@ sprite_frames = ExtResource("2_g2els")
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(34.3333, 32.6667)
+position = Vector2(34.6667, 33)
 shape = SubResource("CircleShape2D_g2els")
 
 [node name="RayCastDownRight" type="RayCast2D" parent="CollisionShape2D"]
