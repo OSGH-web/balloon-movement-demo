@@ -50,7 +50,7 @@ func load_next_level():
 	endZoneTriggered = false
 	
 func _input(event):
-  # Go to next level
+	 # Go to next level
 	if event.is_action_pressed("ui_n"):
 		var level_path = "res://levels/%s" % level_files[curr_level]
 		curr_level += 1
@@ -58,7 +58,7 @@ func _input(event):
 			curr_level = 0
 		get_tree().change_scene_to_file(level_path)
 
-  # Go to previous level
+	# Go to previous level
 	if event.is_action_pressed("ui_p"):
 		curr_level -= 1
 		var level_path
