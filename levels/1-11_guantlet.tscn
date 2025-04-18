@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cxo2r1hb7u2ss" path="res://scenes/level_base.tscn" id="1_x0t81"]
 [ext_resource type="PackedScene" uid="uid://cxdl0fqxwxba1" path="res://scenes/gas_can.tscn" id="2_84md7"]
-[ext_resource type="Texture2D" uid="uid://bad543yeaxbij" path="res://assets/dirt_pattern.png" id="2_e5klb"]
+[ext_resource type="Texture2D" uid="uid://dxy1nk3c3fnl" path="res://assets/sprites/wall_pattern.png" id="2_e5klb"]
 [ext_resource type="PackedScene" uid="uid://bvn2y2nnqcrts" path="res://scenes/end_zone.tscn" id="3_e5klb"]
 [ext_resource type="PackedScene" uid="uid://ckwukbtl6m70h" path="res://scenes/slime.tscn" id="4_0alfw"]
 [ext_resource type="PackedScene" uid="uid://c6i6ci2ym6wn6" path="res://scenes/spike.tscn" id="5_84md7"]
@@ -13,6 +13,7 @@ width_in_tiles = 80
 height_in_tiles = 45
 background_color_light = Color(0.894118, 0.65098, 0.447059, 1)
 background_color_dark = Color(0.721569, 0.435294, 0.313726, 1)
+x_scale = 4
 
 [node name="Terrain" parent="." index="1"]
 rotation = 0.000259012
