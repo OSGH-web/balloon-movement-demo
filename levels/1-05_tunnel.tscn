@@ -7,6 +7,8 @@
 [node name="LevelBase" instance=ExtResource("1_g7pew")]
 level_name = "Tunnel"
 height_in_tiles = 96
+background_color_light = Color(0.545098, 0.607843, 0.705882, 1)
+background_color_dark = Color(0.0941176, 0.0784314, 0.145098, 1)
 
 [node name="Player" parent="." index="0"]
 position = Vector2(386, 2197)

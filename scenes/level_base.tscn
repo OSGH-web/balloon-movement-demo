@@ -13,15 +13,15 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6k8qy"]
 shader = ExtResource("8_evabm")
-shader_parameter/light_color = Color(0.545098, 0.607843, 0.705882, 1)
-shader_parameter/dark_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+shader_parameter/light_color = Color(0.909804, 0.717647, 0.588235, 1)
+shader_parameter/dark_color = Color(0.0980392, 0.235294, 0.243137, 1)
 shader_parameter/x_scale = 24.0
 shader_parameter/y_scale = 24.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qurbw"]
 shader = ExtResource("8_evabm")
-shader_parameter/light_color = Color(0.545098, 0.607843, 0.705882, 1)
-shader_parameter/dark_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+shader_parameter/light_color = Color(0.909804, 0.717647, 0.588235, 1)
+shader_parameter/dark_color = Color(0.0980392, 0.235294, 0.243137, 1)
 shader_parameter/x_scale = 24.0
 shader_parameter/y_scale = 24.0
 

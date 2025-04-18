@@ -6,6 +6,8 @@
 [node name="LevelBase" instance=ExtResource("1_up5tp")]
 level_name = "Square"
 height_in_tiles = 32
+background_color_light = Color(0.909804, 0.717647, 0.588235, 1)
+background_color_dark = Color(0.0980392, 0.235294, 0.243137, 1)
 
 [node name="Player" parent="." index="0"]
 position = Vector2(576, 456)
