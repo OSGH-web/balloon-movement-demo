@@ -20,7 +20,6 @@ func process_all_levels():
 	var subviewport = $SubViewportContainer/SubViewport
 
 	for level_file in level_files:
-		GameManager.curr_level += 1
 		var level_path = "res://levels/%s" % level_file
 		var scene = load(level_path)
 
@@ -48,6 +47,7 @@ func process_all_levels():
 			level_instance.height_in_tiles * (24 + 2 * border_size_tiles)
 		)
 		
+    # position the level with an equal border on all sides
 		level_instance.position = Vector2(
 			level_instance.width_in_tiles * (1 * border_size_tiles),
 			level_instance.height_in_tiles * (1 * border_size_tiles)
