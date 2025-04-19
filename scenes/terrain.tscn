@@ -6,8 +6,3 @@
 [node name="TileMapLayer" type="TileMapLayer"]
 tile_set = ExtResource("1_hn2sr")
 script = ExtResource("2_oqplg")
-
-[node name="LevelBackground" type="ColorRect" parent="."]
-z_index = -1
-offset_right = 40.0
-offset_bottom = 40.0

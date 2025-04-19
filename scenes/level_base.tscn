@@ -23,6 +23,11 @@ safe_margin = 0.001
 [node name="Terrain" parent="." instance=ExtResource("3_h2yge")]
 tile_set = ExtResource("4_krm4r")
 
+[node name="TerrainBackground" parent="Terrain" instance=ExtResource("8_2v7b3")]
+unique_name_in_owner = true
+offset_right = 768.0
+offset_bottom = 1536.0
+
 [node name="Pause Menu" parent="." instance=ExtResource("5_8rhjg")]
 
 [node name="FuelLabel" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_8n3nq")]
@@ -31,7 +36,7 @@ player = NodePath("../Player")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -3
 
-[node name="Background" parent="CanvasLayer" instance=ExtResource("8_2v7b3")]
+[node name="ViewportBackground" parent="CanvasLayer" instance=ExtResource("8_2v7b3")]
 unique_name_in_owner = true
 texture_filter = 1
 offset_right = 3840.0

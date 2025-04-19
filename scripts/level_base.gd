@@ -16,13 +16,13 @@ extends Node2D
 @export var background_color_light := Color(1, 1, 1):
 	set(value):
 		background_color_light = value
-		%Background.light_color = background_color_light
-		$Terrain.background_color = background_color_light
+		%ViewportBackground.light_color = background_color_light
+		%TerrainBackground.light_color = background_color_light
 
 @export var background_color_dark := Color(0, 0, 0):
 	set(value):
 		background_color_dark = value
-		%Background.dark_color = background_color_dark
+		%ViewportBackground.dark_color = background_color_dark
 
 func _ready():
 	_update_level_bounds()
@@ -35,10 +35,13 @@ func _update_player_camera():
 		$Player._setup_camera_limits(width_in_tiles * 8 * $Player.physics_scale_factor, height_in_tiles * 8 * $Player.physics_scale_factor)
 
 func _update_level_bounds():
-	# Create new bounds overlay
 	var tilemap = get_node_or_null("Terrain")
 	if !tilemap:
 		return
 
+	# needed for border generation
 	tilemap.width_in_tiles = width_in_tiles
 	tilemap.height_in_tiles = height_in_tiles
+
+	%TerrainBackground.size.x = width_in_tiles * 24
+	%TerrainBackground.size.y = height_in_tiles * 24
