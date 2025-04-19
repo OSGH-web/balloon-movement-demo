@@ -17,3 +17,7 @@ tile_map_data = PackedByteArray("AAAKAA4AAAADAAQAAAAVAAkAAAADAAQAAAAfAD8AAAADAAQ
 [node name="EndZone" parent="." index="2" instance=ExtResource("2_4sxxq")]
 position = Vector2(132, 72)
 size = Vector2(216, 96)
+
+[node name="Background" parent="CanvasLayer" index="0"]
+light_color = Color(0.545098, 0.607843, 0.705882, 1)
+dark_color = Color(0.0941176, 0.0784314, 0.145098, 1)
