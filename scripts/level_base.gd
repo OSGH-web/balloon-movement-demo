@@ -21,7 +21,6 @@ extends Node2D
 	set(value):
 		background_color_dark = value
 		_update_background_color()
-
 		
 @export var invert_foreground_colors := false:
 	set(value):
@@ -31,8 +30,6 @@ extends Node2D
 	set(value):
 		invert_background_colors = value
 		_update_background_color()
-
-var level_background: ColorRect;
 
 func _enter_tree():
 	_update_background_color()
@@ -47,16 +44,13 @@ func _update_background_color():
 	%Background.dark_color = background_color_dark
 	%Background.light_color = background_color_light
 	%Background.invert_colors = invert_background_colors
-
-	if not level_background:
-		return
 		
-	level_background.color = background_color_light
+	$Terrain.background_color = background_color_light
 	if invert_foreground_colors:
-		level_background.color = background_color_dark
+		$Terrain.background_color = background_color_dark
 	
 	if width_in_tiles >= 80 and height_in_tiles >= 45:
-		level_background.visible = false
+		$Terrain.background_color = Color(0.0, 0.0, 0.0, 0.0)
 
 func _update_player_camera():
 	if Engine.is_editor_hint():
@@ -69,17 +63,6 @@ func _update_level_bounds():
 	var tilemap = get_node_or_null("Terrain")
 	if !tilemap:
 		return
-	
-		# Clear existing ColorRect (if any)
-	for child in tilemap.get_children():
-		if child is ColorRect:
-			child.queue_free()
-
-	level_background = ColorRect.new()
-	level_background.color = background_color_light
-	level_background.size = Vector2(
-		width_in_tiles * tilemap.tile_set.tile_size.x,
-		height_in_tiles * tilemap.tile_set.tile_size.y
-	)
-	tilemap.add_child(level_background)
-	level_background.z_index = -1  # Render behind tiles
+		
+	tilemap.width_in_tiles = width_in_tiles
+	tilemap.height_in_tiles = height_in_tiles

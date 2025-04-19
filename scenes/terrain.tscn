@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://bnpihmeh3p65s"]
+[gd_scene load_steps=3 format=3 uid="uid://bnpihmeh3p65s"]
 
 [ext_resource type="TileSet" uid="uid://b3qj6docskl0x" path="res://assets/tilesets/terrain_tileset.tres" id="1_hn2sr"]
+[ext_resource type="Script" uid="uid://df1fbghclur2h" path="res://scripts/terrain.gd" id="2_oqplg"]
 
 [node name="TileMapLayer" type="TileMapLayer"]
 tile_set = ExtResource("1_hn2sr")
+script = ExtResource("2_oqplg")
+
+[node name="LevelBackground" type="ColorRect" parent="."]
+z_index = -1
+offset_right = 40.0
+offset_bottom = 40.0
