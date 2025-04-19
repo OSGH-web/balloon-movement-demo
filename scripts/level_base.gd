@@ -16,38 +16,39 @@ extends Node2D
 @export var background_color_light := Color(1, 1, 1):
 	set(value):
 		background_color_light = value
-		_update_background_color()
+		%Background.light_color = background_color_light
+		_update_terrain_background_color()
+
 @export var background_color_dark := Color(0, 0, 0):
 	set(value):
 		background_color_dark = value
-		_update_background_color()
+		%Background.dark_color = background_color_dark
+		_update_terrain_background_color()
 		
 @export var invert_foreground_colors := false:
 	set(value):
 		invert_foreground_colors = value
-		_update_background_color()
+		_update_terrain_background_color()
+
 @export var invert_background_colors := false:
 	set(value):
 		invert_background_colors = value
-		_update_background_color()
+		%Background.invert_colors = invert_background_colors
 
 func _enter_tree():
-	_update_background_color()
+	_update_terrain_background_color()
 
 func _ready():
 	_update_level_bounds()
 	_update_player_camera()
-	_update_background_color()
+	_update_terrain_background_color()
 
 
-func _update_background_color():
-	%Background.dark_color = background_color_dark
-	%Background.light_color = background_color_light
-	%Background.invert_colors = invert_background_colors
-		
-	$Terrain.background_color = background_color_light
+func _update_terrain_background_color():
 	if invert_foreground_colors:
 		$Terrain.background_color = background_color_dark
+	else:
+		$Terrain.background_color = background_color_light
 	
 	if width_in_tiles >= 80 and height_in_tiles >= 45:
 		$Terrain.background_color = Color(0.0, 0.0, 0.0, 0.0)
