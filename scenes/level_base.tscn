@@ -1,12 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://cxo2r1hb7u2ss"]
+[gd_scene load_steps=10 format=3 uid="uid://cxo2r1hb7u2ss"]
 
 [ext_resource type="Script" uid="uid://lkphrvhitvd" path="res://scripts/level_base.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://b7jfvkf4edbjp" path="res://scenes/player.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://bnpihmeh3p65s" path="res://scenes/terrain.tscn" id="3_h2yge"]
-[ext_resource type="Script" uid="uid://df1fbghclur2h" path="res://scripts/terrain.gd" id="4_1bvp3"]
 [ext_resource type="TileSet" uid="uid://clmawpyff0gle" path="res://assets/tilesets/Caves_Forest.tres" id="4_krm4r"]
+[ext_resource type="Texture2D" uid="uid://1gh0pa10k34t" path="res://assets/sprites/white_tile.png" id="5_2v7b3"]
+[ext_resource type="Material" uid="uid://c3vefuowtktyj" path="res://assets/shaders/default-background-material.tres" id="5_6k8qy"]
 [ext_resource type="PackedScene" uid="uid://b3h1d6irllu2r" path="res://scenes/UI/pause_menu.tscn" id="5_8rhjg"]
 [ext_resource type="PackedScene" uid="uid://dnrjc1o517gjp" path="res://scenes/UI/hud.tscn" id="7_8n3nq"]
+[ext_resource type="Texture2D" uid="uid://dsesal8ly3wft" path="res://assets/sprites/diagonal_stripe.png" id="10_evabm"]
 
 [node name="LevelBase" type="Node2D"]
 process_mode = 1
@@ -21,9 +23,30 @@ safe_margin = 0.001
 
 [node name="Terrain" parent="." instance=ExtResource("3_h2yge")]
 tile_set = ExtResource("4_krm4r")
-script = ExtResource("4_1bvp3")
+
+[node name="TerrainBackground" type="TextureRect" parent="Terrain"]
+unique_name_in_owner = true
+z_index = -1
+texture_filter = 1
+material = ExtResource("5_6k8qy")
+offset_right = 768.0
+offset_bottom = 1536.0
+texture = ExtResource("5_2v7b3")
+stretch_mode = 1
 
 [node name="Pause Menu" parent="." instance=ExtResource("5_8rhjg")]
 
 [node name="FuelLabel" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_8n3nq")]
 player = NodePath("../Player")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -3
+
+[node name="ViewportBackground" type="TextureRect" parent="CanvasLayer"]
+unique_name_in_owner = true
+texture_filter = 1
+material = ExtResource("5_6k8qy")
+offset_right = 3840.0
+offset_bottom = 1920.0
+texture = ExtResource("10_evabm")
+stretch_mode = 1

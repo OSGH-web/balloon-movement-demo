@@ -15,33 +15,25 @@ extends Node2D
 
 func _ready():
 	_update_level_bounds()
+	_generate_level_border()
 	_update_player_camera()
+
+func _update_level_bounds():
+	var tilemap = get_node_or_null("Terrain")
+	if !tilemap:
+		return
+
+	%TerrainBackground.size.x = width_in_tiles * 24
+	%TerrainBackground.size.y = height_in_tiles * 24
+
+func _generate_level_border():
+	if Engine.is_editor_hint():
+		return; # only run in the game
+
+	$"Terrain".generate_border(width_in_tiles, height_in_tiles)
 
 func _update_player_camera():
 	if Engine.is_editor_hint():
 		return; # only run in the game
 	if $Player:
 		$Player._setup_camera_limits(width_in_tiles * 8 * $Player.physics_scale_factor, height_in_tiles * 8 * $Player.physics_scale_factor)
-
-func _update_level_bounds():
-	if !Engine.is_editor_hint():
-		return  # Only run in the editor
-
-	# Clear existing ColorRect (if any)
-	for child in get_children():
-		if child is ColorRect:
-			child.queue_free()
-
-	# Create new bounds overlay
-	var tilemap = get_node_or_null("Terrain")
-	if !tilemap:
-		return
-
-	var rect = ColorRect.new()
-	rect.color = Color(1, 0, 0, 0.1)
-	rect.size = Vector2(
-		width_in_tiles * tilemap.tile_set.tile_size.x,
-		height_in_tiles * tilemap.tile_set.tile_size.y
-	)
-	add_child(rect)
-	rect.z_index = 1  # Render behind tiles

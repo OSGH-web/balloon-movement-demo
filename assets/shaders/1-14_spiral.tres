@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://d0mfxhjrk7eeb"]
+
+[ext_resource type="Shader" uid="uid://dhmt3vulwt0nd" path="res://assets/shaders/spriteshader.gdshader" id="1_quwah"]
+
+[resource]
+shader = ExtResource("1_quwah")
+shader_parameter/light_color = Color(0.964706, 0.458824, 0.478431, 1)
+shader_parameter/dark_color = Color(0.635294, 0.14902, 0.2, 1)
+shader_parameter/x_scale = 6.0
+shader_parameter/y_scale = 4.0

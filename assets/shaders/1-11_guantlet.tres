@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://8fnrlump446c"]
+
+[ext_resource type="Shader" uid="uid://dhmt3vulwt0nd" path="res://assets/shaders/spriteshader.gdshader" id="1_f2knt"]
+
+[resource]
+shader = ExtResource("1_f2knt")
+shader_parameter/light_color = Color(0.894118, 0.65098, 0.447059, 1)
+shader_parameter/dark_color = Color(0.721569, 0.435294, 0.313726, 1)
+shader_parameter/x_scale = 4.0
+shader_parameter/y_scale = 4.0
