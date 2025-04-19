@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cxo2r1hb7u2ss"]
+[gd_scene load_steps=9 format=4 uid="uid://cxo2r1hb7u2ss"]
 
 [ext_resource type="Script" uid="uid://lkphrvhitvd" path="res://scripts/level_base.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://b7jfvkf4edbjp" path="res://scenes/player.tscn" id="2_0xm2m"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://f5u701miacbf" path="res://scenes/background.tscn" id="8_2v7b3"]
 [ext_resource type="Texture2D" uid="uid://dsesal8ly3wft" path="res://assets/sprites/diagonal_stripe.png" id="10_evabm"]
 
-[node name="LevelBase2" type="Node2D"]
+[node name="LevelBase" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_1bvp3")
 

@@ -27,6 +27,9 @@ func _ready():
 	generate_border()
 
 func generate_border():
+	if Engine.is_editor_hint():
+		return; # only run in the game
+
 	for x in range(width_in_tiles):
 		# Bottom border
 		set_cell(Vector2i(x, height_in_tiles - 1), 1, Vector2i(1, 2), 0)
