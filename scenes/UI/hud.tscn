@@ -45,6 +45,17 @@ unique_name_in_owner = true
 layout_mode = 0
 offset_left = 1350.0
 offset_right = 1390.0
-offset_bottom = 42.0
+offset_bottom = 48.0
 theme_override_styles/normal = ExtResource("2_18exe")
+label_settings = ExtResource("3_0jeyp")
+
+[node name="Timer" type="Label" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1350.0
+offset_top = 60.0
+offset_right = 1390.0
+offset_bottom = 108.0
+theme_override_styles/normal = ExtResource("2_18exe")
+text = "00:00"
 label_settings = ExtResource("3_0jeyp")
