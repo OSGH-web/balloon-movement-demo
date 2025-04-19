@@ -13,7 +13,7 @@ extends CharacterBody2D
 # physics are designed for an 8px x 8px tileset -- 8px == 1m
 const BASE_TILE_SIZE_PX = 8
 @export var tile_size_px = 24
-@export var physics_scale_factor = tile_size_px / BASE_TILE_SIZE_PX
+const physics_scale_factor = 3
 
 # All forces are in units of Tiles per Second squared
 # friction is a ratio and doesn't need to be scaled
@@ -175,16 +175,16 @@ func _setup_camera_limits(map_width_px, map_height_px):
 
 	# if the level is less wide than the screen, center the level horizontally in the camera's view
 	var viewport_width = ProjectSettings.get_setting("display/window/size/viewport_width")
-	if map_width_px < viewport_width:
-		$Camera.limit_left = map_width_px / 2  - (viewport_width / 2)
-		$Camera.limit_right = map_width_px / 2  + (viewport_width / 2)
+	if map_width_px * camera_scale[0] < viewport_width:
+		$Camera.limit_left = (map_width_px / 2)  - (viewport_width / 2) / camera_scale[0]  
+		$Camera.limit_right = (map_width_px / 2)  + (viewport_width / 2) / camera_scale[0] 
 		$Camera.drag_horizontal_enabled = false
 
 	# if the level is shorter than the screen, center the level vertically in the camera's view
 	var viewport_height = ProjectSettings.get_setting("display/window/size/viewport_height")
-	if map_height_px < viewport_height:
-		$Camera.limit_top = (map_height_px / 2) - (viewport_height / 2)
-		$Camera.limit_bottom = (map_height_px / 2)  + (viewport_height / 2)
+	if map_height_px * camera_scale[0] < viewport_height:
+		$Camera.limit_top =  (map_height_px / 2) - (viewport_height / 2) / camera_scale[0]
+		$Camera.limit_bottom = (map_height_px / 2)  + (viewport_height / 2) / camera_scale[0]
 		$Camera.drag_vertical_enabled = false
 		
 	if staticCam:
