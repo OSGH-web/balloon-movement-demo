@@ -5,7 +5,8 @@ extends CanvasLayer
 var time: float = 0.0;
 
 func _process(delta: float) -> void:
-	time += delta;
+	if not GameManager.endZoneTriggered:
+		time += delta;
 
 	if not player:
 		return
