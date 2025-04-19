@@ -13,17 +13,6 @@ extends Node2D
 		height_in_tiles = value
 		_update_level_bounds()  # Refresh when changed
 
-@export var background_color_light := Color(1, 1, 1):
-	set(value):
-		background_color_light = value
-		%ViewportBackground.light_color = background_color_light
-		%TerrainBackground.light_color = background_color_light
-
-@export var background_color_dark := Color(0, 0, 0):
-	set(value):
-		background_color_dark = value
-		%ViewportBackground.dark_color = background_color_dark
-
 func _ready():
 	_update_level_bounds()
 	_update_player_camera()
