@@ -20,3 +20,9 @@ extends TextureRect
 	set(value):
 		y_scale = value
 		material.set("shader_parameter/y_scale", y_scale)
+
+func _ready():
+	material.set("shader_parameter/light_color", light_color)
+	material.set("shader_parameter/dark_color", dark_color)
+	material.set("shader_parameter/x_scale", x_scale)
+	material.set("shader_parameter/y_scale", y_scale)

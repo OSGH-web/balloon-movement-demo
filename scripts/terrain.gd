@@ -25,6 +25,8 @@ var configured_size = Vector2(window_width, window_height)
 
 func _ready():
 	generate_border()
+	_update_level_bounds()
+	_update_background_color()
 
 func generate_border():
 	if Engine.is_editor_hint():
@@ -45,8 +47,10 @@ func generate_border():
 func _update_background_color():
 	if not level_background:
 		return
-
-	level_background.color = background_color
+	if width_in_tiles >= 80 and height_in_tiles >= 45:
+		level_background.color = Color(0.0, 0.0, 0.0, 0.0)
+	else:
+		level_background.color = background_color
 
 func _update_level_bounds():
 	if not level_background:
