@@ -37,10 +37,20 @@ func process_all_levels():
 
 		subviewport.add_child(level_instance)
 
+		var border_size_tiles = 3
+		# don't show border if we're looking at a full screen level
+		if level_instance.width_in_tiles >= 80 and level_instance.height_in_tiles >= 45:
+			border_size_tiles = 0
 		# Update viewport size
 		subviewport.size = Vector2(
-			level_instance.width_in_tiles * 24,
-			level_instance.height_in_tiles * 24
+			level_instance.width_in_tiles * (24 + 2 * border_size_tiles),
+			level_instance.height_in_tiles * (24 + 2 * border_size_tiles)
+		)
+		
+		# position the level with an equal border on all sides
+		level_instance.position = Vector2(
+			level_instance.width_in_tiles * (1 * border_size_tiles),
+			level_instance.height_in_tiles * (1 * border_size_tiles)
 		)
 
 		# Wait for proper rendering

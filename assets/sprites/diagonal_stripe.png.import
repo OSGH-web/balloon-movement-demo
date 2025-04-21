@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxjhyiou5ac8r"
-path="res://.godot/imported/end-of-level-options.jpg-a5a2bedc4d3dc33756da345764ffadaf.ctex"
+uid="uid://dsesal8ly3wft"
+path="res://.godot/imported/diagonal_stripe.png-02c440c3d30808e006dde3e6f09206e0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/extras/end-of-level-options.jpg"
-dest_files=["res://.godot/imported/end-of-level-options.jpg-a5a2bedc4d3dc33756da345764ffadaf.ctex"]
+source_file="res://assets/sprites/diagonal_stripe.png"
+dest_files=["res://.godot/imported/diagonal_stripe.png-02c440c3d30808e006dde3e6f09206e0.ctex"]
 
 [params]
 

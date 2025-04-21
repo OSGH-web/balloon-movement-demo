@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://blybopg863h23"]
+
+[ext_resource type="Shader" uid="uid://dhmt3vulwt0nd" path="res://assets/shaders/spriteshader.gdshader" id="1_a01yl"]
+
+[resource]
+shader = ExtResource("1_a01yl")
+shader_parameter/light_color = Color(0.545098, 0.607843, 0.705882, 1)
+shader_parameter/dark_color = Color(0.0941176, 0.0784314, 0.145098, 1)
+shader_parameter/x_scale = 6.0
+shader_parameter/y_scale = 4.0
