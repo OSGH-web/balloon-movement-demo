@@ -1,6 +1,90 @@
-[gd_scene load_steps=2 format=3 uid="uid://dg3shn8d54wck"]
+[gd_scene load_steps=7 format=3 uid="uid://dg3shn8d54wck"]
 
+[ext_resource type="Texture2D" uid="uid://2qr2naebq8vm" path="res://assets/sprites/title_screen.png" id="1_0wfyh"]
 [ext_resource type="Script" uid="uid://c8rtmo3o8q4vw" path="res://scripts/main.gd" id="1_o5qli"]
+[ext_resource type="StyleBox" uid="uid://cn1chxlsybisf" path="res://assets/styles/sbf_focus.tres" id="2_tefeu"]
+[ext_resource type="LabelSettings" uid="uid://v4nuv8jtylyb" path="res://assets/styles/label_11px.tres" id="4_tipki"]
+[ext_resource type="Texture2D" uid="uid://dsesal8ly3wft" path="res://assets/sprites/diagonal_stripe.png" id="5_o6xl0"]
+[ext_resource type="Material" uid="uid://drlban6fsery" path="res://assets/shaders/1-13_ctt.tres" id="6_85g3d"]
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node2D"]
 script = ExtResource("1_o5qli")
+
+[node name="TitlePanel" type="Panel" parent="."]
+anchors_preset = -1
+anchor_left = 0.224299
+anchor_top = 0.1
+anchor_right = 0.224299
+anchor_bottom = 0.1
+offset_left = 213.0
+offset_top = 252.0
+offset_right = 955.0
+offset_bottom = 468.0
+theme_override_styles/panel = ExtResource("2_tefeu")
+
+[node name="Label" type="Label" parent="TitlePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0233492
+anchor_right = 0.0233492
+offset_top = 24.0
+offset_right = 189.0
+offset_bottom = 66.0
+scale = Vector2(13, 13)
+text = "Smile Run"
+label_settings = ExtResource("4_tipki")
+metadata/_edit_use_anchors_ = true
+
+[node name="PressToStartPanel" type="Panel" parent="."]
+anchors_preset = -1
+anchor_left = 0.224299
+anchor_top = 0.1
+anchor_right = 0.224299
+anchor_bottom = 0.1
+offset_left = 475.0
+offset_top = 684.0
+offset_right = 1071.0
+offset_bottom = 792.0
+theme_override_styles/panel = ExtResource("2_tefeu")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="PressToStartPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0134228
+anchor_right = -0.0134228
+offset_left = 8.0
+offset_top = 24.9999
+offset_right = 344.0
+offset_bottom = 66.9999
+scale = Vector2(5, 5)
+theme_override_colors/font_color = Color(0.996078, 0.905882, 0.380392, 1)
+text = "Press A To Start"
+label_settings = ExtResource("4_tipki")
+metadata/_edit_use_anchors_ = true
+
+[node name="BGTexture" type="TextureRect" parent="."]
+z_index = -1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -6.0
+offset_right = 125.0
+offset_bottom = 60.0
+grow_horizontal = 0
+scale = Vector2(18, 18)
+texture = ExtResource("1_0wfyh")
+stretch_mode = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -3
+
+[node name="ViewportBackground" type="TextureRect" parent="CanvasLayer"]
+unique_name_in_owner = true
+texture_filter = 1
+material = ExtResource("6_85g3d")
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("5_o6xl0")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
