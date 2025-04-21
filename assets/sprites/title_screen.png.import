@@ -2,16 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<<< HEAD:assets/sprites/title_screen.png.import
 uid="uid://2qr2naebq8vm"
 path="res://.godot/imported/title_screen.png-0fff5e757fecf53496dde37536e13bde.ctex"
+========
+uid="uid://dxy1nk3c3fnl"
+path="res://.godot/imported/wall_pattern.png-e1bf6f7d026dda54139832e7b9c407c4.ctex"
+>>>>>>>> main:assets/sprites/wall_pattern.png.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
+<<<<<<<< HEAD:assets/sprites/title_screen.png.import
 source_file="res://assets/sprites/title_screen.png"
 dest_files=["res://.godot/imported/title_screen.png-0fff5e757fecf53496dde37536e13bde.ctex"]
+========
+source_file="res://assets/sprites/wall_pattern.png"
+dest_files=["res://.godot/imported/wall_pattern.png-e1bf6f7d026dda54139832e7b9c407c4.ctex"]
+>>>>>>>> main:assets/sprites/wall_pattern.png.import
 
 [params]
 
