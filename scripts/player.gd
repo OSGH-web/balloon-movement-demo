@@ -42,8 +42,12 @@ func add_fuel(amt):
 	GameManager.background_music.pitch_scale = 1.03 # Changes music to normal if you ran out of fuel then got it back. 
 
 func _on_timer_timeout():
-	if int(FUEL) <= 0 && not GameManager.endZoneTriggered:
+	if int(FUEL) <= 0 && not GameManager.gameStateDisabled:
 		emit_signal("player_died")
+
+# Called when the player collides with a killzone.
+func die():
+	emit_signal("player_died")
 
 func _get_friction():
 	var tilemap: TileMapLayer = $"../Terrain"
@@ -71,6 +75,11 @@ func _input(event):
 
 func _physics_process(delta):
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+-	# Use with good audioStream
+-	#if not input_dir.x == 0.0:
+-		#$AudioStreamPlayer.playing = true
+-	#else:
+-		#$AudioStreamPlayer.playing = false
 	var velocity_update = input_dir
 	velocity_update.x *= player_x_force * delta
 	velocity_update.y *= player_y_force * delta
@@ -78,9 +87,9 @@ func _physics_process(delta):
 	if FUEL > 0:
 		velocity -= velocity_update
 		# fuel is independent of scale
-		if not GameManager.endZoneTriggered:
+		if not GameManager.gameStateDisabled:
 			FUEL -= velocity_update.length() / physics_scale_factor
-	elif timer.is_stopped() and not GameManager.endZoneTriggered:
+	elif timer.is_stopped() and not GameManager.gameStateDisabled:
 		GameManager.background_music.pitch_scale = 0.7
 		timer.start()
 

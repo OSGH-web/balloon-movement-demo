@@ -9,9 +9,10 @@ var score = 0
 var extraLivesDivisor = 1
 var extraLifeFrameDelay = .5 # value in seconds. time between life increases when receiving multiple lives
 var level_files = []
-var endZoneTriggered = false
+var gameStateDisabled = false
 # Show a message upon levelCompletion
 @onready var background_music = $Background_Music
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 func _ready():
 	load_levels()
 
@@ -39,7 +40,7 @@ func load_next_level():
 	if curr_level > 0:
 		background_music.pitch_scale = 1.03
 		# Prevents bug where level resets if entering endzone when out of fuel. 
-		endZoneTriggered = true
+		gameStateDisabled = true
 		# Freeze to prevent player death after endzone trigger
 		await calculateScore() 
 		await get_tree().create_timer(1).timeout
@@ -47,7 +48,7 @@ func load_next_level():
 	curr_level += 1
 	get_tree().change_scene_to_file(level_path)
 	# Must go after changing scene to avoid issues.
-	endZoneTriggered = false
+	gameStateDisabled = false
 	
 func _input(event):
 	 # DEV: Go to next level
@@ -98,24 +99,26 @@ func scoreCountDown():
 		await get_tree().process_frame
 		
 func on_player_died():
-	if endZoneTriggered:
+	if gameStateDisabled:
 		background_music.pitch_scale = 1.03
 		return
 	lives -= 1
+	gameStateDisabled = true
+	$AudioStreamPlayer.play()
 	if lives > 0:
 		%GameInfo.text = "YOU DIED! RESETTING LEVEL..."
 		%GameInfo.visible = true
-		await get_tree().create_timer(2).timeout
+		await get_tree().create_timer(5).timeout
 		background_music.pitch_scale = 1.03
-		%GameInfo.visible = false
 		get_tree().reload_current_scene()
 	else:
 		%GameInfo.text = "GAME OVER! BACK TO LEVEL 1 :) "
 		%GameInfo.visible = true
-		await get_tree().create_timer(2).timeout
-		%GameInfo.visible = false
+		await get_tree().create_timer(5).timeout
 		reset()
 		load_next_level()
+	%GameInfo.visible = false
+	gameStateDisabled = false
 
 func get_player(): 
 	var level = get_tree().get_current_scene()

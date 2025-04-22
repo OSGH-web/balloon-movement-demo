@@ -12,7 +12,7 @@ func _ready():
 	update_shape()
 
 func _on_body_entered(body):
-	if body.is_in_group("player") and not GameManager.endZoneTriggered:
+	if body.is_in_group("player") and not GameManager.gameStateDisabled:
 		GameManager.load_next_level()
 
 func _process(_delta):
