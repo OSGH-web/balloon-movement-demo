@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8ooja0h52pm1"]
+[gd_scene load_steps=7 format=3 uid="uid://b8ooja0h52pm1"]
 
 [ext_resource type="Script" uid="uid://m01i7w8y3x8f" path="res://scripts/game_manager.gd" id="1_hwd4i"]
 [ext_resource type="AudioStream" uid="uid://cquaalpknb8c6" path="res://assets/sound_fx/background_music.ogg" id="2_glms7"]
 [ext_resource type="StyleBox" uid="uid://cyxkpmb0rpdry" path="res://assets/styles/sbf_mid_transparent.tres" id="3_oo155"]
 [ext_resource type="LabelSettings" uid="uid://cbw7oatl30dvl" path="res://assets/styles/label_33px.tres" id="4_eaq8r"]
 [ext_resource type="AudioStream" uid="uid://s0n77nbat75d" path="res://assets/sound_fx/hitHurt.wav" id="5_eaq8r"]
+[ext_resource type="AudioStream" uid="uid://c6ui43xa7nmm5" path="res://assets/sound_fx/snoop-dogg-smoke-weed-everyday.mp3" id="6_ternb"]
 
 [node name="GameManager" type="Control"]
 layout_mode = 3
@@ -43,5 +44,8 @@ label_settings = ExtResource("4_eaq8r")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="PlayerDeath" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_eaq8r")
+
+[node name="SmokeWeedEveryday" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ternb")

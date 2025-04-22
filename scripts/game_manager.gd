@@ -74,6 +74,7 @@ func _input(event):
 func calculateScore():
 	%GameInfo.text = "Level Complete! +1000 Score!"
 	%GameInfo.visible = true
+	$SmokeWeedEveryday.play()
 	await get_tree().create_timer(1).timeout
 	score += 1000 # for level clear
 	%GameInfo.visible = false
@@ -104,7 +105,7 @@ func on_player_died():
 		return
 	lives -= 1
 	gameStateDisabled = true
-	$AudioStreamPlayer.play()
+	$PlayerDeath.play()
 	if lives > 0:
 		%GameInfo.text = "YOU DIED! RESETTING LEVEL..."
 		%GameInfo.visible = true
