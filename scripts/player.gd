@@ -75,11 +75,11 @@ func _input(event):
 
 func _physics_process(delta):
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	# Use with good audioStream
-	#if not input_dir.x == 0.0:
-		#$AudioStreamPlayer.playing = true
-	#else:
-		#$AudioStreamPlayer.playing = false
+-	# Use with good audioStream
+-	#if not input_dir.x == 0.0:
+-		#$AudioStreamPlayer.playing = true
+-	#else:
+-		#$AudioStreamPlayer.playing = false
 	var velocity_update = input_dir
 	velocity_update.x *= player_x_force * delta
 	velocity_update.y *= player_y_force * delta
