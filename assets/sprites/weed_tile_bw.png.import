@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bguiq44ruhk2x"
-path="res://.godot/imported/title_screen.png-0fff5e757fecf53496dde37536e13bde.ctex"
+uid="uid://j65nk3t7y8df"
+path="res://.godot/imported/weed_tile_bw.png-ee1374195db8d2ad0488bd86342160cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/title_screen.png"
-dest_files=["res://.godot/imported/title_screen.png-0fff5e757fecf53496dde37536e13bde.ctex"]
+source_file="res://assets/sprites/weed_tile_bw.png"
+dest_files=["res://.godot/imported/weed_tile_bw.png-ee1374195db8d2ad0488bd86342160cf.ctex"]
 
 [params]
 
