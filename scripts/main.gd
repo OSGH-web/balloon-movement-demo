@@ -9,4 +9,4 @@ func _on_arcade_button_pressed() -> void:
 	GameManager.load_next_level()
 
 func _on_trial_button_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://scenes/UI/level_select.tscn")
