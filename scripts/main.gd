@@ -2,6 +2,6 @@
 extends Node
 
 func _input(event):
-	if event.is_action_pressed("ui_a"):
+	if event.is_action_pressed("ui_select"):
 		GameManager.reset()
 		GameManager.load_next_level()
