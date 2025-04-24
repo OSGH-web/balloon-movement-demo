@@ -2,7 +2,7 @@ extends CanvasLayer
 
 func _ready() -> void:
 	if !get_parent().PROCESS_MODE_PAUSABLE:
-		print("warning: parent is not pausable")
+		push_warning("warning: parent is not pausable")
 	init_mute_audio_button()
 
 func _input(event: InputEvent) -> void:
@@ -36,3 +36,7 @@ func toggle_master_audio_mute() -> void:
 
 func _on_mute_audio_button_pressed() -> void:
 	toggle_master_audio_mute()
+
+func _on_main_menu_pressed() -> void:
+	toggle_pause()
+	get_tree().change_scene_to_file("res://scenes/main.tscn")
