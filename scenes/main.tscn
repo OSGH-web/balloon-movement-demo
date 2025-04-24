@@ -1,28 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://dg3shn8d54wck"]
+[gd_scene load_steps=9 format=3 uid="uid://dg3shn8d54wck"]
 
 [ext_resource type="Script" uid="uid://c8rtmo3o8q4vw" path="res://scripts/main.gd" id="1_o5qli"]
 [ext_resource type="StyleBox" uid="uid://cn1chxlsybisf" path="res://assets/styles/sbf_focus.tres" id="2_tefeu"]
 [ext_resource type="Texture2D" uid="uid://d2qruhdnnbuwn" path="res://assets/sprites/title_screen_player.png" id="4_85g3d"]
 [ext_resource type="LabelSettings" uid="uid://v4nuv8jtylyb" path="res://assets/styles/label_11px.tres" id="4_tipki"]
-[ext_resource type="Shader" uid="uid://b7wv1srmyrib5" path="res://assets/shaders/tile.gdshader" id="5_choun"]
 [ext_resource type="Material" uid="uid://cmg6vu3hj2ryo" path="res://assets/shaders/1-02_square.tres" id="5_tefeu"]
+[ext_resource type="Material" uid="uid://db8q5jqucir4j" path="res://assets/shaders/titlescreen-beam-material.tres" id="5_tipki"]
 [ext_resource type="Texture2D" uid="uid://j65nk3t7y8df" path="res://assets/sprites/weed_tile_bw.png" id="6_tefeu"]
 [ext_resource type="Texture2D" uid="uid://bw5x01l18tgjm" path="res://assets/sprites/title_screen_beam.png" id="6_ya4ey"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_eb6dy"]
-shader = ExtResource("5_choun")
-shader_parameter/light_color = Color(0.0705882, 0.305882, 0.537255, 1)
-shader_parameter/dark_color = Color(0, 0.6, 0.858824, 1)
-shader_parameter/animation_rate = 0.9
-shader_parameter/pixelate_amount = 64.0
-shader_parameter/rotation = 14.0
-shader_parameter/scale = 7.0
-shader_parameter/scroll_speed = 1.3
-shader_parameter/dist_factor = 1.0
-shader_parameter/radius_median = 1.3
-shader_parameter/radius_ampl = 0.2
-shader_parameter/sharpness = 0.7
-shader_parameter/n_target_circles = 2.0
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_o5qli")
@@ -99,7 +84,7 @@ stretch_mode = 2
 
 [node name="BeamTexture" type="TextureRect" parent="."]
 z_index = -1
-material = SubResource("ShaderMaterial_eb6dy")
+material = ExtResource("5_tipki")
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
