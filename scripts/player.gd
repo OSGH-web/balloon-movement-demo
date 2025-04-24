@@ -67,9 +67,9 @@ func _get_friction():
 
 
 func _input(event):
-	if event.is_action_pressed("ui_a"):
+	if event.is_action_pressed("ui_brake"):
 		airbrake_pressed = true
-	if event.is_action_released("ui_a"):
+	if event.is_action_released("ui_brake"):
 		airbrake_pressed = false
 
 
