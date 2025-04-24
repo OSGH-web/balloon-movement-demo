@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dg3shn8d54wck"]
+[gd_scene load_steps=11 format=3 uid="uid://dg3shn8d54wck"]
 
 [ext_resource type="Script" uid="uid://c8rtmo3o8q4vw" path="res://scripts/main.gd" id="1_o5qli"]
 [ext_resource type="StyleBox" uid="uid://cn1chxlsybisf" path="res://assets/styles/sbf_focus.tres" id="2_tefeu"]
-[ext_resource type="Theme" uid="uid://bcn6jcu02pjx0" path="res://assets/themes/standard_font_theme.theme" id="4_o6xl0"]
 [ext_resource type="Texture2D" uid="uid://d2qruhdnnbuwn" path="res://assets/sprites/title_screen_player.png" id="4_85g3d"]
+[ext_resource type="Theme" uid="uid://bcn6jcu02pjx0" path="res://assets/themes/standard_font_theme.theme" id="4_o6xl0"]
 [ext_resource type="LabelSettings" uid="uid://v4nuv8jtylyb" path="res://assets/styles/label_11px.tres" id="4_tipki"]
 [ext_resource type="Material" uid="uid://cmg6vu3hj2ryo" path="res://assets/shaders/1-02_square.tres" id="5_tefeu"]
 [ext_resource type="Material" uid="uid://db8q5jqucir4j" path="res://assets/shaders/titlescreen-beam-material.tres" id="5_tipki"]
