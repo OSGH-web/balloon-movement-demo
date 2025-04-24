@@ -13,7 +13,10 @@ func _ready():
 
 func _on_body_entered(body):
 	if body.is_in_group("player") and not GameManager.gameStateDisabled:
-		GameManager.load_next_level()
+		if GameManager.gameMode == GameManager.GameModes.ARCADE:
+			GameManager.load_next_level()
+		elif GameManager.gameMode == GameManager.GameModes.TIME_TRIAL:
+			GameManager.save_time_and_return()
 
 func _process(_delta):
 	if Engine.is_editor_hint():  # Only update in the editor

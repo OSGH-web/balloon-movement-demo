@@ -7,21 +7,9 @@ var level_files := []
 @onready var button_container: GridContainer = %ButtonGrid
 
 func _ready():
-	load_levels()
+	level_files = GameManager.load_levels()
 	create_level_grid()
 	button_container.get_children()[0].grab_focus()
-
-func load_levels():
-	var dir = DirAccess.open("res://levels/")
-	if dir:
-		level_files.clear()
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		while file_name != "":
-			if file_name.ends_with(".tscn"):
-				level_files.append(file_name)
-			file_name = dir.get_next()
-		level_files.sort()
 
 func create_level_grid():
 	for child in button_container.get_children():
@@ -40,11 +28,6 @@ func create_level_grid():
 		button.focus_entered.connect(_focus.bind(i))
 		button.mouse_entered.connect(_update_level_info_display.bind(i))
 		button.mouse_exited.connect(_mouse_exit)
-
-		# tint the completed levels
-		#if SaveManager.is_level_completed(level_files[i]):
-			#button.add_theme_stylebox_override("normal", tinted_style)
-			#button.add_theme_stylebox_override("hover", tinted_style)
 
 	# update focus neighbors to allow for horizontal wrapping
 	for i in n_levels:
@@ -71,6 +54,8 @@ func _mouse_exit():
 
 func _on_level_selected(level_index: int):
 	var file_path = "res://levels/%s" % level_files[level_index]
+	GameManager.time = 0.0
+	GameManager.game_started = false
 	get_tree().change_scene_to_file(file_path)
 
 
@@ -84,6 +69,8 @@ func _update_level_info_display(level_index):
 	var level_instance = level_scene.instantiate()
 	%LevelName.text = level_instance.level_name
 	level_instance.free()
-
-	#%LevelStats.text = "Completed" if SaveManager.is_level_completed(level_file) else "Not Completed"
-	%LevelNumber.text = "1-" + str(level_index + 1)
+	var time = GameManager.level_data.level_times.get(level_path, null)
+	if time == null or str(time) == "":
+		%LevelStats.text = "Level Not Complete"
+	else:
+		%LevelStats.text = str(time)

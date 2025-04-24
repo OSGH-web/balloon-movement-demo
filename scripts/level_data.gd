@@ -2,4 +2,5 @@
 extends Resource
 class_name LevelData
 
-@export var completed_levels = {}
+# Gets populated upon time trial level clear
+@export var level_times = {}

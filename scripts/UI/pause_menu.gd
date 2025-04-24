@@ -2,7 +2,7 @@ extends CanvasLayer
 
 func _ready() -> void:
 	if !get_parent().PROCESS_MODE_PAUSABLE:
-		print("warning: parent is not pausable")
+		push_warning("warning: parent is not pausable")
 	init_mute_audio_button()
 
 func _input(event: InputEvent) -> void:
