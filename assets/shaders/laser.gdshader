@@ -15,6 +15,11 @@ uniform float radius_ampl = 0.1;
 uniform float sharpness = .85;
 uniform float n_target_circles = 5.0;
 
+uniform vec3 included_color1 : source_color = vec3(0.0, 0.6, 0.859);
+uniform vec3 included_color2 : source_color = vec3(0.173, 0.91, 0.961);
+uniform vec3 included_color3 : source_color = vec3(1.0, 1.0, 1.0);
+uniform float inclusion_threshold : hint_range(0.0, 1.0) = 0.1;
+
 vec2 pixelate(vec2 uv, float amount) {
 	return floor(uv * amount) / amount;
 }
@@ -37,18 +42,20 @@ void fragment() {
 	float time = quantizeTime(TIME, 12.0);
 	float t = time * animation_rate;
 	
-    vec2 uv = pixelate(UV, pixelate_amount);
+	vec2 uv = pixelate(UV, pixelate_amount);
 	uv = scaleFullscreen(uv);
 	uv = rotate(uv, rotation);
 	uv.x += time * scroll_speed / 10.;
 	uv *= scale;
-	// gv == grid coordinate, range b/w -.5 and .5
+
+	// gv means grid UV -- range b/w -.5 and .5
 	vec2 gv = fract(uv) - 0.5;
 	// unique identifier of the current grid square
 	vec2 id = floor(uv);
 
 	//	accumulated brightness for all circles
 	float brightness = 0.0;
+
 	for (float y=-1.; y<=1.; y++){
 		for (float x=-1.; x<=1.; x++){
 			vec2 offset = vec2(x, y);
@@ -62,9 +69,14 @@ void fragment() {
 	}
 	brightness = mod(brightness, n_target_circles);
 
-	if (length(COLOR.rgb - vec3(0.0, 0.6, 0.859)) < 0.1 || length(COLOR.rgb - vec3(0.173, 0.91, 0.961)) < 0.1 || length(COLOR.rgb - vec3(1.0, 1.0, 1.0)) < 0.1) {
+	bool is_included =
+		length(COLOR.rgb - included_color1) < inclusion_threshold ||
+		length(COLOR.rgb - included_color2) < inclusion_threshold ||
+		length(COLOR.rgb - included_color3) < inclusion_threshold;
+
+	if (is_included) {
 		if (abs(n_target_circles - brightness - 1.0) < 0.25) {
-			COLOR =  vec4(light_color, COLOR.a);
+			COLOR = vec4(light_color, COLOR.a);
 		}
 		else if (abs(n_target_circles - brightness) < 0.5 ) {
 			COLOR = vec4(dark_color, COLOR.a);
