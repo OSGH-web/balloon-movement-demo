@@ -1,7 +1,14 @@
 # Empty main scene for flexibility later on. If we want an intro cutscene/main menu for example.
 extends Node
 
-func _input(event):
-	if event.is_action_pressed("ui_a"):
-		GameManager.reset()
-		GameManager.load_next_level()
+func _ready():
+	GameManager.reset()
+	%ArcadeButton.grab_focus()
+
+func _on_arcade_button_pressed() -> void:
+	GameManager.load_next_level()
+	GameManager.gameMode = GameManager.GameModes.ARCADE
+
+func _on_trial_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/UI/level_select.tscn")
+	GameManager.gameMode = GameManager.GameModes.TIME_TRIAL

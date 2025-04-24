@@ -1,0 +1,134 @@
+[gd_scene load_steps=5 format=3 uid="uid://bd1pheowg4s6b"]
+
+[ext_resource type="Script" uid="uid://dmoxrpi5e2hec" path="res://scripts/UI/level_select.gd" id="1_t5gxd"]
+[ext_resource type="StyleBox" uid="uid://002qwq5rvs87" path="res://assets/styles/sbf_light.tres" id="2_chg43"]
+[ext_resource type="LabelSettings" uid="uid://cbw7oatl30dvl" path="res://assets/styles/label_33px.tres" id="2_rif6e"]
+[ext_resource type="LabelSettings" uid="uid://v4nuv8jtylyb" path="res://assets/styles/label_11px.tres" id="3_chg43"]
+
+[node name="LevelSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(3, 3)
+script = ExtResource("1_t5gxd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 92.0
+offset_top = 24.0
+offset_right = 548.0
+offset_bottom = 328.0
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer"]
+layout_mode = 2
+split_offset = 276
+dragging_enabled = false
+dragger_visibility = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/HSplitContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_constants/separation = 0
+split_offset = 40
+dragging_enabled = false
+dragger_visibility = 2
+
+[node name="placeholder" type="Label" parent="VBoxContainer/HSplitContainer/HSplitContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_chg43")
+label_settings = ExtResource("3_chg43")
+
+[node name="WorldCompletion" type="Label" parent="VBoxContainer/HSplitContainer/HSplitContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_chg43")
+text = "Completion: 0%"
+label_settings = ExtResource("3_chg43")
+vertical_alignment = 1
+
+[node name="LevelName" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_chg43")
+text = "Gotta Go Fast!"
+label_settings = ExtResource("2_rif6e")
+horizontal_alignment = 1
+
+[node name="ButtonGrid" type="GridContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+columns = 5
+
+[node name="TimeToBeat" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_chg43")
+text = "Time To Beat"
+label_settings = ExtResource("2_rif6e")
+horizontal_alignment = 1
+
+[node name="HSplitContainer4" type="HSplitContainer" parent="VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(272, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 0
+split_offset = 88
+dragging_enabled = false
+dragger_visibility = 2
+
+[node name="HSplitContainer2" type="HSplitContainer" parent="VBoxContainer/HSplitContainer4"]
+layout_mode = 2
+theme_override_constants/separation = 0
+split_offset = 15
+dragging_enabled = false
+dragger_visibility = 2
+
+[node name="placeholder2" type="Label" parent="VBoxContainer/HSplitContainer4/HSplitContainer2"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_chg43")
+label_settings = ExtResource("3_chg43")
+horizontal_alignment = 1
+
+[node name="LevelNumber" type="Label" parent="VBoxContainer/HSplitContainer4/HSplitContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_chg43")
+text = "Best Time:"
+label_settings = ExtResource("3_chg43")
+vertical_alignment = 1
+clip_text = true
+
+[node name="HSplitContainer3" type="HSplitContainer" parent="VBoxContainer/HSplitContainer4"]
+custom_minimum_size = Vector2(184, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+split_offset = 40
+dragging_enabled = false
+dragger_visibility = 2
+
+[node name="placeholder2" type="Label" parent="VBoxContainer/HSplitContainer4/HSplitContainer3"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_chg43")
+label_settings = ExtResource("3_chg43")
+horizontal_alignment = 1
+
+[node name="LevelStats" type="Label" parent="VBoxContainer/HSplitContainer4/HSplitContainer3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = ExtResource("2_chg43")
+text = "Not Completed"
+label_settings = ExtResource("3_chg43")
+vertical_alignment = 1

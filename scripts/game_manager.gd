@@ -2,40 +2,65 @@
 # This means that this scene will stay loaded through the entire game. 
 
 extends Control
+const SAVE_PATH := "user://level_data.tres"
+# Level Data gets populated upon time trial level clear. 
+var level_data: LevelData
 var curr_level = 0
 var lives = 1
 # 10k score gives an extra life. You automatically get 1k per level, plus however much fuel you have left over. 
 var score = 0
+var game_started = false
+var time: float = 0.0;
 var extraLivesDivisor = 1
 var extraLifeFrameDelay = .5 # value in seconds. time between life increases when receiving multiple lives
 var level_files = []
 var gameStateDisabled = false
 # Show a message upon levelCompletion
 @onready var background_music = $Background_Music
-@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+enum GameModes {ARCADE, TIME_TRIAL}
+@onready var gameMode: GameModes
 func _ready():
-	load_levels()
+	level_files = load_levels()
+	load_data()
+	
+func load_data() -> void:
+	if ResourceLoader.exists(SAVE_PATH):
+		level_data = load(SAVE_PATH)
+	else:
+		level_data = LevelData.new()
+		save_data()
+		
+func save_data() -> void:
+	ResourceSaver.save(level_data, SAVE_PATH)
 
 func load_levels():
 	var dir = DirAccess.open("res://levels/")
 	if dir:
-		level_files.clear()
+		var level_files_temp = []
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
 			if file_name.ends_with(".tscn"):
-				level_files.append(file_name)
+				level_files_temp.append(file_name)
 			file_name = dir.get_next()
-		level_files.sort()
+		level_files_temp.sort()
 		dir.list_dir_end()
+		return level_files_temp
+
 		
 func reset():
 	lives = 3
 	score = 0
+	time = 0.0
 	extraLivesDivisor = 1
 	curr_level = 0
 	background_music.pitch_scale = 1.03
 	
+func _process(delta):
+	if not gameStateDisabled and game_started:
+		time += delta
+
+# This is only called for the ARCADE gameMode
 func load_next_level():
 	if curr_level > 0:
 		background_music.pitch_scale = 1.03
@@ -46,11 +71,33 @@ func load_next_level():
 		await get_tree().create_timer(1).timeout
 	var level_path = "res://levels/%s" % level_files[curr_level]
 	curr_level += 1
+	time = 0.0
 	get_tree().change_scene_to_file(level_path)
 	# Must go after changing scene to avoid issues.
 	gameStateDisabled = false
+
+# This is only called for the TIME_TRIAL gameMode
+func save_time_and_return():
+	gameStateDisabled = true
+	var level_path = get_tree().current_scene.scene_file_path
+	await get_tree().create_timer(1).timeout
+	var prev_time = GameManager.level_data.level_times.get(level_path, null)
+	# If this is the first level clear
+	if prev_time == null or str(time) == "":
+		level_data.level_times[level_path] = round(time * 1000) / 1000.0
+		save_data()
+	else:
+		var previous_best_time = level_data.level_times[level_path]
+		if time < previous_best_time:
+			save_data()
+			level_data.level_times[level_path] = round(time * 1000) / 1000.0
+	get_tree().change_scene_to_file("res://scenes/UI/level_select.tscn")
+	gameStateDisabled = false
 	
 func _input(event):
+	# Start the timer upon the first input
+	if event is InputEventKey and event.pressed:
+		game_started = true
 	 # DEV: Go to next level
 	if event.is_action_pressed("ui_n"):
 		if curr_level == len(level_files):
@@ -100,26 +147,33 @@ func scoreCountDown():
 		await get_tree().process_frame
 		
 func on_player_died():
-	if gameStateDisabled:
-		background_music.pitch_scale = 1.03
-		return
-	lives -= 1
-	gameStateDisabled = true
-	$PlayerDeath.play()
-	if lives > 0:
-		%GameInfo.text = "YOU DIED! RESETTING LEVEL..."
-		%GameInfo.visible = true
-		await get_tree().create_timer(1.5).timeout
-		background_music.pitch_scale = 1.03
-		get_tree().reload_current_scene()
-	else:
-		%GameInfo.text = "GAME OVER! BACK TO LEVEL 1 :) "
-		%GameInfo.visible = true
-		await get_tree().create_timer(1.5).timeout
-		reset()
-		load_next_level()
-	%GameInfo.visible = false
-	gameStateDisabled = false
+	match gameMode:
+		GameModes.ARCADE:
+			if gameStateDisabled:
+				background_music.pitch_scale = 1.03
+				return
+			lives -= 1
+			time = 0.0
+			gameStateDisabled = true
+			$PlayerDeath.play()
+			if lives > 0:
+				%GameInfo.text = "YOU DIED! RESETTING LEVEL..."
+				%GameInfo.visible = true
+				await get_tree().create_timer(1.5).timeout
+				background_music.pitch_scale = 1.03
+				get_tree().reload_current_scene()
+			else:
+				%GameInfo.text = "GAME OVER! BACK TO LEVEL 1 :) "
+				%GameInfo.visible = true
+				await get_tree().create_timer(1.5).timeout
+				reset()
+				load_next_level()
+			%GameInfo.visible = false
+			gameStateDisabled = false
+		GameModes.TIME_TRIAL:
+			time = 0.0
+			await get_tree().create_timer(0.5).timeout
+			get_tree().reload_current_scene()
 
 func get_player(): 
 	var level = get_tree().get_current_scene()
