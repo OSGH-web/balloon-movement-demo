@@ -39,4 +39,5 @@ func _on_mute_audio_button_pressed() -> void:
 	toggle_master_audio_mute()
 
 func _on_main_menu_pressed() -> void:
+	toggle_pause()
 	get_tree().change_scene_to_file("res://scenes/main.tscn")

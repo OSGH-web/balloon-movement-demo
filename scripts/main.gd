@@ -2,10 +2,10 @@
 extends Node
 
 func _ready():
+	GameManager.reset()
 	%ArcadeButton.grab_focus()
 
 func _on_arcade_button_pressed() -> void:
-	GameManager.reset()
 	GameManager.load_next_level()
 	GameManager.gameMode = GameManager.GameModes.ARCADE
 

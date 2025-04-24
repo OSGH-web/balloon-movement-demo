@@ -12,7 +12,6 @@ var level_files = []
 var gameStateDisabled = false
 # Show a message upon levelCompletion
 @onready var background_music = $Background_Music
-@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 enum GameModes {ARCADE, TIME_TRIAL}
 @onready var gameMode: GameModes
 func _ready():
