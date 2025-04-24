@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://e1pxfkjp8bel"]
+
+[ext_resource type="Shader" uid="uid://b7wv1srmyrib5" path="res://assets/shaders/laser.gdshader" id="1_5ock7"]
+
+[resource]
+shader = ExtResource("1_5ock7")
+shader_parameter/light_color = Color(0.172549, 0.909804, 0.960784, 1)
+shader_parameter/dark_color = Color(0, 0.6, 0.858824, 1)
+shader_parameter/animation_rate = 3.0
+shader_parameter/pixelate_amount = 4096.0
+shader_parameter/rotation = 90.0
+shader_parameter/scale = 100.0
+shader_parameter/scroll_speed = 0.2
+shader_parameter/dist_factor = 0.25
+shader_parameter/radius_median = 1.3
+shader_parameter/radius_ampl = 0.1
+shader_parameter/sharpness = 0.9
+shader_parameter/n_target_circles = 3.0
