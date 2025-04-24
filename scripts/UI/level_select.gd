@@ -9,7 +9,6 @@ var level_files := []
 func _ready():
 	load_levels()
 	create_level_grid()
-	_update_world_info_display()
 	button_container.get_children()[0].grab_focus()
 
 func load_levels():
@@ -74,14 +73,6 @@ func _on_level_selected(level_index: int):
 	var file_path = "res://levels/%s" % level_files[level_index]
 	get_tree().change_scene_to_file(file_path)
 
-func _update_world_info_display():
-	var count := 0
-	#for level_path in level_files:
-		#if SaveManager.is_level_completed(level_path):
-			#count += 1
-
-	#var completion_percentage = (count / float(level_files.size())) * 100
-	#%WorldCompletion.text = "Completion: %.0f" % completion_percentage + "%"
 
 func _update_level_info_display(level_index):
 	var level_file = level_files[level_index]

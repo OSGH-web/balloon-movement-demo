@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bprt5jmuwcihx"]
+[gd_scene load_steps=5 format=3 uid="uid://bd1pheowg4s6b"]
 
-[ext_resource type="Script" uid="uid://dmoxrpi5e2hec" path="res://scripts/level_select.gd" id="1_t5gxd"]
+[ext_resource type="Script" uid="uid://dmoxrpi5e2hec" path="res://scripts/UI/level_select.gd" id="1_t5gxd"]
 [ext_resource type="StyleBox" uid="uid://002qwq5rvs87" path="res://assets/styles/sbf_light.tres" id="2_chg43"]
 [ext_resource type="LabelSettings" uid="uid://cbw7oatl30dvl" path="res://assets/styles/label_33px.tres" id="2_rif6e"]
 [ext_resource type="LabelSettings" uid="uid://v4nuv8jtylyb" path="res://assets/styles/label_11px.tres" id="3_chg43"]
@@ -48,34 +48,11 @@ text = "Completion: 0%"
 label_settings = ExtResource("3_chg43")
 vertical_alignment = 1
 
-[node name="HSplitContainer3" type="HSplitContainer" parent="VBoxContainer/HSplitContainer"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-theme_override_constants/separation = 0
-split_offset = 40
-dragging_enabled = false
-dragger_visibility = 2
-
-[node name="placeholder" type="Label" parent="VBoxContainer/HSplitContainer/HSplitContainer3"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-theme_override_styles/normal = ExtResource("2_chg43")
-label_settings = ExtResource("3_chg43")
-
-[node name="WorldCompletion" type="Label" parent="VBoxContainer/HSplitContainer/HSplitContainer3"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-theme_override_styles/normal = ExtResource("2_chg43")
-text = "Completion: 0%"
-label_settings = ExtResource("3_chg43")
-vertical_alignment = 1
-
 [node name="Label" type="Label" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 44)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("2_chg43")
-text = "CH1: Testing"
+text = "Gotta Go Fast!"
 label_settings = ExtResource("2_rif6e")
 horizontal_alignment = 1
 
@@ -107,7 +84,7 @@ dragger_visibility = 2
 [node name="HSplitContainer2" type="HSplitContainer" parent="VBoxContainer/HSplitContainer4"]
 layout_mode = 2
 theme_override_constants/separation = 0
-split_offset = 40
+split_offset = 15
 dragging_enabled = false
 dragger_visibility = 2
 
@@ -123,7 +100,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("2_chg43")
-text = "1-1"
+text = "Best Time:"
 label_settings = ExtResource("3_chg43")
 vertical_alignment = 1
 clip_text = true

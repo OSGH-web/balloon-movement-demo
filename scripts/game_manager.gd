@@ -13,6 +13,8 @@ var gameStateDisabled = false
 # Show a message upon levelCompletion
 @onready var background_music = $Background_Music
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+enum GameModes {ARCADE, TIME_TRIAL}
+@onready var gameMode: GameModes
 func _ready():
 	load_levels()
 
@@ -100,26 +102,31 @@ func scoreCountDown():
 		await get_tree().process_frame
 		
 func on_player_died():
-	if gameStateDisabled:
-		background_music.pitch_scale = 1.03
-		return
-	lives -= 1
-	gameStateDisabled = true
-	$PlayerDeath.play()
-	if lives > 0:
-		%GameInfo.text = "YOU DIED! RESETTING LEVEL..."
-		%GameInfo.visible = true
-		await get_tree().create_timer(1.5).timeout
-		background_music.pitch_scale = 1.03
-		get_tree().reload_current_scene()
-	else:
-		%GameInfo.text = "GAME OVER! BACK TO LEVEL 1 :) "
-		%GameInfo.visible = true
-		await get_tree().create_timer(1.5).timeout
-		reset()
-		load_next_level()
-	%GameInfo.visible = false
-	gameStateDisabled = false
+	match gameMode:
+		GameModes.ARCADE:
+			if gameStateDisabled:
+				background_music.pitch_scale = 1.03
+				return
+			lives -= 1
+			gameStateDisabled = true
+			$PlayerDeath.play()
+			if lives > 0:
+				%GameInfo.text = "YOU DIED! RESETTING LEVEL..."
+				%GameInfo.visible = true
+				await get_tree().create_timer(1.5).timeout
+				background_music.pitch_scale = 1.03
+				get_tree().reload_current_scene()
+			else:
+				%GameInfo.text = "GAME OVER! BACK TO LEVEL 1 :) "
+				%GameInfo.visible = true
+				await get_tree().create_timer(1.5).timeout
+				reset()
+				load_next_level()
+			%GameInfo.visible = false
+			gameStateDisabled = false
+		GameModes.TIME_TRIAL:
+			await get_tree().create_timer(0.5).timeout
+			get_tree().reload_current_scene()
 
 func get_player(): 
 	var level = get_tree().get_current_scene()

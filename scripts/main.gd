@@ -7,6 +7,8 @@ func _ready():
 func _on_arcade_button_pressed() -> void:
 	GameManager.reset()
 	GameManager.load_next_level()
+	GameManager.gameMode = GameManager.GameModes.ARCADE
 
 func _on_trial_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/UI/level_select.tscn")
+	GameManager.gameMode = GameManager.GameModes.TIME_TRIAL
