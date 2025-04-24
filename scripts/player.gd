@@ -67,9 +67,9 @@ func _get_friction():
 
 
 func _input(event):
-	if event.is_action_pressed("ui_a"):
+	if event.is_action_pressed("ui_brake"):
 		airbrake_pressed = true
-	if event.is_action_released("ui_a"):
+	if event.is_action_released("ui_brake"):
 		airbrake_pressed = false
 
 
@@ -152,22 +152,23 @@ func _update_animation(dir: Vector2):
 
 	var x = dir.x
 	var y = dir.y
-	var is_diagonal = x != 0 and y != 0
+	var is_diagonal = abs(x) > 0.2 && abs(y) > 0.2
 
+	const deadzone = 0.2;
 	if is_diagonal:
-		if x > 0:
-			$AnimatedSprite2D.frame = 7 if y > 0 else 6  # down-right/up-right
+		if x > deadzone:
+			$AnimatedSprite2D.frame = 7 if y > deadzone else 6  # down-right/up-right
 		else:
-			$AnimatedSprite2D.frame = 8 if y > 0 else 5  # down-left/up-left
+			$AnimatedSprite2D.frame = 8 if y > deadzone else 5  # down-left/up-left
 	else:
-		if x > 0:
-			$AnimatedSprite2D.frame = 2  # right
-		elif x < 0:
-			$AnimatedSprite2D.frame = 4  # left
-		elif y < 0:
+		if y < -deadzone:
 			$AnimatedSprite2D.frame = 1  # up
-		else:
-			$AnimatedSprite2D.frame = 3  # down
+		elif y > deadzone:
+			$AnimatedSprite2D.frame = 3 # down
+		elif x > deadzone:
+			$AnimatedSprite2D.frame = 2 # right
+		elif x < -deadzone:
+			$AnimatedSprite2D.frame = 4  # left
 
 
 func _setup_camera_limits(map_width_px, map_height_px):
