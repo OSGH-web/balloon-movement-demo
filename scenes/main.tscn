@@ -30,8 +30,8 @@ anchor_right = 0.224299
 anchor_bottom = 0.1
 offset_left = 276.0
 offset_top = 144.0
-offset_right = 1662.0
-offset_bottom = 281.0
+offset_right = 1644.0
+offset_bottom = 276.0
 theme_override_styles/panel = ExtResource("2_ya4ey")
 
 [node name="Title" type="Label" parent="TitlePanel"]
@@ -79,9 +79,9 @@ stretch_mode = 2
 [node name="ArcadeButton" type="Button" parent="."]
 unique_name_in_owner = true
 offset_left = 276.0
-offset_top = 290.0
+offset_top = 288.0
 offset_right = 1095.0
-offset_bottom = 350.0
+offset_bottom = 348.0
 focus_neighbor_top = NodePath("../TrialButton")
 focus_neighbor_bottom = NodePath("../TrialButton")
 mouse_filter = 1
@@ -98,9 +98,9 @@ text = "Arcade Mode"
 
 [node name="TrialButton" type="Button" parent="."]
 offset_left = 276.0
-offset_top = 359.0
+offset_top = 360.0
 offset_right = 1095.0
-offset_bottom = 419.0
+offset_bottom = 420.0
 focus_neighbor_top = NodePath("../ArcadeButton")
 focus_neighbor_bottom = NodePath("../ArcadeButton")
 theme = ExtResource("4_o6xl0")

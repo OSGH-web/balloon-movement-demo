@@ -3,9 +3,8 @@
 [ext_resource type="Script" uid="uid://d3l05ng1mhcdy" path="res://scripts/UI/pause_menu.gd" id="1_n87rw"]
 [ext_resource type="StyleBox" uid="uid://002qwq5rvs87" path="res://assets/styles/sbf_light.tres" id="2_5d2l8"]
 [ext_resource type="Theme" uid="uid://bcn6jcu02pjx0" path="res://assets/themes/standard_font_theme.theme" id="2_myx47"]
+[ext_resource type="StyleBox" uid="uid://byruekc6swxep" path="res://assets/styles/sbf_mid.tres" id="2_w67w4"]
 [ext_resource type="StyleBox" uid="uid://cn1chxlsybisf" path="res://assets/styles/sbf_focus.tres" id="5_7l7mv"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_feath"]
 
 [node name="Pause Menu" type="CanvasLayer"]
 process_mode = 3
@@ -34,7 +33,7 @@ offset_right = 140.0
 offset_bottom = 92.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxEmpty_feath")
+theme_override_styles/panel = ExtResource("2_w67w4")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer"]
 layout_mode = 2
