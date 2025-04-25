@@ -10,8 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://j65nk3t7y8df" path="res://assets/sprites/weed_tile_bw.png" id="6_tefeu"]
 [ext_resource type="Texture2D" uid="uid://bw5x01l18tgjm" path="res://assets/sprites/title_screen_beam.png" id="6_ya4ey"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tefeu"]
-
 [node name="Main" type="Node2D"]
 script = ExtResource("1_o5qli")
 
@@ -25,7 +23,7 @@ offset_left = 109.0
 offset_top = 108.0
 offset_right = 1404.0
 offset_bottom = 324.0
-theme_override_styles/panel = ExtResource("2_tefeu")
+theme_override_styles/panel = ExtResource("2_ya4ey")
 
 [node name="Label" type="Label" parent="TitlePanel"]
 layout_mode = 1
