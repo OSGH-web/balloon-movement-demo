@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dg3shn8d54wck"]
+[gd_scene load_steps=12 format=3 uid="uid://dg3shn8d54wck"]
 
 [ext_resource type="Script" uid="uid://c8rtmo3o8q4vw" path="res://scripts/main.gd" id="1_o5qli"]
 [ext_resource type="StyleBox" uid="uid://cn1chxlsybisf" path="res://assets/styles/sbf_focus.tres" id="2_tefeu"]
+[ext_resource type="StyleBox" uid="uid://byruekc6swxep" path="res://assets/styles/sbf_mid.tres" id="2_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://d2qruhdnnbuwn" path="res://assets/sprites/title_screen_player.png" id="4_85g3d"]
+[ext_resource type="StyleBox" uid="uid://002qwq5rvs87" path="res://assets/styles/sbf_light.tres" id="4_choun"]
 [ext_resource type="Theme" uid="uid://bcn6jcu02pjx0" path="res://assets/themes/standard_font_theme.theme" id="4_o6xl0"]
 [ext_resource type="LabelSettings" uid="uid://v4nuv8jtylyb" path="res://assets/styles/label_11px.tres" id="4_tipki"]
 [ext_resource type="Material" uid="uid://cmg6vu3hj2ryo" path="res://assets/shaders/1-02_square.tres" id="5_tefeu"]
@@ -34,63 +36,12 @@ anchor_right = -0.307492
 anchor_bottom = 0.148148
 offset_left = 554.14
 offset_top = -12.0
-offset_right = 562.336
+offset_right = 659.14
 offset_bottom = 2.00006
 scale = Vector2(12, 12)
 text = "SMOKIN MY LASER"
 label_settings = ExtResource("4_tipki")
 metadata/_edit_use_anchors_ = true
-
-[node name="ArcadeMode" type="Panel" parent="."]
-anchors_preset = -1
-anchor_left = 0.224299
-anchor_top = 0.1
-anchor_right = 0.224299
-anchor_bottom = 0.1
-offset_left = 432.0
-offset_top = 432.0
-offset_right = 1080.0
-offset_bottom = 540.0
-theme_override_styles/panel = ExtResource("2_tefeu")
-metadata/_edit_use_anchors_ = true
-
-[node name="ArcadeButton" type="Button" parent="ArcadeMode"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(648, 0)
-layout_mode = 0
-offset_right = 648.0
-offset_bottom = 110.0
-focus_neighbor_top = NodePath("../../Time Trials/TrialButton")
-focus_neighbor_bottom = NodePath("../../Time Trials/TrialButton")
-theme = ExtResource("4_o6xl0")
-theme_override_font_sizes/font_size = 80
-theme_override_styles/normal = SubResource("StyleBoxEmpty_tefeu")
-text = "Arcade Mode"
-
-[node name="Time Trials" type="Panel" parent="."]
-anchors_preset = -1
-anchor_left = 0.224299
-anchor_top = 0.1
-anchor_right = 0.224299
-anchor_bottom = 0.1
-offset_left = 432.0
-offset_top = 624.0
-offset_right = 1080.0
-offset_bottom = 732.0
-theme_override_styles/panel = ExtResource("2_tefeu")
-metadata/_edit_use_anchors_ = true
-
-[node name="TrialButton" type="Button" parent="Time Trials"]
-custom_minimum_size = Vector2(648, 0)
-layout_mode = 0
-offset_right = 648.0
-offset_bottom = 110.0
-focus_neighbor_top = NodePath("../../ArcadeMode/ArcadeButton")
-focus_neighbor_bottom = NodePath("../../ArcadeMode/ArcadeButton")
-theme = ExtResource("4_o6xl0")
-theme_override_font_sizes/font_size = 80
-theme_override_styles/normal = SubResource("StyleBoxEmpty_tefeu")
-text = "Time Trials"
 
 [node name="PlayerTexture" type="TextureRect" parent="."]
 z_index = -1
@@ -117,6 +68,44 @@ scale = Vector2(18, 18)
 texture = ExtResource("6_ya4ey")
 stretch_mode = 2
 
+[node name="ArcadeButton" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(648, 0)
+offset_left = 432.0
+offset_top = 432.0
+offset_right = 1080.0
+offset_bottom = 542.0
+focus_neighbor_top = NodePath("../TrialButton")
+focus_neighbor_bottom = NodePath("../TrialButton")
+mouse_filter = 1
+theme = ExtResource("4_o6xl0")
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 77
+theme_override_styles/focus = ExtResource("2_tefeu")
+theme_override_styles/hover = ExtResource("4_choun")
+theme_override_styles/normal = ExtResource("4_choun")
+button_mask = 0
+text = "Arcade Mode"
+
+[node name="TrialButton" type="Button" parent="."]
+custom_minimum_size = Vector2(648, 0)
+offset_left = 432.0
+offset_top = 624.0
+offset_right = 1080.0
+offset_bottom = 734.0
+focus_neighbor_top = NodePath("../ArcadeButton")
+focus_neighbor_bottom = NodePath("../ArcadeButton")
+theme = ExtResource("4_o6xl0")
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 77
+theme_override_styles/focus = ExtResource("2_tefeu")
+theme_override_styles/hover = ExtResource("4_choun")
+theme_override_styles/normal = ExtResource("4_choun")
+text = "Time Trials"
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -3
 
@@ -124,12 +113,11 @@ layer = -3
 unique_name_in_owner = true
 texture_filter = 1
 material = ExtResource("5_tefeu")
-offset_left = 16.0
-offset_right = 1936.0
+offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("6_tefeu")
 stretch_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="ArcadeMode/ArcadeButton" to="." method="_on_arcade_button_pressed"]
-[connection signal="pressed" from="Time Trials/TrialButton" to="." method="_on_trial_button_pressed"]
+[connection signal="pressed" from="ArcadeButton" to="." method="_on_arcade_button_pressed"]
+[connection signal="pressed" from="TrialButton" to="." method="_on_trial_button_pressed"]
