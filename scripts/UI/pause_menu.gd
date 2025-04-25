@@ -6,9 +6,8 @@ func _ready() -> void:
 	init_mute_audio_button()
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed and not event.echo:
-		if event.keycode == KEY_ESCAPE:
-			toggle_pause()
+	if event.is_action_pressed("ui_pause"):
+		toggle_pause()
 
 func toggle_pause():
 	var paused := not get_tree().paused
