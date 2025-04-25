@@ -1,20 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bcehap7a57s8l"]
+[gd_scene load_steps=7 format=3 uid="uid://bcehap7a57s8l"]
 
 [ext_resource type="Script" uid="uid://dmoxrpi5e2hec" path="res://scripts/UI/level_select.gd" id="1_t5gxd"]
 [ext_resource type="StyleBox" uid="uid://002qwq5rvs87" path="res://assets/styles/sbf_light.tres" id="2_chg43"]
 [ext_resource type="LabelSettings" uid="uid://cbw7oatl30dvl" path="res://assets/styles/label_33px.tres" id="2_rif6e"]
 [ext_resource type="LabelSettings" uid="uid://v4nuv8jtylyb" path="res://assets/styles/label_11px.tres" id="3_chg43"]
-[ext_resource type="Shader" uid="uid://dhmt3vulwt0nd" path="res://assets/shaders/background-tiler.gdshader" id="5_0ra34"]
+[ext_resource type="Material" uid="uid://drlban6fsery" path="res://assets/shaders/1-13_ctt.tres" id="5_0ra34"]
 [ext_resource type="Texture2D" uid="uid://j65nk3t7y8df" path="res://assets/sprites/weed_tile_bw.png" id="6_ty08u"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ty08u"]
-shader = ExtResource("5_0ra34")
-shader_parameter/light_color = Color(0.407843, 0.219608, 0.423529, 1)
-shader_parameter/dark_color = Color(0.14902, 0.168627, 0.266667, 1)
-shader_parameter/x_scale = 6.0
-shader_parameter/y_scale = 4.0
-shader_parameter/x_scroll_speed = 0.03
-shader_parameter/y_scroll_speed = 0.1
 
 [node name="LevelSelect" type="Control"]
 layout_mode = 3
@@ -150,7 +141,7 @@ layer = -3
 [node name="ViewportBackground" type="TextureRect" parent="CanvasLayer"]
 unique_name_in_owner = true
 texture_filter = 1
-material = SubResource("ShaderMaterial_ty08u")
+material = ExtResource("5_0ra34")
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("6_ty08u")
