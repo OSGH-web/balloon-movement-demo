@@ -42,22 +42,33 @@ text = "Firin' Mah Lazer!"
 label_settings = ExtResource("5_sucxq")
 autowrap_mode = 2
 
-[node name="KeyboardArrowLeftOutline" type="Sprite2D" parent="." index="7"]
+[node name="Label2" type="Label" parent="." index="7"]
+offset_left = 280.0
+offset_top = 26.0
+offset_right = 701.0
+offset_bottom = 110.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_roufu")
+text = "Red Zone = End Zone!"
+label_settings = ExtResource("5_sucxq")
+autowrap_mode = 2
+
+[node name="KeyboardArrowLeftOutline" type="Sprite2D" parent="." index="8"]
 position = Vector2(653.12, 894.12)
 scale = Vector2(0.33, 0.33)
 texture = ExtResource("6_22fu5")
 
-[node name="KeyboardArrowRightOutline" type="Sprite2D" parent="." index="8"]
+[node name="KeyboardArrowRightOutline" type="Sprite2D" parent="." index="9"]
 position = Vector2(717.12, 894.12)
 scale = Vector2(0.33, 0.33)
 texture = ExtResource("7_cium7")
 
-[node name="KeyboardArrowDownOutline" type="Sprite2D" parent="." index="9"]
+[node name="KeyboardArrowDownOutline" type="Sprite2D" parent="." index="10"]
 position = Vector2(685.12, 894.12)
 scale = Vector2(0.33, 0.33)
 texture = ExtResource("8_xwcww")
 
-[node name="KeyboardArrowUpOutline" type="Sprite2D" parent="." index="10"]
+[node name="KeyboardArrowUpOutline" type="Sprite2D" parent="." index="11"]
 position = Vector2(685.12, 862.12)
 scale = Vector2(0.33, 0.33)
 texture = ExtResource("9_lblav")

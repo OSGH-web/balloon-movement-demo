@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://2sn3fyoir1rj"]
+
+[ext_resource type="Shader" uid="uid://dhmt3vulwt0nd" path="res://assets/shaders/background-tiler.gdshader" id="1_hpby5"]
+
+[resource]
+shader = ExtResource("1_hpby5")
+shader_parameter/light_color = Color(0, 1, 0.72549, 1)
+shader_parameter/dark_color = Color(0.168627, 0, 1, 1)
+shader_parameter/x_scale = 6.0
+shader_parameter/y_scale = 4.0
+shader_parameter/x_scroll_speed = 0.03
+shader_parameter/y_scroll_speed = 0.1
