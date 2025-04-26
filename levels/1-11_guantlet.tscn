@@ -69,6 +69,3 @@ position = Vector2(1800, 992)
 [node name="EndZone" parent="." index="9" instance=ExtResource("3_0alfw")]
 position = Vector2(360, 744)
 size = Vector2(200, 630)
-
-[node name="CanvasLayer" parent="." index="10"]
-visible = false

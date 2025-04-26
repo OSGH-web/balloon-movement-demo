@@ -11,6 +11,10 @@ func _ready():
 	create_level_grid()
 	button_container.get_children()[0].grab_focus()
 
+func _input(event):
+	if Input.is_key_pressed(KEY_ESCAPE):
+		get_tree().change_scene_to_file("res://scenes/main.tscn")
+
 func create_level_grid():
 	for child in button_container.get_children():
 		child.queue_free()

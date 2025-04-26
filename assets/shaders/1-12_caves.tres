@@ -8,3 +8,5 @@ shader_parameter/light_color = Color(0.45098, 0.243137, 0.223529, 1)
 shader_parameter/dark_color = Color(0.243137, 0.152941, 0.192157, 1)
 shader_parameter/x_scale = 2.0
 shader_parameter/y_scale = 2.0
+shader_parameter/x_scroll_speed = 0.03
+shader_parameter/y_scroll_speed = 0.1
