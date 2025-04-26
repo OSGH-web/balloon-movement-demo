@@ -323,5 +323,4 @@ position = Vector2(456, 136)
 position = Vector2(144, 1104)
 
 [node name="ViewportBackground" parent="CanvasLayer" index="0"]
-visible = false
 material = ExtResource("2_mckep")
