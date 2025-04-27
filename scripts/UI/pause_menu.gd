@@ -8,6 +8,8 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_pause"):
 		toggle_pause()
+	elif visible && event.is_action_pressed("ui_cancel"):
+		toggle_pause()
 
 func toggle_pause():
 	var paused := not get_tree().paused
