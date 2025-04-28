@@ -1,0 +1,405 @@
+[gd_scene load_steps=12 format=4 uid="uid://nqjgplue31nq"]
+
+[ext_resource type="PackedScene" uid="uid://cxo2r1hb7u2ss" path="res://scenes/level_base.tscn" id="1_oetc5"]
+[ext_resource type="PackedScene" uid="uid://c6i6ci2ym6wn6" path="res://scenes/spike.tscn" id="2_aq2d2"]
+[ext_resource type="Material" uid="uid://b2uaftsg1m1su" path="res://assets/shaders/1-16-castle.tres" id="2_t3l78"]
+[ext_resource type="PackedScene" uid="uid://bvn2y2nnqcrts" path="res://scenes/end_zone.tscn" id="3_32wv6"]
+[ext_resource type="PackedScene" uid="uid://cxdl0fqxwxba1" path="res://scenes/gas_can.tscn" id="4_xumeg"]
+[ext_resource type="Texture2D" uid="uid://c0rubkjn5mpb2" path="res://assets/tilesets/BL-crypt-tileset-itch.png" id="6_vj0ey"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vj0ey"]
+size = Vector2(24, 24)
+
+[sub_resource type="Animation" id="Animation_vj0ey"]
+resource_name = "move"
+length = 4.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -5), Vector2(0, -5), Vector2(0, 187), Vector2(0, 187)]
+}
+
+[sub_resource type="Animation" id="Animation_pmq30"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -5)]
+}
+
+[sub_resource type="Animation" id="Animation_cuoly"]
+resource_name = "move_2"
+length = 4.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-1464, 259), Vector2(-1464, 259), Vector2(-1464, 451), Vector2(-1464, 451)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cuoly"]
+_data = {
+&"RESET": SubResource("Animation_pmq30"),
+&"move": SubResource("Animation_vj0ey"),
+&"move_2": SubResource("Animation_cuoly")
+}
+
+[node name="LevelBase" instance=ExtResource("1_oetc5")]
+level_name = "Castle"
+width_in_tiles = 76
+height_in_tiles = 34
+
+[node name="Terrain" parent="." index="1"]
+position = Vector2(0, -1)
+rotation = 0.000134574
+tile_map_data = PackedByteArray("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AAAnAAsAAAABAAEAAAAoAAsAAAABAAEAAAApAAsAAAABAAEAAAAqAAsAAAABAAEAAAArAAsAAAABAAEAAAAsAAsAAAABAAEAAAAtAAwAAAABAAEAAAAuAAsAAAABAAEAAAAvAAsAAAABAAEAAAAwAAsAAAABAAEAAAAxAAsAAAABAAEAAAAyAAsAAAABAAEAAAAzAAsAAAABAAEAAAA0AAsAAAABAAEAAAA1AAsAAAABAAEAAAA2AAsAAAABAAEAAAA3AAsAAAABAAEAAAA4AAsAAAABAAEAAAA5AAsAAAABAAEAAAA6AAsAAAABAAEAAAA7AAsAAAABAAEAAAA9AAsAAAABAAEAAABKAAsAAAABAAEAAABLABAAAAABAAEAAAAAABQAAAABAAEAAAAAABUAAAABAAEAAAAAABYAAAABAAEAAAAAABcAAAABAAEAAAAAABgAAAABAAEAAAAAABkAAAABAAEAAAAAAB4AAAABAAEAAAAAAB8AAAABAAEAAAAAACAAAAABAAEAAAAPABUAAAABAAEAAAAPABYAAAABAAEAAAAPACAAAAABAAEAAAAeABUAAAABAAEAAAAeABYAAAABAAEAAAAeACAAAAABAAEAAAAtABUAAAABAAEAAAAtABYAAAABAAEAAAAtACAAAAABAAEAAAA8ABUAAAABAAEAAAA8ABYAAAABAAEAAAA8ACAAAAABAAEAAABLABQAAAABAAEAAABLABUAAAABAAEAAABLABYAAAABAAEAAABLABcAAAABAAEAAABLABgAAAABAAEAAABLABkAAAABAAEAAABLAB4AAAABAAEAAABLAB8AAAABAAEAAABLACAAAAABAAEAAAAAABoAAAABAAEAAAAAACEAAAABAAEAAAABABYAAAABAAEAAAABACEAAAABAAEAAAACABYAAAABAAEAAAACACEAAAABAAEAAAADABYAAAABAAEAAAADACEAAAABAAEAAAAEACEAAAABAAEAAAAFACEAAAABAAEAAAAGACEAAAABAAEAAAAHACEAAAABAAEAAAAIACEAAAABAAEAAAAJACEAAAABAAEAAAAKACEAAAABAAEAAAALACEAAAABAAEAAAAMABYAAAABAAEAAAAMACEAAAABAAEAAAANABYAAAABAAEAAAANACEAAAABAAEAAAAOABYAAAABAAEAAAAOACEAAAABAAEAAAAPABcAAAABAAEAAAAPACEAAAABAAEAAAAQABYAAAABAAEAAAAQACEAAAABAAEAAAARABYAAAABAAEAAAARACEAAAABAAEAAAASABYAAAABAAEAAAASACEAAAABAAEAAAATABYAAAABAAEAAAATACEAAAABAAEAAAAUABYAAAABAAEAAAAUACEAAAABAAEAAAAVABYAAAABAAEAAAAVACEAAAABAAEAAAAWABYAAAABAAEAAAAWACEAAAABAAEAAAAXABYAAAABAAEAAAAXACEAAAABAAEAAAAYABYAAAABAAEAAAAYACEAAAABAAEAAAAZABYAAAABAAEAAAAZACEAAAABAAEAAAAaABYAAAABAAEAAAAaACEAAAABAAEAAAAbABYAAAABAAEAAAAbACEAAAABAAEAAAAcABYAAAABAAEAAAAcACEAAAABAAEAAAAdABYAAAABAAEAAAAdACEAAAABAAEAAAAeABcAAAABAAEAAAAeACEAAAABAAEAAAAfABYAAAABAAEAAAAfACEAAAABAAEAAAAgABYAAAABAAEAAAAgACEAAAABAAEAAAAhABYAAAABAAEAAAAhACEAAAABAAEAAAAiABYAAAABAAEAAAAiACEAAAABAAEAAAAjABYAAAABAAEAAAAjACEAAAABAAEAAAAkABYAAAABAAEAAAAkACEAAAABAAEAAAAlABYAAAABAAEAAAAlACEAAAABAAEAAAAmABYAAAABAAEAAAAmACEAAAABAAEAAAAnABYAAAABAAEAAAAnACEAAAABAAEAAAAoABYAAAABAAEAAAAoACEAAAABAAEAAAApABYAAAABAAEAAAApACEAAAABAAEAAAAqABYAAAABAAEAAAAqACEAAAABAAEAAAArABYAAAABAAEAAAArACEAAAABAAEAAAAsABYAAAABAAEAAAAsACEAAAABAAEAAAAtABcAAAABAAEAAAAtACEAAAABAAEAAAAuABYAAAABAAEAAAAuACEAAAABAAEAAAAvABYAAAABAAEAAAAvACEAAAABAAEAAAAwABYAAAABAAEAAAAwACEAAAABAAEAAAAxABYAAAABAAEAAAAxACEAAAABAAEAAAAyABYAAAABAAEAAAAyACEAAAABAAEAAAAzABYAAAABAAEAAAAzACEAAAABAAEAAAA0ABYAAAABAAEAAAA0ACEAAAABAAEAAAA1ABYAAAABAAEAAAA1ACEAAAABAAEAAAA2ABYAAAABAAEAAAA2ACEAAAABAAEAAAA3ABYAAAABAAEAAAA3ACEAAAABAAEAAAA4ABYAAAABAAEAAAA4ACEAAAABAAEAAAA5ABYAAAABAAEAAAA5ACEAAAABAAEAAAA6ABYAAAABAAEAAAA6ACEAAAABAAEAAAA7ABYAAAABAAEAAAA7ACEAAAABAAEAAAA8ABcAAAABAAEAAAA8ACEAAAABAAEAAAA9ABYAAAABAAEAAAA9ACEAAAABAAEAAAA+ABYAAAABAAEAAAA+ACEAAAABAAEAAAA/ABYAAAABAAEAAAA/ACEAAAABAAEAAABAABYAAAABAAEAAABAACEAAAABAAEAAABBABYAAAABAAEAAABBACEAAAABAAEAAABCABYAAAABAAEAAABCACEAAAABAAEAAABDABYAAAABAAEAAABDACEAAAABAAEAAABEABYAAAABAAEAAABEACEAAAABAAEAAABFABYAAAABAAEAAABFACEAAAABAAEAAABGABYAAAABAAEAAABGACEAAAABAAEAAABHABYAAAABAAEAAABHACEAAAABAAEAAABIABYAAAABAAEAAABIACEAAAABAAEAAABJABYAAAABAAEAAABJACEAAAABAAEAAABKABYAAAABAAEAAABKACEAAAABAAEAAABLABoAAAABAAEAAABLACEAAAABAAEAAAAAAAUAAAABAAEAAAAAAAYAAAABAAEAAAAAAAcAAAABAAEAAAAAABEAAAABAAEAAAAAABIAAAABAAEAAAAAABMAAAABAAEAAAAAABsAAAABAAEAAAAAABwAAAABAAEAAAAAAB0AAAABAAEAAABLAAUAAAABAAEAAABLAAYAAAABAAEAAABLAAcAAAABAAEAAABLABEAAAABAAEAAABLABIAAAABAAEAAABLABMAAAABAAEAAABLABsAAAABAAEAAABLABwAAAABAAEAAABLAB0AAAABAAEAAAAuAAoAAAABAAEAAAAuAAkAAAABAAEAAAAuAAgAAAABAAEAAAAtAAkAAAABAAEAAAAtAAgAAAABAAEAAAAuAAEAAAABAAEAAAAuAAwAAAABAAEAAAAtABQAAAABAAEAAAAtABMAAAABAAEAAAAuABMAAAABAAEAAAAuABQAAAABAAEAAAAuABUAAAABAAEAAAAuABcAAAABAAEAAAAtAB8AAAABAAEAAAAtAB4AAAABAAEAAAAuAB4AAAABAAEAAAAuAB8AAAABAAEAAAAuACAAAAABAAEAAAAPABQAAAABAAEAAAAPABMAAAABAAEAAAAPABIAAAABAAEAAAA8ABIAAAABAAEAAAA8ABMAAAABAAEAAAA8ABQAAAABAAEAAAAeAA0AAAABAAEAAAAeAA4AAAABAAEAAAAPAB8AAAABAAEAAAAPAB4AAAABAAEAAAAeABgAAAABAAEAAAAeABkAAAABAAEAAAA8ABgAAAABAAEAAAA8ABkAAAABAAEAAAAPAAIAAAABAAEAAAAPAAMAAAABAAEAAAAeAAIAAAABAAEAAAAeAAMAAAABAAEAAAA8AAIAAAABAAEAAAA8AAMAAAABAAEAAAA+AAsAAAABAAEAAAA/AAsAAAABAAEAAABJAAsAAAABAAEAAABIAAsAAAABAAEAAAA=")
+
+[node name="TerrainBackground" parent="Terrain" index="0"]
+material = ExtResource("2_t3l78")
+offset_right = 1824.0
+offset_bottom = 816.0
+
+[node name="ViewportBackground" parent="CanvasLayer" index="0"]
+material = ExtResource("2_t3l78")
+offset_top = -5.0
+offset_bottom = 1915.0
+
+[node name="Spikes" type="Node2D" parent="." index="5"]
+
+[node name="SpikePair" type="Node2D" parent="Spikes" index="0"]
+
+[node name="Spike" parent="Spikes/SpikePair" index="0" instance=ExtResource("2_aq2d2")]
+position = Vector2(264, 551)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="Spikes/SpikePair" index="1" instance=ExtResource("2_aq2d2")]
+position = Vector2(120, 527)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikePair2" type="Node2D" parent="Spikes" index="1"]
+position = Vector2(911, -49)
+rotation = 1.5708
+
+[node name="Spike" parent="Spikes/SpikePair2" index="0" instance=ExtResource("2_aq2d2")]
+position = Vector2(264, 551)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="Spikes/SpikePair2" index="1" instance=ExtResource("2_aq2d2")]
+position = Vector2(168, 527)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikePair3" type="Node2D" parent="Spikes" index="2"]
+position = Vector2(1271, -49)
+rotation = 1.5708
+
+[node name="Spike" parent="Spikes/SpikePair3" index="0" instance=ExtResource("2_aq2d2")]
+position = Vector2(264, 551)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="Spikes/SpikePair3" index="1" instance=ExtResource("2_aq2d2")]
+position = Vector2(168, 527)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikePair4" type="Node2D" parent="Spikes" index="3"]
+position = Vector2(1631, -49)
+rotation = 1.5708
+
+[node name="Spike" parent="Spikes/SpikePair4" index="0" instance=ExtResource("2_aq2d2")]
+position = Vector2(216, 551)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="Spikes/SpikePair4" index="1" instance=ExtResource("2_aq2d2")]
+position = Vector2(120, 527)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikePair6" type="Node2D" parent="Spikes" index="4"]
+position = Vector2(1655, -49)
+rotation = 1.5708
+
+[node name="Spike" parent="Spikes/SpikePair6" index="0" instance=ExtResource("2_aq2d2")]
+position = Vector2(216, 551)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="Spikes/SpikePair6" index="1" instance=ExtResource("2_aq2d2")]
+position = Vector2(120, 527)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikePair8" type="Node2D" parent="Spikes" index="5"]
+position = Vector2(1631, 215)
+rotation = 1.5708
+
+[node name="Spike" parent="Spikes/SpikePair8" index="0" instance=ExtResource("2_aq2d2")]
+position = Vector2(216, 551)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="Spikes/SpikePair8" index="1" instance=ExtResource("2_aq2d2")]
+position = Vector2(120, 527)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikePair12" type="Node2D" parent="Spikes" index="6"]
+position = Vector2(1655, 215)
+rotation = 1.5708
+
+[node name="Spike" parent="Spikes/SpikePair12" index="0" instance=ExtResource("2_aq2d2")]
+position = Vector2(216, 551)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="Spikes/SpikePair12" index="1" instance=ExtResource("2_aq2d2")]
+position = Vector2(120, 527)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikePair15" type="Node2D" parent="Spikes" index="7"]
+position = Vector2(1631, 479)
+rotation = 1.5708
+
+[node name="Spike" parent="Spikes/SpikePair15" index="0" instance=ExtResource("2_aq2d2")]
+position = Vector2(216, 551)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="Spikes/SpikePair15" index="1" instance=ExtResource("2_aq2d2")]
+position = Vector2(120, 527)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikePair16" type="Node2D" parent="Spikes" index="8"]
+position = Vector2(1655, 479)
+rotation = 1.5708
+
+[node name="Spike" parent="Spikes/SpikePair16" index="0" instance=ExtResource("2_aq2d2")]
+position = Vector2(216, 551)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="Spikes/SpikePair16" index="1" instance=ExtResource("2_aq2d2")]
+position = Vector2(120, 527)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikePair5" type="Node2D" parent="Spikes" index="9"]
+position = Vector2(1991, -49)
+rotation = 1.5708
+
+[node name="Spike" parent="Spikes/SpikePair5" index="0" instance=ExtResource("2_aq2d2")]
+position = Vector2(264, 551)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="Spikes/SpikePair5" index="1" instance=ExtResource("2_aq2d2")]
+position = Vector2(168, 527)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikePair17" type="Node2D" parent="Spikes" index="10"]
+position = Vector2(1440, -264)
+
+[node name="Spike" parent="Spikes/SpikePair17" index="0" instance=ExtResource("2_aq2d2")]
+position = Vector2(264, 551)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="Spikes/SpikePair17" index="1" instance=ExtResource("2_aq2d2")]
+position = Vector2(120, 527)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikePair7" type="Node2D" parent="Spikes" index="11"]
+position = Vector2(1991, 215)
+rotation = 1.5708
+
+[node name="Spike" parent="Spikes/SpikePair7" index="0" instance=ExtResource("2_aq2d2")]
+position = Vector2(192, 551)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="Spikes/SpikePair7" index="1" instance=ExtResource("2_aq2d2")]
+position = Vector2(96, 527)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikePair9" type="Node2D" parent="Spikes" index="12"]
+position = Vector2(1271, 215)
+rotation = 1.5708
+
+[node name="Spike" parent="Spikes/SpikePair9" index="0" instance=ExtResource("2_aq2d2")]
+position = Vector2(264, 551)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="Spikes/SpikePair9" index="1" instance=ExtResource("2_aq2d2")]
+position = Vector2(168, 527)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikePair10" type="Node2D" parent="Spikes" index="13"]
+position = Vector2(911, 215)
+rotation = 1.5708
+
+[node name="Spike" parent="Spikes/SpikePair10" index="0" instance=ExtResource("2_aq2d2")]
+position = Vector2(192, 551)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="Spikes/SpikePair10" index="1" instance=ExtResource("2_aq2d2")]
+position = Vector2(96, 527)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikePair11" type="Node2D" parent="Spikes" index="14"]
+position = Vector2(1991, 478)
+rotation = 1.5708
+
+[node name="Spike" parent="Spikes/SpikePair11" index="0" instance=ExtResource("2_aq2d2")]
+position = Vector2(264, 551)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="Spikes/SpikePair11" index="1" instance=ExtResource("2_aq2d2")]
+position = Vector2(168, 527)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikePair13" type="Node2D" parent="Spikes" index="15"]
+position = Vector2(1271, 478)
+rotation = 1.5708
+
+[node name="Spike" parent="Spikes/SpikePair13" index="0" instance=ExtResource("2_aq2d2")]
+position = Vector2(264, 551)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="Spikes/SpikePair13" index="1" instance=ExtResource("2_aq2d2")]
+position = Vector2(168, 527)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="SpikePair14" type="Node2D" parent="Spikes" index="16"]
+position = Vector2(911, 478)
+rotation = 1.5708
+
+[node name="Spike" parent="Spikes/SpikePair14" index="0" instance=ExtResource("2_aq2d2")]
+position = Vector2(224, 551)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="Spikes/SpikePair14" index="1" instance=ExtResource("2_aq2d2")]
+position = Vector2(120, 527)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="EndZone" parent="Spikes" index="17" instance=ExtResource("3_32wv6")]
+position = Vector2(1752, 742)
+size = Vector2(96, 96)
+
+[node name="GasCan" parent="Spikes" index="18" instance=ExtResource("4_xumeg")]
+position = Vector2(1716, 420)
+
+[node name="Moving Spike Block" type="Node2D" parent="." index="6"]
+position = Vector2(0, -5)
+
+[node name="Spike3" parent="Moving Spike Block" index="0" instance=ExtResource("2_aq2d2")]
+position = Vector2(1680, 172)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike4" parent="Moving Spike Block" index="1" instance=ExtResource("2_aq2d2")]
+position = Vector2(1632, 148)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike5" parent="Moving Spike Block" index="2" instance=ExtResource("2_aq2d2")]
+position = Vector2(1656, 220)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike6" parent="Moving Spike Block" index="3" instance=ExtResource("2_aq2d2")]
+position = Vector2(1608, 196)
+rotation = 4.71239
+scale = Vector2(0.5, 0.5)
+
+[node name="Tile-Sprite" type="Sprite2D" parent="Moving Spike Block" index="4"]
+position = Vector2(1644, 184)
+texture = ExtResource("6_vj0ey")
+region_enabled = true
+region_rect = Rect2(144, 72, 24, 24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Moving Spike Block/Tile-Sprite" index="0"]
+shape = SubResource("RectangleShape2D_vj0ey")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Moving Spike Block" index="5"]
+libraries = {
+&"": SubResource("AnimationLibrary_cuoly")
+}
+autoplay = "move"
+
+[node name="Moving Spike Block2" type="Node2D" parent="." index="7"]
+position = Vector2(0, -5)
+
+[node name="Spike3" parent="Moving Spike Block2" index="0" instance=ExtResource("2_aq2d2")]
+position = Vector2(1680, 172)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike4" parent="Moving Spike Block2" index="1" instance=ExtResource("2_aq2d2")]
+position = Vector2(1632, 148)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike5" parent="Moving Spike Block2" index="2" instance=ExtResource("2_aq2d2")]
+position = Vector2(1656, 220)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike6" parent="Moving Spike Block2" index="3" instance=ExtResource("2_aq2d2")]
+position = Vector2(1608, 196)
+rotation = 4.71239
+scale = Vector2(0.5, 0.5)
+
+[node name="Tile-Sprite" type="Sprite2D" parent="Moving Spike Block2" index="4"]
+position = Vector2(1644, 184)
+texture = ExtResource("6_vj0ey")
+region_enabled = true
+region_rect = Rect2(144, 72, 24, 24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Moving Spike Block2/Tile-Sprite" index="0"]
+shape = SubResource("RectangleShape2D_vj0ey")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Moving Spike Block2" index="5"]
+libraries = {
+&"": SubResource("AnimationLibrary_cuoly")
+}
+autoplay = "move_2"
