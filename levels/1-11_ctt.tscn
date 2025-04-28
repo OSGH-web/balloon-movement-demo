@@ -1,156 +1,143 @@
-[gd_scene load_steps=10 format=4 uid="uid://pgovpci1c20w"]
+[gd_scene load_steps=9 format=4 uid="uid://pgovpci1c20w"]
 
-[ext_resource type="PackedScene" uid="uid://cxo2r1hb7u2ss" path="res://scenes/level_base.tscn" id="1_run5h"]
-[ext_resource type="PackedScene" uid="uid://c6i6ci2ym6wn6" path="res://scenes/spike.tscn" id="2_im64y"]
-[ext_resource type="Material" uid="uid://drlban6fsery" path="res://assets/shaders/1-13_ctt.tres" id="2_mckep"]
-[ext_resource type="Texture2D" uid="uid://1gh0pa10k34t" path="res://assets/sprites/white_tile.png" id="3_d5cxn"]
-[ext_resource type="PackedScene" uid="uid://bvn2y2nnqcrts" path="res://scenes/end_zone.tscn" id="3_mckep"]
-[ext_resource type="PackedScene" uid="uid://ckwukbtl6m70h" path="res://scenes/slime.tscn" id="4_d5cxn"]
-[ext_resource type="FontFile" uid="uid://b5r4on7cls54q" path="res://assets/fonts/DepartureMono-Regular.otf" id="5_02tqi"]
-[ext_resource type="LabelSettings" uid="uid://cbw7oatl30dvl" path="res://assets/styles/label_33px.tres" id="6_1dqwx"]
-[ext_resource type="PackedScene" uid="uid://cxdl0fqxwxba1" path="res://scenes/gas_can.tscn" id="7_7180h"]
+[ext_resource type="PackedScene" uid="uid://cxo2r1hb7u2ss" path="res://scenes/level_base.tscn" id="1_27k8g"]
+[ext_resource type="Material" uid="uid://drlban6fsery" path="res://assets/shaders/ctt.tres" id="2_fn3ki"]
+[ext_resource type="PackedScene" uid="uid://c6i6ci2ym6wn6" path="res://scenes/spike.tscn" id="3_6ynkm"]
+[ext_resource type="PackedScene" uid="uid://bvn2y2nnqcrts" path="res://scenes/end_zone.tscn" id="4_akam1"]
+[ext_resource type="PackedScene" uid="uid://ckwukbtl6m70h" path="res://scenes/slime.tscn" id="5_aj573"]
+[ext_resource type="FontFile" uid="uid://b5r4on7cls54q" path="res://assets/fonts/DepartureMono-Regular.otf" id="6_3rt2x"]
+[ext_resource type="LabelSettings" uid="uid://cbw7oatl30dvl" path="res://assets/styles/label_33px.tres" id="7_qmoo5"]
+[ext_resource type="PackedScene" uid="uid://cxdl0fqxwxba1" path="res://scenes/gas_can.tscn" id="8_g4cx8"]
 
-[node name="LevelBase" instance=ExtResource("1_run5h")]
+[node name="LevelBase" instance=ExtResource("1_27k8g")]
 level_name = "Can't Touch This"
 height_in_tiles = 50
 
 [node name="Player" parent="." index="0"]
 position = Vector2(664, 1112)
-scale = Vector2(1, 1)
 
 [node name="Terrain" parent="." index="1"]
 tile_map_data = PackedByteArray("AAAAAAAABAAAAAAAAAABADEABAABAAIAAAABAAAABAABAAAAAAACADEABAAGAAMAAAACAAAABAABAAAAAAADADEABAAGAAMAAAADAAAABAABAAAAAAAEADEABAAGAAMAAAAEAAAABAABAAAAAAAFADEABAAGAAMAAAAFAAAABAABAAAAAAAGADEABAAGAAMAAAAGAAAABAABAAAAAAAHADEABAAGAAMAAAAHAAAABAABAAAAAAAIADEABAAGAAMAAAAIAAAABAABAAAAAAAJADEABAAGAAMAAAAJAAAABAABAAAAAAAKADEABAAGAAMAAAAKAAAABAABAAAAAAALADEABAAGAAMAAAALAAAABAABAAAAAAAMADEABAAGAAMAAAAMAAAABAABAAAAAAANADEABAAGAAMAAAANAAAABAABAAAAAAAOADEABAAGAAMAAAAOAAAABAABAAAAAAAPADEABAAGAAMAAAAPAAAABAABAAAAAAAQADEABAAGAAMAAAAQAAAABAABAAAAAAARADEABAAGAAMAAAARAAAABAABAAAAAAASADEABAAGAAMAAAASAAAABAABAAAAAAATADEABAAGAAMAAAATAAAABAABAAAAAAAUADEABAAGAAMAAAAUAAAABAABAAAAAAAVADEABAAGAAMAAAAVAAAABAABAAAAAAAWADEABAAGAAMAAAAWAAAABAABAAAAAAAXAAAABAABAAAAAAAYADEABAACAAIAAAAYAAAABAABAAAAAAAZADEABAACAAIAAAAZAAAABAABAAAAAAAaADEABAACAAIAAAAaAAAABAABAAAAAAAbADEABAACAAIAAAAbAAAABAABAAAAAAAcADEABAACAAIAAAAcAAAABAABAAAAAAAdADEABAACAAIAAAAdAAAABAABAAAAAAAeADEABAACAAIAAAAeAAAABAABAAAAAAAfAAAABAADAAAAAAAAAAEABAAAAAEAAAAAAAIABAAAAAEAAAAAAAMABAAAAAEAAAAAAAQABAAAAAEAAAAAAAUABAAAAAEAAAAAAAYABAAAAAEAAAAAAAcABAAAAAEAAAAAAAgABAAAAAEAAAAAAAkABAAAAAEAAAAAAAoABAAAAAEAAAAAAAsABAAAAAEAAAAAAAwABAAAAAEAAAAAAA0ABAAAAAEAAAAAAA4ABAAAAAEAAAAAAA8ABAAAAAEAAAAAABAABAAAAAEAAAAAABEABAAAAAEAAAAAABIABAAAAAEAAAAAABMABAAAAAEAAAAAABQABAAAAAEAAAAAABUABAAAAAEAAAAAABYABAAAAAEAAAAAABcABAAAAAEAAAAAABgABAAAAAEAAAAAABkABAAAAAEAAAAAABoABAAAAAEAAAAAABsABAAAAAEAAAAAABwABAAAAAEAAAAAAB0ABAAAAAEAAAAAAB4ABAAAAAEAAAAAAB8ABAAAAAEAAAAAACAABAAAAAEAAAAAACEABAAAAAEAAAAAACIABAAAAAEAAAAAACMABAAAAAEAAAAAACQABAAAAAEAAAAAACUABAAAAAEAAAAAACYABAAAAAEAAAAAACcABAAAAAEAAAAAACgABAAAAAEAAAAAACkABAAAAAEAAAAAACoABAAAAAEAAAAAACsABAAAAAEAAAAAACwABAAAAAEAAAAAAC0ABAAAAAEAAAAAAC4ABAAAAAEAAAAAAC8ABAAAAAEAAAAAADAABAAAAAEAAAAAADEABAAAAAIAAAAGAAEABAAAAAEAAAAGAAIABAAAAAEAAAAGAAMABAAAAAEAAAAGAAQABAAAAAEAAAAGAAUABAAAAAEAAAAGAAYABAAAAAEAAAAGAAcABAAAAAEAAAAGAAgABAAAAAEAAAAGAAkABAAAAAEAAAAGAAoABAAAAAEAAAAGAAsABAAAAAEAAAAGAB8ABAABAAEAAAAHAB8ABAACAAEAAAAIAB8ABAABAAEAAAAJAB8ABAABAAEAAAAKAB8ABAACAAEAAAALAB8ABAABAAEAAAAMAB8ABAABAAEAAAANAB8ABAABAAEAAAAOAB8ABAACAAEAAAAPAB8ABAABAAEAAAAQAAUABAAAAAEAAAAQAAYABAAAAAEAAAAQAAcABAAAAAEAAAAQAAgABAAAAAEAAAAQAAkABAAAAAEAAAAQAAoABAAAAAEAAAAQAAsABAAAAAEAAAAQAAwABAAAAAEAAAAQAA0ABAAAAAIAAAAQAB8ABAABAAEAAAARAB8ABAABAAEAAAASAB8ABAABAAEAAAATAB8ABAABAAEAAAAUAB8ABAABAAEAAAAVAB8ABAACAAEAAAAWAB8ABAABAAEAAAAXAB8ABAABAAEAAAAXACUABAAAAAEAAAAXACYABAAAAAEAAAAXACcABAAAAAEAAAAXACgABAAAAAEAAAAXACkABAAAAAEAAAAXACoABAAAAAEAAAAXACsABAAAAAEAAAAXACwABAAAAAEAAAAXAC0ABAAAAAEAAAAXAC4ABAAAAAEAAAAXAC8ABAAAAAEAAAAXADAABAAAAAEAAAAXADEABAAGAAMAAAAYAB8ABAACAAEAAAAZAB8ABAABAAEAAAAaAB8ABAACAAEAAAAbAAgABAADAAEAAAAbAAkABAADAAEAAAAbAAoABAADAAEAAAAbAAsABAADAAEAAAAbAAwABAADAAEAAAAbAA0ABAADAAIAAAAbAB8ABAABAAEAAAAcAB8ABAABAAEAAAAdAB8ABAABAAEAAAAeAB8ABAACAAEAAAAfAAEABAADAAEAAAAfAAIABAADAAEAAAAfAAMABAADAAEAAAAfAAQABAADAAEAAAAfAAUABAADAAEAAAAfAAYABAADAAEAAAAfAAcABAADAAEAAAAfAAgABAADAAEAAAAfAAkABAADAAEAAAAfAAoABAADAAEAAAAfAAsABAADAAEAAAAfAAwABAADAAEAAAAfAA0ABAADAAEAAAAfAA4ABAADAAEAAAAfAA8ABAADAAEAAAAfABAABAADAAEAAAAfABEABAADAAEAAAAfABIABAADAAEAAAAfABMABAADAAEAAAAfABQABAADAAEAAAAfABUABAADAAEAAAAfABYABAADAAEAAAAfABcABAADAAEAAAAfABgABAADAAEAAAAfABkABAADAAEAAAAfABoABAADAAEAAAAfABsABAADAAEAAAAfABwABAADAAEAAAAfAB0ABAADAAEAAAAfAB4ABAADAAEAAAAfAB8ABAADAAEAAAAfACAABAADAAEAAAAfACEABAADAAEAAAAfACIABAADAAEAAAAfACMABAADAAEAAAAfACQABAADAAEAAAAfACUABAADAAEAAAAfACYABAADAAEAAAAfACcABAADAAEAAAAfACgABAADAAEAAAAfACkABAADAAEAAAAfACoABAADAAEAAAAfACsABAADAAEAAAAfACwABAADAAEAAAAfAC0ABAADAAEAAAAfAC4ABAADAAEAAAAfAC8ABAADAAEAAAAfADAABAADAAEAAAAfADEABAADAAIAAAACABgABAAEAAEAAAADABgABAAFAAEAAAAEABgABAAFAAEAAAAFABgABAAFAAEAAAAGABgABAAFAAEAAAAGAB4ABAAAAAAAAAAHABgABAAFAAEAAAAHAB4ABAABAAAAAAAIABgABAAFAAEAAAAIAB4ABAABAAAAAAAJABgABAAFAAEAAAAJAB4ABAABAAAAAAAKABgABAAFAAEAAAAKAB4ABAABAAAAAAALABgABAAFAAEAAAALAB4ABAABAAAAAAAMABgABAAFAAEAAAAMAB4ABAABAAAAAAANABgABAAFAAEAAAANAB4ABAABAAAAAAAOABgABAAFAAEAAAAOAB4ABAABAAAAAAAPABgABAAFAAEAAAAPAB4ABAABAAAAAAAQABgABAAFAAEAAAAQAB4ABAABAAAAAAARAA0ABAACAAIAAAARABgABAAFAAEAAAARAB4ABAABAAAAAAASAA0ABAACAAIAAAASABgABAAFAAEAAAASAB4ABAABAAAAAAATAA0ABAACAAIAAAATABgABAAFAAEAAAATAB4ABAABAAAAAAAUAA0ABAACAAIAAAAUABgABAAFAAEAAAAUAB4ABAABAAAAAAAVAA0ABAACAAIAAAAVABgABAAFAAEAAAAVAB4ABAABAAAAAAAWAA0ABAACAAIAAAAWABgABAAFAAEAAAAWAB4ABAABAAAAAAAXAA0ABAACAAIAAAAXABgABAAFAAEAAAAXAB4ABAABAAAAAAAXACQABAAAAAEAAAAYAA0ABAACAAIAAAAYABgABAAFAAEAAAAYAB4ABAABAAAAAAAZAA0ABAACAAIAAAAZABgABAAFAAEAAAAZAB4ABAABAAAAAAAaAA0ABAACAAIAAAAaABgABAAFAAEAAAAaAB4ABAABAAAAAAAbAAcABAADAAEAAAAbABgABAAFAAEAAAAbAB4ABAABAAAAAAAcABgABAAHAAEAAAAcAB4ABAABAAAAAAAdAB4ABAABAAAAAAAeAB4ABAACAAAAAAAEAA8ABAAEAAIAAAAFAA8ABAAGAAIAAAAGAA8ABAAGAAIAAAAHAA8ABAAFAAIAAAAIAA8ABAAFAAIAAAAJAA8ABAAGAAIAAAAKAA8ABAAGAAIAAAALAA8ABAAGAAIAAAAMAA8ABAAGAAIAAAANAA8ABAAGAAIAAAAOAA8ABAAGAAIAAAAPAA8ABAAGAAIAAAAQAA8ABAAGAAIAAAARAA8ABAAGAAIAAAASAA8ABAAGAAIAAAATAA8ABAAGAAIAAAAUAA8ABAAGAAIAAAAVAA8ABAAGAAIAAAAWAA8ABAAGAAIAAAAXAA8ABAAGAAIAAAAYAA8ABAAGAAIAAAAZAA8ABAAGAAIAAAAaAA8ABAAGAAIAAAAbAA8ABAAGAAIAAAAcAA8ABAAGAAIAAAAdAA8ABAAHAAIAAAAQAAQABAAAAAAAAAARAAQABAABAAAAAAASAAQABAABAAAAAAATAAQABAABAAAAAAAUAAQABAABAAAAAAAVAAQABAABAAAAAAAWAAQABAABAAAAAAAXAAQABAABAAAAAAAYAAQABAABAAAAAAA=")
 
 [node name="TerrainBackground" parent="Terrain" index="0"]
-material = ExtResource("2_mckep")
+material = ExtResource("2_fn3ki")
 offset_bottom = 1200.0
-
-[node name="TerrainBackground2" type="TextureRect" parent="Terrain" index="1"]
-unique_name_in_owner = true
-z_index = -1
-texture_filter = 1
-material = ExtResource("2_mckep")
-offset_top = -32.0
-offset_right = 768.0
-offset_bottom = 1168.0
-texture = ExtResource("3_d5cxn")
-stretch_mode = 1
 
 [node name="Spikes" type="Node2D" parent="." index="4"]
 
-[node name="Spike" parent="Spikes" index="0" instance=ExtResource("2_im64y")]
+[node name="Spike" parent="Spikes" index="0" instance=ExtResource("3_6ynkm")]
 position = Vector2(624, 912)
 rotation = 1.57079
 
-[node name="Spike4" parent="Spikes" index="1" instance=ExtResource("2_im64y")]
+[node name="Spike4" parent="Spikes" index="1" instance=ExtResource("3_6ynkm")]
 position = Vector2(696, 864)
 rotation = -1.57079
 
-[node name="Spike2" parent="Spikes" index="2" instance=ExtResource("2_im64y")]
+[node name="Spike2" parent="Spikes" index="2" instance=ExtResource("3_6ynkm")]
 position = Vector2(504, 1128)
 
-[node name="Spike3" parent="Spikes" index="3" instance=ExtResource("2_im64y")]
+[node name="Spike3" parent="Spikes" index="3" instance=ExtResource("3_6ynkm")]
 position = Vector2(624, 1128)
 rotation = 1.57079
 
-[node name="Spike5" parent="Spikes" index="4" instance=ExtResource("2_im64y")]
+[node name="Spike5" parent="Spikes" index="4" instance=ExtResource("3_6ynkm")]
 position = Vector2(696, 1080)
 rotation = -1.5708
 
-[node name="Spike6" parent="Spikes" index="5" instance=ExtResource("2_im64y")]
+[node name="Spike6" parent="Spikes" index="5" instance=ExtResource("3_6ynkm")]
 position = Vector2(456, 1128)
 
-[node name="Spike7" parent="Spikes" index="6" instance=ExtResource("2_im64y")]
+[node name="Spike7" parent="Spikes" index="6" instance=ExtResource("3_6ynkm")]
 position = Vector2(408, 1128)
 
-[node name="Spike8" parent="Spikes" index="7" instance=ExtResource("2_im64y")]
+[node name="Spike8" parent="Spikes" index="7" instance=ExtResource("3_6ynkm")]
 position = Vector2(360, 1128)
 
-[node name="Spike9" parent="Spikes" index="8" instance=ExtResource("2_im64y")]
+[node name="Spike9" parent="Spikes" index="8" instance=ExtResource("3_6ynkm")]
 position = Vector2(312, 1128)
 
-[node name="Spike10" parent="Spikes" index="9" instance=ExtResource("2_im64y")]
+[node name="Spike10" parent="Spikes" index="9" instance=ExtResource("3_6ynkm")]
 position = Vector2(264, 1128)
 
-[node name="Spike11" parent="Spikes" index="10" instance=ExtResource("2_im64y")]
+[node name="Spike11" parent="Spikes" index="10" instance=ExtResource("3_6ynkm")]
 position = Vector2(216, 1128)
 
-[node name="Spike12" parent="Spikes" index="11" instance=ExtResource("2_im64y")]
+[node name="Spike12" parent="Spikes" index="11" instance=ExtResource("3_6ynkm")]
 position = Vector2(168, 1128)
 
-[node name="Spike13" parent="Spikes" index="12" instance=ExtResource("2_im64y")]
+[node name="Spike13" parent="Spikes" index="12" instance=ExtResource("3_6ynkm")]
 position = Vector2(120, 1128)
 
-[node name="Spike14" parent="Spikes" index="13" instance=ExtResource("2_im64y")]
+[node name="Spike14" parent="Spikes" index="13" instance=ExtResource("3_6ynkm")]
 position = Vector2(72, 1128)
 
-[node name="Spike26" parent="Spikes" index="14" instance=ExtResource("2_im64y")]
+[node name="Spike26" parent="Spikes" index="14" instance=ExtResource("3_6ynkm")]
 position = Vector2(184, 432)
 rotation = 3.14159
 
-[node name="Spike32" parent="Spikes" index="15" instance=ExtResource("2_im64y")]
+[node name="Spike32" parent="Spikes" index="15" instance=ExtResource("3_6ynkm")]
 position = Vector2(48, 216)
 rotation = 1.57079
 scale = Vector2(0.5, 0.5)
 
-[node name="Spike35" parent="Spikes" index="16" instance=ExtResource("2_im64y")]
+[node name="Spike35" parent="Spikes" index="16" instance=ExtResource("3_6ynkm")]
 position = Vector2(48, 120)
 rotation = 1.57079
 scale = Vector2(0.5, 0.5)
 
-[node name="Spike33" parent="Spikes" index="17" instance=ExtResource("2_im64y")]
+[node name="Spike33" parent="Spikes" index="17" instance=ExtResource("3_6ynkm")]
 position = Vector2(120, 192)
 rotation = -1.57079
 scale = Vector2(0.5, 0.5)
 
-[node name="Spike34" parent="Spikes" index="18" instance=ExtResource("2_im64y")]
+[node name="Spike34" parent="Spikes" index="18" instance=ExtResource("3_6ynkm")]
 position = Vector2(120, 288)
 rotation = -1.57079
 scale = Vector2(0.5, 0.5)
 
-[node name="Spike17" parent="Spikes" index="19" instance=ExtResource("2_im64y")]
+[node name="Spike17" parent="Spikes" index="19" instance=ExtResource("3_6ynkm")]
 position = Vector2(144, 672)
 
-[node name="Spike23" parent="Spikes" index="20" instance=ExtResource("2_im64y")]
+[node name="Spike23" parent="Spikes" index="20" instance=ExtResource("3_6ynkm")]
 position = Vector2(320, 672)
 
-[node name="Spike24" parent="Spikes" index="21" instance=ExtResource("2_im64y")]
+[node name="Spike24" parent="Spikes" index="21" instance=ExtResource("3_6ynkm")]
 position = Vector2(512, 672)
 
-[node name="Spike25" parent="Spikes" index="22" instance=ExtResource("2_im64y")]
+[node name="Spike25" parent="Spikes" index="22" instance=ExtResource("3_6ynkm")]
 position = Vector2(696, 672)
 
-[node name="Spike19" parent="Spikes" index="23" instance=ExtResource("2_im64y")]
+[node name="Spike19" parent="Spikes" index="23" instance=ExtResource("3_6ynkm")]
 position = Vector2(280.001, 648)
 rotation = 3.14157
 
-[node name="Spike20" parent="Spikes" index="24" instance=ExtResource("2_im64y")]
+[node name="Spike20" parent="Spikes" index="24" instance=ExtResource("3_6ynkm")]
 position = Vector2(648, 648)
 rotation = 3.14157
 
-[node name="Spike21" parent="Spikes" index="25" instance=ExtResource("2_im64y")]
+[node name="Spike21" parent="Spikes" index="25" instance=ExtResource("3_6ynkm")]
 position = Vector2(464.001, 648)
 rotation = 3.14157
 
-[node name="Spike30" parent="Spikes" index="26" instance=ExtResource("2_im64y")]
+[node name="Spike30" parent="Spikes" index="26" instance=ExtResource("3_6ynkm")]
 position = Vector2(632, 432)
 rotation = 3.14157
 
-[node name="Spike31" parent="Spikes" index="27" instance=ExtResource("2_im64y")]
+[node name="Spike31" parent="Spikes" index="27" instance=ExtResource("3_6ynkm")]
 position = Vector2(408, 432)
 rotation = 3.14157
 
-[node name="EndZone" parent="Spikes" index="28" instance=ExtResource("3_mckep")]
+[node name="EndZone" parent="Spikes" index="28" instance=ExtResource("4_akam1")]
 position = Vector2(85, 48)
 size = Vector2(120, 48)
 
-[node name="Slime" parent="." index="5" instance=ExtResource("4_d5cxn")]
+[node name="Slime" parent="." index="5" instance=ExtResource("5_aj573")]
 position = Vector2(104, 576)
 
-[node name="Slime2" parent="." index="6" instance=ExtResource("4_d5cxn")]
+[node name="Slime2" parent="." index="6" instance=ExtResource("5_aj573")]
 position = Vector2(328, 576)
 
-[node name="Slime3" parent="." index="7" instance=ExtResource("4_d5cxn")]
+[node name="Slime3" parent="." index="7" instance=ExtResource("5_aj573")]
 position = Vector2(552, 576)
 
 [node name="Label" type="Label" parent="." index="8"]
@@ -159,9 +146,9 @@ offset_top = 1016.0
 offset_right = 432.0
 offset_bottom = 1058.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("5_02tqi")
+theme_override_fonts/font = ExtResource("6_3rt2x")
 text = "DON'T DIE DUUUDE!"
-label_settings = ExtResource("6_1dqwx")
+label_settings = ExtResource("7_qmoo5")
 
 [node name="Label2" type="Label" parent="." index="9"]
 offset_left = 392.0
@@ -169,158 +156,158 @@ offset_top = 32.0
 offset_right = 728.0
 offset_bottom = 74.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("5_02tqi")
+theme_override_fonts/font = ExtResource("6_3rt2x")
 text = "CAN'T TOUCH THIS"
-label_settings = ExtResource("6_1dqwx")
+label_settings = ExtResource("7_qmoo5")
 
 [node name="Fuel" type="Node2D" parent="." index="10"]
 
-[node name="GasCan" parent="Fuel" index="0" instance=ExtResource("7_7180h")]
+[node name="GasCan" parent="Fuel" index="0" instance=ExtResource("8_g4cx8")]
 position = Vector2(384, 1104)
 
-[node name="GasCan25" parent="Fuel" index="1" instance=ExtResource("7_7180h")]
+[node name="GasCan25" parent="Fuel" index="1" instance=ExtResource("8_g4cx8")]
 position = Vector2(424, 168)
 
-[node name="GasCan26" parent="Fuel" index="2" instance=ExtResource("7_7180h")]
+[node name="GasCan26" parent="Fuel" index="2" instance=ExtResource("8_g4cx8")]
 position = Vector2(424, 200)
 
-[node name="GasCan27" parent="Fuel" index="3" instance=ExtResource("7_7180h")]
+[node name="GasCan27" parent="Fuel" index="3" instance=ExtResource("8_g4cx8")]
 position = Vector2(424, 232)
 
-[node name="GasCan28" parent="Fuel" index="4" instance=ExtResource("7_7180h")]
+[node name="GasCan28" parent="Fuel" index="4" instance=ExtResource("8_g4cx8")]
 position = Vector2(424, 264)
 
-[node name="GasCan29" parent="Fuel" index="5" instance=ExtResource("7_7180h")]
+[node name="GasCan29" parent="Fuel" index="5" instance=ExtResource("8_g4cx8")]
 position = Vector2(424, 296)
 
-[node name="GasCan30" parent="Fuel" index="6" instance=ExtResource("7_7180h")]
+[node name="GasCan30" parent="Fuel" index="6" instance=ExtResource("8_g4cx8")]
 position = Vector2(616, 296)
 
-[node name="GasCan31" parent="Fuel" index="7" instance=ExtResource("7_7180h")]
+[node name="GasCan31" parent="Fuel" index="7" instance=ExtResource("8_g4cx8")]
 position = Vector2(584, 296)
 
-[node name="GasCan32" parent="Fuel" index="8" instance=ExtResource("7_7180h")]
+[node name="GasCan32" parent="Fuel" index="8" instance=ExtResource("8_g4cx8")]
 position = Vector2(552, 296)
 
-[node name="GasCan33" parent="Fuel" index="9" instance=ExtResource("7_7180h")]
+[node name="GasCan33" parent="Fuel" index="9" instance=ExtResource("8_g4cx8")]
 position = Vector2(520, 296)
 
-[node name="GasCan34" parent="Fuel" index="10" instance=ExtResource("7_7180h")]
+[node name="GasCan34" parent="Fuel" index="10" instance=ExtResource("8_g4cx8")]
 position = Vector2(488, 296)
 
-[node name="GasCan35" parent="Fuel" index="11" instance=ExtResource("7_7180h")]
+[node name="GasCan35" parent="Fuel" index="11" instance=ExtResource("8_g4cx8")]
 position = Vector2(488, 296)
 
-[node name="GasCan36" parent="Fuel" index="12" instance=ExtResource("7_7180h")]
+[node name="GasCan36" parent="Fuel" index="12" instance=ExtResource("8_g4cx8")]
 position = Vector2(456, 296)
 
-[node name="GasCan37" parent="Fuel" index="13" instance=ExtResource("7_7180h")]
+[node name="GasCan37" parent="Fuel" index="13" instance=ExtResource("8_g4cx8")]
 position = Vector2(616, 264)
 
-[node name="GasCan38" parent="Fuel" index="14" instance=ExtResource("7_7180h")]
+[node name="GasCan38" parent="Fuel" index="14" instance=ExtResource("8_g4cx8")]
 position = Vector2(584, 264)
 
-[node name="GasCan39" parent="Fuel" index="15" instance=ExtResource("7_7180h")]
+[node name="GasCan39" parent="Fuel" index="15" instance=ExtResource("8_g4cx8")]
 position = Vector2(552, 264)
 
-[node name="GasCan40" parent="Fuel" index="16" instance=ExtResource("7_7180h")]
+[node name="GasCan40" parent="Fuel" index="16" instance=ExtResource("8_g4cx8")]
 position = Vector2(520, 264)
 
-[node name="GasCan41" parent="Fuel" index="17" instance=ExtResource("7_7180h")]
+[node name="GasCan41" parent="Fuel" index="17" instance=ExtResource("8_g4cx8")]
 position = Vector2(488, 264)
 
-[node name="GasCan42" parent="Fuel" index="18" instance=ExtResource("7_7180h")]
+[node name="GasCan42" parent="Fuel" index="18" instance=ExtResource("8_g4cx8")]
 position = Vector2(488, 264)
 
-[node name="GasCan43" parent="Fuel" index="19" instance=ExtResource("7_7180h")]
+[node name="GasCan43" parent="Fuel" index="19" instance=ExtResource("8_g4cx8")]
 position = Vector2(456, 264)
 
-[node name="GasCan44" parent="Fuel" index="20" instance=ExtResource("7_7180h")]
+[node name="GasCan44" parent="Fuel" index="20" instance=ExtResource("8_g4cx8")]
 position = Vector2(616, 232)
 
-[node name="GasCan45" parent="Fuel" index="21" instance=ExtResource("7_7180h")]
+[node name="GasCan45" parent="Fuel" index="21" instance=ExtResource("8_g4cx8")]
 position = Vector2(584, 232)
 
-[node name="GasCan46" parent="Fuel" index="22" instance=ExtResource("7_7180h")]
+[node name="GasCan46" parent="Fuel" index="22" instance=ExtResource("8_g4cx8")]
 position = Vector2(552, 232)
 
-[node name="GasCan47" parent="Fuel" index="23" instance=ExtResource("7_7180h")]
+[node name="GasCan47" parent="Fuel" index="23" instance=ExtResource("8_g4cx8")]
 position = Vector2(520, 232)
 
-[node name="GasCan48" parent="Fuel" index="24" instance=ExtResource("7_7180h")]
+[node name="GasCan48" parent="Fuel" index="24" instance=ExtResource("8_g4cx8")]
 position = Vector2(488, 232)
 
-[node name="GasCan49" parent="Fuel" index="25" instance=ExtResource("7_7180h")]
+[node name="GasCan49" parent="Fuel" index="25" instance=ExtResource("8_g4cx8")]
 position = Vector2(488, 232)
 
-[node name="GasCan50" parent="Fuel" index="26" instance=ExtResource("7_7180h")]
+[node name="GasCan50" parent="Fuel" index="26" instance=ExtResource("8_g4cx8")]
 position = Vector2(456, 232)
 
-[node name="GasCan51" parent="Fuel" index="27" instance=ExtResource("7_7180h")]
+[node name="GasCan51" parent="Fuel" index="27" instance=ExtResource("8_g4cx8")]
 position = Vector2(616, 200)
 
-[node name="GasCan52" parent="Fuel" index="28" instance=ExtResource("7_7180h")]
+[node name="GasCan52" parent="Fuel" index="28" instance=ExtResource("8_g4cx8")]
 position = Vector2(584, 200)
 
-[node name="GasCan53" parent="Fuel" index="29" instance=ExtResource("7_7180h")]
+[node name="GasCan53" parent="Fuel" index="29" instance=ExtResource("8_g4cx8")]
 position = Vector2(552, 200)
 
-[node name="GasCan54" parent="Fuel" index="30" instance=ExtResource("7_7180h")]
+[node name="GasCan54" parent="Fuel" index="30" instance=ExtResource("8_g4cx8")]
 position = Vector2(520, 200)
 
-[node name="GasCan55" parent="Fuel" index="31" instance=ExtResource("7_7180h")]
+[node name="GasCan55" parent="Fuel" index="31" instance=ExtResource("8_g4cx8")]
 position = Vector2(488, 200)
 
-[node name="GasCan56" parent="Fuel" index="32" instance=ExtResource("7_7180h")]
+[node name="GasCan56" parent="Fuel" index="32" instance=ExtResource("8_g4cx8")]
 position = Vector2(488, 200)
 
-[node name="GasCan57" parent="Fuel" index="33" instance=ExtResource("7_7180h")]
+[node name="GasCan57" parent="Fuel" index="33" instance=ExtResource("8_g4cx8")]
 position = Vector2(456, 200)
 
-[node name="GasCan58" parent="Fuel" index="34" instance=ExtResource("7_7180h")]
+[node name="GasCan58" parent="Fuel" index="34" instance=ExtResource("8_g4cx8")]
 position = Vector2(616, 168)
 
-[node name="GasCan59" parent="Fuel" index="35" instance=ExtResource("7_7180h")]
+[node name="GasCan59" parent="Fuel" index="35" instance=ExtResource("8_g4cx8")]
 position = Vector2(584, 168)
 
-[node name="GasCan60" parent="Fuel" index="36" instance=ExtResource("7_7180h")]
+[node name="GasCan60" parent="Fuel" index="36" instance=ExtResource("8_g4cx8")]
 position = Vector2(552, 168)
 
-[node name="GasCan61" parent="Fuel" index="37" instance=ExtResource("7_7180h")]
+[node name="GasCan61" parent="Fuel" index="37" instance=ExtResource("8_g4cx8")]
 position = Vector2(520, 168)
 
-[node name="GasCan62" parent="Fuel" index="38" instance=ExtResource("7_7180h")]
+[node name="GasCan62" parent="Fuel" index="38" instance=ExtResource("8_g4cx8")]
 position = Vector2(488, 168)
 
-[node name="GasCan63" parent="Fuel" index="39" instance=ExtResource("7_7180h")]
+[node name="GasCan63" parent="Fuel" index="39" instance=ExtResource("8_g4cx8")]
 position = Vector2(488, 168)
 
-[node name="GasCan64" parent="Fuel" index="40" instance=ExtResource("7_7180h")]
+[node name="GasCan64" parent="Fuel" index="40" instance=ExtResource("8_g4cx8")]
 position = Vector2(456, 168)
 
-[node name="GasCan65" parent="Fuel" index="41" instance=ExtResource("7_7180h")]
+[node name="GasCan65" parent="Fuel" index="41" instance=ExtResource("8_g4cx8")]
 position = Vector2(424, 136)
 
-[node name="GasCan66" parent="Fuel" index="42" instance=ExtResource("7_7180h")]
+[node name="GasCan66" parent="Fuel" index="42" instance=ExtResource("8_g4cx8")]
 position = Vector2(616, 136)
 
-[node name="GasCan67" parent="Fuel" index="43" instance=ExtResource("7_7180h")]
+[node name="GasCan67" parent="Fuel" index="43" instance=ExtResource("8_g4cx8")]
 position = Vector2(584, 136)
 
-[node name="GasCan68" parent="Fuel" index="44" instance=ExtResource("7_7180h")]
+[node name="GasCan68" parent="Fuel" index="44" instance=ExtResource("8_g4cx8")]
 position = Vector2(552, 136)
 
-[node name="GasCan69" parent="Fuel" index="45" instance=ExtResource("7_7180h")]
+[node name="GasCan69" parent="Fuel" index="45" instance=ExtResource("8_g4cx8")]
 position = Vector2(520, 136)
 
-[node name="GasCan70" parent="Fuel" index="46" instance=ExtResource("7_7180h")]
+[node name="GasCan70" parent="Fuel" index="46" instance=ExtResource("8_g4cx8")]
 position = Vector2(488, 136)
 
-[node name="GasCan71" parent="Fuel" index="47" instance=ExtResource("7_7180h")]
+[node name="GasCan71" parent="Fuel" index="47" instance=ExtResource("8_g4cx8")]
 position = Vector2(456, 136)
 
-[node name="GasCan2" parent="Fuel" index="48" instance=ExtResource("7_7180h")]
+[node name="GasCan2" parent="Fuel" index="48" instance=ExtResource("8_g4cx8")]
 position = Vector2(144, 1104)
 
 [node name="ViewportBackground" parent="CanvasLayer" index="0"]
-material = ExtResource("2_mckep")
+material = ExtResource("2_fn3ki")

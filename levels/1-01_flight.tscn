@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=4 uid="uid://me2c5ddpyhkq"]
 
 [ext_resource type="PackedScene" uid="uid://cxo2r1hb7u2ss" path="res://scenes/level_base.tscn" id="1_aot7u"]
-[ext_resource type="Material" uid="uid://blybopg863h23" path="res://assets/shaders/1-01_flight.tres" id="2_4gadj"]
+[ext_resource type="Material" uid="uid://blybopg863h23" path="res://assets/shaders/flight.tres" id="2_4gadj"]
 [ext_resource type="PackedScene" uid="uid://bvn2y2nnqcrts" path="res://scenes/end_zone.tscn" id="2_lobpu"]
 [ext_resource type="FontFile" uid="uid://b5r4on7cls54q" path="res://assets/fonts/DepartureMono-Regular.otf" id="4_roufu"]
 [ext_resource type="LabelSettings" uid="uid://cbw7oatl30dvl" path="res://assets/styles/label_33px.tres" id="5_sucxq"]
@@ -10,12 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://cft15naqfat3j" path="res://assets/inputs/keyboard_arrow_down_outline.png" id="8_xwcww"]
 [ext_resource type="Texture2D" uid="uid://b7p2opchkfodw" path="res://assets/inputs/keyboard_arrow_up_outline.png" id="9_lblav"]
 
-[node name="LevelBase" instance=ExtResource("1_aot7u")]
+[node name="LevelBase2" instance=ExtResource("1_aot7u")]
 level_name = "Flight"
 
 [node name="Player" parent="." index="0"]
 position = Vector2(576, 1416)
-scale = Vector2(1, 1)
 FUEL = 3000
 
 [node name="Terrain" parent="." index="1"]

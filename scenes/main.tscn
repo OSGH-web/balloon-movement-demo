@@ -7,7 +7,7 @@
 [ext_resource type="StyleBox" uid="uid://002qwq5rvs87" path="res://assets/styles/sbf_light.tres" id="4_choun"]
 [ext_resource type="LabelSettings" uid="uid://cbw7oatl30dvl" path="res://assets/styles/label_33px.tres" id="4_eb6dy"]
 [ext_resource type="Theme" uid="uid://bcn6jcu02pjx0" path="res://assets/themes/standard_font_theme.theme" id="4_o6xl0"]
-[ext_resource type="Material" uid="uid://cmg6vu3hj2ryo" path="res://assets/shaders/1-02_square.tres" id="5_tefeu"]
+[ext_resource type="Material" uid="uid://cmg6vu3hj2ryo" path="res://assets/shaders/square.tres" id="5_tefeu"]
 [ext_resource type="Material" uid="uid://db8q5jqucir4j" path="res://assets/shaders/titlescreen-beam-material.tres" id="5_tipki"]
 [ext_resource type="Texture2D" uid="uid://j65nk3t7y8df" path="res://assets/sprites/weed_tile_bw.png" id="6_tefeu"]
 [ext_resource type="Texture2D" uid="uid://bw5x01l18tgjm" path="res://assets/sprites/title_screen_beam.png" id="6_ya4ey"]
