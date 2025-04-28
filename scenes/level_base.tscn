@@ -17,6 +17,7 @@ script = ExtResource("1_1bvp3")
 [node name="Player" parent="." instance=ExtResource("2_0xm2m")]
 z_index = 1
 z_as_relative = false
+scale = Vector2(1, 1)
 slide_on_ceiling = false
 floor_constant_speed = true
 safe_margin = 0.001
