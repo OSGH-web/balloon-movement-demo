@@ -96,7 +96,7 @@ func save_time_and_return():
 	
 func _input(event):
 	# Start the timer upon the first input
-	if event is InputEventKey and event.pressed:
+	if event.is_action_type():
 		game_started = true
 	 # DEV: Go to next level
 	if event.is_action_pressed("ui_n"):

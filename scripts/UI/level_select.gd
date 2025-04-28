@@ -12,7 +12,7 @@ func _ready():
 	button_container.get_children()[0].grab_focus()
 
 func _input(event):
-	if Input.is_key_pressed(KEY_ESCAPE):
+	if event.is_action_pressed("ui_cancel"):
 		get_tree().change_scene_to_file("res://scenes/main.tscn")
 
 func create_level_grid():
