@@ -4,7 +4,7 @@
 [ext_resource type="StyleBox" uid="uid://002qwq5rvs87" path="res://assets/styles/sbf_light.tres" id="2_chg43"]
 [ext_resource type="LabelSettings" uid="uid://cbw7oatl30dvl" path="res://assets/styles/label_33px.tres" id="2_rif6e"]
 [ext_resource type="LabelSettings" uid="uid://v4nuv8jtylyb" path="res://assets/styles/label_11px.tres" id="3_chg43"]
-[ext_resource type="Material" uid="uid://drlban6fsery" path="res://assets/shaders/1-13_ctt.tres" id="5_0ra34"]
+[ext_resource type="Material" uid="uid://drlban6fsery" path="res://assets/shaders/ctt.tres" id="5_0ra34"]
 [ext_resource type="Texture2D" uid="uid://j65nk3t7y8df" path="res://assets/sprites/weed_tile_bw.png" id="6_ty08u"]
 
 [node name="LevelSelect" type="Control"]
