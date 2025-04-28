@@ -80,7 +80,7 @@ offset_left = 276.0
 offset_top = 288.0
 offset_right = 1095.0
 offset_bottom = 348.0
-focus_neighbor_top = NodePath("../TrialButton")
+focus_neighbor_top = NodePath("../QuitToDesktopButton")
 focus_neighbor_bottom = NodePath("../TrialButton")
 mouse_filter = 1
 theme = ExtResource("4_o6xl0")
@@ -100,7 +100,7 @@ offset_top = 360.0
 offset_right = 1095.0
 offset_bottom = 420.0
 focus_neighbor_top = NodePath("../ArcadeButton")
-focus_neighbor_bottom = NodePath("../ArcadeButton")
+focus_neighbor_bottom = NodePath("../QuitToDesktopButton")
 theme = ExtResource("4_o6xl0")
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -109,6 +109,22 @@ theme_override_styles/focus = ExtResource("2_tefeu")
 theme_override_styles/hover = ExtResource("4_choun")
 theme_override_styles/normal = ExtResource("4_choun")
 text = "Time Trials"
+
+[node name="QuitToDesktopButton" type="Button" parent="."]
+offset_left = 276.0
+offset_top = 431.0
+offset_right = 1095.0
+offset_bottom = 491.0
+focus_neighbor_top = NodePath("../TrialButton")
+focus_neighbor_bottom = NodePath("../ArcadeButton")
+theme = ExtResource("4_o6xl0")
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 33
+theme_override_styles/focus = ExtResource("2_tefeu")
+theme_override_styles/hover = ExtResource("4_choun")
+theme_override_styles/normal = ExtResource("4_choun")
+text = "Quit To Desktop"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -3
@@ -126,3 +142,4 @@ metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="ArcadeButton" to="." method="_on_arcade_button_pressed"]
 [connection signal="pressed" from="TrialButton" to="." method="_on_trial_button_pressed"]
+[connection signal="pressed" from="QuitToDesktopButton" to="." method="_on_quit_to_desktop_button_pressed"]
