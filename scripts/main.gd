@@ -12,3 +12,6 @@ func _on_arcade_button_pressed() -> void:
 func _on_trial_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/UI/level_select.tscn")
 	GameManager.gameMode = GameManager.GameModes.TIME_TRIAL
+
+func _on_quit_to_desktop_button_pressed() -> void:
+	get_tree().quit()
