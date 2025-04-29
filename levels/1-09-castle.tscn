@@ -55,6 +55,9 @@ level_name = "Castle"
 width_in_tiles = 76
 height_in_tiles = 34
 
+[node name="Player" parent="." index="0"]
+position = Vector2(40, 216)
+
 [node name="Terrain" parent="." index="1"]
 position = Vector2(0, -1)
 rotation = 0.000134574

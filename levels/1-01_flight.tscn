@@ -10,11 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://cft15naqfat3j" path="res://assets/inputs/keyboard_arrow_down_outline.png" id="8_xwcww"]
 [ext_resource type="Texture2D" uid="uid://b7p2opchkfodw" path="res://assets/inputs/keyboard_arrow_up_outline.png" id="9_lblav"]
 
-[node name="LevelBase2" instance=ExtResource("1_aot7u")]
+[node name="LevelBase" instance=ExtResource("1_aot7u")]
 level_name = "Flight"
 
 [node name="Player" parent="." index="0"]
-position = Vector2(576, 1416)
+position = Vector2(616, 1464)
 FUEL = 3000
 
 [node name="Terrain" parent="." index="1"]

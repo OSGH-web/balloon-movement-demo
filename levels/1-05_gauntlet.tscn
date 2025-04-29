@@ -14,7 +14,7 @@ width_in_tiles = 80
 height_in_tiles = 45
 
 [node name="Player" parent="." index="0"]
-position = Vector2(48, 40)
+position = Vector2(56, 72)
 
 [node name="Terrain" parent="." index="1"]
 rotation = 0.000259012

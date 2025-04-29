@@ -11,7 +11,7 @@ width_in_tiles = 250
 height_in_tiles = 20
 
 [node name="Player" parent="." index="0"]
-position = Vector2(15, 183)
+position = Vector2(24, 192)
 FUEL = 1000
 
 [node name="Terrain" parent="." index="1"]
