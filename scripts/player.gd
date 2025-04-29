@@ -28,6 +28,11 @@ var velocity_cutoff = 0.001 * physics_scale_factor
 const ICE_SOURCE_ID := 5
 const ICE_ATLAS_COORDS := [Vector2i(0, 0), Vector2i(1, 0)]
 
+# Audio
+@export var maxVol = 6.0
+@export var minVol = -24.0
+@export var noiseGate = -12.0
+
 signal player_died
 
 var airbrake_pressed = false
@@ -114,6 +119,23 @@ func _physics_process(delta):
 		velocity = velocity.slide(normal)
 		
 	_update_animation(input_dir.normalized())
+	_update_audio(input_dir.normalized())
+
+func _update_audio(dir: Vector2):
+	const attackRate = 1.0
+	const decayRate = 0.5
+
+	var newVol
+	if dir == Vector2.ZERO:
+		newVol = $AudioStreamPlayer.volume_db - decayRate
+		newVol = max(minVol, newVol)
+		newVol = min(maxVol, newVol)
+	else:
+		newVol = $AudioStreamPlayer.volume_db + attackRate
+		newVol = max(noiseGate, newVol)
+		newVol = min(maxVol, newVol)
+
+	$AudioStreamPlayer.volume_db = newVol
 
 func _update_animation(dir: Vector2):
 	if dir == Vector2.ZERO:
