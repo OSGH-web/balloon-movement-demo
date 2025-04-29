@@ -74,33 +74,22 @@ text = "Time To Beat"
 label_settings = ExtResource("2_rif6e")
 horizontal_alignment = 1
 
-[node name="HSplitContainer4" type="HSplitContainer" parent="VBoxContainer"]
-clip_contents = true
-custom_minimum_size = Vector2(272, 0)
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(273, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/separation = 0
-split_offset = 88
-dragging_enabled = false
-dragger_visibility = 2
 
-[node name="HSplitContainer2" type="HSplitContainer" parent="VBoxContainer/HSplitContainer4"]
-layout_mode = 2
-theme_override_constants/separation = 0
-split_offset = 15
-dragging_enabled = false
-dragger_visibility = 2
-
-[node name="placeholder2" type="Label" parent="VBoxContainer/HSplitContainer4/HSplitContainer2"]
-custom_minimum_size = Vector2(0, 20)
+[node name="placeholder2" type="Label" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(15, 20)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("2_chg43")
 label_settings = ExtResource("3_chg43")
 horizontal_alignment = 1
 
-[node name="LevelNumber" type="Label" parent="VBoxContainer/HSplitContainer4/HSplitContainer2"]
+[node name="LevelNumber" type="Label" parent="VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 20)
+custom_minimum_size = Vector2(73, 20)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("2_chg43")
 text = "Best Time:"
@@ -108,26 +97,16 @@ label_settings = ExtResource("3_chg43")
 vertical_alignment = 1
 clip_text = true
 
-[node name="HSplitContainer3" type="HSplitContainer" parent="VBoxContainer/HSplitContainer4"]
-custom_minimum_size = Vector2(184, 0)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 4
-theme_override_constants/separation = 0
-split_offset = 40
-dragging_enabled = false
-dragger_visibility = 2
-
-[node name="placeholder2" type="Label" parent="VBoxContainer/HSplitContainer4/HSplitContainer3"]
-custom_minimum_size = Vector2(0, 20)
+[node name="placeholder3" type="Label" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 20)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("2_chg43")
 label_settings = ExtResource("3_chg43")
 horizontal_alignment = 1
 
-[node name="LevelStats" type="Label" parent="VBoxContainer/HSplitContainer4/HSplitContainer3"]
+[node name="LevelStats" type="Label" parent="VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 20)
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = ExtResource("2_chg43")
