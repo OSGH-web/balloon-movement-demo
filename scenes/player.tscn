@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7jfvkf4edbjp"]
+[gd_scene load_steps=6 format=3 uid="uid://b7jfvkf4edbjp"]
 
 [ext_resource type="Script" uid="uid://d3nwiwsfywf3b" path="res://scripts/player.gd" id="1_onrkg"]
 [ext_resource type="SpriteFrames" uid="uid://bnae5qkxhlm73" path="res://assets/sprites/player.res" id="2_g2els"]
 [ext_resource type="Material" uid="uid://e1pxfkjp8bel" path="res://assets/shaders/in-game-beam-material.tres" id="2_qhqgy"]
+[ext_resource type="AudioStream" uid="uid://b6eft0k7gmivn" path="res://assets/sound_fx/bong_hit.wav" id="4_dqkch"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
 radius = 11.7094
@@ -51,5 +52,11 @@ editor_draw_drag_margin = true
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_dqkch")
+volume_db = -19.802
+autoplay = true
+bus = &"SFX"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
