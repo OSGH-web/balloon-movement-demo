@@ -55,6 +55,7 @@ func reset():
 	extraLivesDivisor = 1
 	curr_level = 0
 	background_music.pitch_scale = 1.03
+	get_tree().paused = false
 	
 func _process(delta):
 	if not gameStateDisabled and game_started:
@@ -99,13 +100,16 @@ func save_time_and_return():
 	%GameInfo.visible = false
 	get_tree().change_scene_to_file("res://scenes/UI/level_select.tscn")
 	gameStateDisabled = false
-	
+
+func time_trial_reset():
+	game_started = false
+	reset()
+	get_tree().reload_current_scene()
+
 func _input(event):
 	if gameMode == GameModes.TIME_TRIAL:
 		if event.is_action_pressed("reset"):
-			game_started = false
-			reset()
-			get_tree().reload_current_scene()
+			time_trial_reset()
 	# Start the timer upon the first input
 		elif event.is_pressed():
 			game_started = true

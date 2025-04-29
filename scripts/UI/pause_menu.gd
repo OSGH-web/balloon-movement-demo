@@ -4,6 +4,8 @@ func _ready() -> void:
 	if !get_parent().PROCESS_MODE_PAUSABLE:
 		push_warning("warning: parent is not pausable")
 	init_mute_audio_button()
+	init_reset_stage_button()
+
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_pause"):
@@ -42,3 +44,12 @@ func _on_mute_audio_button_pressed() -> void:
 func _on_main_menu_pressed() -> void:
 	toggle_pause()
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
+
+func init_reset_stage_button():
+	if GameManager.gameMode == GameManager.GameModes.TIME_TRIAL:
+		%ResetStageButton.visible = true
+	else:
+		%ResetStageButton.visible = false
+
+func _on_reset_stage_button_pressed() -> void:
+	GameManager.time_trial_reset()
