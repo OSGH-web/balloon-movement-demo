@@ -1,15 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7jfvkf4edbjp"]
+[gd_scene load_steps=10 format=3 uid="uid://b7jfvkf4edbjp"]
 
 [ext_resource type="Script" uid="uid://d3nwiwsfywf3b" path="res://scripts/player.gd" id="1_onrkg"]
 [ext_resource type="SpriteFrames" uid="uid://bnae5qkxhlm73" path="res://assets/sprites/player.res" id="2_g2els"]
 [ext_resource type="Material" uid="uid://e1pxfkjp8bel" path="res://assets/shaders/in-game-beam-material.tres" id="2_qhqgy"]
 [ext_resource type="AudioStream" uid="uid://b6eft0k7gmivn" path="res://assets/sound_fx/bong_hit.wav" id="4_dqkch"]
+[ext_resource type="Texture2D" uid="uid://1gh0pa10k34t" path="res://assets/sprites/white_tile.png" id="5_qlg0r"]
+[ext_resource type="Curve" uid="uid://cu8ra2a1awlqa" path="res://assets/curves/ParticleScale.tres" id="6_tuyoq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dqkch"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
 radius = 11.7094
 
+[sub_resource type="Gradient" id="Gradient_dqkch"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.25, 0.75)
+colors = PackedColorArray(1, 1, 1, 1, 0.172549, 0.909804, 0.960784, 1, 0, 0.6, 0.858824, 1)
+
 [node name="Player" type="CharacterBody2D"]
-scale = Vector2(3, 3)
+material = SubResource("ShaderMaterial_dqkch")
 collision_mask = 2
 script = ExtResource("1_onrkg")
 
@@ -58,5 +67,30 @@ stream = ExtResource("4_dqkch")
 volume_db = -19.802
 autoplay = true
 bus = &"SFX"
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(24, 24)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Node2D"]
+position = Vector2(0, 68)
+amount = 24
+texture = ExtResource("5_qlg0r")
+lifetime = 0.25
+randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(12, 48)
+direction = Vector2(0, 1)
+spread = 30.0
+gravity = Vector2(0, 360)
+initial_velocity_min = 48.0
+initial_velocity_max = 96.0
+linear_accel_min = -200.0
+linear_accel_max = -200.0
+tangential_accel_min = -288.0
+tangential_accel_max = 289.0
+scale_amount_min = 0.08
+scale_amount_max = 0.08
+scale_amount_curve = ExtResource("6_tuyoq")
+color_ramp = SubResource("Gradient_dqkch")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
