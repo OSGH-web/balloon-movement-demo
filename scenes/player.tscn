@@ -1,21 +1,21 @@
-[gd_scene load_steps=10 format=3 uid="uid://b7jfvkf4edbjp"]
+[gd_scene load_steps=9 format=3 uid="uid://b7jfvkf4edbjp"]
 
 [ext_resource type="Script" uid="uid://d3nwiwsfywf3b" path="res://scripts/player.gd" id="1_onrkg"]
 [ext_resource type="SpriteFrames" uid="uid://bnae5qkxhlm73" path="res://assets/sprites/player.res" id="2_g2els"]
 [ext_resource type="Material" uid="uid://e1pxfkjp8bel" path="res://assets/shaders/in-game-beam-material.tres" id="2_qhqgy"]
 [ext_resource type="AudioStream" uid="uid://b6eft0k7gmivn" path="res://assets/sound_fx/bong_hit.wav" id="4_dqkch"]
-[ext_resource type="Texture2D" uid="uid://1gh0pa10k34t" path="res://assets/sprites/white_tile.png" id="5_qlg0r"]
-[ext_resource type="Curve" uid="uid://cu8ra2a1awlqa" path="res://assets/curves/ParticleScale.tres" id="6_tuyoq"]
+[ext_resource type="Texture2D" uid="uid://bedt2axylgmhu" path="res://assets/sprites/player beam particle.png" id="5_qlg0r"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dqkch"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
 radius = 11.7094
 
-[sub_resource type="Gradient" id="Gradient_dqkch"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.25, 0.75)
-colors = PackedColorArray(1, 1, 1, 1, 0.172549, 0.909804, 0.960784, 1, 0, 0.6, 0.858824, 1)
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tuyoq"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
 
 [node name="Player" type="CharacterBody2D"]
 material = SubResource("ShaderMaterial_dqkch")
@@ -72,11 +72,12 @@ bus = &"SFX"
 position = Vector2(24, 24)
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Node2D"]
-position = Vector2(0, 68)
-amount = 24
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_tuyoq")
+position = Vector2(0, 70)
+amount = 18
 texture = ExtResource("5_qlg0r")
-lifetime = 0.25
-randomness = 1.0
+lifetime = 0.38
 emission_shape = 3
 emission_rect_extents = Vector2(12, 48)
 direction = Vector2(0, 1)
@@ -84,13 +85,11 @@ spread = 30.0
 gravity = Vector2(0, 360)
 initial_velocity_min = 48.0
 initial_velocity_max = 96.0
-linear_accel_min = -200.0
-linear_accel_max = -200.0
+linear_accel_min = -300.0
+linear_accel_max = -300.0
 tangential_accel_min = -288.0
 tangential_accel_max = 289.0
-scale_amount_min = 0.08
-scale_amount_max = 0.08
-scale_amount_curve = ExtResource("6_tuyoq")
-color_ramp = SubResource("Gradient_dqkch")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
