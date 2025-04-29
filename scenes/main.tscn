@@ -101,6 +101,32 @@ scale = Vector2(18, 18)
 texture = ExtResource("6_ya4ey")
 stretch_mode = 2
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="BeamTexture"]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_trceg")
+position = Vector2(51.1667, 43.9444)
+rotation = 1.44862
+scale = Vector2(0.555556, 0.555556)
+amount = 24
+texture = ExtResource("12_eb6dy")
+lifetime = 0.38
+speed_scale = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(24, 72)
+direction = Vector2(0, 1)
+spread = 30.0
+gravity = Vector2(0, 360)
+initial_velocity_min = 48.0
+initial_velocity_max = 96.0
+linear_accel_min = -300.0
+linear_accel_max = -300.0
+tangential_accel_min = -288.0
+tangential_accel_max = 289.0
+scale_amount_min = 9.0
+scale_amount_max = 9.0
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
 [node name="ArcadeButton" type="Button" parent="."]
 unique_name_in_owner = true
 offset_left = 276.0
