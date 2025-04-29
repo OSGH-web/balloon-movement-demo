@@ -119,6 +119,7 @@ func _physics_process(delta):
 		velocity = velocity.slide(normal)
 		
 	_update_animation(input_dir.normalized())
+	_update_particles(input_dir.normalized())
 	_update_audio(input_dir.normalized())
 
 func _update_audio(dir: Vector2):
@@ -126,7 +127,7 @@ func _update_audio(dir: Vector2):
 	const decayRate = 0.5
 
 	var newVol
-	if dir == Vector2.ZERO:
+	if dir == Vector2.ZERO || int(FUEL) <= 0:
 		newVol = $AudioStreamPlayer.volume_db - decayRate
 		newVol = max(minVol, newVol)
 		newVol = min(maxVol, newVol)
@@ -191,6 +192,32 @@ func _update_animation(dir: Vector2):
 			$AnimatedSprite2D.frame = 2 # right
 		elif x < -deadzone:
 			$AnimatedSprite2D.frame = 4  # left
+
+func _update_particles(dir: Vector2):
+	if dir == Vector2.ZERO || int(FUEL) <= 0:
+		$Node2D/CPUParticles2D.emitting = false
+	else:
+		$Node2D/CPUParticles2D.emitting = true
+
+	var angle = 0.0
+	if $AnimatedSprite2D.frame == 3: # Down
+		angle = 0 * PI / 180
+	if $AnimatedSprite2D.frame == 8: # Down-Left
+		angle = 45 * PI / 180
+	if $AnimatedSprite2D.frame == 4: # Left
+		angle = 90 * PI / 180
+	if $AnimatedSprite2D.frame == 5: # Up-Left
+		angle = 135 * PI / 180
+	if $AnimatedSprite2D.frame == 1: # Up
+		angle = 180 * PI / 180
+	if $AnimatedSprite2D.frame == 6: # Up-Right
+		angle = 225 * PI / 180
+	if $AnimatedSprite2D.frame == 2: # Right
+		angle = 270 * PI / 180
+	if $AnimatedSprite2D.frame == 7: # Down-Right
+		angle = 315 * PI / 180
+
+	$Node2D.rotation = angle
 
 
 func _setup_camera_limits(map_width_px, map_height_px):
