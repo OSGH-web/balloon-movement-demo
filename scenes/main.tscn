@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dg3shn8d54wck"]
+[gd_scene load_steps=14 format=3 uid="uid://dg3shn8d54wck"]
 
 [ext_resource type="Script" uid="uid://c8rtmo3o8q4vw" path="res://scripts/main.gd" id="1_o5qli"]
 [ext_resource type="StyleBox" uid="uid://cn1chxlsybisf" path="res://assets/styles/sbf_focus.tres" id="2_tefeu"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://j65nk3t7y8df" path="res://assets/sprites/weed_tile_bw.png" id="6_tefeu"]
 [ext_resource type="Texture2D" uid="uid://bw5x01l18tgjm" path="res://assets/sprites/title_screen_beam.png" id="6_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://bedt2axylgmhu" path="res://assets/sprites/player beam particle.png" id="12_eb6dy"]
+
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_trceg"]
 particles_animation = true
 particles_anim_h_frames = 5
