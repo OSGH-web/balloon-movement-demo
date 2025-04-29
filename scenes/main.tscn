@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dg3shn8d54wck"]
+[gd_scene load_steps=15 format=3 uid="uid://dg3shn8d54wck"]
 
 [ext_resource type="Script" uid="uid://c8rtmo3o8q4vw" path="res://scripts/main.gd" id="1_o5qli"]
 [ext_resource type="StyleBox" uid="uid://cn1chxlsybisf" path="res://assets/styles/sbf_focus.tres" id="2_tefeu"]
@@ -11,15 +11,17 @@
 [ext_resource type="Material" uid="uid://db8q5jqucir4j" path="res://assets/shaders/titlescreen-beam-material.tres" id="5_tipki"]
 [ext_resource type="Texture2D" uid="uid://j65nk3t7y8df" path="res://assets/sprites/weed_tile_bw.png" id="6_tefeu"]
 [ext_resource type="Texture2D" uid="uid://bw5x01l18tgjm" path="res://assets/sprites/title_screen_beam.png" id="6_ya4ey"]
+[ext_resource type="Texture2D" uid="uid://bedt2axylgmhu" path="res://assets/sprites/player beam particle.png" id="12_eb6dy"]
 [ext_resource type="LabelSettings" uid="uid://v4nuv8jtylyb" path="res://assets/styles/label_11px.tres" id="13_trceg"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_trceg"]
+particles_animation = true
+particles_anim_h_frames = 5
+particles_anim_v_frames = 1
+particles_anim_loop = false
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_o5qli")
-
-[node name="TitleScreen" type="Sprite2D" parent="."]
-visible = false
-scale = Vector2(9, 9)
-centered = false
 
 [node name="TitlePanel" type="Panel" parent="."]
 anchors_preset = -1
@@ -48,6 +50,59 @@ text = "SMOKIN MY LASER"
 label_settings = ExtResource("4_eb6dy")
 horizontal_alignment = 1
 
+[node name="PlayerTexture" type="TextureRect" parent="."]
+z_index = -1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -6.0
+offset_right = 125.0
+offset_bottom = 60.0
+grow_horizontal = 0
+scale = Vector2(18, 18)
+texture = ExtResource("4_85g3d")
+stretch_mode = 2
+
+[node name="BeamTexture" type="TextureRect" parent="."]
+z_index = -1
+material = ExtResource("5_tipki")
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -6.0
+offset_right = 125.0
+offset_bottom = 60.0
+grow_horizontal = 0
+scale = Vector2(18, 18)
+texture = ExtResource("6_ya4ey")
+stretch_mode = 2
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="BeamTexture"]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_trceg")
+position = Vector2(51.1667, 43.9444)
+rotation = 1.44862
+scale = Vector2(0.555556, 0.555556)
+amount = 24
+texture = ExtResource("12_eb6dy")
+lifetime = 0.38
+speed_scale = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(24, 72)
+direction = Vector2(0, 1)
+spread = 30.0
+gravity = Vector2(0, 360)
+initial_velocity_min = 48.0
+initial_velocity_max = 96.0
+linear_accel_min = -300.0
+linear_accel_max = -300.0
+tangential_accel_min = -288.0
+tangential_accel_max = 289.0
+scale_amount_min = 9.0
+scale_amount_max = 9.0
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
 [node name="ArcadeButton" type="Button" parent="."]
 unique_name_in_owner = true
 offset_left = 276.0
@@ -66,40 +121,9 @@ theme_override_styles/hover = ExtResource("4_choun")
 theme_override_styles/normal = ExtResource("4_choun")
 text = "Arcade Mode"
 
-[node name="TrialButton" type="Button" parent="."]
-offset_left = 276.0
-offset_top = 360.0
-offset_right = 1095.0
-offset_bottom = 420.0
-focus_neighbor_top = NodePath("../ArcadeButton")
-focus_neighbor_bottom = NodePath("../QuitToDesktopButton")
-theme = ExtResource("4_o6xl0")
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 33
-theme_override_styles/focus = ExtResource("2_tefeu")
-theme_override_styles/hover = ExtResource("4_choun")
-theme_override_styles/normal = ExtResource("4_choun")
-text = "Time Trials"
-
-[node name="QuitToDesktopButton" type="Button" parent="."]
-offset_left = 276.0
-offset_top = 431.0
-offset_right = 1095.0
-offset_bottom = 491.0
-focus_neighbor_top = NodePath("../TrialButton")
-focus_neighbor_bottom = NodePath("../ArcadeButton")
-theme = ExtResource("4_o6xl0")
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 33
-theme_override_styles/focus = ExtResource("2_tefeu")
-theme_override_styles/hover = ExtResource("4_choun")
-theme_override_styles/normal = ExtResource("4_choun")
-text = "Quit To Desktop"
-
 [node name="HighScore" type="HBoxContainer" parent="ArcadeButton"]
 clip_contents = true
+layout_mode = 0
 offset_left = 831.0
 offset_right = 1010.0
 offset_bottom = 20.0
@@ -137,6 +161,38 @@ theme_override_styles/normal = ExtResource("4_choun")
 text = "10942"
 label_settings = ExtResource("13_trceg")
 vertical_alignment = 1
+
+[node name="TrialButton" type="Button" parent="."]
+offset_left = 276.0
+offset_top = 360.0
+offset_right = 1095.0
+offset_bottom = 420.0
+focus_neighbor_top = NodePath("../ArcadeButton")
+focus_neighbor_bottom = NodePath("../QuitToDesktopButton")
+theme = ExtResource("4_o6xl0")
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 33
+theme_override_styles/focus = ExtResource("2_tefeu")
+theme_override_styles/hover = ExtResource("4_choun")
+theme_override_styles/normal = ExtResource("4_choun")
+text = "Time Trials"
+
+[node name="QuitToDesktopButton" type="Button" parent="."]
+offset_left = 276.0
+offset_top = 431.0
+offset_right = 1095.0
+offset_bottom = 491.0
+focus_neighbor_top = NodePath("../TrialButton")
+focus_neighbor_bottom = NodePath("../ArcadeButton")
+theme = ExtResource("4_o6xl0")
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 33
+theme_override_styles/focus = ExtResource("2_tefeu")
+theme_override_styles/hover = ExtResource("4_choun")
+theme_override_styles/normal = ExtResource("4_choun")
+text = "Quit To Desktop"
 
 [node name="Backdrop" type="Node2D" parent="."]
 z_index = -1
