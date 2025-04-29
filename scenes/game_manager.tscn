@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://c6ui43xa7nmm5" path="res://assets/sound_fx/snoop-dogg-smoke-weed-everyday.mp3" id="6_ternb"]
 
 [node name="GameManager" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
