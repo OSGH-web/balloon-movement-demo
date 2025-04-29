@@ -178,7 +178,7 @@ func on_player_died():
 				get_tree().reload_current_scene()
 			else:
 				if GameManager.level_data.high_score < score:
-					%GameInfo.text = "New High Score!"
+					%GameInfo.text = "New High Score! " + str(score)
 					level_data.high_score = score
 					save_data()
 				else:
