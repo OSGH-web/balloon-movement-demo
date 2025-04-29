@@ -84,14 +84,14 @@ func save_time_and_return():
 	var prev_time = GameManager.level_data.level_times.get(level_path, null)
 	# If this is the first level clear
 	if prev_time == null or str(time) == "":
-		%GameInfo.text = "New Best Time: "+ str(round(time * 1000) / 1000.0)
+		%GameInfo.text = "New Best Time: "+ format_seconds(time)
 		%GameInfo.visible = true
 		level_data.level_times[level_path] = round(time * 1000) / 1000.0
 		save_data()
 	else:
 		var previous_best_time = level_data.level_times[level_path]
 		if time < previous_best_time:
-			%GameInfo.text = "New Best Time: "+ str(round(time * 1000) / 1000.0)
+			%GameInfo.text = "New Best Time: "+ format_seconds(time)
 			%GameInfo.visible = true
 			level_data.level_times[level_path] = round(time * 1000) / 1000.0
 			save_data()
@@ -197,3 +197,10 @@ func on_player_died():
 func get_player(): 
 	var level = get_tree().get_current_scene()
 	return level.get_node("Player")
+
+func format_seconds(time : float) -> String:
+	var minutes := time / 60
+	var seconds := fmod(time, 60)
+	var milliseconds := fmod(time, 1) * 100
+
+	return "%02d:%02d:%02d" % [minutes, seconds, milliseconds]

@@ -77,4 +77,4 @@ func _update_level_info_display(level_index):
 	if time == null or str(time) == "":
 		%LevelStats.text = "Level Not Complete"
 	else:
-		%LevelStats.text = str(time)
+		%LevelStats.text = GameManager.format_seconds(time)
