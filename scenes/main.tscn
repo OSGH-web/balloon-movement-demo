@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dg3shn8d54wck"]
+[gd_scene load_steps=13 format=3 uid="uid://dg3shn8d54wck"]
 
 [ext_resource type="Script" uid="uid://c8rtmo3o8q4vw" path="res://scripts/main.gd" id="1_o5qli"]
 [ext_resource type="StyleBox" uid="uid://cn1chxlsybisf" path="res://assets/styles/sbf_focus.tres" id="2_tefeu"]
@@ -11,6 +11,7 @@
 [ext_resource type="Material" uid="uid://db8q5jqucir4j" path="res://assets/shaders/titlescreen-beam-material.tres" id="5_tipki"]
 [ext_resource type="Texture2D" uid="uid://j65nk3t7y8df" path="res://assets/sprites/weed_tile_bw.png" id="6_tefeu"]
 [ext_resource type="Texture2D" uid="uid://bw5x01l18tgjm" path="res://assets/sprites/title_screen_beam.png" id="6_ya4ey"]
+[ext_resource type="LabelSettings" uid="uid://v4nuv8jtylyb" path="res://assets/styles/label_11px.tres" id="13_trceg"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_o5qli")
@@ -46,60 +47,6 @@ scale = Vector2(3, 3)
 text = "SMOKIN MY LASER"
 label_settings = ExtResource("4_eb6dy")
 horizontal_alignment = 1
-
-[node name="HighScore" type="Panel" parent="."]
-anchors_preset = -1
-anchor_left = 0.224299
-anchor_top = 0.1
-anchor_right = 0.224299
-anchor_bottom = 0.1
-offset_left = 560.0
-offset_top = 32.0
-offset_right = 1360.0
-offset_bottom = 92.0
-theme_override_styles/panel = ExtResource("2_ya4ey")
-
-[node name="Score" type="Label" parent="HighScore"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -352.0
-offset_top = 8.0
-offset_right = 352.0
-offset_bottom = 50.0
-grow_horizontal = 2
-text = "High Score:"
-label_settings = ExtResource("4_eb6dy")
-horizontal_alignment = 1
-
-[node name="PlayerTexture" type="TextureRect" parent="."]
-z_index = -1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -6.0
-offset_right = 125.0
-offset_bottom = 60.0
-grow_horizontal = 0
-scale = Vector2(18, 18)
-texture = ExtResource("4_85g3d")
-stretch_mode = 2
-
-[node name="BeamTexture" type="TextureRect" parent="."]
-z_index = -1
-material = ExtResource("5_tipki")
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -6.0
-offset_right = 125.0
-offset_bottom = 60.0
-grow_horizontal = 0
-scale = Vector2(18, 18)
-texture = ExtResource("6_ya4ey")
-stretch_mode = 2
 
 [node name="ArcadeButton" type="Button" parent="."]
 unique_name_in_owner = true
@@ -152,10 +99,79 @@ theme_override_styles/hover = ExtResource("4_choun")
 theme_override_styles/normal = ExtResource("4_choun")
 text = "Quit To Desktop"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="HighScore" type="HBoxContainer" parent="."]
+clip_contents = true
+offset_left = 276.0
+offset_top = 864.0
+offset_right = 458.0
+offset_bottom = 884.0
+scale = Vector2(3, 3)
+theme_override_constants/separation = 0
+
+[node name="placeholder1" type="Label" parent="HighScore"]
+custom_minimum_size = Vector2(15, 20)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("4_choun")
+label_settings = ExtResource("13_trceg")
+horizontal_alignment = 1
+
+[node name="HighScoreLabel" type="Label" parent="HighScore"]
+custom_minimum_size = Vector2(77, 20)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("4_choun")
+text = "High Score:"
+label_settings = ExtResource("13_trceg")
+vertical_alignment = 1
+
+[node name="placeholder2" type="Label" parent="HighScore"]
+custom_minimum_size = Vector2(36, 20)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("4_choun")
+label_settings = ExtResource("13_trceg")
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="HighScore"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = ExtResource("4_choun")
+text = "10942"
+label_settings = ExtResource("13_trceg")
+vertical_alignment = 1
+
+[node name="Backdrop" type="Node2D" parent="."]
+position = Vector2(-6, 0)
+
+[node name="PlayerTexture" type="TextureRect" parent="Backdrop"]
+z_index = -1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_right = 131.0
+offset_bottom = 60.0
+grow_horizontal = 0
+scale = Vector2(18, 18)
+texture = ExtResource("4_85g3d")
+stretch_mode = 2
+
+[node name="BeamTexture" type="TextureRect" parent="Backdrop"]
+z_index = -1
+material = ExtResource("5_tipki")
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_right = 131.0
+offset_bottom = 60.0
+grow_horizontal = 0
+scale = Vector2(18, 18)
+texture = ExtResource("6_ya4ey")
+stretch_mode = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Backdrop"]
 layer = -3
 
-[node name="ViewportBackground" type="TextureRect" parent="CanvasLayer"]
+[node name="ViewportBackground" type="TextureRect" parent="Backdrop/CanvasLayer"]
 unique_name_in_owner = true
 texture_filter = 1
 material = ExtResource("5_tefeu")
