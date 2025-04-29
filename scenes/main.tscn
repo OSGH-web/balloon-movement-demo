@@ -47,6 +47,33 @@ text = "SMOKIN MY LASER"
 label_settings = ExtResource("4_eb6dy")
 horizontal_alignment = 1
 
+[node name="HighScore" type="Panel" parent="."]
+anchors_preset = -1
+anchor_left = 0.224299
+anchor_top = 0.1
+anchor_right = 0.224299
+anchor_bottom = 0.1
+offset_left = 560.0
+offset_top = 32.0
+offset_right = 1360.0
+offset_bottom = 92.0
+theme_override_styles/panel = ExtResource("2_ya4ey")
+
+[node name="Score" type="Label" parent="HighScore"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -352.0
+offset_top = 8.0
+offset_right = 352.0
+offset_bottom = 50.0
+grow_horizontal = 2
+text = "High Score:"
+label_settings = ExtResource("4_eb6dy")
+horizontal_alignment = 1
+
 [node name="PlayerTexture" type="TextureRect" parent="."]
 z_index = -1
 anchors_preset = 1

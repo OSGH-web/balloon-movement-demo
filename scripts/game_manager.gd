@@ -84,21 +84,35 @@ func save_time_and_return():
 	var prev_time = GameManager.level_data.level_times.get(level_path, null)
 	# If this is the first level clear
 	if prev_time == null or str(time) == "":
+		%GameInfo.text = "New Best Time: "+ str(round(time * 1000) / 1000.0)
+		%GameInfo.visible = true
 		level_data.level_times[level_path] = round(time * 1000) / 1000.0
 		save_data()
 	else:
 		var previous_best_time = level_data.level_times[level_path]
 		if time < previous_best_time:
-			save_data()
+			%GameInfo.text = "New Best Time: "+ str(round(time * 1000) / 1000.0)
+			%GameInfo.visible = true
 			level_data.level_times[level_path] = round(time * 1000) / 1000.0
+			save_data()
+	await get_tree().create_timer(1).timeout
+	%GameInfo.visible = false
 	get_tree().change_scene_to_file("res://scenes/UI/level_select.tscn")
 	gameStateDisabled = false
 	
 func _input(event):
+	if gameMode == GameModes.TIME_TRIAL:
+		if event.is_action_pressed("reset"):
+			game_started = false
+			reset()
+			get_tree().reload_current_scene()
 	# Start the timer upon the first input
-	if event.is_action_type():
-		game_started = true
+		elif event.is_pressed():
+			game_started = true
 	 # DEV: Go to next level
+	elif gameMode == GameModes.ARCADE:
+		if event.is_pressed():
+			game_started = true
 	if event.is_action_pressed("ui_n"):
 		if curr_level == len(level_files):
 			curr_level = 0
@@ -163,7 +177,12 @@ func on_player_died():
 				background_music.pitch_scale = 1.03
 				get_tree().reload_current_scene()
 			else:
-				%GameInfo.text = "GAME OVER! BACK TO LEVEL 1 :) "
+				if GameManager.level_data.high_score < score:
+					%GameInfo.text = "New High Score! " + str(score)
+					level_data.high_score = score
+					save_data()
+				else:
+					%GameInfo.text = "GAME OVER! BACK TO LEVEL 1 :) "
 				%GameInfo.visible = true
 				await get_tree().create_timer(1.5).timeout
 				reset()

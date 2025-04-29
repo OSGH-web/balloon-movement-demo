@@ -4,6 +4,7 @@ extends Node
 func _ready():
 	GameManager.reset()
 	%ArcadeButton.grab_focus()
+	%Score.text = "High Score: " + str(GameManager.level_data.high_score) 
 
 func _on_arcade_button_pressed() -> void:
 	GameManager.load_next_level()
