@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cxo2r1hb7u2ss" path="res://scenes/level_base.tscn" id="1_dl2t3"]
 [ext_resource type="Texture2D" uid="uid://dxy1nk3c3fnl" path="res://assets/sprites/wall_pattern.png" id="2_dbmku"]
-[ext_resource type="Material" uid="uid://dyelec42blfap" path="res://assets/shaders/tunnel.tres" id="2_do6ml"]
+[ext_resource type="Material" uid="uid://car11cjbixpbl" path="res://assets/shaders/tunnel.tres" id="2_do6ml"]
 [ext_resource type="PackedScene" uid="uid://c6i6ci2ym6wn6" path="res://scenes/spike.tscn" id="2_o3gn2"]
 [ext_resource type="PackedScene" uid="uid://bvn2y2nnqcrts" path="res://scenes/end_zone.tscn" id="3_dbmku"]
 

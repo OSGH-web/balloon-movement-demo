@@ -1,0 +1,129 @@
+[gd_scene load_steps=8 format=4 uid="uid://dn8t1jp843l5o"]
+
+[ext_resource type="PackedScene" uid="uid://cxo2r1hb7u2ss" path="res://scenes/level_base.tscn" id="1_6hhrm"]
+[ext_resource type="PackedScene" uid="uid://dqmhcdxpt65xa" path="res://scenes/bat.tscn" id="2_6r3jk"]
+[ext_resource type="Material" uid="uid://quspjdx673x8" path="res://assets/shaders/bats.tres" id="2_oda5i"]
+[ext_resource type="PackedScene" uid="uid://c6i6ci2ym6wn6" path="res://scenes/spike.tscn" id="3_6r3jk"]
+[ext_resource type="PackedScene" uid="uid://bvn2y2nnqcrts" path="res://scenes/end_zone.tscn" id="3_ncxr7"]
+[ext_resource type="PackedScene" uid="uid://cxdl0fqxwxba1" path="res://scenes/gas_can.tscn" id="4_vxw8q"]
+[ext_resource type="LabelSettings" uid="uid://cbw7oatl30dvl" path="res://assets/styles/label_33px.tres" id="6_0w0hs"]
+
+[node name="LevelBase" instance=ExtResource("1_6hhrm")]
+level_name = "I hate bats!"
+height_in_tiles = 75
+
+[node name="Player" parent="." index="0"]
+position = Vector2(32, 144)
+
+[node name="Terrain" parent="." index="1"]
+tile_map_data = PackedByteArray("AAABAAgAAAABAAAAAAACAAgAAAABAAAAAAADAAgAAAABAAAAAAAEAAgAAAABAAAAAAAFAAgAAAABAAAAAAAGAAgAAAABAAAAAAAHAAgAAAABAAAAAAAIAAgAAAABAAAAAAAJAAgAAAABAAAAAAAKAAgAAAABAAAAAAALAAgAAAABAAAAAAAMAAgAAAABAAAAAAANAAgAAAABAAAAAAAOAAgAAAABAAAAAAAPAAgAAAABAAAAAAAQAAgAAAABAAAAAAARAAgAAAABAAAAAAASAAgAAAABAAAAAAATAAgAAAABAAAAAAAUAAgAAAABAAAAAAAVAAgAAAABAAAAAAAWAAgAAAABAAAAAAAXAAgAAAABAAAAAAAYAAgAAAABAAAAAAAZAAgAAAABAAAAAAAaAAgAAAABAAAAAAAbAAgAAAABAAAAAAAbABIAAAABAAAAAAAaABIAAAABAAAAAAAZABIAAAABAAAAAAAYABIAAAABAAAAAAAXABIAAAABAAAAAAAWABIAAAABAAAAAAAVABIAAAABAAAAAAATABIAAAABAAAAAAASABIAAAABAAAAAAARABIAAAABAAAAAAAQABIAAAABAAAAAAAPABIAAAABAAAAAAAOABIAAAABAAAAAAANABIAAAABAAAAAAAMABIAAAABAAAAAAALABIAAAABAAAAAAAKABIAAAABAAAAAAAJABIAAAABAAAAAAAIABIAAAABAAAAAAAHABIAAAABAAAAAAAGABIAAAABAAAAAAAFABIAAAABAAAAAAAEABIAAAABAAAAAAAcABIAAAABAAAAAAAdABIAAAABAAAAAAAeABIAAAABAAAAAAAUABIAAAABAAAAAAAAABwAAAABAAAAAAABABwAAAABAAAAAAACABwAAAABAAAAAAADABwAAAABAAAAAAAEABwAAAABAAAAAAAFABwAAAABAAAAAAAGABwAAAABAAAAAAAHABwAAAABAAAAAAAIABwAAAABAAAAAAAJABwAAAABAAAAAAAKABwAAAABAAAAAAALABwAAAABAAAAAAAMABwAAAABAAAAAAANABwAAAABAAAAAAAOABwAAAABAAAAAAAPABwAAAABAAAAAAAQABwAAAABAAAAAAARABwAAAABAAAAAAASABwAAAABAAAAAAATABwAAAABAAAAAAAUABwAAAABAAAAAAAVABwAAAABAAAAAAAWABwAAAABAAAAAAAXABwAAAABAAAAAAAYABwAAAABAAAAAAAZABwAAAABAAAAAAAaABwAAAABAAAAAAAbABwAAAABAAAAAAAEACgAAAABAAAAAAAFACgAAAABAAAAAAAGACgAAAABAAAAAAAHACgAAAABAAAAAAAIACgAAAABAAAAAAAJACgAAAABAAAAAAAKACgAAAABAAAAAAALACgAAAABAAAAAAAMACgAAAABAAAAAAANACgAAAABAAAAAAAOACgAAAABAAAAAAAPACgAAAABAAAAAAAQACgAAAABAAAAAAARACgAAAABAAAAAAASACgAAAABAAAAAAATACgAAAABAAAAAAAUACgAAAABAAAAAAAVACgAAAABAAAAAAAWACgAAAABAAAAAAAXACgAAAABAAAAAAAYACgAAAABAAAAAAAZACgAAAABAAAAAAAaACgAAAABAAAAAAAbACgAAAABAAAAAAAcACgAAAABAAAAAAAdACgAAAABAAAAAAAeACgAAAABAAAAAAAfACgAAAABAAAAAAAAADQAAAABAAAAAAABADQAAAABAAAAAAACADQAAAABAAAAAAADADQAAAABAAAAAAAEADQAAAABAAAAAAAFADQAAAABAAAAAAAGADQAAAABAAAAAAAHADQAAAABAAAAAAAIADQAAAABAAAAAAAJADQAAAABAAAAAAAKADQAAAABAAAAAAALADQAAAABAAAAAAAMADQAAAABAAAAAAANADQAAAABAAAAAAAOADQAAAABAAAAAAAPADQAAAABAAAAAAAQADQAAAABAAAAAAARADQAAAABAAAAAAASADQAAAABAAAAAAATADQAAAABAAAAAAAUADQAAAABAAAAAAAVADQAAAABAAAAAAAWADQAAAABAAAAAAAXADQAAAABAAAAAAAYADQAAAABAAAAAAAZADQAAAABAAAAAAAaADQAAAABAAAAAAAbADQAAAABAAAAAAAEAEAAAAABAAAAAAAFAEAAAAABAAAAAAAGAEAAAAABAAAAAAAHAEAAAAABAAAAAAAIAEAAAAABAAAAAAAJAEAAAAABAAAAAAAKAEAAAAABAAAAAAALAEAAAAABAAAAAAAMAEAAAAABAAAAAAANAEAAAAABAAAAAAAOAEAAAAABAAAAAAAPAEAAAAABAAAAAAAQAEAAAAABAAAAAAARAEAAAAABAAAAAAASAEAAAAABAAAAAAATAEAAAAABAAAAAAAUAEAAAAABAAAAAAAVAEAAAAABAAAAAAAWAEAAAAABAAAAAAAXAEAAAAABAAAAAAAYAEAAAAABAAAAAAAZAEAAAAABAAAAAAAaAEAAAAABAAAAAAAbAEAAAAABAAAAAAAcAEAAAAABAAAAAAAdAEAAAAABAAAAAAAeAEAAAAABAAAAAAA=")
+
+[node name="TerrainBackground" parent="Terrain" index="0"]
+material = ExtResource("2_oda5i")
+offset_bottom = 1800.0
+
+[node name="ViewportBackground" parent="CanvasLayer" index="0"]
+material = ExtResource("2_oda5i")
+
+[node name="Spikes" type="Node2D" parent="." index="5"]
+
+[node name="Spike" parent="Spikes" index="0" instance=ExtResource("3_6r3jk")]
+position = Vector2(144, 912)
+
+[node name="Spike2" parent="Spikes" index="1" instance=ExtResource("3_6r3jk")]
+position = Vector2(344, 912)
+
+[node name="Spike3" parent="Spikes" index="2" instance=ExtResource("3_6r3jk")]
+position = Vector2(568, 912)
+
+[node name="Spike4" parent="Spikes" index="3" instance=ExtResource("3_6r3jk")]
+position = Vector2(128, 1200)
+
+[node name="Spike5" parent="Spikes" index="4" instance=ExtResource("3_6r3jk")]
+position = Vector2(352, 1200)
+
+[node name="Spike6" parent="Spikes" index="5" instance=ExtResource("3_6r3jk")]
+position = Vector2(584, 1200)
+
+[node name="Spike7" parent="Spikes" index="6" instance=ExtResource("3_6r3jk")]
+position = Vector2(584, 1488)
+
+[node name="Spike8" parent="Spikes" index="7" instance=ExtResource("3_6r3jk")]
+position = Vector2(344, 1488)
+
+[node name="Spike10" parent="Spikes" index="8" instance=ExtResource("3_6r3jk")]
+position = Vector2(504, 1320)
+rotation = 3.14159
+
+[node name="Spike11" parent="Spikes" index="9" instance=ExtResource("3_6r3jk")]
+position = Vector2(256, 1320)
+rotation = 3.14159
+
+[node name="Spike9" parent="Spikes" index="10" instance=ExtResource("3_6r3jk")]
+position = Vector2(96, 1488)
+
+[node name="Bat" parent="." index="6" instance=ExtResource("2_6r3jk")]
+position = Vector2(184, 224)
+
+[node name="Bat3" parent="." index="7" instance=ExtResource("2_6r3jk")]
+position = Vector2(176, 464)
+
+[node name="Bat4" parent="." index="8" instance=ExtResource("2_6r3jk")]
+position = Vector2(368, 464)
+
+[node name="Bat5" parent="." index="9" instance=ExtResource("2_6r3jk")]
+position = Vector2(568, 464)
+
+[node name="Bat2" parent="." index="10" instance=ExtResource("2_6r3jk")]
+position = Vector2(576, 224)
+
+[node name="Bat6" parent="." index="11" instance=ExtResource("2_6r3jk")]
+position = Vector2(368, 704)
+
+[node name="Bat7" parent="." index="12" instance=ExtResource("2_6r3jk")]
+position = Vector2(264, 992)
+
+[node name="Bat13" parent="." index="13" instance=ExtResource("2_6r3jk")]
+position = Vector2(512, 992)
+
+[node name="Bat8" parent="." index="14" instance=ExtResource("2_6r3jk")]
+position = Vector2(576, 1280)
+
+[node name="Bat9" parent="." index="15" instance=ExtResource("2_6r3jk")]
+position = Vector2(360, 1280)
+
+[node name="Bat11" parent="." index="16" instance=ExtResource("2_6r3jk")]
+position = Vector2(184, 1568)
+
+[node name="Bat12" parent="." index="17" instance=ExtResource("2_6r3jk")]
+position = Vector2(448, 1568)
+
+[node name="Bat10" parent="." index="18" instance=ExtResource("2_6r3jk")]
+position = Vector2(88, 1280)
+
+[node name="EndZone" parent="." index="19" instance=ExtResource("3_ncxr7")]
+position = Vector2(632, 1672)
+size = Vector2(200, 200)
+
+[node name="GasCan" parent="." index="20" instance=ExtResource("4_vxw8q")]
+position = Vector2(472, 576)
+
+[node name="GasCan2" parent="." index="21" instance=ExtResource("4_vxw8q")]
+position = Vector2(376, 1120)
+
+[node name="GasCan3" parent="." index="22" instance=ExtResource("4_vxw8q")]
+position = Vector2(328, 1576)
+
+[node name="GasCan5" parent="." index="23" instance=ExtResource("4_vxw8q")]
+position = Vector2(296, 1576)
+
+[node name="GasCan4" parent="." index="24" instance=ExtResource("4_vxw8q")]
+position = Vector2(360, 1576)
+
+[node name="Label" type="Label" parent="." index="25"]
+offset_left = 160.0
+offset_top = 40.0
+offset_right = 601.0
+offset_bottom = 82.0
+text = "Bats ... I hate Bats!"
+label_settings = ExtResource("6_0w0hs")
