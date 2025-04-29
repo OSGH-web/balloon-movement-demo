@@ -100,10 +100,10 @@ text = "Quit To Desktop"
 
 [node name="HighScore" type="HBoxContainer" parent="."]
 clip_contents = true
-offset_left = 276.0
-offset_top = 864.0
-offset_right = 458.0
-offset_bottom = 884.0
+offset_left = 1095.0
+offset_top = 72.0
+offset_right = 1277.0
+offset_bottom = 92.0
 scale = Vector2(3, 3)
 theme_override_constants/separation = 0
 
