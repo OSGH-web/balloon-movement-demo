@@ -68,14 +68,17 @@ func load_next_level():
 		# Prevents bug where level resets if entering endzone when out of fuel. 
 		gameStateDisabled = true
 		# Freeze to prevent player death after endzone trigger
-		await _calculate_score()
+
 		if curr_level != len(level_files):
+			await _calculate_score()
 			await _lives_count_up()
+		else:
+			await _calculate_score("You Win!")
 		await get_tree().create_timer(1).timeout
 
 	if curr_level >= len(level_files):
 		# TODO: extract into helper function
-		%GameInfo.text = "You Win!"
+		%GameInfo.text = "Thanks for Playing!"
 		%GameInfo.visible = true
 		await get_tree().create_timer(2.5).timeout
 		if GameManager.level_data.high_score < score:
@@ -153,8 +156,8 @@ func _input(event):
 
 		get_tree().change_scene_to_file(level_path)
 
-func _calculate_score():
-	%GameInfo.text = "Level Complete! +1000 Score!"
+func _calculate_score(text="Level Complete! +1000 Score!"):
+	%GameInfo.text = text
 	%GameInfo.visible = true
 	$SmokeWeedEveryday.play()
 	await get_tree().create_timer(1).timeout
