@@ -33,21 +33,24 @@ func load_data() -> void:
 func save_data() -> void:
 	ResourceSaver.save(level_data, SAVE_PATH)
 
-func load_levels():
+func load_levels(time_trials=false):
+	var filename_matcher = "*.tscn"
+	if time_trials:
+		filename_matcher = "1-??_*.tscn"
+
 	var dir = DirAccess.open("res://levels/")
 	if dir:
 		var level_files_temp = []
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
-			if file_name.match("*.tscn"):
+			if file_name.match(filename_matcher):
 				level_files_temp.append(file_name)
 			file_name = dir.get_next()
 		level_files_temp.sort()
 		dir.list_dir_end()
 		return level_files_temp
 
-		
 func reset():
 	lives = 3
 	score = 0

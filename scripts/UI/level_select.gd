@@ -7,16 +7,13 @@ var current_index := 0
 var level_files = []
 
 func _ready():
-	_init_level_files()
+	level_files = GameManager.load_levels(true)
 	_create_level_grid()
 	button_container.get_children()[0].grab_focus()
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		get_tree().change_scene_to_file("res://scenes/main.tscn")
-
-func _init_level_files():
-	level_files = GameManager.level_files.filter(func(f): return f.match("1-??_*.tscn"))
 
 func _create_level_grid():
 	for child in button_container.get_children():
