@@ -59,7 +59,7 @@ func reset():
 	curr_level = 0
 	background_music.pitch_scale = 1.03
 	get_tree().paused = false
-	
+
 func _process(delta):
 	if not gameStateDisabled and game_started:
 		time += delta
@@ -80,17 +80,12 @@ func load_next_level():
 		await get_tree().create_timer(1).timeout
 
 	if curr_level >= len(level_files):
-		# TODO: extract into helper function
-		%GameInfo.text = "Thanks for Playing!"
-		%GameInfo.visible = true
-		await get_tree().create_timer(2.5).timeout
+		_display_info_duration("Thanks for Playing!", 2.5)
 		if GameManager.level_data.high_score < score:
-			%GameInfo.text = "New High Score! " + str(score)
 			level_data.high_score = score
 			save_data()
-			await get_tree().create_timer(2.5).timeout
-		%GameInfo.visible = false
-		get_tree().change_scene_to_file("res://scenes/main.tscn")
+			_display_info_duration("New High Score! " + str(score), 2.5)
+			get_tree().change_scene_to_file("res://scenes/main.tscn")
 	else:
 		var level_path = "res://levels/%s" % level_files[curr_level]
 		curr_level += 1
@@ -100,6 +95,12 @@ func load_next_level():
 	# Must go after changing scene to avoid issues.
 	gameStateDisabled = false
 
+func _display_info_duration(text: String, duration: float):
+	%GameInfo.text = text
+	%GameInfo.visible = true
+	await get_tree().create_timer(duration).timeout
+	%GameInfo.visible = false
+
 # This is only called for the TIME_TRIAL gameMode
 func save_time_and_return():
 	gameStateDisabled = true
@@ -108,19 +109,15 @@ func save_time_and_return():
 	var prev_time = GameManager.level_data.level_times.get(level_path, null)
 	# If this is the first level clear
 	if prev_time == null or str(time) == "":
-		%GameInfo.text = "New Best Time: "+ format_seconds(time)
-		%GameInfo.visible = true
+		_display_info_duration("New Best Time: "+ format_seconds(time), 1)
 		level_data.level_times[level_path] = round(time * 1000) / 1000.0
 		save_data()
 	else:
 		var previous_best_time = level_data.level_times[level_path]
 		if time < previous_best_time:
-			%GameInfo.text = "New Best Time: "+ format_seconds(time)
-			%GameInfo.visible = true
+			_display_info_duration("New Best Time: "+ format_seconds(time), 1)
 			level_data.level_times[level_path] = round(time * 1000) / 1000.0
 			save_data()
-	await get_tree().create_timer(1).timeout
-	%GameInfo.visible = false
 	get_tree().change_scene_to_file("res://scenes/UI/level_select.tscn")
 	gameStateDisabled = false
 
@@ -160,12 +157,9 @@ func _input(event):
 		get_tree().change_scene_to_file(level_path)
 
 func _calculate_score(text="Level Complete! +1000 Score!"):
-	%GameInfo.text = text
-	%GameInfo.visible = true
 	$SmokeWeedEveryday.play()
-	await get_tree().create_timer(1).timeout
+	_display_info_duration(text, 1)
 	score += 1000 # for level clear
-	%GameInfo.visible = false
 	await _score_count_down()
 
 
@@ -200,9 +194,7 @@ func on_player_died():
 			gameStateDisabled = true
 			$PlayerDeath.play()
 			if lives > 0:
-				%GameInfo.text = "YOU DIED! RESETTING LEVEL..."
-				%GameInfo.visible = true
-				await get_tree().create_timer(1.5).timeout
+				_display_info_duration("YOU DIED! RESETTING LEVEL...", 1.5)
 				background_music.pitch_scale = 1.03
 				get_tree().reload_current_scene()
 			else:
@@ -211,12 +203,9 @@ func on_player_died():
 					level_data.high_score = score
 					save_data()
 				else:
-					%GameInfo.text = "GAME OVER! BACK TO LEVEL 1 :) "
-				%GameInfo.visible = true
-				await get_tree().create_timer(1.5).timeout
+					_display_info_duration("GAME OVER! BACK TO LEVEL 1 :) ", 1.5)
 				reset()
 				load_next_level()
-			%GameInfo.visible = false
 			gameStateDisabled = false
 		GameModes.TIME_TRIAL:
 			time = 0.0
