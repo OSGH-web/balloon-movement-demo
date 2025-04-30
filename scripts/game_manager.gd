@@ -209,7 +209,7 @@ func on_player_died():
 				else:
 					await _display_info_duration("GAME OVER! BACK TO LEVEL 1 :) ", 1.5)
 				reset()
-				load_next_level()
+				load_first_level()
 			gameStateDisabled = false
 		GameModes.TIME_TRIAL:
 			gameStateDisabled = true
