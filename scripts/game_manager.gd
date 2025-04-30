@@ -195,8 +195,12 @@ func on_player_died():
 			gameStateDisabled = false
 		GameModes.TIME_TRIAL:
 			time = 0.0
+			gameStateDisabled = true
+			$PlayerDeath.play()
 			await get_tree().create_timer(0.5).timeout
+			background_music.pitch_scale = 1.03
 			get_tree().reload_current_scene()
+			gameStateDisabled = false
 
 func get_player(): 
 	var level = get_tree().get_current_scene()
