@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://mgep8xhvopqr"]
+[gd_scene load_steps=8 format=4 uid="uid://mgep8xhvopqr"]
 
 [ext_resource type="PackedScene" uid="uid://cxo2r1hb7u2ss" path="res://scenes/level_base.tscn" id="1_fcjjs"]
 [ext_resource type="Material" uid="uid://2sn3fyoir1rj" path="res://assets/shaders/slide.tres" id="2_igx6e"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://jl2i5nto8q3u" path="res://assets/inputs/keyboard_a.png" id="4_fbkn2"]
 [ext_resource type="PackedScene" uid="uid://bvn2y2nnqcrts" path="res://scenes/end_zone.tscn" id="5_kbwtv"]
 [ext_resource type="PackedScene" uid="uid://c6i6ci2ym6wn6" path="res://scenes/spike.tscn" id="6_fbkn2"]
+[ext_resource type="PackedScene" uid="uid://cxdl0fqxwxba1" path="res://scenes/gas_can.tscn" id="7_kbwtv"]
 
 [node name="LevelBase" instance=ExtResource("1_fcjjs")]
 width_in_tiles = 200
@@ -348,3 +349,12 @@ position = Vector2(4696, 696)
 
 [node name="Spike99" parent="Spikes" index="98" instance=ExtResource("6_fbkn2")]
 position = Vector2(4696, 696)
+
+[node name="GasCan" parent="." index="10" instance=ExtResource("7_kbwtv")]
+position = Vector2(1344, 344)
+
+[node name="GasCan2" parent="." index="11" instance=ExtResource("7_kbwtv")]
+position = Vector2(1404, 344)
+
+[node name="GasCan3" parent="." index="12" instance=ExtResource("7_kbwtv")]
+position = Vector2(1464, 344)
