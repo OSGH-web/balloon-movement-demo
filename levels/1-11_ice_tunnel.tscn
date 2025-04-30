@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://dyqvlmddsnt1u"]
+[gd_scene load_steps=8 format=4 uid="uid://dyqvlmddsnt1u"]
 
 [ext_resource type="PackedScene" uid="uid://cxo2r1hb7u2ss" path="res://scenes/level_base.tscn" id="1_65mxp"]
 [ext_resource type="Material" uid="uid://dl2v3i6ktwoha" path="res://assets/shaders/ice_tunnel.tres" id="2_yexyn"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c6i6ci2ym6wn6" path="res://scenes/spike.tscn" id="4_8w13g"]
 [ext_resource type="PackedScene" uid="uid://ckwukbtl6m70h" path="res://scenes/slime.tscn" id="5_mwt6v"]
 [ext_resource type="PackedScene" uid="uid://cxdl0fqxwxba1" path="res://scenes/gas_can.tscn" id="6_slb4v"]
+[ext_resource type="LabelSettings" uid="uid://cbw7oatl30dvl" path="res://assets/styles/label_33px.tres" id="7_i356j"]
 
 [node name="LevelBase" instance=ExtResource("1_65mxp")]
 level_name = "Ice Tunnel"
@@ -878,3 +879,11 @@ position = Vector2(1664, 384)
 
 [node name="GasCan" parent="." index="8" instance=ExtResource("6_slb4v")]
 position = Vector2(2184, 120)
+
+[node name="Label" type="Label" parent="." index="9"]
+offset_left = 152.0
+offset_top = 480.0
+offset_right = 593.0
+offset_bottom = 522.0
+text = "Conservation  is key!"
+label_settings = ExtResource("7_i356j")
