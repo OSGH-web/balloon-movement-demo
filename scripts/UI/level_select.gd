@@ -2,12 +2,10 @@ extends Control
 class_name LevelSelect
 
 var current_index := 0
-var level_files := []
 
 @onready var button_container: GridContainer = %ButtonGrid
 
 func _ready():
-	level_files = GameManager.load_levels()
 	create_level_grid()
 	button_container.get_children()[0].grab_focus()
 
@@ -19,7 +17,7 @@ func create_level_grid():
 	for child in button_container.get_children():
 		child.queue_free()
 
-	var n_levels = level_files.size()
+	var n_levels = GameManager.level_files.size()
 
 	var button_scene = preload("res://scenes/UI/level_button.tscn")
 	var tinted_style = preload("res://assets/styles/sbf_dark.tres")
@@ -57,14 +55,14 @@ func _mouse_exit():
 	_update_level_info_display(cursor_index)
 
 func _on_level_selected(level_index: int):
-	var file_path = "res://levels/%s" % level_files[level_index]
+	var file_path = "res://levels/%s" % GameManager.level_files[level_index]
 	GameManager.time = 0.0
 	GameManager.game_started = false
 	get_tree().change_scene_to_file(file_path)
 
 
 func _update_level_info_display(level_index):
-	var level_file = level_files[level_index]
+	var level_file = GameManager.level_files[level_index]
 	var level_path = "res://levels/%s" % level_file
 	var level_scene = load(level_path)
 	if not level_scene:
