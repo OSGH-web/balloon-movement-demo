@@ -197,3 +197,4 @@ anim_speed_max = 3.0
 [node name="EndZone" parent="." index="7" instance=ExtResource("4_fgtru")]
 position = Vector2(384, 384)
 size = Vector2(720, 720)
+color = Color(1, 0, 0, 0)
