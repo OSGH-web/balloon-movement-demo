@@ -20,7 +20,6 @@ func _create_level_grid():
 		child.queue_free()
 
 	var n_levels = level_files.size()
-	var levels
 
 	var button_scene = preload("res://scenes/UI/level_button.tscn")
 	var tinted_style = preload("res://assets/styles/sbf_dark.tres")
