@@ -1,0 +1,1389 @@
+[gd_scene load_steps=18 format=4 uid="uid://bgkoyva7cksbb"]
+
+[ext_resource type="PackedScene" uid="uid://cxo2r1hb7u2ss" path="res://scenes/level_base.tscn" id="1_3uw18"]
+[ext_resource type="Texture2D" uid="uid://dxy1nk3c3fnl" path="res://assets/sprites/wall_pattern.png" id="2_8gudm"]
+[ext_resource type="PackedScene" uid="uid://c6i6ci2ym6wn6" path="res://scenes/spike.tscn" id="2_b63om"]
+[ext_resource type="Texture2D" uid="uid://c0rubkjn5mpb2" path="res://assets/tilesets/BL-crypt-tileset-itch.png" id="3_8gudm"]
+[ext_resource type="PackedScene" uid="uid://dqmhcdxpt65xa" path="res://scenes/bat.tscn" id="5_a60px"]
+[ext_resource type="PackedScene" uid="uid://bvn2y2nnqcrts" path="res://scenes/end_zone.tscn" id="6_odrqi"]
+[ext_resource type="LabelSettings" uid="uid://cbw7oatl30dvl" path="res://assets/styles/label_33px.tres" id="7_abmt7"]
+[ext_resource type="PackedScene" uid="uid://cxdl0fqxwxba1" path="res://scenes/gas_can.tscn" id="8_l3fjs"]
+
+[sub_resource type="Animation" id="Animation_b63om"]
+resource_name = "move"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-24, -600), Vector2(-24, -336)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Moving_Block2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(104, -336), Vector2(112, -600)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Moving_Block3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(232, -600), Vector2(232, -336)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Moving_Block4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(488, -336), Vector2(488, -600)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Moving_Block5:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(616, -600), Vector2(616, -336)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Moving_Block6:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(744, -336), Vector2(744, -600)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Moving_Block7:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1000, -336), Vector2(1000, -600)]
+}
+
+[sub_resource type="Animation" id="Animation_8gudm"]
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(232, -600), Vector2(232, -336)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Moving_Block2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(104, -336)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Moving_Block3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(232, -600)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Moving_Block4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(488, -336)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Moving_Block5:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(616, -608)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Moving_Block6:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(744, -336)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Moving_Block7:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1000, -336)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8gudm"]
+_data = {
+&"RESET": SubResource("Animation_8gudm"),
+&"move": SubResource("Animation_b63om")
+}
+
+[sub_resource type="Animation" id="Animation_tumqr"]
+resource_name = "move"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moving_Block8:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1128, -600), Vector2(1128, -336)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Moving_Block9:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1256, -336), Vector2(1256, -600)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Moving_Block10:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1576, -600), Vector2(1576, -336)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Moving_Block11:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1704, -336), Vector2(1704, -600)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Moving_Block12:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1832, -600), Vector2(1832, -336)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Moving_Block13:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2088, -336), Vector2(2088, -600)]
+}
+
+[sub_resource type="Animation" id="Animation_skcni"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moving_Block8:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1128, -608)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Moving_Block9:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1256, -336)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Moving_Block10:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1576, -600)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Moving_Block11:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1704, -336)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Moving_Block12:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1832, -600)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Moving_Block13:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2088, -600)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o576y"]
+_data = {
+&"RESET": SubResource("Animation_skcni"),
+&"move": SubResource("Animation_tumqr")
+}
+
+[sub_resource type="Animation" id="Animation_odrqi"]
+resource_name = "move"
+length = 1.25
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moving_Block16:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2592, -336), Vector2(2592, -552)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Moving_Block17:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2728, -552), Vector2(2728, -336)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Moving_Block18:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2856, -336), Vector2(2856, -552)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Moving_Block19:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2984, -552), Vector2(2984, -336)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Moving_Block20:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3112, -336), Vector2(3112, -552)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Moving_Block21:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3240, -552), Vector2(3240, -336)]
+}
+
+[sub_resource type="Animation" id="Animation_abmt7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moving_Block16:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2592, -336)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Moving_Block17:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2728, -552)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Moving_Block18:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2856, -336)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Moving_Block19:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2984, -552)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Moving_Block20:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3112, -336)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Moving_Block21:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3240, -552)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l3fjs"]
+_data = {
+&"RESET": SubResource("Animation_abmt7"),
+&"move": SubResource("Animation_odrqi")
+}
+
+[node name="LevelBase" instance=ExtResource("1_3uw18")]
+level_name = "Bat Cave"
+width_in_tiles = 165
+height_in_tiles = 16
+
+[node name="Player" parent="." index="0"]
+position = Vector2(24, 312)
+
+[node name="Terrain" parent="." index="1"]
+tile_map_data = PackedByteArray("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")
+
+[node name="TerrainBackground" parent="Terrain" index="0"]
+offset_right = 3960.0
+offset_bottom = 384.0
+
+[node name="ViewportBackground" parent="CanvasLayer" index="0"]
+offset_top = 24.0
+offset_bottom = 1944.0
+texture = ExtResource("2_8gudm")
+
+[node name="Bat" parent="." index="5" instance=ExtResource("5_a60px")]
+position = Vector2(616, 32)
+
+[node name="Bat2" parent="." index="6" instance=ExtResource("5_a60px")]
+position = Vector2(1128, 32)
+
+[node name="Bat3" parent="." index="7" instance=ExtResource("5_a60px")]
+position = Vector2(1664, 32)
+
+[node name="Bat4" parent="." index="8" instance=ExtResource("5_a60px")]
+position = Vector2(2208, 32)
+
+[node name="Bat5" parent="." index="9" instance=ExtResource("5_a60px")]
+position = Vector2(3584, 88)
+
+[node name="Moving_Blocks_Slow" type="Node2D" parent="." index="10"]
+
+[node name="Moving_Block" type="Node2D" parent="Moving_Blocks_Slow" index="0"]
+position = Vector2(232, -600)
+
+[node name="Spike" parent="Moving_Blocks_Slow/Moving_Block" index="0" instance=ExtResource("2_b63om")]
+position = Vector2(240, 624)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="Moving_Blocks_Slow/Moving_Block" index="1" instance=ExtResource("2_b63om")]
+position = Vector2(216, 672)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike3" parent="Moving_Blocks_Slow/Moving_Block" index="2" instance=ExtResource("2_b63om")]
+position = Vector2(288, 648)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike4" parent="Moving_Blocks_Slow/Moving_Block" index="3" instance=ExtResource("2_b63om")]
+position = Vector2(264, 696)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="Tile-Sprite" type="Sprite2D" parent="Moving_Blocks_Slow/Moving_Block" index="4"]
+position = Vector2(252, 660)
+texture = ExtResource("3_8gudm")
+region_enabled = true
+region_rect = Rect2(144, 72, 24, 24)
+
+[node name="Moving_Block2" type="Node2D" parent="Moving_Blocks_Slow" index="1"]
+position = Vector2(104, -336)
+
+[node name="Spike" parent="Moving_Blocks_Slow/Moving_Block2" index="0" instance=ExtResource("2_b63om")]
+position = Vector2(240, 624)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="Moving_Blocks_Slow/Moving_Block2" index="1" instance=ExtResource("2_b63om")]
+position = Vector2(216, 672)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike3" parent="Moving_Blocks_Slow/Moving_Block2" index="2" instance=ExtResource("2_b63om")]
+position = Vector2(288, 648)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike4" parent="Moving_Blocks_Slow/Moving_Block2" index="3" instance=ExtResource("2_b63om")]
+position = Vector2(264, 696)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="Tile-Sprite" type="Sprite2D" parent="Moving_Blocks_Slow/Moving_Block2" index="4"]
+position = Vector2(252, 660)
+texture = ExtResource("3_8gudm")
+region_enabled = true
+region_rect = Rect2(144, 72, 24, 24)
+
+[node name="Moving_Block3" type="Node2D" parent="Moving_Blocks_Slow" index="2"]
+position = Vector2(232, -600)
+
+[node name="Spike" parent="Moving_Blocks_Slow/Moving_Block3" index="0" instance=ExtResource("2_b63om")]
+position = Vector2(240, 624)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="Moving_Blocks_Slow/Moving_Block3" index="1" instance=ExtResource("2_b63om")]
+position = Vector2(216, 672)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike3" parent="Moving_Blocks_Slow/Moving_Block3" index="2" instance=ExtResource("2_b63om")]
+position = Vector2(288, 648)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike4" parent="Moving_Blocks_Slow/Moving_Block3" index="3" instance=ExtResource("2_b63om")]
+position = Vector2(264, 696)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="Tile-Sprite" type="Sprite2D" parent="Moving_Blocks_Slow/Moving_Block3" index="4"]
+position = Vector2(252, 660)
+texture = ExtResource("3_8gudm")
+region_enabled = true
+region_rect = Rect2(144, 72, 24, 24)
+
+[node name="Moving_Block4" type="Node2D" parent="Moving_Blocks_Slow" index="3"]
+position = Vector2(488, -336)
+
+[node name="Spike" parent="Moving_Blocks_Slow/Moving_Block4" index="0" instance=ExtResource("2_b63om")]
+position = Vector2(240, 624)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="Moving_Blocks_Slow/Moving_Block4" index="1" instance=ExtResource("2_b63om")]
+position = Vector2(216, 672)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike3" parent="Moving_Blocks_Slow/Moving_Block4" index="2" instance=ExtResource("2_b63om")]
+position = Vector2(288, 648)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike4" parent="Moving_Blocks_Slow/Moving_Block4" index="3" instance=ExtResource("2_b63om")]
+position = Vector2(264, 696)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="Tile-Sprite" type="Sprite2D" parent="Moving_Blocks_Slow/Moving_Block4" index="4"]
+position = Vector2(252, 660)
+texture = ExtResource("3_8gudm")
+region_enabled = true
+region_rect = Rect2(144, 72, 24, 24)
+
+[node name="Moving_Block5" type="Node2D" parent="Moving_Blocks_Slow" index="4"]
+position = Vector2(616, -608)
+
+[node name="Spike" parent="Moving_Blocks_Slow/Moving_Block5" index="0" instance=ExtResource("2_b63om")]
+position = Vector2(240, 624)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="Moving_Blocks_Slow/Moving_Block5" index="1" instance=ExtResource("2_b63om")]
+position = Vector2(216, 672)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike3" parent="Moving_Blocks_Slow/Moving_Block5" index="2" instance=ExtResource("2_b63om")]
+position = Vector2(288, 648)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike4" parent="Moving_Blocks_Slow/Moving_Block5" index="3" instance=ExtResource("2_b63om")]
+position = Vector2(264, 696)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="Tile-Sprite" type="Sprite2D" parent="Moving_Blocks_Slow/Moving_Block5" index="4"]
+position = Vector2(252, 660)
+texture = ExtResource("3_8gudm")
+region_enabled = true
+region_rect = Rect2(144, 72, 24, 24)
+
+[node name="Moving_Block6" type="Node2D" parent="Moving_Blocks_Slow" index="5"]
+position = Vector2(744, -336)
+
+[node name="Spike" parent="Moving_Blocks_Slow/Moving_Block6" index="0" instance=ExtResource("2_b63om")]
+position = Vector2(240, 624)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="Moving_Blocks_Slow/Moving_Block6" index="1" instance=ExtResource("2_b63om")]
+position = Vector2(216, 672)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike3" parent="Moving_Blocks_Slow/Moving_Block6" index="2" instance=ExtResource("2_b63om")]
+position = Vector2(288, 648)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike4" parent="Moving_Blocks_Slow/Moving_Block6" index="3" instance=ExtResource("2_b63om")]
+position = Vector2(264, 696)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="Tile-Sprite" type="Sprite2D" parent="Moving_Blocks_Slow/Moving_Block6" index="4"]
+position = Vector2(252, 660)
+texture = ExtResource("3_8gudm")
+region_enabled = true
+region_rect = Rect2(144, 72, 24, 24)
+
+[node name="Moving_Block7" type="Node2D" parent="Moving_Blocks_Slow" index="6"]
+position = Vector2(1000, -336)
+
+[node name="Spike" parent="Moving_Blocks_Slow/Moving_Block7" index="0" instance=ExtResource("2_b63om")]
+position = Vector2(240, 624)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="Moving_Blocks_Slow/Moving_Block7" index="1" instance=ExtResource("2_b63om")]
+position = Vector2(216, 672)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike3" parent="Moving_Blocks_Slow/Moving_Block7" index="2" instance=ExtResource("2_b63om")]
+position = Vector2(288, 648)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike4" parent="Moving_Blocks_Slow/Moving_Block7" index="3" instance=ExtResource("2_b63om")]
+position = Vector2(264, 696)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="Tile-Sprite" type="Sprite2D" parent="Moving_Blocks_Slow/Moving_Block7" index="4"]
+position = Vector2(252, 660)
+texture = ExtResource("3_8gudm")
+region_enabled = true
+region_rect = Rect2(144, 72, 24, 24)
+
+[node name="MoveBlocksSlow" type="AnimationPlayer" parent="Moving_Blocks_Slow" index="7"]
+root_node = NodePath("../Moving_Block")
+libraries = {
+&"": SubResource("AnimationLibrary_8gudm")
+}
+autoplay = "move"
+
+[node name="Moving_Blocks_Medium" type="Node2D" parent="." index="11"]
+
+[node name="Moving_Block8" type="Node2D" parent="Moving_Blocks_Medium" index="0"]
+position = Vector2(1128, -608)
+
+[node name="Spike" parent="Moving_Blocks_Medium/Moving_Block8" index="0" instance=ExtResource("2_b63om")]
+position = Vector2(240, 624)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="Moving_Blocks_Medium/Moving_Block8" index="1" instance=ExtResource("2_b63om")]
+position = Vector2(216, 672)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike3" parent="Moving_Blocks_Medium/Moving_Block8" index="2" instance=ExtResource("2_b63om")]
+position = Vector2(288, 648)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike4" parent="Moving_Blocks_Medium/Moving_Block8" index="3" instance=ExtResource("2_b63om")]
+position = Vector2(264, 696)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="Tile-Sprite" type="Sprite2D" parent="Moving_Blocks_Medium/Moving_Block8" index="4"]
+position = Vector2(252, 660)
+texture = ExtResource("3_8gudm")
+region_enabled = true
+region_rect = Rect2(144, 72, 24, 24)
+
+[node name="Moving_Block9" type="Node2D" parent="Moving_Blocks_Medium" index="1"]
+position = Vector2(1256, -336)
+
+[node name="Spike" parent="Moving_Blocks_Medium/Moving_Block9" index="0" instance=ExtResource("2_b63om")]
+position = Vector2(240, 624)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="Moving_Blocks_Medium/Moving_Block9" index="1" instance=ExtResource("2_b63om")]
+position = Vector2(216, 672)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike3" parent="Moving_Blocks_Medium/Moving_Block9" index="2" instance=ExtResource("2_b63om")]
+position = Vector2(288, 648)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike4" parent="Moving_Blocks_Medium/Moving_Block9" index="3" instance=ExtResource("2_b63om")]
+position = Vector2(264, 696)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="Tile-Sprite" type="Sprite2D" parent="Moving_Blocks_Medium/Moving_Block9" index="4"]
+position = Vector2(252, 660)
+texture = ExtResource("3_8gudm")
+region_enabled = true
+region_rect = Rect2(144, 72, 24, 24)
+
+[node name="Moving_Block10" type="Node2D" parent="Moving_Blocks_Medium" index="2"]
+position = Vector2(1576, -600)
+
+[node name="Spike" parent="Moving_Blocks_Medium/Moving_Block10" index="0" instance=ExtResource("2_b63om")]
+position = Vector2(240, 624)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="Moving_Blocks_Medium/Moving_Block10" index="1" instance=ExtResource("2_b63om")]
+position = Vector2(216, 672)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike3" parent="Moving_Blocks_Medium/Moving_Block10" index="2" instance=ExtResource("2_b63om")]
+position = Vector2(288, 648)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike4" parent="Moving_Blocks_Medium/Moving_Block10" index="3" instance=ExtResource("2_b63om")]
+position = Vector2(264, 696)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="Tile-Sprite" type="Sprite2D" parent="Moving_Blocks_Medium/Moving_Block10" index="4"]
+position = Vector2(252, 660)
+texture = ExtResource("3_8gudm")
+region_enabled = true
+region_rect = Rect2(144, 72, 24, 24)
+
+[node name="Moving_Block11" type="Node2D" parent="Moving_Blocks_Medium" index="3"]
+position = Vector2(1704, -336)
+
+[node name="Spike" parent="Moving_Blocks_Medium/Moving_Block11" index="0" instance=ExtResource("2_b63om")]
+position = Vector2(240, 624)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="Moving_Blocks_Medium/Moving_Block11" index="1" instance=ExtResource("2_b63om")]
+position = Vector2(216, 672)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike3" parent="Moving_Blocks_Medium/Moving_Block11" index="2" instance=ExtResource("2_b63om")]
+position = Vector2(288, 648)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike4" parent="Moving_Blocks_Medium/Moving_Block11" index="3" instance=ExtResource("2_b63om")]
+position = Vector2(264, 696)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="Tile-Sprite" type="Sprite2D" parent="Moving_Blocks_Medium/Moving_Block11" index="4"]
+position = Vector2(252, 660)
+texture = ExtResource("3_8gudm")
+region_enabled = true
+region_rect = Rect2(144, 72, 24, 24)
+
+[node name="Moving_Block12" type="Node2D" parent="Moving_Blocks_Medium" index="4"]
+position = Vector2(1832, -600)
+
+[node name="Spike" parent="Moving_Blocks_Medium/Moving_Block12" index="0" instance=ExtResource("2_b63om")]
+position = Vector2(240, 624)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="Moving_Blocks_Medium/Moving_Block12" index="1" instance=ExtResource("2_b63om")]
+position = Vector2(216, 672)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike3" parent="Moving_Blocks_Medium/Moving_Block12" index="2" instance=ExtResource("2_b63om")]
+position = Vector2(288, 648)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike4" parent="Moving_Blocks_Medium/Moving_Block12" index="3" instance=ExtResource("2_b63om")]
+position = Vector2(264, 696)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="Tile-Sprite" type="Sprite2D" parent="Moving_Blocks_Medium/Moving_Block12" index="4"]
+position = Vector2(252, 660)
+texture = ExtResource("3_8gudm")
+region_enabled = true
+region_rect = Rect2(144, 72, 24, 24)
+
+[node name="Moving_Block13" type="Node2D" parent="Moving_Blocks_Medium" index="5"]
+position = Vector2(2088, -600)
+
+[node name="Spike" parent="Moving_Blocks_Medium/Moving_Block13" index="0" instance=ExtResource("2_b63om")]
+position = Vector2(240, 624)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="Moving_Blocks_Medium/Moving_Block13" index="1" instance=ExtResource("2_b63om")]
+position = Vector2(216, 672)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike3" parent="Moving_Blocks_Medium/Moving_Block13" index="2" instance=ExtResource("2_b63om")]
+position = Vector2(288, 648)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike4" parent="Moving_Blocks_Medium/Moving_Block13" index="3" instance=ExtResource("2_b63om")]
+position = Vector2(264, 696)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="Tile-Sprite" type="Sprite2D" parent="Moving_Blocks_Medium/Moving_Block13" index="4"]
+position = Vector2(252, 660)
+texture = ExtResource("3_8gudm")
+region_enabled = true
+region_rect = Rect2(144, 72, 24, 24)
+
+[node name="MoveBlocksMedium" type="AnimationPlayer" parent="Moving_Blocks_Medium" index="6"]
+libraries = {
+&"": SubResource("AnimationLibrary_o576y")
+}
+autoplay = "move"
+
+[node name="Label" type="Label" parent="." index="12"]
+offset_left = 2272.0
+offset_top = 48.0
+offset_right = 2524.0
+offset_bottom = 90.0
+text = "Bonus Ahead!"
+label_settings = ExtResource("7_abmt7")
+
+[node name="Fuel" type="Node2D" parent="." index="13"]
+position = Vector2(-8, -24)
+
+[node name="GasCan" parent="Fuel" index="0" instance=ExtResource("8_l3fjs")]
+position = Vector2(3800, 112)
+
+[node name="GasCan9" parent="Fuel" index="1" instance=ExtResource("8_l3fjs")]
+position = Vector2(1664, 224)
+
+[node name="GasCan2" parent="Fuel" index="2" instance=ExtResource("8_l3fjs")]
+position = Vector2(3800, 144)
+
+[node name="GasCan3" parent="Fuel" index="3" instance=ExtResource("8_l3fjs")]
+position = Vector2(3800, 176)
+
+[node name="GasCan4" parent="Fuel" index="4" instance=ExtResource("8_l3fjs")]
+position = Vector2(3800, 208)
+
+[node name="GasCan5" parent="Fuel" index="5" instance=ExtResource("8_l3fjs")]
+position = Vector2(3800, 240)
+
+[node name="GasCan6" parent="Fuel" index="6" instance=ExtResource("8_l3fjs")]
+position = Vector2(3800, 272)
+
+[node name="GasCan7" parent="Fuel" index="7" instance=ExtResource("8_l3fjs")]
+position = Vector2(3800, 304)
+
+[node name="GasCan8" parent="Fuel" index="8" instance=ExtResource("8_l3fjs")]
+position = Vector2(3800, 336)
+
+[node name="GasCan10" parent="Fuel" index="9" instance=ExtResource("8_l3fjs")]
+position = Vector2(3800, 368)
+
+[node name="GasCan12" parent="Fuel" index="10" instance=ExtResource("8_l3fjs")]
+position = Vector2(3832, 112)
+
+[node name="GasCan22" parent="Fuel" index="11" instance=ExtResource("8_l3fjs")]
+position = Vector2(3832, 144)
+
+[node name="GasCan32" parent="Fuel" index="12" instance=ExtResource("8_l3fjs")]
+position = Vector2(3832, 176)
+
+[node name="GasCan42" parent="Fuel" index="13" instance=ExtResource("8_l3fjs")]
+position = Vector2(3832, 208)
+
+[node name="GasCan51" parent="Fuel" index="14" instance=ExtResource("8_l3fjs")]
+position = Vector2(3832, 240)
+
+[node name="GasCan52" parent="Fuel" index="15" instance=ExtResource("8_l3fjs")]
+position = Vector2(3832, 272)
+
+[node name="GasCan53" parent="Fuel" index="16" instance=ExtResource("8_l3fjs")]
+position = Vector2(3832, 304)
+
+[node name="GasCan54" parent="Fuel" index="17" instance=ExtResource("8_l3fjs")]
+position = Vector2(3832, 336)
+
+[node name="GasCan55" parent="Fuel" index="18" instance=ExtResource("8_l3fjs")]
+position = Vector2(3832, 368)
+
+[node name="GasCan56" parent="Fuel" index="19" instance=ExtResource("8_l3fjs")]
+position = Vector2(3832, 112)
+
+[node name="GasCan57" parent="Fuel" index="20" instance=ExtResource("8_l3fjs")]
+position = Vector2(3832, 144)
+
+[node name="GasCan58" parent="Fuel" index="21" instance=ExtResource("8_l3fjs")]
+position = Vector2(3832, 176)
+
+[node name="GasCan59" parent="Fuel" index="22" instance=ExtResource("8_l3fjs")]
+position = Vector2(3832, 208)
+
+[node name="GasCan60" parent="Fuel" index="23" instance=ExtResource("8_l3fjs")]
+position = Vector2(3832, 240)
+
+[node name="GasCan61" parent="Fuel" index="24" instance=ExtResource("8_l3fjs")]
+position = Vector2(3832, 272)
+
+[node name="GasCan62" parent="Fuel" index="25" instance=ExtResource("8_l3fjs")]
+position = Vector2(3832, 304)
+
+[node name="GasCan63" parent="Fuel" index="26" instance=ExtResource("8_l3fjs")]
+position = Vector2(3832, 336)
+
+[node name="GasCan64" parent="Fuel" index="27" instance=ExtResource("8_l3fjs")]
+position = Vector2(3832, 368)
+
+[node name="GasCan11" parent="Fuel" index="28" instance=ExtResource("8_l3fjs")]
+position = Vector2(3768, 112)
+
+[node name="GasCan13" parent="Fuel" index="29" instance=ExtResource("8_l3fjs")]
+position = Vector2(3768, 144)
+
+[node name="GasCan14" parent="Fuel" index="30" instance=ExtResource("8_l3fjs")]
+position = Vector2(3768, 176)
+
+[node name="GasCan15" parent="Fuel" index="31" instance=ExtResource("8_l3fjs")]
+position = Vector2(3768, 208)
+
+[node name="GasCan16" parent="Fuel" index="32" instance=ExtResource("8_l3fjs")]
+position = Vector2(3768, 240)
+
+[node name="GasCan17" parent="Fuel" index="33" instance=ExtResource("8_l3fjs")]
+position = Vector2(3768, 272)
+
+[node name="GasCan18" parent="Fuel" index="34" instance=ExtResource("8_l3fjs")]
+position = Vector2(3768, 304)
+
+[node name="GasCan19" parent="Fuel" index="35" instance=ExtResource("8_l3fjs")]
+position = Vector2(3768, 336)
+
+[node name="GasCan20" parent="Fuel" index="36" instance=ExtResource("8_l3fjs")]
+position = Vector2(3768, 368)
+
+[node name="GasCan65" parent="Fuel" index="37" instance=ExtResource("8_l3fjs")]
+position = Vector2(3896, 112)
+
+[node name="GasCan66" parent="Fuel" index="38" instance=ExtResource("8_l3fjs")]
+position = Vector2(3896, 144)
+
+[node name="GasCan67" parent="Fuel" index="39" instance=ExtResource("8_l3fjs")]
+position = Vector2(3896, 176)
+
+[node name="GasCan68" parent="Fuel" index="40" instance=ExtResource("8_l3fjs")]
+position = Vector2(3896, 208)
+
+[node name="GasCan69" parent="Fuel" index="41" instance=ExtResource("8_l3fjs")]
+position = Vector2(3896, 240)
+
+[node name="GasCan70" parent="Fuel" index="42" instance=ExtResource("8_l3fjs")]
+position = Vector2(3896, 272)
+
+[node name="GasCan71" parent="Fuel" index="43" instance=ExtResource("8_l3fjs")]
+position = Vector2(3896, 304)
+
+[node name="GasCan72" parent="Fuel" index="44" instance=ExtResource("8_l3fjs")]
+position = Vector2(3896, 336)
+
+[node name="GasCan73" parent="Fuel" index="45" instance=ExtResource("8_l3fjs")]
+position = Vector2(3896, 368)
+
+[node name="GasCan74" parent="Fuel" index="46" instance=ExtResource("8_l3fjs")]
+position = Vector2(3928, 112)
+
+[node name="GasCan75" parent="Fuel" index="47" instance=ExtResource("8_l3fjs")]
+position = Vector2(3928, 144)
+
+[node name="GasCan76" parent="Fuel" index="48" instance=ExtResource("8_l3fjs")]
+position = Vector2(3928, 176)
+
+[node name="GasCan77" parent="Fuel" index="49" instance=ExtResource("8_l3fjs")]
+position = Vector2(3928, 208)
+
+[node name="GasCan78" parent="Fuel" index="50" instance=ExtResource("8_l3fjs")]
+position = Vector2(3928, 240)
+
+[node name="GasCan79" parent="Fuel" index="51" instance=ExtResource("8_l3fjs")]
+position = Vector2(3928, 272)
+
+[node name="GasCan80" parent="Fuel" index="52" instance=ExtResource("8_l3fjs")]
+position = Vector2(3928, 304)
+
+[node name="GasCan81" parent="Fuel" index="53" instance=ExtResource("8_l3fjs")]
+position = Vector2(3928, 336)
+
+[node name="GasCan82" parent="Fuel" index="54" instance=ExtResource("8_l3fjs")]
+position = Vector2(3928, 368)
+
+[node name="GasCan83" parent="Fuel" index="55" instance=ExtResource("8_l3fjs")]
+position = Vector2(3864, 112)
+
+[node name="GasCan84" parent="Fuel" index="56" instance=ExtResource("8_l3fjs")]
+position = Vector2(3864, 144)
+
+[node name="GasCan85" parent="Fuel" index="57" instance=ExtResource("8_l3fjs")]
+position = Vector2(3864, 176)
+
+[node name="GasCan86" parent="Fuel" index="58" instance=ExtResource("8_l3fjs")]
+position = Vector2(3864, 208)
+
+[node name="GasCan87" parent="Fuel" index="59" instance=ExtResource("8_l3fjs")]
+position = Vector2(3864, 240)
+
+[node name="GasCan88" parent="Fuel" index="60" instance=ExtResource("8_l3fjs")]
+position = Vector2(3864, 272)
+
+[node name="GasCan89" parent="Fuel" index="61" instance=ExtResource("8_l3fjs")]
+position = Vector2(3864, 304)
+
+[node name="GasCan90" parent="Fuel" index="62" instance=ExtResource("8_l3fjs")]
+position = Vector2(3864, 336)
+
+[node name="GasCan91" parent="Fuel" index="63" instance=ExtResource("8_l3fjs")]
+position = Vector2(3864, 368)
+
+[node name="GasCan21" parent="Fuel" index="64" instance=ExtResource("8_l3fjs")]
+position = Vector2(3736, 112)
+
+[node name="GasCan23" parent="Fuel" index="65" instance=ExtResource("8_l3fjs")]
+position = Vector2(3736, 144)
+
+[node name="GasCan24" parent="Fuel" index="66" instance=ExtResource("8_l3fjs")]
+position = Vector2(3736, 176)
+
+[node name="GasCan25" parent="Fuel" index="67" instance=ExtResource("8_l3fjs")]
+position = Vector2(3736, 208)
+
+[node name="GasCan26" parent="Fuel" index="68" instance=ExtResource("8_l3fjs")]
+position = Vector2(3736, 240)
+
+[node name="GasCan27" parent="Fuel" index="69" instance=ExtResource("8_l3fjs")]
+position = Vector2(3736, 272)
+
+[node name="GasCan28" parent="Fuel" index="70" instance=ExtResource("8_l3fjs")]
+position = Vector2(3736, 304)
+
+[node name="GasCan29" parent="Fuel" index="71" instance=ExtResource("8_l3fjs")]
+position = Vector2(3736, 336)
+
+[node name="GasCan30" parent="Fuel" index="72" instance=ExtResource("8_l3fjs")]
+position = Vector2(3736, 368)
+
+[node name="GasCan31" parent="Fuel" index="73" instance=ExtResource("8_l3fjs")]
+position = Vector2(3704, 112)
+
+[node name="GasCan33" parent="Fuel" index="74" instance=ExtResource("8_l3fjs")]
+position = Vector2(3704, 144)
+
+[node name="GasCan34" parent="Fuel" index="75" instance=ExtResource("8_l3fjs")]
+position = Vector2(3704, 176)
+
+[node name="GasCan35" parent="Fuel" index="76" instance=ExtResource("8_l3fjs")]
+position = Vector2(3704, 208)
+
+[node name="GasCan36" parent="Fuel" index="77" instance=ExtResource("8_l3fjs")]
+position = Vector2(3704, 240)
+
+[node name="GasCan37" parent="Fuel" index="78" instance=ExtResource("8_l3fjs")]
+position = Vector2(3704, 272)
+
+[node name="GasCan38" parent="Fuel" index="79" instance=ExtResource("8_l3fjs")]
+position = Vector2(3704, 304)
+
+[node name="GasCan39" parent="Fuel" index="80" instance=ExtResource("8_l3fjs")]
+position = Vector2(3704, 336)
+
+[node name="GasCan40" parent="Fuel" index="81" instance=ExtResource("8_l3fjs")]
+position = Vector2(3704, 368)
+
+[node name="GasCan41" parent="Fuel" index="82" instance=ExtResource("8_l3fjs")]
+position = Vector2(3672, 112)
+
+[node name="GasCan43" parent="Fuel" index="83" instance=ExtResource("8_l3fjs")]
+position = Vector2(3672, 144)
+
+[node name="GasCan44" parent="Fuel" index="84" instance=ExtResource("8_l3fjs")]
+position = Vector2(3672, 176)
+
+[node name="GasCan45" parent="Fuel" index="85" instance=ExtResource("8_l3fjs")]
+position = Vector2(3672, 208)
+
+[node name="GasCan46" parent="Fuel" index="86" instance=ExtResource("8_l3fjs")]
+position = Vector2(3672, 240)
+
+[node name="GasCan47" parent="Fuel" index="87" instance=ExtResource("8_l3fjs")]
+position = Vector2(3672, 272)
+
+[node name="GasCan48" parent="Fuel" index="88" instance=ExtResource("8_l3fjs")]
+position = Vector2(3672, 304)
+
+[node name="GasCan49" parent="Fuel" index="89" instance=ExtResource("8_l3fjs")]
+position = Vector2(3672, 336)
+
+[node name="GasCan50" parent="Fuel" index="90" instance=ExtResource("8_l3fjs")]
+position = Vector2(3672, 368)
+
+[node name="Moving_Blocks_Fast" type="Node2D" parent="." index="14"]
+
+[node name="Moving_Block16" type="Node2D" parent="Moving_Blocks_Fast" index="0"]
+position = Vector2(2592, -336)
+
+[node name="Spike" parent="Moving_Blocks_Fast/Moving_Block16" index="0" instance=ExtResource("2_b63om")]
+position = Vector2(240, 624)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="Moving_Blocks_Fast/Moving_Block16" index="1" instance=ExtResource("2_b63om")]
+position = Vector2(216, 672)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike3" parent="Moving_Blocks_Fast/Moving_Block16" index="2" instance=ExtResource("2_b63om")]
+position = Vector2(288, 648)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike4" parent="Moving_Blocks_Fast/Moving_Block16" index="3" instance=ExtResource("2_b63om")]
+position = Vector2(264, 696)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="Tile-Sprite" type="Sprite2D" parent="Moving_Blocks_Fast/Moving_Block16" index="4"]
+position = Vector2(252, 660)
+texture = ExtResource("3_8gudm")
+region_enabled = true
+region_rect = Rect2(144, 72, 24, 24)
+
+[node name="Moving_Block17" type="Node2D" parent="Moving_Blocks_Fast" index="1"]
+position = Vector2(2728, -552)
+
+[node name="Spike" parent="Moving_Blocks_Fast/Moving_Block17" index="0" instance=ExtResource("2_b63om")]
+position = Vector2(240, 624)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="Moving_Blocks_Fast/Moving_Block17" index="1" instance=ExtResource("2_b63om")]
+position = Vector2(216, 672)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike3" parent="Moving_Blocks_Fast/Moving_Block17" index="2" instance=ExtResource("2_b63om")]
+position = Vector2(288, 648)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike4" parent="Moving_Blocks_Fast/Moving_Block17" index="3" instance=ExtResource("2_b63om")]
+position = Vector2(264, 696)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="Tile-Sprite" type="Sprite2D" parent="Moving_Blocks_Fast/Moving_Block17" index="4"]
+position = Vector2(252, 660)
+texture = ExtResource("3_8gudm")
+region_enabled = true
+region_rect = Rect2(144, 72, 24, 24)
+
+[node name="Moving_Block18" type="Node2D" parent="Moving_Blocks_Fast" index="2"]
+position = Vector2(2856, -336)
+
+[node name="Spike" parent="Moving_Blocks_Fast/Moving_Block18" index="0" instance=ExtResource("2_b63om")]
+position = Vector2(240, 624)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="Moving_Blocks_Fast/Moving_Block18" index="1" instance=ExtResource("2_b63om")]
+position = Vector2(216, 672)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike3" parent="Moving_Blocks_Fast/Moving_Block18" index="2" instance=ExtResource("2_b63om")]
+position = Vector2(288, 648)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike4" parent="Moving_Blocks_Fast/Moving_Block18" index="3" instance=ExtResource("2_b63om")]
+position = Vector2(264, 696)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="Tile-Sprite" type="Sprite2D" parent="Moving_Blocks_Fast/Moving_Block18" index="4"]
+position = Vector2(252, 660)
+texture = ExtResource("3_8gudm")
+region_enabled = true
+region_rect = Rect2(144, 72, 24, 24)
+
+[node name="Moving_Block19" type="Node2D" parent="Moving_Blocks_Fast" index="3"]
+position = Vector2(2984, -552)
+
+[node name="Spike" parent="Moving_Blocks_Fast/Moving_Block19" index="0" instance=ExtResource("2_b63om")]
+position = Vector2(240, 624)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="Moving_Blocks_Fast/Moving_Block19" index="1" instance=ExtResource("2_b63om")]
+position = Vector2(216, 672)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike3" parent="Moving_Blocks_Fast/Moving_Block19" index="2" instance=ExtResource("2_b63om")]
+position = Vector2(288, 648)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike4" parent="Moving_Blocks_Fast/Moving_Block19" index="3" instance=ExtResource("2_b63om")]
+position = Vector2(264, 696)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="Tile-Sprite" type="Sprite2D" parent="Moving_Blocks_Fast/Moving_Block19" index="4"]
+position = Vector2(252, 660)
+texture = ExtResource("3_8gudm")
+region_enabled = true
+region_rect = Rect2(144, 72, 24, 24)
+
+[node name="Moving_Block20" type="Node2D" parent="Moving_Blocks_Fast" index="4"]
+position = Vector2(3112, -336)
+
+[node name="Spike" parent="Moving_Blocks_Fast/Moving_Block20" index="0" instance=ExtResource("2_b63om")]
+position = Vector2(240, 624)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="Moving_Blocks_Fast/Moving_Block20" index="1" instance=ExtResource("2_b63om")]
+position = Vector2(216, 672)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike3" parent="Moving_Blocks_Fast/Moving_Block20" index="2" instance=ExtResource("2_b63om")]
+position = Vector2(288, 648)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike4" parent="Moving_Blocks_Fast/Moving_Block20" index="3" instance=ExtResource("2_b63om")]
+position = Vector2(264, 696)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="Tile-Sprite" type="Sprite2D" parent="Moving_Blocks_Fast/Moving_Block20" index="4"]
+position = Vector2(252, 660)
+texture = ExtResource("3_8gudm")
+region_enabled = true
+region_rect = Rect2(144, 72, 24, 24)
+
+[node name="Moving_Block21" type="Node2D" parent="Moving_Blocks_Fast" index="5"]
+position = Vector2(3240, -552)
+
+[node name="Spike" parent="Moving_Blocks_Fast/Moving_Block21" index="0" instance=ExtResource("2_b63om")]
+position = Vector2(240, 624)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="Moving_Blocks_Fast/Moving_Block21" index="1" instance=ExtResource("2_b63om")]
+position = Vector2(216, 672)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike3" parent="Moving_Blocks_Fast/Moving_Block21" index="2" instance=ExtResource("2_b63om")]
+position = Vector2(288, 648)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike4" parent="Moving_Blocks_Fast/Moving_Block21" index="3" instance=ExtResource("2_b63om")]
+position = Vector2(264, 696)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="Tile-Sprite" type="Sprite2D" parent="Moving_Blocks_Fast/Moving_Block21" index="4"]
+position = Vector2(252, 660)
+texture = ExtResource("3_8gudm")
+region_enabled = true
+region_rect = Rect2(144, 72, 24, 24)
+
+[node name="MoveBlocksFast" type="AnimationPlayer" parent="Moving_Blocks_Fast" index="6"]
+libraries = {
+&"": SubResource("AnimationLibrary_l3fjs")
+}
+autoplay = "move"
+
+[node name="EndZone" parent="." index="15" instance=ExtResource("6_odrqi")]
+position = Vector2(2640, 48)
+size = Vector2(50, 50)
