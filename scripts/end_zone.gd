@@ -40,4 +40,5 @@ func set_size(new_size: Vector2):
 
 func set_color(new_color: Color):
 	color = new_color
-	color_rect.color = color
+	if color_rect:
+		color_rect.color = color

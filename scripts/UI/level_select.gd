@@ -2,20 +2,20 @@ extends Control
 class_name LevelSelect
 
 var current_index := 0
-var level_files := []
 
 @onready var button_container: GridContainer = %ButtonGrid
+var level_files = []
 
 func _ready():
-	level_files = GameManager.load_levels()
-	create_level_grid()
+	level_files = GameManager.load_levels(true)
+	_create_level_grid()
 	button_container.get_children()[0].grab_focus()
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		get_tree().change_scene_to_file("res://scenes/main.tscn")
 
-func create_level_grid():
+func _create_level_grid():
 	for child in button_container.get_children():
 		child.queue_free()
 

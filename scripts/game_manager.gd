@@ -33,21 +33,24 @@ func load_data() -> void:
 func save_data() -> void:
 	ResourceSaver.save(level_data, SAVE_PATH)
 
-func load_levels():
+func load_levels(time_trials=false):
+	var filename_matcher = "*.tscn"
+	if time_trials:
+		filename_matcher = "1-??_*.tscn"
+
 	var dir = DirAccess.open("res://levels/")
 	if dir:
 		var level_files_temp = []
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
-			if file_name.ends_with(".tscn"):
+			if file_name.match(filename_matcher):
 				level_files_temp.append(file_name)
 			file_name = dir.get_next()
 		level_files_temp.sort()
 		dir.list_dir_end()
 		return level_files_temp
 
-		
 func reset():
 	lives = 3
 	score = 0
@@ -56,26 +59,51 @@ func reset():
 	curr_level = 0
 	background_music.pitch_scale = 1.03
 	get_tree().paused = false
-	
+
 func _process(delta):
 	if not gameStateDisabled and game_started:
 		time += delta
 
+func load_first_level():
+	curr_level += 1
+	get_tree().change_scene_to_file("res://levels/%s" % level_files[0])
+
 # This is only called for the ARCADE gameMode
 func load_next_level():
-	if curr_level > 0:
-		background_music.pitch_scale = 1.03
-		# Prevents bug where level resets if entering endzone when out of fuel. 
-		gameStateDisabled = true
-		# Freeze to prevent player death after endzone trigger
-		await calculateScore() 
+	var level_path
+
+	background_music.pitch_scale = 1.03
+	gameStateDisabled = true
+	if not curr_level == len(level_files):
+		await _calculate_score()
+		await _lives_count_up()
 		await get_tree().create_timer(1).timeout
-	var level_path = "res://levels/%s" % level_files[curr_level]
-	curr_level += 1
-	time = 0.0
+
+		level_path = "res://levels/%s" % level_files[curr_level]
+		curr_level += 1
+		time = 0.0
+	else:
+		curr_level = 0
+		await _calculate_score("You Win!")
+
+		if GameManager.level_data.high_score < score:
+			await _display_info_duration("New High Score! " + str(score), 2.5)
+			level_data.high_score = score
+			save_data()
+
+		await _display_info_duration("Thanks for Playing!", 2.5)
+		level_path = "res://scenes/main.tscn"
+
 	get_tree().change_scene_to_file(level_path)
+
 	# Must go after changing scene to avoid issues.
 	gameStateDisabled = false
+
+func _display_info_duration(text: String, duration: float):
+	%GameInfo.text = text
+	%GameInfo.visible = true
+	await get_tree().create_timer(duration).timeout
+	%GameInfo.visible = false
 
 # This is only called for the TIME_TRIAL gameMode
 func save_time_and_return():
@@ -85,19 +113,15 @@ func save_time_and_return():
 	var prev_time = GameManager.level_data.level_times.get(level_path, null)
 	# If this is the first level clear
 	if prev_time == null or str(time) == "":
-		%GameInfo.text = "New Best Time: "+ format_seconds(time)
-		%GameInfo.visible = true
+		await _display_info_duration("New Best Time: "+ format_seconds(time), 1)
 		level_data.level_times[level_path] = round(time * 1000) / 1000.0
 		save_data()
 	else:
 		var previous_best_time = level_data.level_times[level_path]
 		if time < previous_best_time:
-			%GameInfo.text = "New Best Time: "+ format_seconds(time)
-			%GameInfo.visible = true
+			await _display_info_duration("New Best Time: "+ format_seconds(time), 1)
 			level_data.level_times[level_path] = round(time * 1000) / 1000.0
 			save_data()
-	await get_tree().create_timer(1).timeout
-	%GameInfo.visible = false
 	get_tree().change_scene_to_file("res://scenes/UI/level_select.tscn")
 	gameStateDisabled = false
 
@@ -136,21 +160,20 @@ func _input(event):
 
 		get_tree().change_scene_to_file(level_path)
 
-func calculateScore():
-	%GameInfo.text = "Level Complete! +1000 Score!"
-	%GameInfo.visible = true
+func _calculate_score(text="Level Complete! +1000 Score!"):
 	$SmokeWeedEveryday.play()
-	await get_tree().create_timer(1).timeout
+	await _display_info_duration(text, 1)
 	score += 1000 # for level clear
-	%GameInfo.visible = false
-	await scoreCountDown()
+	await _score_count_down()
 
+
+func _lives_count_up():
 	while score > 10000 * extraLivesDivisor:
 		await get_tree().create_timer(extraLifeFrameDelay).timeout
 		lives += 1
 		extraLivesDivisor += 1
-		
-func scoreCountDown():
+	
+func _score_count_down():
 	var player = get_player()
 	while player.FUEL > 0:
 		if player.FUEL <= 5:
@@ -175,23 +198,18 @@ func on_player_died():
 			gameStateDisabled = true
 			$PlayerDeath.play()
 			if lives > 0:
-				%GameInfo.text = "YOU DIED! RESETTING LEVEL..."
-				%GameInfo.visible = true
-				await get_tree().create_timer(1.5).timeout
+				await _display_info_duration("YOU DIED! RESETTING LEVEL...", 1.5)
 				background_music.pitch_scale = 1.03
 				get_tree().reload_current_scene()
 			else:
 				if GameManager.level_data.high_score < score:
-					%GameInfo.text = "New High Score! " + str(score)
+					await _display_info_duration("New High Score! " + str(score), 2.5)
 					level_data.high_score = score
 					save_data()
 				else:
-					%GameInfo.text = "GAME OVER! BACK TO LEVEL 1 :) "
-				%GameInfo.visible = true
-				await get_tree().create_timer(1.5).timeout
+					await _display_info_duration("GAME OVER! BACK TO LEVEL 1 :) ", 1.5)
 				reset()
 				load_next_level()
-			%GameInfo.visible = false
 			gameStateDisabled = false
 		GameModes.TIME_TRIAL:
 			gameStateDisabled = true
