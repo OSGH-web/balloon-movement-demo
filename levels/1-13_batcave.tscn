@@ -939,274 +939,277 @@ position = Vector2(-8, -24)
 [node name="GasCan" parent="Fuel" index="0" instance=ExtResource("8_l3fjs")]
 position = Vector2(3800, 112)
 
-[node name="GasCan9" parent="Fuel" index="1" instance=ExtResource("8_l3fjs")]
+[node name="GasCan92" parent="Fuel" index="1" instance=ExtResource("8_l3fjs")]
+position = Vector2(2744, 128)
+
+[node name="GasCan9" parent="Fuel" index="2" instance=ExtResource("8_l3fjs")]
 position = Vector2(1664, 224)
 
-[node name="GasCan2" parent="Fuel" index="2" instance=ExtResource("8_l3fjs")]
+[node name="GasCan2" parent="Fuel" index="3" instance=ExtResource("8_l3fjs")]
 position = Vector2(3800, 144)
 
-[node name="GasCan3" parent="Fuel" index="3" instance=ExtResource("8_l3fjs")]
+[node name="GasCan3" parent="Fuel" index="4" instance=ExtResource("8_l3fjs")]
 position = Vector2(3800, 176)
 
-[node name="GasCan4" parent="Fuel" index="4" instance=ExtResource("8_l3fjs")]
+[node name="GasCan4" parent="Fuel" index="5" instance=ExtResource("8_l3fjs")]
 position = Vector2(3800, 208)
 
-[node name="GasCan5" parent="Fuel" index="5" instance=ExtResource("8_l3fjs")]
+[node name="GasCan5" parent="Fuel" index="6" instance=ExtResource("8_l3fjs")]
 position = Vector2(3800, 240)
 
-[node name="GasCan6" parent="Fuel" index="6" instance=ExtResource("8_l3fjs")]
+[node name="GasCan6" parent="Fuel" index="7" instance=ExtResource("8_l3fjs")]
 position = Vector2(3800, 272)
 
-[node name="GasCan7" parent="Fuel" index="7" instance=ExtResource("8_l3fjs")]
+[node name="GasCan7" parent="Fuel" index="8" instance=ExtResource("8_l3fjs")]
 position = Vector2(3800, 304)
 
-[node name="GasCan8" parent="Fuel" index="8" instance=ExtResource("8_l3fjs")]
+[node name="GasCan8" parent="Fuel" index="9" instance=ExtResource("8_l3fjs")]
 position = Vector2(3800, 336)
 
-[node name="GasCan10" parent="Fuel" index="9" instance=ExtResource("8_l3fjs")]
+[node name="GasCan10" parent="Fuel" index="10" instance=ExtResource("8_l3fjs")]
 position = Vector2(3800, 368)
 
-[node name="GasCan12" parent="Fuel" index="10" instance=ExtResource("8_l3fjs")]
+[node name="GasCan12" parent="Fuel" index="11" instance=ExtResource("8_l3fjs")]
 position = Vector2(3832, 112)
 
-[node name="GasCan22" parent="Fuel" index="11" instance=ExtResource("8_l3fjs")]
+[node name="GasCan22" parent="Fuel" index="12" instance=ExtResource("8_l3fjs")]
 position = Vector2(3832, 144)
 
-[node name="GasCan32" parent="Fuel" index="12" instance=ExtResource("8_l3fjs")]
+[node name="GasCan32" parent="Fuel" index="13" instance=ExtResource("8_l3fjs")]
 position = Vector2(3832, 176)
 
-[node name="GasCan42" parent="Fuel" index="13" instance=ExtResource("8_l3fjs")]
+[node name="GasCan42" parent="Fuel" index="14" instance=ExtResource("8_l3fjs")]
 position = Vector2(3832, 208)
 
-[node name="GasCan51" parent="Fuel" index="14" instance=ExtResource("8_l3fjs")]
+[node name="GasCan51" parent="Fuel" index="15" instance=ExtResource("8_l3fjs")]
 position = Vector2(3832, 240)
 
-[node name="GasCan52" parent="Fuel" index="15" instance=ExtResource("8_l3fjs")]
+[node name="GasCan52" parent="Fuel" index="16" instance=ExtResource("8_l3fjs")]
 position = Vector2(3832, 272)
 
-[node name="GasCan53" parent="Fuel" index="16" instance=ExtResource("8_l3fjs")]
+[node name="GasCan53" parent="Fuel" index="17" instance=ExtResource("8_l3fjs")]
 position = Vector2(3832, 304)
 
-[node name="GasCan54" parent="Fuel" index="17" instance=ExtResource("8_l3fjs")]
+[node name="GasCan54" parent="Fuel" index="18" instance=ExtResource("8_l3fjs")]
 position = Vector2(3832, 336)
 
-[node name="GasCan55" parent="Fuel" index="18" instance=ExtResource("8_l3fjs")]
+[node name="GasCan55" parent="Fuel" index="19" instance=ExtResource("8_l3fjs")]
 position = Vector2(3832, 368)
 
-[node name="GasCan56" parent="Fuel" index="19" instance=ExtResource("8_l3fjs")]
+[node name="GasCan56" parent="Fuel" index="20" instance=ExtResource("8_l3fjs")]
 position = Vector2(3832, 112)
 
-[node name="GasCan57" parent="Fuel" index="20" instance=ExtResource("8_l3fjs")]
+[node name="GasCan57" parent="Fuel" index="21" instance=ExtResource("8_l3fjs")]
 position = Vector2(3832, 144)
 
-[node name="GasCan58" parent="Fuel" index="21" instance=ExtResource("8_l3fjs")]
+[node name="GasCan58" parent="Fuel" index="22" instance=ExtResource("8_l3fjs")]
 position = Vector2(3832, 176)
 
-[node name="GasCan59" parent="Fuel" index="22" instance=ExtResource("8_l3fjs")]
+[node name="GasCan59" parent="Fuel" index="23" instance=ExtResource("8_l3fjs")]
 position = Vector2(3832, 208)
 
-[node name="GasCan60" parent="Fuel" index="23" instance=ExtResource("8_l3fjs")]
+[node name="GasCan60" parent="Fuel" index="24" instance=ExtResource("8_l3fjs")]
 position = Vector2(3832, 240)
 
-[node name="GasCan61" parent="Fuel" index="24" instance=ExtResource("8_l3fjs")]
+[node name="GasCan61" parent="Fuel" index="25" instance=ExtResource("8_l3fjs")]
 position = Vector2(3832, 272)
 
-[node name="GasCan62" parent="Fuel" index="25" instance=ExtResource("8_l3fjs")]
+[node name="GasCan62" parent="Fuel" index="26" instance=ExtResource("8_l3fjs")]
 position = Vector2(3832, 304)
 
-[node name="GasCan63" parent="Fuel" index="26" instance=ExtResource("8_l3fjs")]
+[node name="GasCan63" parent="Fuel" index="27" instance=ExtResource("8_l3fjs")]
 position = Vector2(3832, 336)
 
-[node name="GasCan64" parent="Fuel" index="27" instance=ExtResource("8_l3fjs")]
+[node name="GasCan64" parent="Fuel" index="28" instance=ExtResource("8_l3fjs")]
 position = Vector2(3832, 368)
 
-[node name="GasCan11" parent="Fuel" index="28" instance=ExtResource("8_l3fjs")]
+[node name="GasCan11" parent="Fuel" index="29" instance=ExtResource("8_l3fjs")]
 position = Vector2(3768, 112)
 
-[node name="GasCan13" parent="Fuel" index="29" instance=ExtResource("8_l3fjs")]
+[node name="GasCan13" parent="Fuel" index="30" instance=ExtResource("8_l3fjs")]
 position = Vector2(3768, 144)
 
-[node name="GasCan14" parent="Fuel" index="30" instance=ExtResource("8_l3fjs")]
+[node name="GasCan14" parent="Fuel" index="31" instance=ExtResource("8_l3fjs")]
 position = Vector2(3768, 176)
 
-[node name="GasCan15" parent="Fuel" index="31" instance=ExtResource("8_l3fjs")]
+[node name="GasCan15" parent="Fuel" index="32" instance=ExtResource("8_l3fjs")]
 position = Vector2(3768, 208)
 
-[node name="GasCan16" parent="Fuel" index="32" instance=ExtResource("8_l3fjs")]
+[node name="GasCan16" parent="Fuel" index="33" instance=ExtResource("8_l3fjs")]
 position = Vector2(3768, 240)
 
-[node name="GasCan17" parent="Fuel" index="33" instance=ExtResource("8_l3fjs")]
+[node name="GasCan17" parent="Fuel" index="34" instance=ExtResource("8_l3fjs")]
 position = Vector2(3768, 272)
 
-[node name="GasCan18" parent="Fuel" index="34" instance=ExtResource("8_l3fjs")]
+[node name="GasCan18" parent="Fuel" index="35" instance=ExtResource("8_l3fjs")]
 position = Vector2(3768, 304)
 
-[node name="GasCan19" parent="Fuel" index="35" instance=ExtResource("8_l3fjs")]
+[node name="GasCan19" parent="Fuel" index="36" instance=ExtResource("8_l3fjs")]
 position = Vector2(3768, 336)
 
-[node name="GasCan20" parent="Fuel" index="36" instance=ExtResource("8_l3fjs")]
+[node name="GasCan20" parent="Fuel" index="37" instance=ExtResource("8_l3fjs")]
 position = Vector2(3768, 368)
 
-[node name="GasCan65" parent="Fuel" index="37" instance=ExtResource("8_l3fjs")]
+[node name="GasCan65" parent="Fuel" index="38" instance=ExtResource("8_l3fjs")]
 position = Vector2(3896, 112)
 
-[node name="GasCan66" parent="Fuel" index="38" instance=ExtResource("8_l3fjs")]
+[node name="GasCan66" parent="Fuel" index="39" instance=ExtResource("8_l3fjs")]
 position = Vector2(3896, 144)
 
-[node name="GasCan67" parent="Fuel" index="39" instance=ExtResource("8_l3fjs")]
+[node name="GasCan67" parent="Fuel" index="40" instance=ExtResource("8_l3fjs")]
 position = Vector2(3896, 176)
 
-[node name="GasCan68" parent="Fuel" index="40" instance=ExtResource("8_l3fjs")]
+[node name="GasCan68" parent="Fuel" index="41" instance=ExtResource("8_l3fjs")]
 position = Vector2(3896, 208)
 
-[node name="GasCan69" parent="Fuel" index="41" instance=ExtResource("8_l3fjs")]
+[node name="GasCan69" parent="Fuel" index="42" instance=ExtResource("8_l3fjs")]
 position = Vector2(3896, 240)
 
-[node name="GasCan70" parent="Fuel" index="42" instance=ExtResource("8_l3fjs")]
+[node name="GasCan70" parent="Fuel" index="43" instance=ExtResource("8_l3fjs")]
 position = Vector2(3896, 272)
 
-[node name="GasCan71" parent="Fuel" index="43" instance=ExtResource("8_l3fjs")]
+[node name="GasCan71" parent="Fuel" index="44" instance=ExtResource("8_l3fjs")]
 position = Vector2(3896, 304)
 
-[node name="GasCan72" parent="Fuel" index="44" instance=ExtResource("8_l3fjs")]
+[node name="GasCan72" parent="Fuel" index="45" instance=ExtResource("8_l3fjs")]
 position = Vector2(3896, 336)
 
-[node name="GasCan73" parent="Fuel" index="45" instance=ExtResource("8_l3fjs")]
+[node name="GasCan73" parent="Fuel" index="46" instance=ExtResource("8_l3fjs")]
 position = Vector2(3896, 368)
 
-[node name="GasCan74" parent="Fuel" index="46" instance=ExtResource("8_l3fjs")]
+[node name="GasCan74" parent="Fuel" index="47" instance=ExtResource("8_l3fjs")]
 position = Vector2(3928, 112)
 
-[node name="GasCan75" parent="Fuel" index="47" instance=ExtResource("8_l3fjs")]
+[node name="GasCan75" parent="Fuel" index="48" instance=ExtResource("8_l3fjs")]
 position = Vector2(3928, 144)
 
-[node name="GasCan76" parent="Fuel" index="48" instance=ExtResource("8_l3fjs")]
+[node name="GasCan76" parent="Fuel" index="49" instance=ExtResource("8_l3fjs")]
 position = Vector2(3928, 176)
 
-[node name="GasCan77" parent="Fuel" index="49" instance=ExtResource("8_l3fjs")]
+[node name="GasCan77" parent="Fuel" index="50" instance=ExtResource("8_l3fjs")]
 position = Vector2(3928, 208)
 
-[node name="GasCan78" parent="Fuel" index="50" instance=ExtResource("8_l3fjs")]
+[node name="GasCan78" parent="Fuel" index="51" instance=ExtResource("8_l3fjs")]
 position = Vector2(3928, 240)
 
-[node name="GasCan79" parent="Fuel" index="51" instance=ExtResource("8_l3fjs")]
+[node name="GasCan79" parent="Fuel" index="52" instance=ExtResource("8_l3fjs")]
 position = Vector2(3928, 272)
 
-[node name="GasCan80" parent="Fuel" index="52" instance=ExtResource("8_l3fjs")]
+[node name="GasCan80" parent="Fuel" index="53" instance=ExtResource("8_l3fjs")]
 position = Vector2(3928, 304)
 
-[node name="GasCan81" parent="Fuel" index="53" instance=ExtResource("8_l3fjs")]
+[node name="GasCan81" parent="Fuel" index="54" instance=ExtResource("8_l3fjs")]
 position = Vector2(3928, 336)
 
-[node name="GasCan82" parent="Fuel" index="54" instance=ExtResource("8_l3fjs")]
+[node name="GasCan82" parent="Fuel" index="55" instance=ExtResource("8_l3fjs")]
 position = Vector2(3928, 368)
 
-[node name="GasCan83" parent="Fuel" index="55" instance=ExtResource("8_l3fjs")]
+[node name="GasCan83" parent="Fuel" index="56" instance=ExtResource("8_l3fjs")]
 position = Vector2(3864, 112)
 
-[node name="GasCan84" parent="Fuel" index="56" instance=ExtResource("8_l3fjs")]
+[node name="GasCan84" parent="Fuel" index="57" instance=ExtResource("8_l3fjs")]
 position = Vector2(3864, 144)
 
-[node name="GasCan85" parent="Fuel" index="57" instance=ExtResource("8_l3fjs")]
+[node name="GasCan85" parent="Fuel" index="58" instance=ExtResource("8_l3fjs")]
 position = Vector2(3864, 176)
 
-[node name="GasCan86" parent="Fuel" index="58" instance=ExtResource("8_l3fjs")]
+[node name="GasCan86" parent="Fuel" index="59" instance=ExtResource("8_l3fjs")]
 position = Vector2(3864, 208)
 
-[node name="GasCan87" parent="Fuel" index="59" instance=ExtResource("8_l3fjs")]
+[node name="GasCan87" parent="Fuel" index="60" instance=ExtResource("8_l3fjs")]
 position = Vector2(3864, 240)
 
-[node name="GasCan88" parent="Fuel" index="60" instance=ExtResource("8_l3fjs")]
+[node name="GasCan88" parent="Fuel" index="61" instance=ExtResource("8_l3fjs")]
 position = Vector2(3864, 272)
 
-[node name="GasCan89" parent="Fuel" index="61" instance=ExtResource("8_l3fjs")]
+[node name="GasCan89" parent="Fuel" index="62" instance=ExtResource("8_l3fjs")]
 position = Vector2(3864, 304)
 
-[node name="GasCan90" parent="Fuel" index="62" instance=ExtResource("8_l3fjs")]
+[node name="GasCan90" parent="Fuel" index="63" instance=ExtResource("8_l3fjs")]
 position = Vector2(3864, 336)
 
-[node name="GasCan91" parent="Fuel" index="63" instance=ExtResource("8_l3fjs")]
+[node name="GasCan91" parent="Fuel" index="64" instance=ExtResource("8_l3fjs")]
 position = Vector2(3864, 368)
 
-[node name="GasCan21" parent="Fuel" index="64" instance=ExtResource("8_l3fjs")]
+[node name="GasCan21" parent="Fuel" index="65" instance=ExtResource("8_l3fjs")]
 position = Vector2(3736, 112)
 
-[node name="GasCan23" parent="Fuel" index="65" instance=ExtResource("8_l3fjs")]
+[node name="GasCan23" parent="Fuel" index="66" instance=ExtResource("8_l3fjs")]
 position = Vector2(3736, 144)
 
-[node name="GasCan24" parent="Fuel" index="66" instance=ExtResource("8_l3fjs")]
+[node name="GasCan24" parent="Fuel" index="67" instance=ExtResource("8_l3fjs")]
 position = Vector2(3736, 176)
 
-[node name="GasCan25" parent="Fuel" index="67" instance=ExtResource("8_l3fjs")]
+[node name="GasCan25" parent="Fuel" index="68" instance=ExtResource("8_l3fjs")]
 position = Vector2(3736, 208)
 
-[node name="GasCan26" parent="Fuel" index="68" instance=ExtResource("8_l3fjs")]
+[node name="GasCan26" parent="Fuel" index="69" instance=ExtResource("8_l3fjs")]
 position = Vector2(3736, 240)
 
-[node name="GasCan27" parent="Fuel" index="69" instance=ExtResource("8_l3fjs")]
+[node name="GasCan27" parent="Fuel" index="70" instance=ExtResource("8_l3fjs")]
 position = Vector2(3736, 272)
 
-[node name="GasCan28" parent="Fuel" index="70" instance=ExtResource("8_l3fjs")]
+[node name="GasCan28" parent="Fuel" index="71" instance=ExtResource("8_l3fjs")]
 position = Vector2(3736, 304)
 
-[node name="GasCan29" parent="Fuel" index="71" instance=ExtResource("8_l3fjs")]
+[node name="GasCan29" parent="Fuel" index="72" instance=ExtResource("8_l3fjs")]
 position = Vector2(3736, 336)
 
-[node name="GasCan30" parent="Fuel" index="72" instance=ExtResource("8_l3fjs")]
+[node name="GasCan30" parent="Fuel" index="73" instance=ExtResource("8_l3fjs")]
 position = Vector2(3736, 368)
 
-[node name="GasCan31" parent="Fuel" index="73" instance=ExtResource("8_l3fjs")]
+[node name="GasCan31" parent="Fuel" index="74" instance=ExtResource("8_l3fjs")]
 position = Vector2(3704, 112)
 
-[node name="GasCan33" parent="Fuel" index="74" instance=ExtResource("8_l3fjs")]
+[node name="GasCan33" parent="Fuel" index="75" instance=ExtResource("8_l3fjs")]
 position = Vector2(3704, 144)
 
-[node name="GasCan34" parent="Fuel" index="75" instance=ExtResource("8_l3fjs")]
+[node name="GasCan34" parent="Fuel" index="76" instance=ExtResource("8_l3fjs")]
 position = Vector2(3704, 176)
 
-[node name="GasCan35" parent="Fuel" index="76" instance=ExtResource("8_l3fjs")]
+[node name="GasCan35" parent="Fuel" index="77" instance=ExtResource("8_l3fjs")]
 position = Vector2(3704, 208)
 
-[node name="GasCan36" parent="Fuel" index="77" instance=ExtResource("8_l3fjs")]
+[node name="GasCan36" parent="Fuel" index="78" instance=ExtResource("8_l3fjs")]
 position = Vector2(3704, 240)
 
-[node name="GasCan37" parent="Fuel" index="78" instance=ExtResource("8_l3fjs")]
+[node name="GasCan37" parent="Fuel" index="79" instance=ExtResource("8_l3fjs")]
 position = Vector2(3704, 272)
 
-[node name="GasCan38" parent="Fuel" index="79" instance=ExtResource("8_l3fjs")]
+[node name="GasCan38" parent="Fuel" index="80" instance=ExtResource("8_l3fjs")]
 position = Vector2(3704, 304)
 
-[node name="GasCan39" parent="Fuel" index="80" instance=ExtResource("8_l3fjs")]
+[node name="GasCan39" parent="Fuel" index="81" instance=ExtResource("8_l3fjs")]
 position = Vector2(3704, 336)
 
-[node name="GasCan40" parent="Fuel" index="81" instance=ExtResource("8_l3fjs")]
+[node name="GasCan40" parent="Fuel" index="82" instance=ExtResource("8_l3fjs")]
 position = Vector2(3704, 368)
 
-[node name="GasCan41" parent="Fuel" index="82" instance=ExtResource("8_l3fjs")]
+[node name="GasCan41" parent="Fuel" index="83" instance=ExtResource("8_l3fjs")]
 position = Vector2(3672, 112)
 
-[node name="GasCan43" parent="Fuel" index="83" instance=ExtResource("8_l3fjs")]
+[node name="GasCan43" parent="Fuel" index="84" instance=ExtResource("8_l3fjs")]
 position = Vector2(3672, 144)
 
-[node name="GasCan44" parent="Fuel" index="84" instance=ExtResource("8_l3fjs")]
+[node name="GasCan44" parent="Fuel" index="85" instance=ExtResource("8_l3fjs")]
 position = Vector2(3672, 176)
 
-[node name="GasCan45" parent="Fuel" index="85" instance=ExtResource("8_l3fjs")]
+[node name="GasCan45" parent="Fuel" index="86" instance=ExtResource("8_l3fjs")]
 position = Vector2(3672, 208)
 
-[node name="GasCan46" parent="Fuel" index="86" instance=ExtResource("8_l3fjs")]
+[node name="GasCan46" parent="Fuel" index="87" instance=ExtResource("8_l3fjs")]
 position = Vector2(3672, 240)
 
-[node name="GasCan47" parent="Fuel" index="87" instance=ExtResource("8_l3fjs")]
+[node name="GasCan47" parent="Fuel" index="88" instance=ExtResource("8_l3fjs")]
 position = Vector2(3672, 272)
 
-[node name="GasCan48" parent="Fuel" index="88" instance=ExtResource("8_l3fjs")]
+[node name="GasCan48" parent="Fuel" index="89" instance=ExtResource("8_l3fjs")]
 position = Vector2(3672, 304)
 
-[node name="GasCan49" parent="Fuel" index="89" instance=ExtResource("8_l3fjs")]
+[node name="GasCan49" parent="Fuel" index="90" instance=ExtResource("8_l3fjs")]
 position = Vector2(3672, 336)
 
-[node name="GasCan50" parent="Fuel" index="90" instance=ExtResource("8_l3fjs")]
+[node name="GasCan50" parent="Fuel" index="91" instance=ExtResource("8_l3fjs")]
 position = Vector2(3672, 368)
 
 [node name="Moving_Blocks_Fast" type="Node2D" parent="." index="14"]
