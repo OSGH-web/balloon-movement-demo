@@ -4,20 +4,26 @@ class_name LevelSelect
 var current_index := 0
 
 @onready var button_container: GridContainer = %ButtonGrid
+var level_files = []
 
 func _ready():
-	create_level_grid()
+	_init_level_files()
+	_create_level_grid()
 	button_container.get_children()[0].grab_focus()
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		get_tree().change_scene_to_file("res://scenes/main.tscn")
 
-func create_level_grid():
+func _init_level_files():
+	level_files = GameManager.level_files.filter(func(f): return f.match("1-??_*.tscn"))
+
+func _create_level_grid():
 	for child in button_container.get_children():
 		child.queue_free()
 
-	var n_levels = GameManager.level_files.size()
+	var n_levels = level_files.size()
+	var levels
 
 	var button_scene = preload("res://scenes/UI/level_button.tscn")
 	var tinted_style = preload("res://assets/styles/sbf_dark.tres")
@@ -55,14 +61,14 @@ func _mouse_exit():
 	_update_level_info_display(cursor_index)
 
 func _on_level_selected(level_index: int):
-	var file_path = "res://levels/%s" % GameManager.level_files[level_index]
+	var file_path = "res://levels/%s" % level_files[level_index]
 	GameManager.time = 0.0
 	GameManager.game_started = false
 	get_tree().change_scene_to_file(file_path)
 
 
 func _update_level_info_display(level_index):
-	var level_file = GameManager.level_files[level_index]
+	var level_file = level_files[level_index]
 	var level_path = "res://levels/%s" % level_file
 	var level_scene = load(level_path)
 	if not level_scene:
