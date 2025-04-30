@@ -8,7 +8,7 @@ func _ready():
 	%Score.text = str(GameManager.level_data.high_score)
 
 func _on_arcade_button_pressed() -> void:
-	GameManager.load_next_level()
+	GameManager.load_first_level()
 	GameManager.gameMode = GameManager.GameModes.ARCADE
 
 func _on_trial_button_pressed() -> void:
