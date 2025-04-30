@@ -68,12 +68,29 @@ func load_next_level():
 		# Prevents bug where level resets if entering endzone when out of fuel. 
 		gameStateDisabled = true
 		# Freeze to prevent player death after endzone trigger
-		await calculateScore() 
+		await _calculate_score()
+		if curr_level != len(level_files):
+			await _lives_count_up()
 		await get_tree().create_timer(1).timeout
-	var level_path = "res://levels/%s" % level_files[curr_level]
-	curr_level += 1
-	time = 0.0
-	get_tree().change_scene_to_file(level_path)
+
+	if curr_level >= len(level_files):
+		# TODO: extract into helper function
+		%GameInfo.text = "You Win!"
+		%GameInfo.visible = true
+		await get_tree().create_timer(2.5).timeout
+		if GameManager.level_data.high_score < score:
+			%GameInfo.text = "New High Score! " + str(score)
+			level_data.high_score = score
+			save_data()
+			await get_tree().create_timer(2.5).timeout
+		%GameInfo.visible = false
+		get_tree().change_scene_to_file("res://scenes/main.tscn")
+	else:
+		var level_path = "res://levels/%s" % level_files[curr_level]
+		curr_level += 1
+		time = 0.0
+		get_tree().change_scene_to_file(level_path)
+
 	# Must go after changing scene to avoid issues.
 	gameStateDisabled = false
 
@@ -136,21 +153,23 @@ func _input(event):
 
 		get_tree().change_scene_to_file(level_path)
 
-func calculateScore():
+func _calculate_score():
 	%GameInfo.text = "Level Complete! +1000 Score!"
 	%GameInfo.visible = true
 	$SmokeWeedEveryday.play()
 	await get_tree().create_timer(1).timeout
 	score += 1000 # for level clear
 	%GameInfo.visible = false
-	await scoreCountDown()
+	await _score_count_down()
 
+
+func _lives_count_up():
 	while score > 10000 * extraLivesDivisor:
 		await get_tree().create_timer(extraLifeFrameDelay).timeout
 		lives += 1
 		extraLivesDivisor += 1
-		
-func scoreCountDown():
+	
+func _score_count_down():
 	var player = get_player()
 	while player.FUEL > 0:
 		if player.FUEL <= 5:

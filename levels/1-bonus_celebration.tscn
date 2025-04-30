@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://xoh2tvxxlcyv"]
+[gd_scene load_steps=9 format=3 uid="uid://xoh2tvxxlcyv"]
 
 [ext_resource type="PackedScene" uid="uid://cxo2r1hb7u2ss" path="res://scenes/level_base.tscn" id="1_vigaf"]
 [ext_resource type="Material" uid="uid://7nf80b2hah6x" path="res://assets/shaders/celebration.tres" id="2_fgtru"]
 [ext_resource type="Texture2D" uid="uid://du5x1huugfnt8" path="res://assets/sprites/celebration_beam particle.png" id="3_dgkm5"]
+[ext_resource type="PackedScene" uid="uid://bvn2y2nnqcrts" path="res://scenes/end_zone.tscn" id="4_fgtru"]
 
 [sub_resource type="Animation" id="Animation_mm4nv"]
 length = 0.001
@@ -192,3 +193,7 @@ scale_amount_max = 4.0
 color = Color(0.14902, 0.168627, 0.266667, 1)
 anim_speed_min = 3.0
 anim_speed_max = 3.0
+
+[node name="EndZone" parent="." index="7" instance=ExtResource("4_fgtru")]
+position = Vector2(384, 384)
+size = Vector2(720, 720)
