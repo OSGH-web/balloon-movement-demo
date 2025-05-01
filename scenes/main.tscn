@@ -124,14 +124,14 @@ text = "Arcade Mode"
 [node name="HighScore" type="HBoxContainer" parent="ArcadeButton"]
 clip_contents = true
 layout_mode = 0
-offset_left = 831.0
-offset_right = 1010.0
+offset_left = 828.0
+offset_right = 978.0
 offset_bottom = 20.0
-scale = Vector2(3, 3)
+scale = Vector2(2.5, 2.5)
 theme_override_constants/separation = 0
 
 [node name="placeholder1" type="Label" parent="ArcadeButton/HighScore"]
-custom_minimum_size = Vector2(15, 20)
+custom_minimum_size = Vector2(5, 20)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("4_choun")
 label_settings = ExtResource("13_trceg")
@@ -146,7 +146,7 @@ label_settings = ExtResource("13_trceg")
 vertical_alignment = 1
 
 [node name="placeholder2" type="Label" parent="ArcadeButton/HighScore"]
-custom_minimum_size = Vector2(36, 20)
+custom_minimum_size = Vector2(5, 20)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("4_choun")
 label_settings = ExtResource("13_trceg")
@@ -159,6 +159,47 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = ExtResource("4_choun")
 text = "10942"
+label_settings = ExtResource("13_trceg")
+vertical_alignment = 1
+
+[node name="BestTime" type="HBoxContainer" parent="ArcadeButton"]
+clip_contents = true
+layout_mode = 0
+offset_left = 1228.0
+offset_right = 1374.0
+offset_bottom = 20.0
+scale = Vector2(2.5, 2.5)
+theme_override_constants/separation = 0
+
+[node name="placeholder1" type="Label" parent="ArcadeButton/BestTime"]
+custom_minimum_size = Vector2(5, 20)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("4_choun")
+label_settings = ExtResource("13_trceg")
+horizontal_alignment = 1
+
+[node name="HighScoreLabel" type="Label" parent="ArcadeButton/BestTime"]
+custom_minimum_size = Vector2(77, 20)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("4_choun")
+text = "Best Time:"
+label_settings = ExtResource("13_trceg")
+vertical_alignment = 1
+
+[node name="placeholder2" type="Label" parent="ArcadeButton/BestTime"]
+custom_minimum_size = Vector2(5, 20)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("4_choun")
+label_settings = ExtResource("13_trceg")
+horizontal_alignment = 1
+
+[node name="Time" type="Label" parent="ArcadeButton/BestTime"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = ExtResource("4_choun")
+text = "00:00:00"
 label_settings = ExtResource("13_trceg")
 vertical_alignment = 1
 

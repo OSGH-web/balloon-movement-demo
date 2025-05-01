@@ -17,7 +17,8 @@ var level_files = []
 var gameStateDisabled = false
 # Show a message upon levelCompletion
 @onready var background_music = $Background_Music
-enum GameModes {ARCADE, TIME_TRIAL}
+# gameMode NONE prevents timer from being started due to input on the title screen.
+enum GameModes {NONE, ARCADE, TIME_TRIAL}
 @onready var gameMode: GameModes
 func _ready():
 	level_files = load_levels()
@@ -54,11 +55,16 @@ func load_levels(time_trials=false):
 func reset():
 	lives = 3
 	score = 0
-	time = 0.0
 	extraLivesDivisor = 1
 	curr_level = 0
 	background_music.pitch_scale = 1.03
+	game_started = false
 	get_tree().paused = false
+	
+func time_trial_reset():
+	time = 0.0
+	reset()
+	get_tree().reload_current_scene()
 
 func _process(delta):
 	if not gameStateDisabled and game_started:
@@ -81,7 +87,6 @@ func load_next_level():
 
 		level_path = "res://levels/%s" % level_files[curr_level]
 		curr_level += 1
-		time = 0.0
 	else:
 		curr_level = 0
 		await _calculate_score("You Win!")
@@ -90,10 +95,19 @@ func load_next_level():
 			await _display_info_duration("New High Score! " + str(score), 2.5)
 			level_data.high_score = score
 			save_data()
+		if GameManager.level_data.arcade_time == null:
+			await _display_info_duration("New Best Time! " + format_seconds(time), 2.5)
+			level_data.arcade_time = time
+			save_data()
+		elif GameManager.level_data.arcade_time > time:
+			await _display_info_duration("New Best Time! " + format_seconds(time), 2.5)
+			level_data.arcade_time = time
+			save_data()
 
 		await _display_info_duration("Thanks for Playing!", 2.5)
+		
 		level_path = "res://scenes/main.tscn"
-
+	game_started = false
 	get_tree().change_scene_to_file(level_path)
 
 	# Must go after changing scene to avoid issues.
@@ -125,22 +139,18 @@ func save_time_and_return():
 	get_tree().change_scene_to_file("res://scenes/UI/level_select.tscn")
 	gameStateDisabled = false
 
-func time_trial_reset():
-	game_started = false
-	reset()
-	get_tree().reload_current_scene()
-
 func _input(event):
 	if gameMode == GameModes.TIME_TRIAL:
 		if event.is_action_pressed("reset"):
 			time_trial_reset()
-	# Start the timer upon the first input
-		elif event.is_pressed():
+	if gameMode == GameModes.ARCADE or gameMode == GameModes.TIME_TRIAL:
+		# start timer upon first movement input each level
+		if Input.is_action_pressed("ui_left") \
+		or Input.is_action_pressed("ui_right") \
+		or Input.is_action_pressed("ui_up") \
+		or Input.is_action_pressed("ui_down"):
 			game_started = true
-	 # DEV: Go to next level
-	elif gameMode == GameModes.ARCADE:
-		if event.is_pressed():
-			game_started = true
+			
 	if event.is_action_pressed("ui_n"):
 		if curr_level == len(level_files):
 			curr_level = 0
@@ -194,12 +204,12 @@ func on_player_died():
 				background_music.pitch_scale = 1.03
 				return
 			lives -= 1
-			time = 0.0
 			gameStateDisabled = true
 			$PlayerDeath.play()
 			if lives > 0:
 				await _display_info_duration("YOU DIED! RESETTING LEVEL...", 1.5)
 				background_music.pitch_scale = 1.03
+				game_started = false
 				get_tree().reload_current_scene()
 			else:
 				if GameManager.level_data.high_score < score:
@@ -208,6 +218,7 @@ func on_player_died():
 					save_data()
 				else:
 					await _display_info_duration("GAME OVER! BACK TO LEVEL 1 :) ", 1.5)
+				time = 0.0
 				reset()
 				load_first_level()
 			gameStateDisabled = false

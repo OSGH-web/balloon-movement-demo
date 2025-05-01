@@ -3,9 +3,15 @@ extends Node
 var focused = false;
 
 func _ready():
+	GameManager.time = 0.0
 	GameManager.reset()
+	GameManager.gameMode = GameManager.GameModes.NONE
 	%ArcadeButton.grab_focus()
 	%Score.text = str(GameManager.level_data.high_score)
+	if not GameManager.level_data.arcade_time == null:
+		%Time.text = GameManager.format_seconds(GameManager.level_data.arcade_time)
+
+		
 
 func _on_arcade_button_pressed() -> void:
 	GameManager.load_first_level()
@@ -21,19 +27,33 @@ func _on_quit_to_desktop_button_pressed() -> void:
 func _on_arcade_button_focus_entered() -> void:
 	focused = true
 	_set_high_score_visibility(true)
+	_set_best_time_visibility(true)
 
 func _on_arcade_button_focus_exited() -> void:
 	focused = false
 	_set_high_score_visibility(false)
+	_set_best_time_visibility(false)
 
 func _on_arcade_button_mouse_entered() -> void:
 	_set_high_score_visibility(true)
+	_set_best_time_visibility(true)
 
 func _on_arcade_button_mouse_exited() -> void:
 	_set_high_score_visibility(false)
+	_set_best_time_visibility(false)
 
 func _set_high_score_visibility(val):
 	if focused:
 		$ArcadeButton/HighScore.visible = true
 	else:
 		$ArcadeButton/HighScore.visible = val
+
+func _set_best_time_visibility(val):
+	if not GameManager.level_data.arcade_time == null:
+		if focused:
+			$ArcadeButton/BestTime.visible = true
+		else:
+			$ArcadeButton/BestTime.visible = val
+	else:
+		$ArcadeButton/BestTime.visible = false
+			
