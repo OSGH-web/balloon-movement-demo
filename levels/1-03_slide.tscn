@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cxdl0fqxwxba1" path="res://scenes/gas_can.tscn" id="7_kbwtv"]
 
 [node name="LevelBase" instance=ExtResource("1_fcjjs")]
+level_name = "Slide"
 width_in_tiles = 200
 height_in_tiles = 32
 
