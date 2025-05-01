@@ -62,22 +62,8 @@ func _on_clear_save_button_pressed() -> void:
 	%ConfirmationDialog.popup_centered()
 
 func _on_confirmation_dialog_confirmed() -> void:
-	var save_path = "user://level_data.tres"
-	if FileAccess.file_exists(save_path):
-		var dir = DirAccess.open("user://")
-		if dir:
-			var err = dir.remove("level_data.tres")
-			if err == OK:
-				print("Save data cleared")
-				%SaveClearedDialog.dialog_text = "Save data cleared."
-			else:
-				print("Failed to delete save data.")
-				%SaveClearedDialog.dialog_text = "Failed to delete save data."
-		else:
-			print("Failed to open user directory,")
-			%SaveClearedDialog.dialog_text = "Could not access save directory."
-	else:
-		print("No save data found.")
-		%SaveClearedDialog.dialog_text = "No save data found."
-	
+	GameManager.level_data.level_times = {}
+	GameManager.level_data.high_score = 0
+	GameManager.level_data.arcade_time = null
+	GameManager.save_data()
 	%SaveClearedDialog.popup_centered()
