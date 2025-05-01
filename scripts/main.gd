@@ -11,8 +11,6 @@ func _ready():
 	if not GameManager.level_data.arcade_time == null:
 		%Time.text = GameManager.format_seconds(GameManager.level_data.arcade_time)
 
-		
-
 func _on_arcade_button_pressed() -> void:
 	GameManager.load_first_level()
 	GameManager.gameMode = GameManager.GameModes.ARCADE
@@ -60,11 +58,8 @@ func _set_best_time_visibility(val):
 	else:
 		$ArcadeButton/BestTime.visible = false
 			
-
-
 func _on_clear_save_button_pressed() -> void:
 	%ConfirmationDialog.popup_centered()
-
 
 func _on_confirmation_dialog_confirmed() -> void:
 	var save_path = "user://level_data.tres"
@@ -86,4 +81,3 @@ func _on_confirmation_dialog_confirmed() -> void:
 		%SaveClearedDialog.dialog_text = "No save data found."
 	
 	%SaveClearedDialog.popup_centered()
-		
