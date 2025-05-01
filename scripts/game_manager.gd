@@ -171,7 +171,7 @@ func _input(event):
 		get_tree().change_scene_to_file(level_path)
 
 func _calculate_score(text="Level Complete! +1000 Score!"):
-	$SmokeWeedEveryday.play()
+	#$SmokeWeedEveryday.play() TODO: Replace this with different sound effect.
 	await _display_info_duration(text, 1)
 	score += 1000 # for level clear
 	await _score_count_down()
