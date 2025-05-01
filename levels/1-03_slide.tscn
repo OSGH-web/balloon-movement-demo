@@ -51,6 +51,7 @@ texture = ExtResource("4_fbkn2")
 [node name="EndZone" parent="." index="8" instance=ExtResource("5_kbwtv")]
 position = Vector2(4672, 520)
 size = Vector2(200, 200)
+color = Color(1, 0, 0, 0.72549)
 
 [node name="Spikes" type="Node" parent="." index="9"]
 
