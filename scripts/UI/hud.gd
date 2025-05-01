@@ -6,8 +6,8 @@ func _ready():
 	if GameManager.gameMode == GameManager.GameModes.TIME_TRIAL:
 		%Lives.visible = false
 		%Score.visible = false
-		%Fuel.position.y = 0
-		%Timer.position.y = 0
+		%Fuel.position.y = 25
+		%Timer.position.y = 25
 			
 
 func _process(delta: float) -> void:
