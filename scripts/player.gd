@@ -106,7 +106,6 @@ func _physics_process(delta):
 		velocity.x = 0
 	else:
 		velocity.x += _get_friction() * delta * velocity.x
-
 	move_and_slide()
 	
 	# This section nullifies unwanted velocity when flying into a wall/corner

@@ -12,7 +12,6 @@ func _ready():
 	elif GameManager.gameMode == GameManager.GameModes.ARCADE:
 		display_level_name()
 			
-
 func _process(delta: float) -> void:
 	if not player:
 		return
@@ -22,7 +21,6 @@ func _process(delta: float) -> void:
 		%Lives.text = "Lives: %d" % GameManager.lives
 		%Score.text = "Score: %d" % GameManager.score
 	%Timer.text = GameManager.format_seconds(GameManager.time)
-	
 	
 func display_level_name():
 	if GameManager.gameMode == GameManager.GameModes.ARCADE:
@@ -43,26 +41,20 @@ func _fade_out_and_hide_label(duration: float = 5.0) -> void:
 	var time := 0.0
 	var start_alpha := 1.0
 	var end_alpha := 0.0
-
 	while time < duration:
 		var t := time / duration
 		var alpha: float = lerp(start_alpha, end_alpha, t)
-
 		var color: Color = label.modulate
 		color.a = alpha
 		label.modulate = color
-
 		await get_tree().process_frame
 		time += get_process_delta_time()
-
 	# Ensure it's fully invisible
 	var final_color: Color = label.modulate
 	final_color.a = 0.0
 	label.modulate = final_color
-
 	# Optional delay or immediate reset
 	await get_tree().process_frame  # Ensures visuals update before hiding
-
 	# Restore opacity for next use, but hide the node
 	final_color.a = 1.0
 	label.modulate = final_color
