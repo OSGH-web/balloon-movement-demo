@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://b7jfvkf4edbjp"]
 
 [ext_resource type="Script" uid="uid://d3nwiwsfywf3b" path="res://scripts/player.gd" id="1_onrkg"]
-[ext_resource type="SpriteFrames" uid="uid://bnae5qkxhlm73" path="res://assets/sprites/player.res" id="2_g2els"]
 [ext_resource type="Material" uid="uid://e1pxfkjp8bel" path="res://assets/shaders/in-game-beam-material.tres" id="2_qhqgy"]
+[ext_resource type="SpriteFrames" uid="uid://chl2v4eckhm0o" path="res://assets/sprites/player.res" id="3_qlg0r"]
 [ext_resource type="AudioStream" uid="uid://b6eft0k7gmivn" path="res://assets/sound_fx/bong_hit.wav" id="4_dqkch"]
 [ext_resource type="Texture2D" uid="uid://bedt2axylgmhu" path="res://assets/sprites/player beam particle.png" id="5_qlg0r"]
 
@@ -26,8 +26,7 @@ script = ExtResource("1_onrkg")
 material = ExtResource("2_qhqgy")
 position = Vector2(-96, -96)
 scale = Vector2(2, 2)
-sprite_frames = ExtResource("2_g2els")
-frame = 3
+sprite_frames = ExtResource("3_qlg0r")
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

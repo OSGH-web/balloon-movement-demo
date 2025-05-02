@@ -97,18 +97,15 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 		# only airbrake if the player is not otherwise moving
 		if airbrake_pressed && velocity_update == Vector2.ZERO:
-			# always apply the airbrake horizontally
+			# apply the airbrake horizontally
 			velocity.x += FRICTION * delta * velocity.x
-
-			# apply the airbrake vertically if the player is moving upwards
-			if velocity.y < 0:
-				velocity.y += FRICTION * delta * velocity.y
+			# apply the airbrake vertically
+			velocity.y += FRICTION * delta * velocity.y
 
 	elif abs(velocity.x) < velocity_cutoff:
 		velocity.x = 0
 	else:
 		velocity.x += _get_friction() * delta * velocity.x
-
 	move_and_slide()
 	
 	# This section nullifies unwanted velocity when flying into a wall/corner
@@ -143,15 +140,15 @@ func _update_animation(dir: Vector2):
 		if airbrake_pressed:
 			# Moving down
 			if velocity.y >= 0:
-				# Left
+				# Down + Left
 				if velocity.x < 0:
-					$AnimatedSprite2D.frame = 9
-				# Right
+					$AnimatedSprite2D.frame = 16
+				# Down + Right
 				elif velocity.x > 0:
-					$AnimatedSprite2D.frame = 10
-				# No Brake
+					$AnimatedSprite2D.frame = 15
+				# Down only
 				else:
-					$AnimatedSprite2D.frame = 0
+					$AnimatedSprite2D.frame = 14
 
 			# Moving up
 			else:

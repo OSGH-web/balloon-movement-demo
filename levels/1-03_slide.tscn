@@ -1,12 +1,18 @@
-[gd_scene load_steps=8 format=4 uid="uid://mgep8xhvopqr"]
+[gd_scene load_steps=10 format=4 uid="uid://mgep8xhvopqr"]
 
 [ext_resource type="PackedScene" uid="uid://cxo2r1hb7u2ss" path="res://scenes/level_base.tscn" id="1_fcjjs"]
 [ext_resource type="Material" uid="uid://2sn3fyoir1rj" path="res://assets/shaders/slide.tres" id="2_igx6e"]
 [ext_resource type="LabelSettings" uid="uid://cbw7oatl30dvl" path="res://assets/styles/label_33px.tres" id="3_ucle0"]
-[ext_resource type="Texture2D" uid="uid://jl2i5nto8q3u" path="res://assets/inputs/keyboard_a.png" id="4_fbkn2"]
 [ext_resource type="PackedScene" uid="uid://bvn2y2nnqcrts" path="res://scenes/end_zone.tscn" id="5_kbwtv"]
 [ext_resource type="PackedScene" uid="uid://c6i6ci2ym6wn6" path="res://scenes/spike.tscn" id="6_fbkn2"]
+[ext_resource type="Texture2D" uid="uid://dhsevo4uv5fnl" path="res://assets/inputs/xbox_button_a_outline.png" id="7_d0thh"]
 [ext_resource type="PackedScene" uid="uid://cxdl0fqxwxba1" path="res://scenes/gas_can.tscn" id="7_kbwtv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kbwtv"]
+font_size = 44
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_j4k1b"]
+load_path = "res://.godot/imported/keyboard_space_outline.png-51367459e423fab33a6596821d9c93db.ctex"
 
 [node name="LevelBase" instance=ExtResource("1_fcjjs")]
 level_name = "Slide"
@@ -37,20 +43,27 @@ text = "Ice is slippery. Gotta Go Fast!"
 label_settings = ExtResource("3_ucle0")
 
 [node name="Label2" type="Label" parent="." index="6"]
-offset_left = 1158.0
+offset_left = 1144.0
 offset_top = 60.0
-offset_right = 1704.0
+offset_right = 1690.0
 offset_bottom = 102.0
-text = "irbrake to halt momentum!"
+text = "Airbrake to halt momentum!"
 label_settings = ExtResource("3_ucle0")
 
-[node name="KeyboardA" type="Sprite2D" parent="." index="7"]
-position = Vector2(1136, 80)
-texture = ExtResource("4_fbkn2")
+[node name="Label3" type="Label" parent="." index="7"]
+offset_left = 1400.0
+offset_top = 100.0
+offset_right = 1432.0
+offset_bottom = 176.0
+scale = Vector2(1.5, 1.5)
+theme_override_colors/font_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
+text = "/"
+label_settings = SubResource("LabelSettings_kbwtv")
 
 [node name="EndZone" parent="." index="8" instance=ExtResource("5_kbwtv")]
 position = Vector2(4672, 520)
 size = Vector2(200, 200)
+color = Color(1, 0, 0, 0.72549)
 
 [node name="Spikes" type="Node" parent="." index="9"]
 
@@ -359,3 +372,13 @@ position = Vector2(1404, 344)
 
 [node name="GasCan3" parent="." index="12" instance=ExtResource("7_kbwtv")]
 position = Vector2(1464, 344)
+
+[node name="KeyboardSpaceOutline" type="Sprite2D" parent="." index="13"]
+position = Vector2(1350, 145)
+scale = Vector2(2, 2)
+texture = SubResource("CompressedTexture2D_j4k1b")
+
+[node name="XboxButtonAOutline" type="Sprite2D" parent="." index="14"]
+position = Vector2(1456, 146)
+scale = Vector2(1.14062, 1.14062)
+texture = ExtResource("7_d0thh")

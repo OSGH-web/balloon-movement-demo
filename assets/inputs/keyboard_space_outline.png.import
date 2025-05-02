@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cu4qe2a6cjnjd"
-path="res://.godot/imported/player.png-e1eaffe0873063c60a0d0b322e4d87d9.ctex"
+uid="uid://dxameu1ftk2eq"
+path="res://.godot/imported/keyboard_space_outline.png-51367459e423fab33a6596821d9c93db.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/player.png"
-dest_files=["res://.godot/imported/player.png-e1eaffe0873063c60a0d0b322e4d87d9.ctex"]
+source_file="res://assets/inputs/keyboard_space_outline.png"
+dest_files=["res://.godot/imported/keyboard_space_outline.png-51367459e423fab33a6596821d9c93db.ctex"]
 
 [params]
 
