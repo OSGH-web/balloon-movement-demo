@@ -156,8 +156,9 @@ func _input(event):
 
 func _calculate_score(text="Level Complete! +1000 Score!"):
 	#$SmokeWeedEveryday.play() TODO: Replace this with different sound effect.
-	await _display_info_duration(text, 1)
+	await _display_info_duration(text, 0.75)
 	score += 1000 # for level clear
+	await get_tree().create_timer(0.4).timeout
 	await _score_count_down()
 
 func _lives_count_up():
@@ -168,16 +169,24 @@ func _lives_count_up():
 	
 func _score_count_down():
 	var player = get_player()
-	while player.FUEL > 0:
-		if player.FUEL <= 5:
+	var fuel = int(player.FUEL)
+	while fuel > 0:
+		if fuel == 1:
 			player.FUEL -= 1
+			fuel -= 1
 			score += 1
-		elif player.FUEL >= 2000:
-			player.FUEL -= 100
-			score += 100
+		elif fuel <= 10:
+			player.FUEL -= 2
+			fuel -= 2
+			score += 2
+		elif fuel >= 1000:
+			player.FUEL -= 200
+			fuel -= 200
+			score += 200
 		else:
-			player.FUEL -= 5
-			score += 5
+			player.FUEL -= 10
+			fuel -= 10
+			score += 10
 		await get_tree().process_frame
 		
 func on_player_died():
