@@ -140,15 +140,15 @@ func _update_animation(dir: Vector2):
 		if airbrake_pressed:
 			# Moving down
 			if velocity.y >= 0:
-				# Left
+				# Down + Left
 				if velocity.x < 0:
-					$AnimatedSprite2D.frame = 9
-				# Right
+					$AnimatedSprite2D.frame = 16
+				# Down + Right
 				elif velocity.x > 0:
-					$AnimatedSprite2D.frame = 10
-				# No Brake
+					$AnimatedSprite2D.frame = 15
+				# Down only
 				else:
-					$AnimatedSprite2D.frame = 0
+					$AnimatedSprite2D.frame = 14
 
 			# Moving up
 			else:
