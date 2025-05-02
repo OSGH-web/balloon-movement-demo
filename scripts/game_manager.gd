@@ -109,9 +109,12 @@ func load_next_level():
 		level_path = "res://scenes/main.tscn"
 	game_started = false
 	get_tree().change_scene_to_file(level_path)
-
+	
+	
 	# Must go after changing scene to avoid issues.
 	gameStateDisabled = false
+	
+
 
 func _display_info_duration(text: String, duration: float):
 	%GameInfo.text = text
