@@ -12,7 +12,7 @@ func _ready():
 	elif GameManager.gameMode == GameManager.GameModes.ARCADE:
 		display_level_name()
 			
-func _process(delta: float) -> void:
+func _process(_delta) -> void:
 	if not player:
 		return
 	var fuel_amount = max(0, int(player.FUEL))

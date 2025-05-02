@@ -238,9 +238,9 @@ func get_player():
 	var level = get_tree().get_current_scene()
 	return level.get_node("Player")
 
-func format_seconds(time : float) -> String:
-	var minutes := time / 60
-	var seconds := fmod(time, 60)
-	var milliseconds := fmod(time, 1) * 100
+func format_seconds(temp_time : float) -> String:
+	var minutes := temp_time / 60
+	var seconds := fmod(temp_time, 60)
+	var milliseconds := fmod(temp_time, 1) * 100
 
 	return "%02d:%02d:%02d" % [minutes, seconds, milliseconds]
