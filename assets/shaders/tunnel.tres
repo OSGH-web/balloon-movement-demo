@@ -4,8 +4,8 @@
 
 [resource]
 shader = ExtResource("1_br2un")
-shader_parameter/light_color = Color(0.270588, 0.2, 1, 1)
-shader_parameter/dark_color = Color(0, 0, 0, 1)
+shader_parameter/light_color = Color(0.0705882, 0.305882, 0.537255, 1)
+shader_parameter/dark_color = Color(0.0941176, 0.0784314, 0.145098, 1)
 shader_parameter/x_scale = 6.0
 shader_parameter/y_scale = 4.0
 shader_parameter/x_scroll_speed = 0.03

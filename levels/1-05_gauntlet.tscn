@@ -62,6 +62,10 @@ position = Vector2(1800, 992)
 position = Vector2(360, 744)
 size = Vector2(192, 625)
 
+[node name="ViewportBackground" parent="CanvasLayer" index="0"]
+material = ExtResource("2_wj182")
+texture = ExtResource("3_6pidh")
+
 [node name="Spikes" type="Node2D" parent="." index="9"]
 
 [node name="Spike3" parent="Spikes" index="0" instance=ExtResource("5_kku6m")]

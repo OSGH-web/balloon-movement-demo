@@ -73,3 +73,4 @@ position = Vector2(802, 380)
 
 [node name="ViewportBackground" parent="CanvasLayer" index="0"]
 material = ExtResource("2_olar3")
+texture = ExtResource("3_nhc5o")
