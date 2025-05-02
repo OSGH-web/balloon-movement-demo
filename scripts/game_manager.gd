@@ -150,32 +150,12 @@ func _input(event):
 		or Input.is_action_pressed("ui_up") \
 		or Input.is_action_pressed("ui_down"):
 			game_started = true
-			
-	if event.is_action_pressed("ui_n"):
-		if curr_level == len(level_files):
-			curr_level = 0
-		var level_path = "res://levels/%s" % level_files[curr_level]
-		curr_level += 1
-		get_tree().change_scene_to_file(level_path)
-
-	# DEV: Go to previous level
-	if event.is_action_pressed("ui_p"):
-		curr_level -= 1
-		var level_path
-		if curr_level >= 1:
-			level_path = "res://levels/%s" % level_files[curr_level - 1]
-		else:
-			level_path = "res://levels/%s" % level_files[len(level_files) - 1]
-			curr_level = len(level_files)
-
-		get_tree().change_scene_to_file(level_path)
 
 func _calculate_score(text="Level Complete! +1000 Score!"):
 	$SmokeWeedEveryday.play()
 	await _display_info_duration(text, 1)
 	score += 1000 # for level clear
 	await _score_count_down()
-
 
 func _lives_count_up():
 	while score > 10000 * extraLivesDivisor:
