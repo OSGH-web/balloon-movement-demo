@@ -27,39 +27,37 @@ offset_bottom = 2712.0
 [node name="ViewportBackground" parent="CanvasLayer" index="0"]
 material = ExtResource("2_cquw1")
 
-[node name="Bats" type="Node2D" parent="." index="5"]
-
-[node name="Bat" parent="Bats" index="0" instance=ExtResource("3_l0f81")]
+[node name="Bat" parent="." index="5" instance=ExtResource("3_l0f81")]
 position = Vector2(453, 725)
 
-[node name="Bat7" parent="Bats" index="1" instance=ExtResource("3_l0f81")]
+[node name="Bat7" parent="." index="6" instance=ExtResource("3_l0f81")]
 position = Vector2(645, 725)
 
-[node name="Bat2" parent="Bats" index="2" instance=ExtResource("3_l0f81")]
+[node name="Bat2" parent="." index="7" instance=ExtResource("3_l0f81")]
 position = Vector2(845, 725)
 
-[node name="Bat8" parent="Bats" index="3" instance=ExtResource("3_l0f81")]
+[node name="Bat8" parent="." index="8" instance=ExtResource("3_l0f81")]
 position = Vector2(453, 1061)
 
-[node name="Bat9" parent="Bats" index="4" instance=ExtResource("3_l0f81")]
+[node name="Bat9" parent="." index="9" instance=ExtResource("3_l0f81")]
 position = Vector2(645, 1061)
 
-[node name="Bat10" parent="Bats" index="5" instance=ExtResource("3_l0f81")]
+[node name="Bat10" parent="." index="10" instance=ExtResource("3_l0f81")]
 position = Vector2(845, 1061)
 
-[node name="Bat3" parent="Bats" index="6" instance=ExtResource("3_l0f81")]
+[node name="Bat3" parent="." index="11" instance=ExtResource("3_l0f81")]
 position = Vector2(525, 1229)
 
-[node name="Bat4" parent="Bats" index="7" instance=ExtResource("3_l0f81")]
+[node name="Bat4" parent="." index="12" instance=ExtResource("3_l0f81")]
 position = Vector2(773, 1229)
 
-[node name="Bat5" parent="Bats" index="8" instance=ExtResource("3_l0f81")]
+[node name="Bat5" parent="." index="13" instance=ExtResource("3_l0f81")]
 position = Vector2(525, 1733)
 
-[node name="Bat6" parent="Bats" index="9" instance=ExtResource("3_l0f81")]
+[node name="Bat6" parent="." index="14" instance=ExtResource("3_l0f81")]
 position = Vector2(773, 1733)
 
-[node name="Spikes" type="Node2D" parent="." index="6"]
+[node name="Spikes" type="Node2D" parent="." index="15"]
 
 [node name="Spike" parent="Spikes" index="0" instance=ExtResource("4_qj5o4")]
 position = Vector2(601, 2280)
@@ -208,7 +206,7 @@ rotation = -1.5708
 position = Vector2(697, 2088)
 rotation = -1.5708
 
-[node name="GasCans" type="Node2D" parent="." index="7"]
+[node name="GasCans" type="Node2D" parent="." index="16"]
 
 [node name="GasCan" parent="GasCans" index="0" instance=ExtResource("5_okkjo")]
 position = Vector2(877, 1332)
@@ -240,6 +238,6 @@ position = Vector2(853, 1116)
 [node name="GasCan10" parent="GasCans" index="9" instance=ExtResource("5_okkjo")]
 position = Vector2(853, 1092)
 
-[node name="EndZone" parent="." index="8" instance=ExtResource("6_n07cb")]
+[node name="EndZone" parent="." index="17" instance=ExtResource("6_n07cb")]
 position = Vector2(649, 1800)
 size = Vector2(96, 96)
