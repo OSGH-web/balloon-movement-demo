@@ -527,9 +527,8 @@ offset_bottom = 384.0
 
 [node name="ViewportBackground" parent="CanvasLayer" index="0"]
 material = ExtResource("2_abmt7")
-offset_top = 32.0
 offset_right = 3960.0
-offset_bottom = 1944.0
+offset_bottom = 1912.0
 texture = ExtResource("2_8gudm")
 
 [node name="Bat" parent="." index="5" instance=ExtResource("5_a60px")]
