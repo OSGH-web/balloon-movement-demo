@@ -47,14 +47,18 @@ func _fade_out_and_hide_label(duration: float = 5.0) -> void:
 		var color: Color = label.modulate
 		color.a = alpha
 		label.modulate = color
-		await get_tree().process_frame
-		time += get_process_delta_time()
+		if is_inside_tree():
+			await get_tree().process_frame
+			time += get_process_delta_time()
+		else:
+			break
 	# Ensure it's fully invisible
 	var final_color: Color = label.modulate
 	final_color.a = 0.0
 	label.modulate = final_color
 	# Optional delay or immediate reset
-	await get_tree().process_frame  # Ensures visuals update before hiding
+	if is_inside_tree():
+		await get_tree().process_frame  # Ensures visuals update before hiding
 	# Restore opacity for next use, but hide the node
 	final_color.a = 1.0
 	label.modulate = final_color
