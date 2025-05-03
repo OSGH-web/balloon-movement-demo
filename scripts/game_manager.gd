@@ -140,6 +140,7 @@ func save_time_and_return():
 			level_data.level_times[level_path] = round(time * 1000) / 1000.0
 			save_data()
 	get_tree().change_scene_to_file("res://scenes/UI/level_select.tscn")
+	background_music.pitch_scale = 1.03
 	gameStateDisabled = false
 
 func _input(event):
