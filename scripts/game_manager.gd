@@ -170,23 +170,18 @@ func _lives_count_up():
 	
 func _score_count_down():
 	var player = get_player()
-	var fuel = int(player.FUEL)
-	while fuel > 0:
-		if fuel == 1:
+	while int(player.FUEL) > 0:
+		if int(player.FUEL) == 1:
 			player.FUEL -= 1
-			fuel -= 1
 			score += 1
-		elif fuel <= 10:
+		elif int(player.FUEL) <= 10:
 			player.FUEL -= 2
-			fuel -= 2
 			score += 2
-		elif fuel >= 1000:
+		elif int(player.FUEL) >= 1000:
 			player.FUEL -= 200
-			fuel -= 200
 			score += 200
 		else:
 			player.FUEL -= 10
-			fuel -= 10
 			score += 10
 		await get_tree().process_frame
 		
