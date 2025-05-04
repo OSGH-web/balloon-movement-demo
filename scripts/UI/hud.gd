@@ -12,7 +12,7 @@ func _ready():
 	elif GameManager.gameMode == GameManager.GameModes.ARCADE:
 		display_level_name()
 			
-func _process(_delta) -> void:
+func _process(delta: float) -> void:
 	if not player:
 		return
 	var fuel_amount = max(0, int(player.FUEL))
@@ -63,3 +63,27 @@ func _fade_out_and_hide_label(duration: float = 5.0) -> void:
 	final_color.a = 1.0
 	label.modulate = final_color
 	label.visible = false
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	var new_stylebox_normal = %Fuel.get_theme_stylebox("normal").duplicate()
+	new_stylebox_normal.bg_color = Color("#ead4aa54")
+	%Lives.add_theme_stylebox_override("normal", new_stylebox_normal)
+	%Fuel.add_theme_stylebox_override("normal", new_stylebox_normal)
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	var new_stylebox_normal = %Fuel.get_theme_stylebox("normal").duplicate()
+	new_stylebox_normal.bg_color = Color("#ead4aa")
+	%Lives.add_theme_stylebox_override("normal", new_stylebox_normal)
+	%Fuel.add_theme_stylebox_override("normal", new_stylebox_normal)
+
+func _on_right_side_area_body_entered(body: Node2D) -> void:
+	var new_stylebox_normal = %Fuel.get_theme_stylebox("normal").duplicate()
+	new_stylebox_normal.bg_color = Color("#ead4aa54")
+	%Score.add_theme_stylebox_override("normal", new_stylebox_normal)
+	%Timer.add_theme_stylebox_override("normal", new_stylebox_normal)
+
+func _on_right_side_area_body_exited(body: Node2D) -> void:
+	var new_stylebox_normal = %Fuel.get_theme_stylebox("normal").duplicate()
+	new_stylebox_normal.bg_color = Color("#ead4aa")
+	%Score.add_theme_stylebox_override("normal", new_stylebox_normal)
+	%Timer.add_theme_stylebox_override("normal", new_stylebox_normal)
