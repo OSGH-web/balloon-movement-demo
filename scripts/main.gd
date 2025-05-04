@@ -43,23 +43,26 @@ func _on_arcade_button_mouse_exited() -> void:
 func _set_high_score_visibility(val):
 	if not GameManager.level_data.high_score == 0:
 		if focused:
-			$ArcadeButton/HighScore.visible = true
+			%HighScore.visible = true
 		else:
-			$ArcadeButton/HighScore.visible = val
+			%HighScore.visible = val
 	else:
-		$ArcadeButton/HighScore.visible = false
+		%HighScore.visible = false
 
 func _set_best_time_visibility(val):
 	if not GameManager.level_data.arcade_time == null:
 		if focused:
-			$ArcadeButton/BestTime.visible = true
+			%BestTime.visible = true
 		else:
-			$ArcadeButton/BestTime.visible = val
+			%BestTime.visible = val
 	else:
-		$ArcadeButton/BestTime.visible = false
+		%BestTime.visible = false
 			
 func _on_clear_save_button_pressed() -> void:
 	%ConfirmationDialog.popup_centered()
+	%ConfirmationDialog.position += Vector2i(0, 24)
+	%ConfirmationDialog.get_child(1, true).horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	%ConfirmationDialog.get_child(1, true).vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 
 func _on_confirmation_dialog_confirmed() -> void:
 	GameManager.level_data.level_times = {}
@@ -67,3 +70,6 @@ func _on_confirmation_dialog_confirmed() -> void:
 	GameManager.level_data.arcade_time = null
 	GameManager.save_data()
 	%SaveClearedDialog.popup_centered()
+	%SaveClearedDialog.position += Vector2i(0, 24)
+	%SaveClearedDialog.get_child(1, true).horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	%SaveClearedDialog.get_child(1, true).vertical_alignment = VERTICAL_ALIGNMENT_CENTER
