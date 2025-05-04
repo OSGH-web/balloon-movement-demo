@@ -140,6 +140,7 @@ func save_time_and_return():
 			level_data.level_times[level_path] = round(time * 1000) / 1000.0
 			save_data()
 	get_tree().change_scene_to_file("res://scenes/UI/level_select.tscn")
+	background_music.pitch_scale = 1.03
 	gameStateDisabled = false
 
 func _input(event):
@@ -156,8 +157,9 @@ func _input(event):
 
 func _calculate_score(text="Level Complete! +1000 Score!"):
 	#$SmokeWeedEveryday.play() TODO: Replace this with different sound effect.
-	await _display_info_duration(text, 1)
+	await _display_info_duration(text, 0.75)
 	score += 1000 # for level clear
+	await get_tree().create_timer(0.4).timeout
 	await _score_count_down()
 
 func _lives_count_up():
@@ -168,16 +170,19 @@ func _lives_count_up():
 	
 func _score_count_down():
 	var player = get_player()
-	while player.FUEL > 0:
-		if player.FUEL <= 5:
+	while int(player.FUEL) > 0:
+		if int(player.FUEL) == 1:
 			player.FUEL -= 1
 			score += 1
-		elif player.FUEL >= 2000:
-			player.FUEL -= 100
-			score += 100
+		elif int(player.FUEL) <= 10:
+			player.FUEL -= 2
+			score += 2
+		elif int(player.FUEL) >= 1000:
+			player.FUEL -= 200
+			score += 200
 		else:
-			player.FUEL -= 5
-			score += 5
+			player.FUEL -= 10
+			score += 10
 		await get_tree().process_frame
 		
 func on_player_died():
