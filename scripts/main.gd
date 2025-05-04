@@ -57,10 +57,13 @@ func _set_best_time_visibility(val):
 			%BestTime.visible = val
 	else:
 		%BestTime.visible = false
-			
+
 func _on_clear_save_button_pressed() -> void:
 	%ConfirmationDialog.popup_centered()
+	# Align dialog to UI grid
 	%ConfirmationDialog.position += Vector2i(0, 24)
+
+	# Center text in panel.
 	%ConfirmationDialog.get_child(1, true).horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	%ConfirmationDialog.get_child(1, true).vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 
@@ -69,7 +72,12 @@ func _on_confirmation_dialog_confirmed() -> void:
 	GameManager.level_data.high_score = 0
 	GameManager.level_data.arcade_time = null
 	GameManager.save_data()
+
 	%SaveClearedDialog.popup_centered()
+
+	# Align dialog to UI grid
 	%SaveClearedDialog.position += Vector2i(0, 24)
+
+	# Center text in panel.
 	%SaveClearedDialog.get_child(1, true).horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	%SaveClearedDialog.get_child(1, true).vertical_alignment = VERTICAL_ALIGNMENT_CENTER
