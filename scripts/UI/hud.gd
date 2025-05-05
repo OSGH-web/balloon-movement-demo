@@ -9,6 +9,7 @@ func _ready():
 		%Score.visible = false
 		%Fuel.position.y = 25
 		%Timer.position.y = 25
+		%LevelName.visible = false
 	elif GameManager.gameMode == GameManager.GameModes.ARCADE:
 		display_level_name()
 			

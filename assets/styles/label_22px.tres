@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://e83jtcakcvg"]
+
+[ext_resource type="FontFile" uid="uid://b5r4on7cls54q" path="res://assets/fonts/DepartureMono-Regular.otf" id="1_utwrd"]
+
+[resource]
+font = ExtResource("1_utwrd")
+font_size = 22
+font_color = Color(0, 0, 0, 1)

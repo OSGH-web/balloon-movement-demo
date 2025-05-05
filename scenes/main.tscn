@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dg3shn8d54wck"]
+[gd_scene load_steps=16 format=3 uid="uid://dg3shn8d54wck"]
 
 [ext_resource type="Script" uid="uid://c8rtmo3o8q4vw" path="res://scripts/main.gd" id="1_o5qli"]
 [ext_resource type="StyleBox" uid="uid://cn1chxlsybisf" path="res://assets/styles/sbf_focus.tres" id="2_tefeu"]
@@ -11,8 +11,9 @@
 [ext_resource type="Material" uid="uid://db8q5jqucir4j" path="res://assets/shaders/titlescreen-beam-material.tres" id="5_tipki"]
 [ext_resource type="Texture2D" uid="uid://j65nk3t7y8df" path="res://assets/sprites/weed_tile_bw.png" id="6_tefeu"]
 [ext_resource type="Texture2D" uid="uid://bw5x01l18tgjm" path="res://assets/sprites/title_screen_beam.png" id="6_ya4ey"]
+[ext_resource type="LabelSettings" uid="uid://e83jtcakcvg" path="res://assets/styles/label_22px.tres" id="7_a8y0u"]
+[ext_resource type="Theme" uid="uid://cfwn213bg0kih" path="res://assets/themes/button_33px.tres" id="8_a8y0u"]
 [ext_resource type="Texture2D" uid="uid://bedt2axylgmhu" path="res://assets/sprites/player beam particle.png" id="12_eb6dy"]
-[ext_resource type="LabelSettings" uid="uid://v4nuv8jtylyb" path="res://assets/styles/label_11px.tres" id="13_trceg"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_trceg"]
 particles_animation = true
@@ -50,67 +51,27 @@ text = "SMOKIN MY LASER"
 label_settings = ExtResource("4_eb6dy")
 horizontal_alignment = 1
 
-[node name="PlayerTexture" type="TextureRect" parent="."]
-z_index = -1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -6.0
-offset_right = 125.0
-offset_bottom = 60.0
-grow_horizontal = 0
-scale = Vector2(18, 18)
-texture = ExtResource("4_85g3d")
-stretch_mode = 2
-
-[node name="BeamTexture" type="TextureRect" parent="."]
-z_index = -1
-material = ExtResource("5_tipki")
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -6.0
-offset_right = 125.0
-offset_bottom = 60.0
-grow_horizontal = 0
-scale = Vector2(18, 18)
-texture = ExtResource("6_ya4ey")
-stretch_mode = 2
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="BeamTexture"]
-texture_filter = 1
-material = SubResource("CanvasItemMaterial_trceg")
-position = Vector2(51.1667, 43.9444)
-rotation = 1.44862
-scale = Vector2(0.555556, 0.555556)
-amount = 24
-texture = ExtResource("12_eb6dy")
-lifetime = 0.38
-speed_scale = 0.5
-emission_shape = 3
-emission_rect_extents = Vector2(24, 72)
-direction = Vector2(0, 1)
-spread = 30.0
-gravity = Vector2(0, 360)
-initial_velocity_min = 48.0
-initial_velocity_max = 96.0
-linear_accel_min = -300.0
-linear_accel_max = -300.0
-tangential_accel_min = -288.0
-tangential_accel_max = 289.0
-scale_amount_min = 9.0
-scale_amount_max = 9.0
-anim_speed_min = 1.0
-anim_speed_max = 1.0
-
-[node name="ArcadeButton" type="Button" parent="."]
-unique_name_in_owner = true
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(819, 0)
 offset_left = 276.0
 offset_top = 288.0
-offset_right = 1095.0
-offset_bottom = 348.0
-focus_neighbor_top = NodePath("../ClearSaveButton")
-focus_neighbor_bottom = NodePath("../TrialButton")
+offset_right = 1644.0
+offset_bottom = 564.0
+theme_override_constants/separation = 12
+
+[node name="ArcadeRow" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(819, 0)
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="ArcadeButton" type="Button" parent="VBoxContainer/ArcadeRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(819, 60)
+layout_mode = 2
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../../QuitToDesktopButton")
+focus_neighbor_bottom = NodePath("../../TrialButton")
 theme = ExtResource("4_o6xl0")
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -121,95 +82,91 @@ theme_override_styles/hover = ExtResource("4_choun")
 theme_override_styles/normal = ExtResource("4_choun")
 text = "Arcade Mode"
 
-[node name="HighScore" type="HBoxContainer" parent="ArcadeButton"]
+[node name="HighScore" type="HBoxContainer" parent="VBoxContainer/ArcadeRow"]
+unique_name_in_owner = true
+show_behind_parent = true
 clip_contents = true
-layout_mode = 0
-offset_left = 828.0
-offset_right = 978.0
-offset_bottom = 20.0
-scale = Vector2(2.5, 2.5)
+custom_minimum_size = Vector2(262, 0)
+layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="placeholder1" type="Label" parent="ArcadeButton/HighScore"]
-custom_minimum_size = Vector2(5, 20)
+[node name="placeholder1" type="Label" parent="VBoxContainer/ArcadeRow/HighScore"]
+custom_minimum_size = Vector2(5, 60)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("4_choun")
-label_settings = ExtResource("13_trceg")
+label_settings = ExtResource("7_a8y0u")
 horizontal_alignment = 1
 
-[node name="HighScoreLabel" type="Label" parent="ArcadeButton/HighScore"]
-custom_minimum_size = Vector2(77, 20)
+[node name="HighScoreLabel" type="Label" parent="VBoxContainer/ArcadeRow/HighScore"]
+custom_minimum_size = Vector2(77, 60)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("4_choun")
 text = "High Score:"
-label_settings = ExtResource("13_trceg")
+label_settings = ExtResource("7_a8y0u")
 vertical_alignment = 1
 
-[node name="placeholder2" type="Label" parent="ArcadeButton/HighScore"]
-custom_minimum_size = Vector2(5, 20)
+[node name="placeholder2" type="Label" parent="VBoxContainer/ArcadeRow/HighScore"]
+custom_minimum_size = Vector2(5, 60)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("4_choun")
-label_settings = ExtResource("13_trceg")
+label_settings = ExtResource("7_a8y0u")
 horizontal_alignment = 1
 
-[node name="Score" type="Label" parent="ArcadeButton/HighScore"]
+[node name="Score" type="Label" parent="VBoxContainer/ArcadeRow/HighScore"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 20)
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = ExtResource("4_choun")
 text = "10942"
-label_settings = ExtResource("13_trceg")
+label_settings = ExtResource("7_a8y0u")
 vertical_alignment = 1
 
-[node name="BestTime" type="HBoxContainer" parent="ArcadeButton"]
+[node name="BestTime" type="HBoxContainer" parent="VBoxContainer/ArcadeRow"]
+unique_name_in_owner = true
+show_behind_parent = true
 clip_contents = true
-layout_mode = 0
-offset_left = 1228.0
-offset_right = 1374.0
-offset_bottom = 20.0
-scale = Vector2(2.5, 2.5)
+custom_minimum_size = Vector2(263, 0)
+layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="placeholder1" type="Label" parent="ArcadeButton/BestTime"]
-custom_minimum_size = Vector2(5, 20)
+[node name="placeholder1" type="Label" parent="VBoxContainer/ArcadeRow/BestTime"]
+custom_minimum_size = Vector2(5, 60)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("4_choun")
-label_settings = ExtResource("13_trceg")
+label_settings = ExtResource("7_a8y0u")
 horizontal_alignment = 1
 
-[node name="HighScoreLabel" type="Label" parent="ArcadeButton/BestTime"]
-custom_minimum_size = Vector2(77, 20)
+[node name="HighScoreLabel" type="Label" parent="VBoxContainer/ArcadeRow/BestTime"]
+custom_minimum_size = Vector2(77, 60)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("4_choun")
 text = "Best Time:"
-label_settings = ExtResource("13_trceg")
+label_settings = ExtResource("7_a8y0u")
 vertical_alignment = 1
 
-[node name="placeholder2" type="Label" parent="ArcadeButton/BestTime"]
-custom_minimum_size = Vector2(5, 20)
+[node name="placeholder2" type="Label" parent="VBoxContainer/ArcadeRow/BestTime"]
+custom_minimum_size = Vector2(5, 60)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("4_choun")
-label_settings = ExtResource("13_trceg")
+label_settings = ExtResource("7_a8y0u")
 horizontal_alignment = 1
 
-[node name="Time" type="Label" parent="ArcadeButton/BestTime"]
+[node name="Time" type="Label" parent="VBoxContainer/ArcadeRow/BestTime"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 20)
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = ExtResource("4_choun")
 text = "00:00:00"
-label_settings = ExtResource("13_trceg")
+label_settings = ExtResource("7_a8y0u")
 vertical_alignment = 1
 
-[node name="TrialButton" type="Button" parent="."]
-offset_left = 276.0
-offset_top = 360.0
-offset_right = 1095.0
-offset_bottom = 420.0
-focus_neighbor_top = NodePath("../ArcadeButton")
-focus_neighbor_bottom = NodePath("../QuitToDesktopButton")
+[node name="TrialButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(819, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_neighbor_top = NodePath("../ArcadeRow/ArcadeButton")
 theme = ExtResource("4_o6xl0")
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -219,29 +176,10 @@ theme_override_styles/hover = ExtResource("4_choun")
 theme_override_styles/normal = ExtResource("4_choun")
 text = "Time Trials"
 
-[node name="QuitToDesktopButton" type="Button" parent="."]
-offset_left = 276.0
-offset_top = 431.0
-offset_right = 1095.0
-offset_bottom = 491.0
-focus_neighbor_top = NodePath("../TrialButton")
-focus_neighbor_bottom = NodePath("../ClearSaveButton")
-theme = ExtResource("4_o6xl0")
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 33
-theme_override_styles/focus = ExtResource("2_tefeu")
-theme_override_styles/hover = ExtResource("4_choun")
-theme_override_styles/normal = ExtResource("4_choun")
-text = "Quit To Desktop"
-
-[node name="ClearSaveButton" type="Button" parent="."]
-offset_left = 276.0
-offset_top = 504.0
-offset_right = 1095.0
-offset_bottom = 564.0
-focus_neighbor_top = NodePath("../QuitToDesktopButton")
-focus_neighbor_bottom = NodePath("../ArcadeButton")
+[node name="ClearSaveButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(819, 60)
+layout_mode = 2
+size_flags_horizontal = 0
 theme = ExtResource("4_o6xl0")
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -251,15 +189,46 @@ theme_override_styles/hover = ExtResource("4_choun")
 theme_override_styles/normal = ExtResource("4_choun")
 text = "Clear Save Data"
 
-[node name="ConfirmationDialog" type="ConfirmationDialog" parent="ClearSaveButton"]
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="VBoxContainer/ClearSaveButton"]
 unique_name_in_owner = true
+transparent_bg = true
+vrs_update_mode = 2
+position = Vector2i(162, 36)
+size = Vector2i(819, 276)
+wrap_controls = false
+exclusive = false
+borderless = true
+popup_window = true
+max_size = Vector2i(1092, 16384)
+theme = ExtResource("8_a8y0u")
+theme_type_variation = &"Large Button"
 ok_button_text = "Yes"
-dialog_text = "Are you  sure you want to delete your save data?"
+dialog_text = "Permanently delete save data?"
+dialog_autowrap = true
 cancel_button_text = "No"
 
-[node name="SaveClearedDialog" type="AcceptDialog" parent="ClearSaveButton"]
+[node name="SaveClearedDialog" type="AcceptDialog" parent="VBoxContainer/ClearSaveButton"]
 unique_name_in_owner = true
+transparent_bg = true
+position = Vector2i(0, 36)
+size = Vector2i(769, 278)
+borderless = true
+theme = ExtResource("8_a8y0u")
 dialog_text = "Save data cleared."
+
+[node name="QuitToDesktopButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(819, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_neighbor_bottom = NodePath("../ArcadeRow/ArcadeButton")
+theme = ExtResource("4_o6xl0")
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 33
+theme_override_styles/focus = ExtResource("2_tefeu")
+theme_override_styles/hover = ExtResource("4_choun")
+theme_override_styles/normal = ExtResource("4_choun")
+text = "Quit To Desktop"
 
 [node name="Backdrop" type="Node2D" parent="."]
 z_index = -1
@@ -293,6 +262,32 @@ mouse_filter = 2
 texture = ExtResource("6_ya4ey")
 stretch_mode = 2
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Backdrop/BeamTexture"]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_trceg")
+position = Vector2(51.1667, 43.9444)
+rotation = 1.44862
+scale = Vector2(0.555556, 0.555556)
+amount = 36
+texture = ExtResource("12_eb6dy")
+lifetime = 0.38
+speed_scale = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(24, 72)
+direction = Vector2(0, 1)
+spread = 30.0
+gravity = Vector2(0, 360)
+initial_velocity_min = 48.0
+initial_velocity_max = 96.0
+linear_accel_min = -300.0
+linear_accel_max = -300.0
+tangential_accel_min = -288.0
+tangential_accel_max = 289.0
+scale_amount_min = 9.0
+scale_amount_max = 9.0
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
 [node name="CanvasLayer" type="CanvasLayer" parent="Backdrop"]
 layer = -3
 
@@ -307,12 +302,12 @@ texture = ExtResource("6_tefeu")
 stretch_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[connection signal="focus_entered" from="ArcadeButton" to="." method="_on_arcade_button_focus_entered"]
-[connection signal="focus_exited" from="ArcadeButton" to="." method="_on_arcade_button_focus_exited"]
-[connection signal="mouse_entered" from="ArcadeButton" to="." method="_on_arcade_button_mouse_entered"]
-[connection signal="mouse_exited" from="ArcadeButton" to="." method="_on_arcade_button_mouse_exited"]
-[connection signal="pressed" from="ArcadeButton" to="." method="_on_arcade_button_pressed"]
-[connection signal="pressed" from="TrialButton" to="." method="_on_trial_button_pressed"]
-[connection signal="pressed" from="QuitToDesktopButton" to="." method="_on_quit_to_desktop_button_pressed"]
-[connection signal="pressed" from="ClearSaveButton" to="." method="_on_clear_save_button_pressed"]
-[connection signal="confirmed" from="ClearSaveButton/ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]
+[connection signal="focus_entered" from="VBoxContainer/ArcadeRow/ArcadeButton" to="." method="_on_arcade_button_focus_entered"]
+[connection signal="focus_exited" from="VBoxContainer/ArcadeRow/ArcadeButton" to="." method="_on_arcade_button_focus_exited"]
+[connection signal="mouse_entered" from="VBoxContainer/ArcadeRow/ArcadeButton" to="." method="_on_arcade_button_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/ArcadeRow/ArcadeButton" to="." method="_on_arcade_button_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/ArcadeRow/ArcadeButton" to="." method="_on_arcade_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/TrialButton" to="." method="_on_trial_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ClearSaveButton" to="." method="_on_clear_save_button_pressed"]
+[connection signal="confirmed" from="VBoxContainer/ClearSaveButton/ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]
+[connection signal="pressed" from="VBoxContainer/QuitToDesktopButton" to="." method="_on_quit_to_desktop_button_pressed"]
