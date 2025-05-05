@@ -33,6 +33,11 @@ func _create_level_grid():
 		button.mouse_entered.connect(_update_level_info_display.bind(i))
 		button.mouse_exited.connect(_mouse_exit)
 
+		if _dev_time_beaten(i):
+			button.add_theme_stylebox_override("normal", preload("res://assets/styles/sbf_light_border.tres"))
+			button.add_theme_stylebox_override("hover", preload("res://assets/styles/sbf_light_border.tres"))
+			button.add_theme_stylebox_override("focus", preload("res://assets/styles/sbf_focus_border.tres"))
+
 	# update focus neighbors to allow for horizontal wrapping
 	for i in n_levels:
 		var neighbor_left_idx = (i - 1) % n_levels
@@ -80,3 +85,12 @@ func _update_level_info_display(level_index):
 		%LevelStats.text = GameManager.format_seconds(time)
 	var dev_time = GameManager.level_data.dev_times[level_index]
 	%TimeToBeat.text = GameManager.format_seconds(dev_time)
+
+
+func _dev_time_beaten(level_index):
+	var level_file = level_files[level_index]
+	var level_path = "res://levels/%s" % level_file
+	var time = GameManager.level_data.level_times.get(level_path, 1000)
+	var dev_time = GameManager.level_data.dev_times[level_index]
+
+	return time < dev_time
