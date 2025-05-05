@@ -5,7 +5,7 @@
 [ext_resource type="LabelSettings" uid="uid://cbw7oatl30dvl" path="res://assets/styles/label_33px.tres" id="3_0jeyp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y5tme"]
-size = Vector2(214, 144)
+size = Vector2(321, 144)
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_y5tme")
@@ -23,7 +23,7 @@ size_flags_horizontal = 0
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Control/LeftSideArea"]
-position = Vector2(-120, 72)
+position = Vector2(-71, 72)
 shape = SubResource("RectangleShape2D_y5tme")
 
 [node name="RightSideArea" type="Area2D" parent="Control"]
@@ -31,7 +31,7 @@ position = Vector2(1512, 0)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Control/RightSideArea"]
-position = Vector2(0, 72)
+position = Vector2(-71, 72)
 shape = SubResource("RectangleShape2D_y5tme")
 
 [node name="Score" type="Label" parent="."]
