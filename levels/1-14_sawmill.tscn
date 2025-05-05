@@ -1,0 +1,546 @@
+[gd_scene load_steps=11 format=4 uid="uid://y3rxqo4aqx5v"]
+
+[ext_resource type="PackedScene" uid="uid://cxo2r1hb7u2ss" path="res://scenes/level_base.tscn" id="1_h5fjo"]
+[ext_resource type="Material" uid="uid://8mrvnxdhm4bh" path="res://assets/shaders/sawmill.tres" id="2_pfggy"]
+[ext_resource type="PackedScene" uid="uid://c6i6ci2ym6wn6" path="res://scenes/spike.tscn" id="3_nh8hv"]
+[ext_resource type="Texture2D" uid="uid://c0rubkjn5mpb2" path="res://assets/tilesets/BL-crypt-tileset-itch.png" id="4_4cgr0"]
+[ext_resource type="PackedScene" uid="uid://cxdl0fqxwxba1" path="res://scenes/gas_can.tscn" id="5_4m7aj"]
+[ext_resource type="PackedScene" uid="uid://bvn2y2nnqcrts" path="res://scenes/end_zone.tscn" id="6_i38x5"]
+
+[sub_resource type="Animation" id="Animation_dlbqv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moving_Block:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(432, 1344)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Moving_Block2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(936, 1344)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Moving_Block3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(936, 840)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Moving_Block4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(432, 840)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../OuterSpikeRing/outer_moving_block_1:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(264, 1512)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../OuterSpikeRing/outer_moving_block_2:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1104, 1512)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../OuterSpikeRing/outer_moving_block_3:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1104, 672)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../OuterSpikeRing/outer_moving_block_4:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(264, 672)]
+}
+
+[sub_resource type="Animation" id="Animation_t435d"]
+resource_name = "outer spike movement"
+length = 10.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../OuterSpikeRing/outer_moving_block_1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.8, 5.6, 7.8, 10.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(264, 1512), Vector2(1104, 1512), Vector2(1104, 672), Vector2(264, 672), Vector2(264, 1512)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../OuterSpikeRing/outer_moving_block_2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.8, 5.6, 7.8, 10.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1104, 1512), Vector2(1104, 672), Vector2(264, 668), Vector2(264, 1512), Vector2(1104, 1512)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../OuterSpikeRing/outer_moving_block_3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.8, 5.6, 7.8, 10.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1104, 672), Vector2(264, 672), Vector2(260, 1512), Vector2(1106, 1512), Vector2(1104, 672)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../OuterSpikeRing/outer_moving_block_4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.8, 5.6, 7.8, 10.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(264, 672), Vector2(264, 1512), Vector2(1104, 1516), Vector2(1106, 672), Vector2(264, 672)]
+}
+
+[sub_resource type="Animation" id="Animation_ulxug"]
+resource_name = "spike_movement"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Moving_Block:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(432, 1344), Vector2(432, 840), Vector2(936, 840), Vector2(936, 1344), Vector2(432, 1344)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Moving_Block2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(936, 1344), Vector2(432, 1344), Vector2(432, 840), Vector2(936, 840), Vector2(936, 1344)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Moving_Block3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(936, 840), Vector2(936, 1344), Vector2(432, 1344), Vector2(432, 840), Vector2(936, 840)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Moving_Block4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(432, 840), Vector2(936, 840), Vector2(936, 1344), Vector2(432, 1344), Vector2(432, 840)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t435d"]
+_data = {
+&"RESET": SubResource("Animation_dlbqv"),
+&"outer spike movement": SubResource("Animation_t435d"),
+&"spike_movement": SubResource("Animation_ulxug")
+}
+
+[node name="LevelBase" instance=ExtResource("1_h5fjo")]
+level_name = "Sawmill"
+width_in_tiles = 36
+height_in_tiles = 36
+
+[node name="Player" parent="." index="0"]
+position = Vector2(368, 454)
+
+[node name="Terrain" parent="." index="1"]
+position = Vector2(1, 0)
+tile_map_data = PackedByteArray("AAAAAA4AAAABAAIAAAAAABUAAAABAAIAAAAHAA4AAAABAAIAAAAHABQAAAABAAIAAAAHABUAAAABAAIAAAAHABYAAAABAAIAAAAOABUAAAABAAIAAAAPAA4AAAABAAIAAAAQAA4AAAABAAIAAAARAA4AAAABAAIAAAASAA4AAAABAAIAAAATAA4AAAABAAIAAAAUAA4AAAABAAIAAAAVAA4AAAABAAIAAAAVABUAAAABAAIAAAAcAA4AAAABAAIAAAAcABUAAAABAAIAAAAjAA4AAAABAAIAAAAjABQAAAABAAIAAAAjABUAAAABAAIAAAAjABYAAAABAAIAAAAAAAAAAAABAAIAAAAAAAcAAAABAAIAAAABAAAAAAABAAIAAAACAAAAAAABAAIAAAADAAAAAAABAAIAAAAEAAAAAAABAAIAAAAFAAAAAAABAAIAAAAGAAAAAAABAAIAAAAHAAAAAAABAAIAAAAHAAcAAAABAAIAAAAHAAgAAAABAAIAAAAIAAAAAAABAAIAAAAJAAAAAAABAAIAAAAKAAAAAAABAAIAAAALAAAAAAABAAIAAAAMAAAAAAABAAIAAAANAAAAAAABAAIAAAAOAAAAAAABAAIAAAAOAAcAAAABAAIAAAAPAAAAAAABAAIAAAAQAAAAAAABAAIAAAARAAAAAAABAAIAAAASAAAAAAABAAIAAAATAAAAAAABAAIAAAAUAAAAAAABAAIAAAAVAAAAAAABAAIAAAAWAAAAAAABAAIAAAAXAAAAAAABAAIAAAAYAAAAAAABAAIAAAAZAAAAAAABAAIAAAAaAAAAAAABAAIAAAAbAAAAAAABAAIAAAAcAAAAAAABAAIAAAAcAAcAAAABAAIAAAAdAAAAAAABAAIAAAAeAAAAAAABAAIAAAAfAAAAAAABAAIAAAAgAAAAAAABAAIAAAAhAAAAAAABAAIAAAAiAAAAAAABAAIAAAAjAAAAAAABAAIAAAAjAAYAAAABAAIAAAAjAAcAAAABAAIAAAAjAAgAAAABAAIAAAAAABwAAAABAAIAAAAAACMAAAABAAIAAAABABwAAAABAAIAAAACABwAAAABAAIAAAADABwAAAABAAIAAAAEABwAAAABAAIAAAAFABwAAAABAAIAAAAGABwAAAABAAIAAAAHABwAAAABAAIAAAAHACMAAAABAAIAAAAIABwAAAABAAIAAAAJABwAAAABAAIAAAAKABwAAAABAAIAAAALABwAAAABAAIAAAAMABwAAAABAAIAAAANABwAAAABAAIAAAAOABwAAAABAAIAAAAOACMAAAABAAIAAAAPABwAAAABAAIAAAAQABwAAAABAAIAAAARABwAAAABAAIAAAASABwAAAABAAIAAAATABwAAAABAAIAAAAUABwAAAABAAIAAAAVABwAAAABAAIAAAAVACMAAAABAAIAAAAWABwAAAABAAIAAAAXABwAAAABAAIAAAAYABwAAAABAAIAAAAZABwAAAABAAIAAAAaABwAAAABAAIAAAAbABwAAAABAAIAAAAcABwAAAABAAIAAAAcACMAAAABAAIAAAAjABwAAAABAAIAAAAjACMAAAABAAIAAAAOAA4AAAABAAIAAAAOAA8AAAABAAIAAAAOABAAAAABAAIAAAAOABEAAAABAAIAAAAOABIAAAABAAIAAAAOABMAAAABAAIAAAAOABQAAAABAAIAAAAPABUAAAABAAIAAAAQABUAAAABAAIAAAATABUAAAABAAIAAAAUABUAAAABAAIAAAAVAAcAAAABAAIAAAAWAAcAAAABAAIAAAAXAAcAAAABAAIAAAAYAAcAAAABAAIAAAAZAAcAAAABAAIAAAAaAAcAAAABAAIAAAAbAAcAAAABAAIAAAAcAAgAAAABAAIAAAAcAAkAAAABAAIAAAAcAAoAAAABAAIAAAAcAAsAAAABAAIAAAAcAAwAAAABAAIAAAAcAA0AAAABAAIAAAAUAAcAAAABAAIAAAATAAcAAAABAAIAAAASAAcAAAABAAIAAAARAAcAAAABAAIAAAAQAAcAAAABAAIAAAAPAAcAAAABAAIAAAANAAcAAAABAAIAAAAMAAcAAAABAAIAAAALAAcAAAABAAIAAAAKAAcAAAABAAIAAAAJAAcAAAABAAIAAAAIAAcAAAABAAIAAAAHAAkAAAABAAIAAAAHAAoAAAABAAIAAAAHAAsAAAABAAIAAAAHAAwAAAABAAIAAAAHAA0AAAABAAIAAAAHAA8AAAABAAIAAAAHABAAAAABAAIAAAAHABEAAAABAAIAAAAHABIAAAABAAIAAAAHABMAAAABAAIAAAARABUAAAABAAIAAAASABUAAAABAAIAAAAWABUAAAABAAIAAAAXABUAAAABAAIAAAAYABUAAAABAAIAAAAZABUAAAABAAIAAAAaABUAAAABAAIAAAAbABUAAAABAAIAAAAcABQAAAABAAIAAAAcABMAAAABAAIAAAAcABIAAAABAAIAAAAcABEAAAABAAIAAAAcABAAAAABAAIAAAAcAA8AAAABAAIAAAAcABYAAAABAAIAAAAcABcAAAABAAIAAAAcABgAAAABAAIAAAAcABkAAAABAAIAAAAcABoAAAABAAIAAAAcABsAAAABAAIAAAA=")
+
+[node name="TerrainBackground" parent="Terrain" index="0"]
+material = ExtResource("2_pfggy")
+offset_right = 864.0
+offset_bottom = 864.0
+
+[node name="ViewportBackground" parent="CanvasLayer" index="0"]
+material = ExtResource("2_pfggy")
+
+[node name="InnerSpikeRing" type="Node2D" parent="." index="5"]
+
+[node name="Moving_Block" type="Node2D" parent="InnerSpikeRing" index="0"]
+position = Vector2(432, 1344)
+rotation = 3.14159
+
+[node name="Spike" parent="InnerSpikeRing/Moving_Block" index="0" instance=ExtResource("3_nh8hv")]
+position = Vector2(240, 624)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="InnerSpikeRing/Moving_Block" index="1" instance=ExtResource("3_nh8hv")]
+position = Vector2(216, 672)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike3" parent="InnerSpikeRing/Moving_Block" index="2" instance=ExtResource("3_nh8hv")]
+position = Vector2(288, 648)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike4" parent="InnerSpikeRing/Moving_Block" index="3" instance=ExtResource("3_nh8hv")]
+position = Vector2(264, 696)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="Tile-Sprite" type="Sprite2D" parent="InnerSpikeRing/Moving_Block" index="4"]
+position = Vector2(252, 660)
+texture = ExtResource("4_4cgr0")
+region_enabled = true
+region_rect = Rect2(144, 72, 24, 24)
+
+[node name="Moving_Block2" type="Node2D" parent="InnerSpikeRing" index="1"]
+position = Vector2(936, 1344)
+rotation = 3.14159
+
+[node name="Spike" parent="InnerSpikeRing/Moving_Block2" index="0" instance=ExtResource("3_nh8hv")]
+position = Vector2(240, 624)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="InnerSpikeRing/Moving_Block2" index="1" instance=ExtResource("3_nh8hv")]
+position = Vector2(216, 672)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike3" parent="InnerSpikeRing/Moving_Block2" index="2" instance=ExtResource("3_nh8hv")]
+position = Vector2(288, 648)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike4" parent="InnerSpikeRing/Moving_Block2" index="3" instance=ExtResource("3_nh8hv")]
+position = Vector2(264, 696)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="Tile-Sprite" type="Sprite2D" parent="InnerSpikeRing/Moving_Block2" index="4"]
+position = Vector2(252, 660)
+texture = ExtResource("4_4cgr0")
+region_enabled = true
+region_rect = Rect2(144, 72, 24, 24)
+
+[node name="Moving_Block3" type="Node2D" parent="InnerSpikeRing" index="2"]
+position = Vector2(936, 840)
+rotation = 3.14159
+
+[node name="Spike" parent="InnerSpikeRing/Moving_Block3" index="0" instance=ExtResource("3_nh8hv")]
+position = Vector2(240, 624)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="InnerSpikeRing/Moving_Block3" index="1" instance=ExtResource("3_nh8hv")]
+position = Vector2(216, 672)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike3" parent="InnerSpikeRing/Moving_Block3" index="2" instance=ExtResource("3_nh8hv")]
+position = Vector2(288, 648)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike4" parent="InnerSpikeRing/Moving_Block3" index="3" instance=ExtResource("3_nh8hv")]
+position = Vector2(264, 696)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="Tile-Sprite" type="Sprite2D" parent="InnerSpikeRing/Moving_Block3" index="4"]
+position = Vector2(252, 660)
+texture = ExtResource("4_4cgr0")
+region_enabled = true
+region_rect = Rect2(144, 72, 24, 24)
+
+[node name="Moving_Block4" type="Node2D" parent="InnerSpikeRing" index="3"]
+position = Vector2(432, 840)
+rotation = 3.14159
+
+[node name="Spike" parent="InnerSpikeRing/Moving_Block4" index="0" instance=ExtResource("3_nh8hv")]
+position = Vector2(240, 624)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="InnerSpikeRing/Moving_Block4" index="1" instance=ExtResource("3_nh8hv")]
+position = Vector2(216, 672)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike3" parent="InnerSpikeRing/Moving_Block4" index="2" instance=ExtResource("3_nh8hv")]
+position = Vector2(288, 648)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike4" parent="InnerSpikeRing/Moving_Block4" index="3" instance=ExtResource("3_nh8hv")]
+position = Vector2(264, 696)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="Tile-Sprite" type="Sprite2D" parent="InnerSpikeRing/Moving_Block4" index="4"]
+position = Vector2(252, 660)
+texture = ExtResource("4_4cgr0")
+region_enabled = true
+region_rect = Rect2(144, 72, 24, 24)
+
+[node name="OuterSpikeRing" type="Node2D" parent="." index="6"]
+
+[node name="outer_moving_block_1" type="Node2D" parent="OuterSpikeRing" index="0"]
+position = Vector2(264, 1512)
+rotation = 3.14159
+
+[node name="Spike" parent="OuterSpikeRing/outer_moving_block_1" index="0" instance=ExtResource("3_nh8hv")]
+position = Vector2(240, 624)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="OuterSpikeRing/outer_moving_block_1" index="1" instance=ExtResource("3_nh8hv")]
+position = Vector2(216, 672)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike3" parent="OuterSpikeRing/outer_moving_block_1" index="2" instance=ExtResource("3_nh8hv")]
+position = Vector2(288, 648)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike4" parent="OuterSpikeRing/outer_moving_block_1" index="3" instance=ExtResource("3_nh8hv")]
+position = Vector2(264, 696)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="Tile-Sprite" type="Sprite2D" parent="OuterSpikeRing/outer_moving_block_1" index="4"]
+position = Vector2(252, 660)
+texture = ExtResource("4_4cgr0")
+region_enabled = true
+region_rect = Rect2(144, 72, 24, 24)
+
+[node name="outer_moving_block_2" type="Node2D" parent="OuterSpikeRing" index="1"]
+position = Vector2(1104, 1512)
+rotation = 3.14159
+
+[node name="Spike" parent="OuterSpikeRing/outer_moving_block_2" index="0" instance=ExtResource("3_nh8hv")]
+position = Vector2(240, 624)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="OuterSpikeRing/outer_moving_block_2" index="1" instance=ExtResource("3_nh8hv")]
+position = Vector2(216, 672)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike3" parent="OuterSpikeRing/outer_moving_block_2" index="2" instance=ExtResource("3_nh8hv")]
+position = Vector2(288, 648)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike4" parent="OuterSpikeRing/outer_moving_block_2" index="3" instance=ExtResource("3_nh8hv")]
+position = Vector2(264, 696)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="Tile-Sprite" type="Sprite2D" parent="OuterSpikeRing/outer_moving_block_2" index="4"]
+position = Vector2(252, 660)
+texture = ExtResource("4_4cgr0")
+region_enabled = true
+region_rect = Rect2(144, 72, 24, 24)
+
+[node name="outer_moving_block_3" type="Node2D" parent="OuterSpikeRing" index="2"]
+position = Vector2(1104, 672)
+rotation = 3.14159
+
+[node name="Spike" parent="OuterSpikeRing/outer_moving_block_3" index="0" instance=ExtResource("3_nh8hv")]
+position = Vector2(240, 624)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="OuterSpikeRing/outer_moving_block_3" index="1" instance=ExtResource("3_nh8hv")]
+position = Vector2(216, 672)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike3" parent="OuterSpikeRing/outer_moving_block_3" index="2" instance=ExtResource("3_nh8hv")]
+position = Vector2(288, 648)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike4" parent="OuterSpikeRing/outer_moving_block_3" index="3" instance=ExtResource("3_nh8hv")]
+position = Vector2(264, 696)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="Tile-Sprite" type="Sprite2D" parent="OuterSpikeRing/outer_moving_block_3" index="4"]
+position = Vector2(252, 660)
+texture = ExtResource("4_4cgr0")
+region_enabled = true
+region_rect = Rect2(144, 72, 24, 24)
+
+[node name="outer_moving_block_4" type="Node2D" parent="OuterSpikeRing" index="3"]
+position = Vector2(264, 672)
+rotation = 3.14159
+
+[node name="Spike" parent="OuterSpikeRing/outer_moving_block_4" index="0" instance=ExtResource("3_nh8hv")]
+position = Vector2(240, 624)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike2" parent="OuterSpikeRing/outer_moving_block_4" index="1" instance=ExtResource("3_nh8hv")]
+position = Vector2(216, 672)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike3" parent="OuterSpikeRing/outer_moving_block_4" index="2" instance=ExtResource("3_nh8hv")]
+position = Vector2(288, 648)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+
+[node name="Spike4" parent="OuterSpikeRing/outer_moving_block_4" index="3" instance=ExtResource("3_nh8hv")]
+position = Vector2(264, 696)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+
+[node name="Tile-Sprite" type="Sprite2D" parent="OuterSpikeRing/outer_moving_block_4" index="4"]
+position = Vector2(252, 660)
+texture = ExtResource("4_4cgr0")
+region_enabled = true
+region_rect = Rect2(144, 72, 24, 24)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
+root_node = NodePath("../InnerSpikeRing")
+libraries = {
+&"": SubResource("AnimationLibrary_t435d")
+}
+autoplay = "outer spike movement"
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="." index="8"]
+root_node = NodePath("../InnerSpikeRing")
+libraries = {
+&"": SubResource("AnimationLibrary_t435d")
+}
+autoplay = "spike_movement"
+
+[node name="Gas Cans" type="Node2D" parent="." index="9"]
+
+[node name="GasCan2" parent="Gas Cans" index="0" instance=ExtResource("5_4m7aj")]
+position = Vector2(613, 636)
+
+[node name="GasCan3" parent="Gas Cans" index="1" instance=ExtResource("5_4m7aj")]
+position = Vector2(589, 612)
+
+[node name="GasCan4" parent="Gas Cans" index="2" instance=ExtResource("5_4m7aj")]
+position = Vector2(565, 588)
+
+[node name="GasCan5" parent="Gas Cans" index="3" instance=ExtResource("5_4m7aj")]
+position = Vector2(589, 564)
+
+[node name="GasCan6" parent="Gas Cans" index="4" instance=ExtResource("5_4m7aj")]
+position = Vector2(613, 588)
+
+[node name="GasCan7" parent="Gas Cans" index="5" instance=ExtResource("5_4m7aj")]
+position = Vector2(637, 612)
+
+[node name="GasCan9" parent="Gas Cans" index="6" instance=ExtResource("5_4m7aj")]
+position = Vector2(565, 636)
+
+[node name="GasCan13" parent="Gas Cans" index="7" instance=ExtResource("5_4m7aj")]
+position = Vector2(637, 564)
+
+[node name="Spikes" type="Node2D" parent="." index="10"]
+
+[node name="Spike17" parent="Spikes" index="0" instance=ExtResource("3_nh8hv")]
+position = Vector2(72, 792)
+
+[node name="Spike23" parent="Spikes" index="1" instance=ExtResource("3_nh8hv")]
+position = Vector2(248, 792)
+
+[node name="Spike24" parent="Spikes" index="2" instance=ExtResource("3_nh8hv")]
+position = Vector2(440, 792)
+
+[node name="Spike25" parent="Spikes" index="3" instance=ExtResource("3_nh8hv")]
+position = Vector2(624, 792)
+
+[node name="Spike19" parent="Spikes" index="4" instance=ExtResource("3_nh8hv")]
+position = Vector2(208.001, 744)
+rotation = 3.14157
+
+[node name="Spike20" parent="Spikes" index="5" instance=ExtResource("3_nh8hv")]
+position = Vector2(576, 744)
+rotation = 3.14157
+
+[node name="Spike21" parent="Spikes" index="6" instance=ExtResource("3_nh8hv")]
+position = Vector2(392.001, 744)
+rotation = 3.14157
+
+[node name="EndZone" parent="." index="11" instance=ExtResource("6_i38x5")]
+position = Vector2(48, 768)
+size = Vector2(48, 144)
