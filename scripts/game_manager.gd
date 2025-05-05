@@ -15,7 +15,6 @@ var extraLivesDivisor = 1
 var endOfLevelDelay = 1.0
 var extraLifeFrameDelay = .25 # value in seconds. time between life increases when receiving multiple lives
 var scoreCountdownRate = 200
-var skipLevelEnd = false
 var level_files = []
 var gameStateDisabled = false
 # Show a message upon levelCompletion
@@ -66,7 +65,6 @@ func reset():
 	endOfLevelDelay = 1.0
 	extraLifeFrameDelay = 0.25
 	scoreCountdownRate = 200
-	skipLevelEnd = false
 	
 func time_trial_reset():
 	time = 0.0
