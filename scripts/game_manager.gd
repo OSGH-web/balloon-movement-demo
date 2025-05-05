@@ -12,7 +12,9 @@ var score = 0
 var game_started = false
 var time: float = 0.0;
 var extraLivesDivisor = 1
-var extraLifeFrameDelay = .5 # value in seconds. time between life increases when receiving multiple lives
+var endOfLevelDelay = 1.0
+var extraLifeFrameDelay = .25 # value in seconds. time between life increases when receiving multiple lives
+var scoreCountdownRate = 200
 var level_files = []
 var gameStateDisabled = false
 # Show a message upon levelCompletion
@@ -60,6 +62,9 @@ func reset():
 	background_music.pitch_scale = 1.03
 	game_started = false
 	get_tree().paused = false
+	endOfLevelDelay = 1.0
+	extraLifeFrameDelay = 0.25
+	scoreCountdownRate = 200
 	
 func time_trial_reset():
 	time = 0.0
@@ -83,7 +88,7 @@ func load_next_level():
 	if not curr_level == len(level_files):
 		await _calculate_score()
 		await _lives_count_up()
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(endOfLevelDelay).timeout
 
 		level_path = "res://levels/%s" % level_files[curr_level]
 		curr_level += 1
@@ -155,9 +160,16 @@ func _input(event):
 		or Input.is_action_pressed("ui_down"):
 			game_started = true
 
+	if gameMode == GameModes.ARCADE and gameStateDisabled:
+		if Input.is_action_just_pressed("ui_accept"):
+			endOfLevelDelay = 0.125
+			extraLifeFrameDelay = .0625
+			scoreCountdownRate = 1000
+
+
 func _calculate_score(text="Level Complete! +1000 Score!"):
 	#$SmokeWeedEveryday.play() TODO: Replace this with different sound effect.
-	await _display_info_duration(text, 0.75)
+	await _display_info_duration(text, 1.5)
 	score += 1000 # for level clear
 	await get_tree().create_timer(0.4).timeout
 	await _score_count_down()
@@ -178,8 +190,8 @@ func _score_count_down():
 			player.FUEL -= 2
 			score += 2
 		elif int(player.FUEL) >= 1000:
-			player.FUEL -= 200
-			score += 200
+			player.FUEL -= scoreCountdownRate
+			score += scoreCountdownRate
 		else:
 			player.FUEL -= 10
 			score += 10
