@@ -78,3 +78,5 @@ func _update_level_info_display(level_index):
 		%LevelStats.text = "Level Not Complete"
 	else:
 		%LevelStats.text = GameManager.format_seconds(time)
+	var dev_time = GameManager.level_data.dev_times[level_index]
+	%TimeToBeat.text = dev_time

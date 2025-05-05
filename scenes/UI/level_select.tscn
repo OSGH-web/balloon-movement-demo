@@ -65,29 +65,20 @@ custom_minimum_size = Vector2(0, 140)
 layout_mode = 2
 columns = 5
 
-[node name="TimeToBeat" type="Label" parent="VBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 44)
-layout_mode = 2
-theme_override_styles/normal = ExtResource("2_chg43")
-text = "Time To Beat"
-label_settings = ExtResource("2_rif6e")
-horizontal_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="PlayerTime" type="HBoxContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(273, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/separation = 0
 
-[node name="placeholder2" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="placeholder2" type="Label" parent="VBoxContainer/PlayerTime"]
 custom_minimum_size = Vector2(15, 20)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("2_chg43")
 label_settings = ExtResource("3_chg43")
 horizontal_alignment = 1
 
-[node name="LevelNumber" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="LevelNumber" type="Label" parent="VBoxContainer/PlayerTime"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(73, 20)
 layout_mode = 2
@@ -97,14 +88,53 @@ label_settings = ExtResource("3_chg43")
 vertical_alignment = 1
 clip_text = true
 
-[node name="placeholder3" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="placeholder3" type="Label" parent="VBoxContainer/PlayerTime"]
 custom_minimum_size = Vector2(40, 20)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("2_chg43")
 label_settings = ExtResource("3_chg43")
 horizontal_alignment = 1
 
-[node name="LevelStats" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="LevelStats" type="Label" parent="VBoxContainer/PlayerTime"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = ExtResource("2_chg43")
+text = "Not Completed"
+label_settings = ExtResource("3_chg43")
+vertical_alignment = 1
+
+[node name="DeveloperTime" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(273, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 0
+
+[node name="placeholder2" type="Label" parent="VBoxContainer/DeveloperTime"]
+custom_minimum_size = Vector2(15, 20)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_chg43")
+label_settings = ExtResource("3_chg43")
+horizontal_alignment = 1
+
+[node name="Dev Time" type="Label" parent="VBoxContainer/DeveloperTime"]
+custom_minimum_size = Vector2(73, 20)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_chg43")
+text = "Dev Time:"
+label_settings = ExtResource("3_chg43")
+vertical_alignment = 1
+clip_text = true
+
+[node name="placeholder3" type="Label" parent="VBoxContainer/DeveloperTime"]
+custom_minimum_size = Vector2(40, 20)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_chg43")
+label_settings = ExtResource("3_chg43")
+horizontal_alignment = 1
+
+[node name="TimeToBeat" type="Label" parent="VBoxContainer/DeveloperTime"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
