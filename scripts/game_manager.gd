@@ -235,8 +235,8 @@ func get_player():
 	return level.get_node("Player")
 
 func format_seconds(temp_time : float) -> String:
-	var minutes := temp_time / 60
-	var seconds := fmod(temp_time, 60)
-	var milliseconds := fmod(temp_time, 1) * 100
+	var minutes : int = floori(temp_time / 60)
+	var seconds : int = floori(fmod(temp_time, 60))
+	var milliseconds : float = fmod(temp_time, 1) * 100
 
-	return "%02d:%02d:%02d" % [minutes, seconds, milliseconds]
+	return "%02d:%02d:%02.f" % [minutes, seconds, milliseconds]
