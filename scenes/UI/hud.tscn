@@ -1,38 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnrjc1o517gjp"]
+[gd_scene load_steps=4 format=3 uid="uid://dnrjc1o517gjp"]
 
 [ext_resource type="Script" uid="uid://dkbvg85t2nhy5" path="res://scripts/UI/hud.gd" id="1_y5tme"]
 [ext_resource type="StyleBox" uid="uid://byruekc6swxep" path="res://assets/styles/sbf_mid.tres" id="2_0jeyp"]
 [ext_resource type="LabelSettings" uid="uid://cbw7oatl30dvl" path="res://assets/styles/label_33px.tres" id="3_0jeyp"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y5tme"]
-size = Vector2(321, 144)
-
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_y5tme")
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 264.0
-offset_top = 24.0
-offset_right = 264.0
-offset_bottom = 24.0
-size_flags_horizontal = 0
-
-[node name="LeftSideArea" type="Area2D" parent="Control"]
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/LeftSideArea"]
-position = Vector2(-71, 72)
-shape = SubResource("RectangleShape2D_y5tme")
-
-[node name="RightSideArea" type="Area2D" parent="Control"]
-position = Vector2(1512, 0)
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/RightSideArea"]
-position = Vector2(-71, 72)
-shape = SubResource("RectangleShape2D_y5tme")
 
 [node name="Score" type="Label" parent="."]
 unique_name_in_owner = true
@@ -94,8 +67,3 @@ grow_horizontal = 2
 scale = Vector2(2, 2)
 theme_override_styles/normal = ExtResource("2_0jeyp")
 label_settings = ExtResource("3_0jeyp")
-
-[connection signal="body_entered" from="Control/LeftSideArea" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Control/LeftSideArea" to="." method="_on_area_2d_body_exited"]
-[connection signal="body_entered" from="Control/RightSideArea" to="." method="_on_right_side_area_body_entered"]
-[connection signal="body_exited" from="Control/RightSideArea" to="." method="_on_right_side_area_body_exited"]
