@@ -140,9 +140,10 @@ func save_time_and_return():
 		save_data()
 	else:
 		var previous_best_time = level_data.level_times[level_path]
-		if time < previous_best_time:
+		var comparison_time = round(time * 1000) / 1000.0
+		if comparison_time < previous_best_time:
 			await _display_info_duration("New Best Time: "+ format_seconds(time), 1)
-			level_data.level_times[level_path] = round(time * 1000) / 1000.0
+			level_data.level_times[level_path] = comparison_time
 			save_data()
 	get_tree().change_scene_to_file("res://scenes/UI/level_select.tscn")
 	background_music.pitch_scale = 1.03
