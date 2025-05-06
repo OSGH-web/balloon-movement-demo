@@ -82,15 +82,18 @@ func _update_level_info_display(level_index):
 	if time == null or str(time) == "":
 		%LevelStats.text = "Level Not Complete"
 	else:
-		%LevelStats.text = GameManager.format_seconds(time)
+		%LevelStats.text = GameManager.format_milliseconds(time)
 	var dev_time = GameManager.level_data.dev_times[level_index]
-	%TimeToBeat.text = GameManager.format_seconds(dev_time)
+	%TimeToBeat.text = GameManager.format_milliseconds(dev_time)
 
 
 func _dev_time_beaten(level_index):
 	var level_file = level_files[level_index]
 	var level_path = "res://levels/%s" % level_file
-	var time = GameManager.level_data.level_times.get(level_path, 1000)
+	var recorded_time = GameManager.level_data.level_times.get(level_path, -1)
+	if recorded_time == -1:
+		return false
+
 	var dev_time = GameManager.level_data.dev_times[level_index]
 
-	return time < dev_time
+	return recorded_time < dev_time
