@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ilx788h61lb1"
-path="res://.godot/imported/title_screen.png-e275282a1bdebe8bb16823a0d9a28ced.ctex"
+uid="uid://cy0go0xihup6p"
+path="res://.godot/imported/smokin_my_laser_background.png-b78288907c6db58bceeac6bcb0edab1c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://build/web/title_screen.png"
-dest_files=["res://.godot/imported/title_screen.png-e275282a1bdebe8bb16823a0d9a28ced.ctex"]
+source_file="res://build/web/smokin_my_laser_background.png"
+dest_files=["res://.godot/imported/smokin_my_laser_background.png-b78288907c6db58bceeac6bcb0edab1c.ctex"]
 
 [params]
 
