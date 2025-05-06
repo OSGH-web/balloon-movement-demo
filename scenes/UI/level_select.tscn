@@ -66,6 +66,7 @@ layout_mode = 2
 columns = 5
 
 [node name="PlayerTime" type="HBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(273, 0)
 layout_mode = 2
 size_flags_horizontal = 0
