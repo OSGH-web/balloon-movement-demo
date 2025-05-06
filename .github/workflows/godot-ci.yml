@@ -29,6 +29,8 @@ jobs:
       - name: Web Build
         run: |
           mkdir -v -p build/web
+          pwd
+          ls
           cp hack/full_button.png build/web/full_button.png
           EXPORT_DIR="$(readlink -f build)"
           cd $PROJECT_PATH
