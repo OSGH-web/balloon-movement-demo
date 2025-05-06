@@ -9,6 +9,8 @@ env:
   GODOT_VERSION: 4.4
   EXPORT_NAME: smokin-my-laser
   PROJECT_PATH: .
+permissions:
+  contents: write
 jobs:
   export-web:
     name: Web Export
