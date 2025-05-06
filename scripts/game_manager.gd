@@ -101,11 +101,11 @@ func load_next_level():
 			level_data.high_score = score
 			save_data()
 		if GameManager.level_data.arcade_time == null:
-			await _display_info_duration("New Best Time! " + format_milliseconds(time), 2.5)
+			await _display_info_duration("New Best Time! " + format_milliseconds(floori(time)), 2.5)
 			level_data.arcade_time = time
 			save_data()
 		elif GameManager.level_data.arcade_time > time:
-			await _display_info_duration("New Best Time! " + format_milliseconds(time), 2.5)
+			await _display_info_duration("New Best Time! " + format_milliseconds(floori(time)), 2.5)
 			level_data.arcade_time = time
 			save_data()
 
