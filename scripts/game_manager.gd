@@ -132,7 +132,7 @@ func save_time_and_return():
 	gameStateDisabled = true
 	var level_path = get_tree().current_scene.scene_file_path
 	await get_tree().create_timer(1).timeout
-	var prev_time: int = GameManager.level_data.level_times.get(level_path, null)
+	var prev_time = GameManager.level_data.level_times.get(level_path, null)
 	var recorded_time: int = floori(time)
 
 	# If this is the first level clear, or if the recorded time has been beaten
