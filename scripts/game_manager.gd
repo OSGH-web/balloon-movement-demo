@@ -132,18 +132,15 @@ func save_time_and_return():
 	gameStateDisabled = true
 	var level_path = get_tree().current_scene.scene_file_path
 	await get_tree().create_timer(1).timeout
-	var prev_time = GameManager.level_data.level_times.get(level_path, null)
-	# If this is the first level clear
-	if prev_time == null or str(time) == "":
-		await _display_info_duration("New Best Time: "+ format_milliseconds(time), 1)
-		level_data.level_times[level_path] = time
+	var prev_time: int = GameManager.level_data.level_times.get(level_path, null)
+	var recorded_time: int = floori(time)
+
+	# If this is the first level clear, or if the recorded time has been beaten
+	# save the new time
+	if prev_time == null or str(prev_time) == "" or recorded_time < prev_time:
+		await _display_info_duration("New Best Time: "+ format_milliseconds(recorded_time), 1)
+		level_data.level_times[level_path] = recorded_time
 		save_data()
-	else:
-		var previous_best_time = level_data.level_times[level_path]
-		if time < previous_best_time:
-			await _display_info_duration("New Best Time: "+ format_milliseconds(time), 1)
-			level_data.level_times[level_path] = time
-			save_data()
 	get_tree().change_scene_to_file("res://scenes/UI/level_select.tscn")
 	background_music.pitch_scale = 1.03
 	gameStateDisabled = false
