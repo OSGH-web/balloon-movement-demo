@@ -104,4 +104,4 @@ func _dev_time_beaten(level_index):
 
 	var dev_time = GameManager.level_data.dev_times[level_index]
 
-	return recorded_time < dev_time
+	return recorded_time <= dev_time
