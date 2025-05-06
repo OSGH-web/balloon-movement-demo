@@ -21,7 +21,7 @@ func _process(_delta) -> void:
 	if GameManager.gameMode == GameManager.GameModes.ARCADE:
 		%Lives.text = "Lives: %d" % GameManager.lives
 		%Score.text = "Score: %d" % GameManager.score
-	%Timer.text = GameManager.format_seconds(GameManager.time)
+	%Timer.text = GameManager.format_milliseconds(GameManager.time)
 	
 func display_level_name():
 	if GameManager.gameMode == GameManager.GameModes.ARCADE:

@@ -9,7 +9,7 @@ func _ready():
 	%ArcadeButton.grab_focus()
 	%Score.text = str(GameManager.level_data.high_score)
 	if not GameManager.level_data.arcade_time == null:
-		%Time.text = GameManager.format_seconds(GameManager.level_data.arcade_time)
+		%Time.text = GameManager.format_milliseconds(GameManager.level_data.arcade_time)
 
 func _on_arcade_button_pressed() -> void:
 	GameManager.load_first_level()
