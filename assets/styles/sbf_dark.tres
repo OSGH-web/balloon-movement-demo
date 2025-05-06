@@ -1,9 +1,0 @@
-[gd_resource type="StyleBoxFlat" format=3 uid="uid://botddfax254gg"]
-
-[resource]
-bg_color = Color(0.14902, 0.168627, 0.266667, 1)
-border_width_left = 36
-border_width_top = 80
-border_width_right = 36
-border_width_bottom = 64
-border_color = Color(0.14902, 0.168627, 0.266667, 1)
