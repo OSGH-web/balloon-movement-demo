@@ -32,7 +32,7 @@ jobs:
           pwd
           ls
           cp hack/full_button.png build/web/full_button.png
-          cp assets/sprites/title_screen.png build/web/title_screen.png
+          cp hack/smokin_my_laser_background.png build/web/smokin_my_laser_background.png
           EXPORT_DIR="$(readlink -f build)"
           cd $PROJECT_PATH
           godot --headless --verbose --export-release "Web" "$EXPORT_DIR/web/index.html"
