@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+      # only for debugging
+      - feature/exports
 env:
   GODOT_VERSION: 4.4
   EXPORT_NAME: smokin-my-laser
