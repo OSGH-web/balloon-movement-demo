@@ -29,9 +29,10 @@ jobs:
       - name: Web Build
         run: |
           mkdir -v -p build/web
+          cp hack/full_button.png build/web/full_button.png
           EXPORT_DIR="$(readlink -f build)"
           cd $PROJECT_PATH
-          godot --headless --verbose --export-release "Web" "$EXPORT_DIR/web/index.html"
+          godot --headless --verbose --export-release "Web" "$EXPORT_DIR/web/index.html" --html-shell "hack/godot_fullscreen.html"
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
