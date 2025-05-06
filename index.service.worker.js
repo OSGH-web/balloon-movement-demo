@@ -4,7 +4,7 @@
 // Incrementing CACHE_VERSION will kick off the install event and force
 // previously cached resources to be updated from the network.
 /** @type {string} */
-const CACHE_VERSION = '1746570866|5740908';
+const CACHE_VERSION = '1746571372|5956346';
 /** @type {string} */
 const CACHE_PREFIX = 'Smokin My Laser-sw-cache-';
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;
