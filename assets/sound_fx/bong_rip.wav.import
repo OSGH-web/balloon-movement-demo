@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://b6eft0k7gmivn"
-path="res://.godot/imported/bong_hit.wav-000e2fc61fb4c748a8ac99901db9ec25.sample"
+uid="uid://csmu52eivluhc"
+path="res://.godot/imported/bong_rip.wav-25c8fcfa2b0a0999ae9b9ee64d295eb9.sample"
 
 [deps]
 
-source_file="res://assets/sound_fx/bong_hit.wav"
-dest_files=["res://.godot/imported/bong_hit.wav-000e2fc61fb4c748a8ac99901db9ec25.sample"]
+source_file="res://assets/sound_fx/bong_rip.wav"
+dest_files=["res://.godot/imported/bong_rip.wav-25c8fcfa2b0a0999ae9b9ee64d295eb9.sample"]
 
 [params]
 
