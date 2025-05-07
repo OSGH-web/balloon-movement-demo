@@ -73,7 +73,7 @@ func time_trial_reset():
 
 func _process(delta):
 	if not gameStateDisabled and game_started:
-		time += delta
+		time += 1000 * delta
 
 func load_first_level():
 	curr_level += 1
@@ -101,11 +101,11 @@ func load_next_level():
 			level_data.high_score = score
 			save_data()
 		if GameManager.level_data.arcade_time == null:
-			await _display_info_duration("New Best Time! " + format_seconds(time), 2.5)
+			await _display_info_duration("New Best Time! " + format_milliseconds(floori(time)), 2.5)
 			level_data.arcade_time = time
 			save_data()
 		elif GameManager.level_data.arcade_time > time:
-			await _display_info_duration("New Best Time! " + format_seconds(time), 2.5)
+			await _display_info_duration("New Best Time! " + format_milliseconds(floori(time)), 2.5)
 			level_data.arcade_time = time
 			save_data()
 
@@ -133,17 +133,14 @@ func save_time_and_return():
 	var level_path = get_tree().current_scene.scene_file_path
 	await get_tree().create_timer(1).timeout
 	var prev_time = GameManager.level_data.level_times.get(level_path, null)
-	# If this is the first level clear
-	if prev_time == null or str(time) == "":
-		await _display_info_duration("New Best Time: "+ format_seconds(time), 1)
-		level_data.level_times[level_path] = round(time * 1000) / 1000.0
+	var recorded_time: int = floori(time)
+
+	# If this is the first level clear, or if the recorded time has been beaten
+	# save the new time
+	if prev_time == null or str(prev_time) == "" or recorded_time < prev_time:
+		await _display_info_duration("New Best Time: "+ format_milliseconds(recorded_time), 1)
+		level_data.level_times[level_path] = recorded_time
 		save_data()
-	else:
-		var previous_best_time = level_data.level_times[level_path]
-		if time < previous_best_time:
-			await _display_info_duration("New Best Time: "+ format_seconds(time), 1)
-			level_data.level_times[level_path] = round(time * 1000) / 1000.0
-			save_data()
 	get_tree().change_scene_to_file("res://scenes/UI/level_select.tscn")
 	background_music.pitch_scale = 1.03
 	gameStateDisabled = false
@@ -234,9 +231,16 @@ func get_player():
 	var level = get_tree().get_current_scene()
 	return level.get_node("Player")
 
-func format_seconds(temp_time : float) -> String:
-	var minutes := temp_time / 60
-	var seconds := fmod(temp_time, 60)
-	var milliseconds := fmod(temp_time, 1) * 100
+func format_milliseconds(time_milliseconds: int) -> String:
+	# Get minutes from milliseconds
+	var minutes = time_milliseconds / (1000*60)
+	var absoluteMinutes = floor(minutes);
 
-	return "%02d:%02d:%02d" % [minutes, seconds, milliseconds]
+	# Get remainder from minutes and convert to seconds
+	var seconds = (time_milliseconds - (absoluteMinutes * 1000 * 60)) / 1000;
+	var absoluteSeconds = floor(seconds);
+
+	# Get remainder from minutes and and seconds
+	var absoluteMilliseconds = (time_milliseconds - (absoluteSeconds * 1000) - (absoluteMinutes * 1000 * 60))
+
+	return "%02d:%02d.%03d" % [absoluteMinutes, absoluteSeconds, absoluteMilliseconds]
