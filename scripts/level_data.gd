@@ -5,6 +5,6 @@ class_name LevelData
 # Gets populated upon time trial level clear
 @export var level_times = {}
 # hard-coded developer best times for time trail levels. 
-const dev_times: Array[int] = [9680, 9470, 4550, 5058, 23850, 19250, 15220, 17490, 19320, 11160, 28850, 12800, 5050, 17920, 38380]
+const dev_times: Array[int] = [9566, 9150, 4500, 5050, 21215, 16831, 14483, 14216, 18633, 10199, 28750, 11699, 4799, 16682, 31348]
 @export var high_score = 0
 @export var arcade_time = null
