@@ -20,9 +20,9 @@ var gameStateDisabled = false
 # Show a message upon levelCompletion
 @onready var background_music = $Background_Music
 
-@export var easy_song: AudioStream = load("res://assets/sound_fx/Kick Shock.mp3")
-@export var medium_song: AudioStream = load("res://assets/sound_fx/EDM Detection Mode.mp3")
-@export var hard_song: AudioStream = load("res://assets/sound_fx/Cyborg Ninja.mp3")
+@export var easy_song: AudioStream
+@export var medium_song: AudioStream
+@export var hard_song: AudioStream
 
 
 # gameMode NONE prevents timer from being started due to input on the title screen.
