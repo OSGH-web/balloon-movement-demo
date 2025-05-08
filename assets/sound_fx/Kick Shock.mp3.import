@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Kick Shock.mp3-654b5bc4a62e4739a116d902611526
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0
