@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://b8ooja0h52pm1"]
+[gd_scene load_steps=9 format=3 uid="uid://b8ooja0h52pm1"]
 
 [ext_resource type="Script" uid="uid://m01i7w8y3x8f" path="res://scripts/game_manager.gd" id="1_hwd4i"]
-[ext_resource type="AudioStream" uid="uid://cquaalpknb8c6" path="res://assets/sound_fx/background_music.ogg" id="2_glms7"]
+[ext_resource type="AudioStream" uid="uid://ybxtws2a6w3b" path="res://assets/sound_fx/Electro Cabello.mp3" id="2_jdad8"]
+[ext_resource type="AudioStream" uid="uid://de503toka5gbt" path="res://assets/sound_fx/Raving Energy.mp3" id="3_jdad8"]
 [ext_resource type="StyleBox" uid="uid://byruekc6swxep" path="res://assets/styles/sbf_mid.tres" id="3_ternb"]
 [ext_resource type="LabelSettings" uid="uid://cbw7oatl30dvl" path="res://assets/styles/label_33px.tres" id="4_eaq8r"]
+[ext_resource type="AudioStream" uid="uid://cguisr1flag8l" path="res://assets/sound_fx/EDM Detection Mode.mp3" id="4_k4jhu"]
 [ext_resource type="AudioStream" uid="uid://s0n77nbat75d" path="res://assets/sound_fx/hitHurt.wav" id="5_eaq8r"]
 [ext_resource type="AudioStream" uid="uid://c6ui43xa7nmm5" path="res://assets/sound_fx/snoop-dogg-smoke-weed-everyday.mp3" id="6_ternb"]
 
@@ -16,9 +18,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hwd4i")
+easy_song = ExtResource("2_jdad8")
+medium_song = ExtResource("3_jdad8")
+hard_song = ExtResource("4_k4jhu")
 
 [node name="Background_Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_glms7")
 pitch_scale = 1.03
 autoplay = true
 bus = &"Music"

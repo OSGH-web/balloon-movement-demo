@@ -3,8 +3,9 @@ extends CanvasLayer
 func _ready() -> void:
 	if !get_parent().PROCESS_MODE_PAUSABLE:
 		push_warning("warning: parent is not pausable")
-	init_mute_audio_button()
-	init_reset_stage_button()
+	_init_mute_audio_button()
+	_init_reset_stage_button()
+	_init_time_trials_button()
 
 
 func _input(event: InputEvent) -> void:
@@ -27,7 +28,7 @@ func _on_resume_button_pressed():
 func _on_quit_button_pressed():
 	get_tree().quit()
 
-func init_mute_audio_button() -> void:
+func _init_mute_audio_button() -> void:
 	var master_bus_idx := AudioServer.get_bus_index("Master")
 	var muted := AudioServer.is_bus_mute(master_bus_idx)
 	%MuteAudioButton.text = "Unmute Audio" if muted else "Mute Audio"
@@ -45,7 +46,17 @@ func _on_main_menu_pressed() -> void:
 	toggle_pause()
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
 
-func init_reset_stage_button():
+func _init_time_trials_button():
+	if GameManager.gameMode == GameManager.GameModes.TIME_TRIAL:
+		%TimeTrials.visible = true
+	else:
+		%TimeTrials.visible = false
+
+func _on_time_trials_pressed() -> void:
+	toggle_pause()
+	get_tree().change_scene_to_file("res://scenes/UI/level_select.tscn")
+
+func _init_reset_stage_button():
 	if GameManager.gameMode == GameManager.GameModes.TIME_TRIAL:
 		%ResetStageButton.visible = true
 	else:
