@@ -47,6 +47,9 @@ func load_levels(time_trials=false):
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
+			# ensure the file name is good when project is exported
+			file_name = file_name.replace('.remap', '')
+
 			if file_name.match(filename_matcher):
 				level_files_temp.append(file_name)
 			file_name = dir.get_next()
