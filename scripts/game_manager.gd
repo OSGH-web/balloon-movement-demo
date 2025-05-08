@@ -58,7 +58,7 @@ func load_levels(time_trials=false):
 		return level_files_temp
 
 func reset():
-	lives = 3
+	lives = 4
 	score = 0
 	extraLivesDivisor = 1
 	curr_level = 0
