@@ -29,9 +29,9 @@ const ICE_SOURCE_ID := 5
 const ICE_ATLAS_COORDS := [Vector2i(0, 0), Vector2i(1, 0)]
 
 # Audio
-@export var maxVol = 6.0
-@export var minVol = -24.0
-@export var noiseGate = -12.0
+@export var maxVol = -6.0
+@export var minVol = -48.0
+@export var noiseGate = -24.0
 
 signal player_died
 
@@ -41,6 +41,7 @@ func _ready():
 	add_to_group("player")
 	camera.zoom = camera_scale
 	player_died.connect(GameManager.on_player_died)
+	$AudioStreamPlayer.volume_db = minVol
 
 func add_fuel(amt):
 	FUEL += amt
