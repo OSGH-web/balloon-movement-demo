@@ -31,8 +31,7 @@ enum GameModes {NONE, ARCADE, TIME_TRIAL}
 func _ready():
 	level_files = load_levels()
 	load_data()
-	background_music.set_stream(easy_song)
-	background_music.playing = true
+	set_background_music(0)
 	
 func load_data() -> void:
 	if ResourceLoader.exists(SAVE_PATH):
