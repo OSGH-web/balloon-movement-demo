@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cgiy7hohcmtc1"
-path="res://.godot/imported/smokin_my_laser_background.png-d68272968832b4dc5a42fd78879678c5.ctex"
+path="res://.godot/imported/smokin_my_laser_background.png-38e553ab00d7fd24f40a01bf2b9668ca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://hack/smokin_my_laser_background.png"
-dest_files=["res://.godot/imported/smokin_my_laser_background.png-d68272968832b4dc5a42fd78879678c5.ctex"]
+source_file="res://addons/WebExport/smokin_my_laser_background.png"
+dest_files=["res://.godot/imported/smokin_my_laser_background.png-38e553ab00d7fd24f40a01bf2b9668ca.ctex"]
 
 [params]
 
