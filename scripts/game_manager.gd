@@ -76,6 +76,7 @@ func reset():
 	endOfLevelDelay = 1.0
 	extraLifeFrameDelay = 0.25
 	scoreCountdownRate = 200
+	set_background_music(0)
 	
 func time_trial_reset():
 	time = 0.0
@@ -95,6 +96,7 @@ func load_next_level():
 	var level_path
 
 	background_music.pitch_scale = 1.03
+	set_background_music(curr_level)
 	gameStateDisabled = true
 	if not curr_level == len(level_files):
 		await _calculate_score()
