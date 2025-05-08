@@ -64,6 +64,7 @@ func _on_level_selected(level_index: int):
 	var file_path = "res://levels/%s" % level_files[level_index]
 	GameManager.time = 0.0
 	GameManager.game_started = false
+	GameManager.set_background_music(level_index)
 	get_tree().change_scene_to_file(file_path)
 
 

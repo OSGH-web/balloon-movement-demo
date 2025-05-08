@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cguisr1flag8l"
+path="res://.godot/imported/EDM Detection Mode.mp3-fca2729b72dd8903efa6fbc1e3ad0e2e.mp3str"
+
+[deps]
+
+source_file="res://assets/sound_fx/EDM Detection Mode.mp3"
+dest_files=["res://.godot/imported/EDM Detection Mode.mp3-fca2729b72dd8903efa6fbc1e3ad0e2e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

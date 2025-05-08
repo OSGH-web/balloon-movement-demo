@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://de503toka5gbt"
+path="res://.godot/imported/Raving Energy.mp3-4769128f56ba14c0de70c28f36ec3b26.mp3str"
+
+[deps]
+
+source_file="res://assets/sound_fx/Raving Energy.mp3"
+dest_files=["res://.godot/imported/Raving Energy.mp3-4769128f56ba14c0de70c28f36ec3b26.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

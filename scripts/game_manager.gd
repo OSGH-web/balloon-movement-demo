@@ -19,12 +19,20 @@ var level_files = []
 var gameStateDisabled = false
 # Show a message upon levelCompletion
 @onready var background_music = $Background_Music
+
+@export var easy_song: AudioStream = load("res://assets/sound_fx/Kick Shock.mp3")
+@export var medium_song: AudioStream = load("res://assets/sound_fx/EDM Detection Mode.mp3")
+@export var hard_song: AudioStream = load("res://assets/sound_fx/Cyborg Ninja.mp3")
+
+
 # gameMode NONE prevents timer from being started due to input on the title screen.
 enum GameModes {NONE, ARCADE, TIME_TRIAL}
 @onready var gameMode: GameModes
 func _ready():
 	level_files = load_levels()
 	load_data()
+	background_music.set_stream(easy_song)
+	background_music.playing = true
 	
 func load_data() -> void:
 	if ResourceLoader.exists(SAVE_PATH):
@@ -229,6 +237,19 @@ func on_player_died():
 			background_music.pitch_scale = 1.03
 			time_trial_reset()
 			gameStateDisabled = false
+
+func set_background_music(level_index):
+	var background_file
+	if level_index < 5:
+		background_file = easy_song
+	elif level_index < 10:
+		background_file = medium_song
+	else:
+		background_file = hard_song
+
+	if background_music.stream != background_file:
+		background_music.set_stream(background_file)
+		background_music.playing = true
 
 func get_player(): 
 	var level = get_tree().get_current_scene()
