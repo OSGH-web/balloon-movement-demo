@@ -147,7 +147,7 @@ func save_time_and_return():
 	var prev_time = GameManager.level_data.level_times.get(level_path, null)
 	var recorded_time: int = floori(time)
 
-	# If this is the first level clear, or if the recorded time has been beaten
+	# If this is the first level clear, or if the recorded time has been beat
 	# save the new time
 	if prev_time == null or str(prev_time) == "" or recorded_time < prev_time:
 		await _display_info_duration("New Best Time: "+ format_milliseconds(recorded_time), 1)

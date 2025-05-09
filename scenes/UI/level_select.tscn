@@ -106,7 +106,48 @@ text = "Not Completed"
 label_settings = ExtResource("3_chg43")
 vertical_alignment = 1
 
+[node name="PlayerGoalTime" type="HBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(273, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 0
+
+[node name="placeholder2" type="Label" parent="VBoxContainer/PlayerGoalTime"]
+custom_minimum_size = Vector2(15, 20)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_chg43")
+label_settings = ExtResource("3_chg43")
+horizontal_alignment = 1
+
+[node name="Goal Time" type="Label" parent="VBoxContainer/PlayerGoalTime"]
+custom_minimum_size = Vector2(73, 20)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_chg43")
+text = "Goal Time:"
+label_settings = ExtResource("3_chg43")
+vertical_alignment = 1
+clip_text = true
+
+[node name="placeholder3" type="Label" parent="VBoxContainer/PlayerGoalTime"]
+custom_minimum_size = Vector2(40, 20)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_chg43")
+label_settings = ExtResource("3_chg43")
+horizontal_alignment = 1
+
+[node name="GoalTime" type="Label" parent="VBoxContainer/PlayerGoalTime"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = ExtResource("2_chg43")
+text = "Not Completed"
+label_settings = ExtResource("3_chg43")
+vertical_alignment = 1
+
 [node name="DeveloperTime" type="HBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(273, 0)
 layout_mode = 2
 size_flags_horizontal = 0
