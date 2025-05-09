@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dg3shn8d54wck"]
+[gd_scene load_steps=19 format=3 uid="uid://dg3shn8d54wck"]
 
 [ext_resource type="Script" uid="uid://c8rtmo3o8q4vw" path="res://scripts/main.gd" id="1_o5qli"]
 [ext_resource type="StyleBox" uid="uid://cn1chxlsybisf" path="res://assets/styles/sbf_focus.tres" id="2_tefeu"]
@@ -20,6 +20,68 @@ particles_animation = true
 particles_anim_h_frames = 5
 particles_anim_v_frames = 1
 particles_anim_loop = false
+
+[sub_resource type="Animation" id="Animation_jkv2x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-6, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.0174533]
+}
+
+[sub_resource type="Animation" id="Animation_a8y0u"]
+resource_name = "move_backdrop"
+length = 3.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(18, -6), Vector2(0, -12), Vector2(-18, -6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.0174533, -0.00872665]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jbj1t"]
+_data = {
+&"RESET": SubResource("Animation_jkv2x"),
+&"move_backdrop": SubResource("Animation_a8y0u")
+}
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_o5qli")
@@ -234,14 +296,16 @@ text = "Quit To Desktop"
 z_index = -1
 z_as_relative = false
 position = Vector2(-6, 0)
+rotation = -0.0174533
 
 [node name="PlayerTexture" type="TextureRect" parent="Backdrop"]
 z_index = -1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_right = 131.0
-offset_bottom = 60.0
+offset_left = -32.0
+offset_right = 99.0
+offset_bottom = 64.0
 grow_horizontal = 0
 scale = Vector2(18, 18)
 mouse_filter = 2
@@ -254,8 +318,9 @@ material = ExtResource("5_tipki")
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_right = 131.0
-offset_bottom = 60.0
+offset_left = -32.0
+offset_right = 99.0
+offset_bottom = 64.0
 grow_horizontal = 0
 scale = Vector2(18, 18)
 mouse_filter = 2
@@ -288,10 +353,17 @@ scale_amount_max = 9.0
 anim_speed_min = 1.0
 anim_speed_max = 1.0
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Backdrop"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Backdrop"]
+libraries = {
+&"": SubResource("AnimationLibrary_jbj1t")
+}
+autoplay = "move_backdrop"
+speed_scale = 0.5
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -3
 
-[node name="ViewportBackground" type="TextureRect" parent="Backdrop/CanvasLayer"]
+[node name="ViewportBackground" type="TextureRect" parent="CanvasLayer"]
 unique_name_in_owner = true
 texture_filter = 1
 material = ExtResource("5_tefeu")
