@@ -78,7 +78,6 @@ func reset():
 	endOfLevelDelay = 1.0
 	extraLifeFrameDelay = 0.25
 	scoreCountdownRate = 200
-	set_background_music(0)
 	
 func time_trial_reset():
 	time = 0.0
@@ -92,6 +91,7 @@ func _process(delta):
 func load_first_level():
 	curr_level += 1
 	get_tree().change_scene_to_file("res://levels/%s" % level_files[0])
+	set_background_music(0)
 
 # This is only called for the ARCADE gameMode
 func load_next_level():
