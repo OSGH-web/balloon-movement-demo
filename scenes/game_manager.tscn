@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b8ooja0h52pm1"]
+[gd_scene load_steps=11 format=3 uid="uid://b8ooja0h52pm1"]
 
 [ext_resource type="Script" uid="uid://m01i7w8y3x8f" path="res://scripts/game_manager.gd" id="1_hwd4i"]
 [ext_resource type="AudioStream" uid="uid://ybxtws2a6w3b" path="res://assets/sound_fx/Electro Cabello.mp3" id="2_jdad8"]
@@ -7,7 +7,9 @@
 [ext_resource type="LabelSettings" uid="uid://cbw7oatl30dvl" path="res://assets/styles/label_33px.tres" id="4_eaq8r"]
 [ext_resource type="AudioStream" uid="uid://cguisr1flag8l" path="res://assets/sound_fx/EDM Detection Mode.mp3" id="4_k4jhu"]
 [ext_resource type="AudioStream" uid="uid://s0n77nbat75d" path="res://assets/sound_fx/hitHurt.wav" id="5_eaq8r"]
-[ext_resource type="AudioStream" uid="uid://c6ui43xa7nmm5" path="res://assets/sound_fx/snoop-dogg-smoke-weed-everyday.mp3" id="6_ternb"]
+[ext_resource type="AudioStream" uid="uid://dmu7n8hds4042" path="res://assets/sound_fx/extraLife.wav" id="8_jdad8"]
+[ext_resource type="AudioStream" uid="uid://d0coy1x07mryp" path="res://assets/sound_fx/score.wav" id="9_frtjd"]
+[ext_resource type="AudioStream" uid="uid://61j0f42t10ma" path="res://assets/sound_fx/level_complete.wav" id="10_frtjd"]
 
 [node name="GameManager" type="Control"]
 process_mode = 3
@@ -52,5 +54,16 @@ vertical_alignment = 1
 [node name="PlayerDeath" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_eaq8r")
 
-[node name="SmokeWeedEveryday" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_ternb")
+[node name="ExtraLife" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("8_jdad8")
+
+[node name="ScoreCounter" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("9_frtjd")
+
+[node name="LevelComplete" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("10_frtjd")
+volume_db = -6.0
+pitch_scale = 0.5
