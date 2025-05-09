@@ -72,7 +72,7 @@ func reset():
 	score = 0
 	extraLivesDivisor = 1
 	curr_level = 0
-	background_music.pitch_scale = 1.03
+	GameManager.set_background_pitch_scale(false)
 	game_started = false
 	get_tree().paused = false
 	endOfLevelDelay = 1.0
@@ -97,7 +97,7 @@ func load_first_level():
 func load_next_level():
 	var level_path
 
-	background_music.pitch_scale = 1.03
+	GameManager.set_background_pitch_scale(false)
 	set_background_music(curr_level)
 	gameStateDisabled = true
 	if not curr_level == len(level_files):
@@ -157,7 +157,7 @@ func save_time_and_return():
 		level_data.level_times[level_path] = recorded_time
 		save_data()
 	get_tree().change_scene_to_file("res://scenes/UI/level_select.tscn")
-	background_music.pitch_scale = 1.03
+	GameManager.set_background_pitch_scale(false)
 	gameStateDisabled = false
 
 func _input(event):
@@ -218,14 +218,14 @@ func on_player_died():
 	match gameMode:
 		GameModes.ARCADE:
 			if gameStateDisabled:
-				background_music.pitch_scale = 1.03
+				GameManager.set_background_pitch_scale(false)
 				return
 			lives -= 1
 			gameStateDisabled = true
 			$PlayerDeath.play()
 			if lives > 0:
 				await _display_info_duration("YOU DIED! RESETTING LEVEL...", 1.5)
-				background_music.pitch_scale = 1.03
+				GameManager.set_background_pitch_scale(false)
 				game_started = false
 				get_tree().reload_current_scene()
 			else:
@@ -243,7 +243,7 @@ func on_player_died():
 			gameStateDisabled = true
 			$PlayerDeath.play()
 			await get_tree().create_timer(0.5).timeout
-			background_music.pitch_scale = 1.03
+			GameManager.set_background_pitch_scale(false)
 			time_trial_reset()
 			gameStateDisabled = false
 
