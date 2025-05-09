@@ -24,9 +24,15 @@ easy_song = ExtResource("2_jdad8")
 medium_song = ExtResource("3_jdad8")
 hard_song = ExtResource("4_k4jhu")
 
-[node name="Background_Music" type="AudioStreamPlayer" parent="."]
+[node name="Background_Music" type="Node" parent="."]
+
+[node name="Background_Music1" type="AudioStreamPlayer" parent="Background_Music"]
+volume_db = -48.0
 pitch_scale = 1.03
-autoplay = true
+bus = &"Music"
+
+[node name="Background_Music2" type="AudioStreamPlayer" parent="Background_Music"]
+pitch_scale = 1.03
 bus = &"Music"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
