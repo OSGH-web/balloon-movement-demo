@@ -24,9 +24,15 @@ easy_song = ExtResource("2_jdad8")
 medium_song = ExtResource("3_jdad8")
 hard_song = ExtResource("4_k4jhu")
 
-[node name="Background_Music" type="AudioStreamPlayer" parent="."]
+[node name="Background_Music" type="Node" parent="."]
+
+[node name="Background_Music1" type="AudioStreamPlayer" parent="Background_Music"]
+volume_db = -48.0
 pitch_scale = 1.03
-autoplay = true
+bus = &"Music"
+
+[node name="Background_Music2" type="AudioStreamPlayer" parent="Background_Music"]
+pitch_scale = 1.03
 bus = &"Music"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -53,17 +59,21 @@ vertical_alignment = 1
 
 [node name="PlayerDeath" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_eaq8r")
+bus = &"SFX"
 
 [node name="ExtraLife" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("8_jdad8")
+bus = &"SFX"
 
 [node name="ScoreCounter" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("9_frtjd")
+bus = &"SFX"
 
 [node name="LevelComplete" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("10_frtjd")
 volume_db = -6.0
 pitch_scale = 0.5
+bus = &"SFX"

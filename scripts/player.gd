@@ -45,7 +45,7 @@ func _ready():
 
 func add_fuel(amt):
 	FUEL += amt
-	GameManager.background_music.pitch_scale = 1.03 # Changes music to normal if you ran out of fuel then got it back. 
+	GameManager.set_background_pitch_scale(false)
 
 func _on_timer_timeout():
 	if int(FUEL) <= 0 && not GameManager.gameStateDisabled:
@@ -91,7 +91,7 @@ func _physics_process(delta):
 		if not GameManager.gameStateDisabled:
 			FUEL -= velocity_update.length() / physics_scale_factor
 	elif timer.is_stopped() and not GameManager.gameStateDisabled:
-		GameManager.background_music.pitch_scale = 0.7
+		GameManager.set_background_pitch_scale(true)
 		timer.start()
 
 	if not is_on_floor():

@@ -18,12 +18,15 @@ var scoreCountdownRate = 200
 var level_files = []
 var gameStateDisabled = false
 # Show a message upon levelCompletion
-@onready var background_music = $Background_Music
+@onready var background_music1 = $Background_Music/Background_Music1
+@onready var background_music2 = $Background_Music/Background_Music2
 
 @export var easy_song: AudioStream
 @export var medium_song: AudioStream
 @export var hard_song: AudioStream
 
+enum BGM_TRACKS {ONE, TWO}
+var active_bgm_track = BGM_TRACKS.ONE
 
 # gameMode NONE prevents timer from being started due to input on the title screen.
 enum GameModes {NONE, ARCADE, TIME_TRIAL}
@@ -69,13 +72,12 @@ func reset():
 	score = 0
 	extraLivesDivisor = 1
 	curr_level = 0
-	background_music.pitch_scale = 1.03
+	GameManager.set_background_pitch_scale(false)
 	game_started = false
 	get_tree().paused = false
 	endOfLevelDelay = 1.0
 	extraLifeFrameDelay = 0.25
 	scoreCountdownRate = 200
-	set_background_music(0)
 	
 func time_trial_reset():
 	time = 0.0
@@ -89,12 +91,13 @@ func _process(delta):
 func load_first_level():
 	curr_level += 1
 	get_tree().change_scene_to_file("res://levels/%s" % level_files[0])
+	set_background_music(0)
 
 # This is only called for the ARCADE gameMode
 func load_next_level():
 	var level_path
 
-	background_music.pitch_scale = 1.03
+	GameManager.set_background_pitch_scale(false)
 	set_background_music(curr_level)
 	gameStateDisabled = true
 	if not curr_level == len(level_files):
@@ -154,7 +157,7 @@ func save_time_and_return():
 		level_data.level_times[level_path] = recorded_time
 		save_data()
 	get_tree().change_scene_to_file("res://scenes/UI/level_select.tscn")
-	background_music.pitch_scale = 1.03
+	GameManager.set_background_pitch_scale(false)
 	gameStateDisabled = false
 
 func _input(event):
@@ -215,14 +218,14 @@ func on_player_died():
 	match gameMode:
 		GameModes.ARCADE:
 			if gameStateDisabled:
-				background_music.pitch_scale = 1.03
+				GameManager.set_background_pitch_scale(false)
 				return
 			lives -= 1
 			gameStateDisabled = true
 			$PlayerDeath.play()
 			if lives > 0:
 				await _display_info_duration("YOU DIED! RESETTING LEVEL...", 1.5)
-				background_music.pitch_scale = 1.03
+				GameManager.set_background_pitch_scale(false)
 				game_started = false
 				get_tree().reload_current_scene()
 			else:
@@ -240,9 +243,12 @@ func on_player_died():
 			gameStateDisabled = true
 			$PlayerDeath.play()
 			await get_tree().create_timer(0.5).timeout
-			background_music.pitch_scale = 1.03
+			GameManager.set_background_pitch_scale(false)
 			time_trial_reset()
 			gameStateDisabled = false
+
+const mute_vol = -48.0
+const fade_time = 0.5
 
 func set_background_music(level_index):
 	var background_file
@@ -253,9 +259,46 @@ func set_background_music(level_index):
 	else:
 		background_file = hard_song
 
-	if background_music.stream != background_file:
-		background_music.set_stream(background_file)
-		background_music.playing = true
+	if active_bgm_track == BGM_TRACKS.ONE:
+		if background_music1.stream == background_file:
+			return
+		background_music2.set_stream(background_file)
+		background_music2.playing = true
+		_fade_in_stream(background_music2, fade_time)
+		_fade_out_stream(background_music1, fade_time)
+		active_bgm_track = BGM_TRACKS.TWO
+	elif active_bgm_track == BGM_TRACKS.TWO:
+		if background_music2.stream == background_file:
+			return
+		background_music1.set_stream(background_file)
+		background_music1.playing = true
+		_fade_in_stream(background_music1, fade_time)
+		_fade_out_stream(background_music2, fade_time)
+		active_bgm_track = BGM_TRACKS.ONE
+
+func _fade_in_stream(audio_stream_player, fade_time: float = 0.5) -> void:
+	if audio_stream_player.stream:
+		audio_stream_player.volume_db = mute_vol
+		var bus_volume = AudioServer.get_bus_volume_db(AudioServer.get_bus_index(audio_stream_player.bus))
+
+		var fade_tween = create_tween()
+		fade_tween.tween_property(audio_stream_player, "volume_db", bus_volume, fade_time)\
+			.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+
+func _fade_out_stream(audio_stream_player, fade_time: float = 0.5) -> void:
+	if audio_stream_player.stream:
+		var fade_tween = create_tween()
+		fade_tween.tween_property(audio_stream_player, "volume_db", mute_vol, fade_time)\
+			.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+		fade_tween.tween_callback(audio_stream_player.stop)  # Stop after fade
+
+func set_background_pitch_scale(use_lowered_pitch):
+	var pitch_scale = 1.0
+	if use_lowered_pitch:
+		pitch_scale = 0.67
+	background_music1.pitch_scale = pitch_scale
+	background_music2.pitch_scale = pitch_scale
+
 
 func get_player(): 
 	var level = get_tree().get_current_scene()
