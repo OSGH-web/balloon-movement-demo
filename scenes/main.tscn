@@ -358,6 +358,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_jbj1t")
 }
 autoplay = "move_backdrop"
+speed_scale = 0.5
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -3
