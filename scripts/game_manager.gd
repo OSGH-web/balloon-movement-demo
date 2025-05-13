@@ -107,6 +107,12 @@ func load_next_level():
 	else:
 		curr_level = 0
 		await _calculate_score("You Win!")
+		
+		while lives > 0:
+			score += 10000
+			lives -=1
+			%ExtraLife.play()
+			await get_tree().create_timer(extraLifeFrameDelay).timeout
 
 		if GameManager.level_data.high_score < score:
 			await _display_info_duration("New High Score! " + str(score), 2.5)
@@ -120,7 +126,8 @@ func load_next_level():
 			await _display_info_duration("New Best Time! " + format_milliseconds(floori(time)), 2.5)
 			level_data.arcade_time = time
 			save_data()
-
+		
+		gameStateDisabled = true
 		await _display_info_duration("Thanks for Playing!", 2.5)
 		
 		level_path = "res://scenes/main.tscn"
