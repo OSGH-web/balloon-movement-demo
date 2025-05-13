@@ -127,9 +127,7 @@ func load_next_level():
 			level_data.arcade_time = time
 			save_data()
 		
-		gameStateDisabled = true
 		await _display_info_duration("Thanks for Playing!", 2.5)
-		
 		level_path = "res://scenes/main.tscn"
 	game_started = false
 	get_tree().change_scene_to_file(level_path)
